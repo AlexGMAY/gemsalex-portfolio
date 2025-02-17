@@ -41,10 +41,16 @@ const Hero = () => {
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            Dynamic Web Magic with Next.js
-          </p>
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[70vw] flex flex-col items-center justify-center">
+          <div className="inline-flex py-2 px-3 bg-gradient-to-r from-yellow-300 to-lime-800 rounded-full font-semibold">
+            <p className="uppercase tracking-widest text-xs text-center text-neutral-950">
+              {/* text-blue-100 max-w-82 */}
+              Dynamic Web Excellence with{" "}
+              <span className="font-semibold text-blue-100">
+                8+ years of Experience
+              </span>
+            </p>
+          </div>
 
           {/**
            *  Link: https://ui.aceternity.com/components/text-generate-effect
@@ -52,21 +58,35 @@ const Hero = () => {
            *  change md:text-6xl, add more responsive code
            */}
           <TextGenerateEffect
-            words="Transforming Concepts into Seamless User Experiences"
+            words="Crafting Impactful Design into Engaging User Experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Adrian, a Next.js Developer based in Croatia.
+            Hello! I&apos;m{" "}
+            <span className="font-bold text-yellow-500">
+              Merveille Alexander
+            </span>
+            , a Full Stack Software Engineer, WordPress Developer,
+            Analyst-Programer and Auto-entrepreneur based in Tunisia.
           </p>
 
-          <a href="#about">
-            <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
+          <div className="flex items-center justify-center gap-4">
+            <a href="#projects">
+              <MagicButton
+                title="Recent projects"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </a>
+            <a href="#services">
+              <MagicButton
+                title="View services"
+                icon={<FaLocationArrow />}
+                position="right"                
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

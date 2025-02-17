@@ -1,7 +1,9 @@
 export const navItems = [
   { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
+  { name: "Services", link: "#services" },
+  { name: "Realisations", link: "#projects" },
+  { name: "Clients", link: "#clients" },
+  { name: "Articles", link: "#blog" },
   { name: "Contact", link: "#contact" },
 ];
 
@@ -49,7 +51,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
+    title: "Currently building 5+ commercial SAAS applications...",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -167,6 +169,12 @@ export const companies = [
     name: "docker.",
     img: "/dock.svg",
     nameImg: "/dockerName.svg",
+  },
+  {
+    id: 6,
+    name: "appwrite",
+    img: "/app.svg",
+    nameImg: "/appName.svg",
   },
 ];
 

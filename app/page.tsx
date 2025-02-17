@@ -10,6 +10,14 @@ import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import AboutMe from "@/components/AboutMe";
+import Services from "@/components/Services";
+import TechLogos from "@/components/TechLogos";
+import AnimatedQuote from "@/components/AnimatedQuote";
+import Platforms from "@/components/Platforms";
+import CallToAction from "@/components/CallToAction";
+import Faqs from "@/components/Faqs";
+import Skills from "@/components/Skills";
 
 const Home = () => {
   return (
@@ -17,11 +25,19 @@ const Home = () => {
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
+        <TechLogos />
+        <AboutMe />
         <Grid />
+        <AnimatedQuote />
+        <Services />
+        <Platforms />
+        <Skills />
         <RecentProjects />
         <Clients />
         <Experience />
         <Approach />
+        <Faqs />
+        <CallToAction />
         <Footer />
       </div>
     </main>
