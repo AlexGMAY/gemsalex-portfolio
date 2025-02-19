@@ -1,39 +1,11 @@
-// import React from 'react'
-
-// const Faqs = () => {
-//   return (
-//     <section className="py-20">
-//       <div className="container">
-//         <h2 className='heading font-medium'>
-//           Frequently Asked <span className='text-lime-400'>Interview</span> Questions
-//         </h2>
-//         <p className='text-xl text-center text-neutral-300 mt-6'>
-//           Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis
-//           quam aut recusandae sequi quasi dolore, excepturi dignissimos iusto
-//           dolorem!
-//         </p>
-//         <div className="wrapper">
-//           <div className="vid-presentation"></div>
-//           <div className="faiqs"></div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Faqs
-
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
-  {
-    question: "What is your full name?",
-    answer: "My name is Merveille Alexander.",
-  },
+  
   {
     question: "Where are you based?",
-    answer: "I am based in [Your Location].",
+    answer: "I am based in Tunis, Tunisia.",
   },
   {
     question: "What are your main strengths?",
@@ -41,11 +13,11 @@ const faqs = [
   },
   {
     question: "What do you enjoy outside of work?",
-    answer: "I enjoy coding, reading, and outdoor activities.",
+    answer: "I enjoy exercizing, reading, and outdoor activities.",
   },
   {
     question: "What is your preferred work environment?",
-    answer: "I thrive in collaborative and innovative environments.",
+    answer: "I thrive in both remote(freelance) and collaborative and innovative environments (Hybrid).",
   },
   {
     question: "How do you handle deadlines?",
@@ -60,7 +32,7 @@ const faqs = [
   {
     question: "How do you handle stress?",
     answer:
-      "I stay organized, take breaks when needed, and focus on solutions.",
+      "I meditate, take breaks when needed to be inspired, and focus on solutions.",
   },
   {
     question: "What is your approach to teamwork?",
@@ -76,9 +48,9 @@ const faqs = [
 
 const AccordionItem = ({ question, answer, isOpen, toggle }) => {
   return (
-    <div className="border-b border-gray-700">
+    <div className="border-b border-lime-700">
       <button
-        className="w-full flex justify-between items-center text-left p-4 bg-gray-800 hover:bg-gray-700 text-lime-400 font-semibold"
+        className="w-full flex justify-between items-center text-left p-4 bg-black-300 hover:bg-gray-700 text-lime-400 font-semibold"
         onClick={toggle}
       >
         <span>{question}</span>
@@ -107,24 +79,32 @@ const Faqs = () => {
           Get to Know <span className="text-lime-400">Me</span>
         </h2>
         <p className="text-xl text-center text-neutral-400 mt-4">
-          Frequently asked <span className="text-lime-400">Interview</span> questions so you can get to know me better.
+          Frequently asked <span className="text-lime-400">Interview</span>{" "}
+          questions so you can get to know me better.
         </p>
 
         <div className="grid md:grid-cols-2 gap-10 mt-10">
           {/* Video Presentation */}
           <div className="rounded-xl overflow-hidden shadow-lg">
-            <iframe
+            {/* <iframe
               className="w-full h-64 md:h-full"
               src="https://www.youtube.com/embed/Ke90Tje7VS0"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
+            <div className="w-full md:h-full border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
+              <img
+                src="/cute-alex.jpg"
+                alt="Merveille Alexander"
+                className="w-full md:h-full p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg relative z-10"
+              />
+            </div>
           </div>
 
           {/* FAQs Accordion */}
-          <div className="bg-black-300 rounded-lg shadow-md">
+          <div className="rounded-lg shadow-md flex flex-col gap-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}

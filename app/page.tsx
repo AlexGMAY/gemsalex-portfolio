@@ -18,6 +18,7 @@ import Platforms from "@/components/Platforms";
 import CallToAction from "@/components/CallToAction";
 import Faqs from "@/components/Faqs";
 import Skills from "@/components/Skills";
+import Realisations from "@/components/Realisations";
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ const Home = () => {
         <Platforms />
         <Skills />
         <RecentProjects />
+        {/* <Realisations /> */}
         <Clients />
         <Experience />
         <Approach />

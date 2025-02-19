@@ -88,7 +88,7 @@ const Realisations = () => {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section className="py-24 text-white">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-8">
           My <span className="text-lime-400">Projects</span>

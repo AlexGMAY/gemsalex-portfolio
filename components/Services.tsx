@@ -15,9 +15,9 @@ const services = [
       "Scalable, cloud-based applications tailored to your business needs.",
   },
   {
-    title: "Web Applications",
+    title: "Web & Mobile Applications",
     icon: <Layers />,
-    description: "Full-stack web apps with powerful features and integrations.",
+    description: "Full-stack web & mobile apps with powerful features and integrations.",
   },
   {
     title: "SEO Optimization",
@@ -27,13 +27,18 @@ const services = [
   {
     title: "WordPress Development",
     icon: <Code />,
-    description: "Custom WordPress themes, plugins, and optimizations.",
+    description: "Custom Website and web apps, plugins Integration, and optimizations.",
+  },
+  {
+    title: "APIs Integration",
+    icon: <Layers />,
+    description: "Full-stack web apps with powerful features and integrations.",
   },
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-gray-900 text-white">
+    <section id="#services" className="py-24 text-white">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold">
           My <span className="text-lime-400">Services</span>

@@ -68,8 +68,7 @@ const Platforms = () => {
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima
                 omnis voluptas ut odit amet ullam nisi numquam! Doloremque,
                 officiis dolor.
-              </p>
-              <GlowingStar />
+              </p>              
             </div>
           </div>
           <div>

@@ -2,6 +2,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
+import GlowingStar from "./ui/GlowingStar";
 
 const Footer = () => {
   return (
@@ -13,6 +14,12 @@ const Footer = () => {
           alt="grid"
           className="w-full h-full opacity-50 "
         />
+      </div>
+      <div className="absolute left-40 bottom-90">
+        <GlowingStar />
+      </div>
+      <div className="absolute right-40 bottom-40">
+        <GlowingStar />
       </div>
 
       <div className="flex flex-col items-center">

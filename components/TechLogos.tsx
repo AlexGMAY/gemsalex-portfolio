@@ -5,10 +5,10 @@ import { companies } from "@/data";
 
 const TechLogos = () => {
   return (
-    <section className="py-5 overflow-x-clip">
+    <section className="py-20 overflow-x-clip">
         <div className="container">
             <h3 className="text-center text-white/50 text-xl">
-              Some Technologies I use
+              
             </h3>
             <div className="overflow-hidden mt-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex gap-24 pr-24">

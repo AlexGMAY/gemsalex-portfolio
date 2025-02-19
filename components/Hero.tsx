@@ -3,10 +3,11 @@ import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import GlowingStar from "./ui/GlowingStar";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 pt-36 relative">
       {/**
        *  UI: Spotlights
        *  Link: https://ui.aceternity.com/components/spotlight
@@ -34,10 +35,31 @@ const Hero = () => {
       >
         {/* Radial gradient for the container to give a faded look */}
         <div
-          // chnage the bg to bg-black-100, so it matches the bg color and will blend in
+          // change the bg to bg-black-100, so it matches the bg color and will blend in
           className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
         />
+      </div>
+
+      <div className="absolute -left-64 w-[30%] h-[380px] bottom-10 rounded-3xl p-2 hidden lg:block">
+        <img
+          src="/dashboard.jpeg"
+          alt="Merveille Alexander"
+          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+        />
+      </div>
+      <div className="absolute -right-64 w-[30%] h-[380px] top-120 rounded-3xl p-2 hidden lg:block">
+        <img
+          src="/alex-smile.jpg"
+          alt="Merveille Alexander"
+          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+        />
+      </div>
+      <div className="absolute left-40 top-40">
+        <GlowingStar />
+      </div>
+      <div className="absolute right-40 bottom-16">
+        <GlowingStar />
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
@@ -83,7 +105,7 @@ const Hero = () => {
               <MagicButton
                 title="View services"
                 icon={<FaLocationArrow />}
-                position="right"                
+                position="right"
               />
             </a>
           </div>
