@@ -1,11 +1,30 @@
 import { FaLocationArrow } from "react-icons/fa6";
-
+import { motion, useAnimate } from "framer-motion";
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import GlowingStar from "./ui/GlowingStar";
+import { useEffect } from "react";
 
 const Hero = () => {
+  const [leftPictureScope, leftPictureAnimate] = useAnimate();
+  const [rightPictureScope, rightPictureAnimate] = useAnimate();
+
+  useEffect(() => {
+    leftPictureAnimate([
+      [leftPictureScope.current, { opacity: 1 }, { duration: 0.5 }],
+      [leftPictureScope.current, { y: 0, x: 0 }, { duration: 0.5 }],
+    ]);
+
+    rightPictureAnimate([
+      [
+        rightPictureScope.current,
+        { opacity: 1 },
+        { duration: 0.5, delay: 1.5 },
+      ],
+      [rightPictureScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
+    ]);
+  }, [])
   return (
     <div className="pb-20 pt-36 relative">
       {/**
@@ -41,20 +60,32 @@ const Hero = () => {
         />
       </div>
 
-      <div className="absolute -left-64 w-[30%] h-[380px] bottom-10 rounded-3xl p-2 hidden lg:block">
+      <motion.div
+        ref={leftPictureScope}
+        initial={{ opacity: 0, y: 100, x: -100 }}
+        drag
+        className="absolute -left-60 w-[30%] h-[380px] bottom-10 rounded-3xl p-2 hidden lg:block"
+      >
         <img
           src="/dashboard.jpeg"
-          alt="Merveille Alexander"
+          alt="Web apps development"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+          draggable = "false"
         />
-      </div>
-      <div className="absolute -right-64 w-[30%] h-[380px] top-120 rounded-3xl p-2 hidden lg:block">
+      </motion.div>
+      <motion.div
+        ref={rightPictureScope}
+        initial={{ opacity: 0, x: 100, y: 100 }}
+        drag
+        className="absolute -right-64 w-[30%] h-[380px] top-120 rounded-3xl p-2 hidden lg:block"
+      >
         <img
-          src="/alex-smile.jpg"
-          alt="Merveille Alexander"
+          src="/realestate-dark.jpg"
+          alt="Website Development"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+          draggable="false"
         />
-      </div>
+      </motion.div>
       <div className="absolute left-40 top-40">
         <GlowingStar />
       </div>

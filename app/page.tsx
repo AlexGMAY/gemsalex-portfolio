@@ -19,6 +19,7 @@ import CallToAction from "@/components/CallToAction";
 import Faqs from "@/components/Faqs";
 import Skills from "@/components/Skills";
 import Realisations from "@/components/Realisations";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const Home = () => {
   return (
@@ -34,12 +35,13 @@ const Home = () => {
         <Platforms />
         <Skills />
         <RecentProjects />
-        {/* <Realisations /> */}
+        <Realisations />
         <Clients />
         <Experience />
         <Approach />
         <Faqs />
         <CallToAction />
+        <ScrollToTop />
         <Footer />
       </div>
     </main>

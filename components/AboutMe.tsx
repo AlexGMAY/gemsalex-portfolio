@@ -69,7 +69,7 @@ const AboutMe = () => {
             <div className="flex items-center justify-between">
               <motion.a
                 href="/about"
-                className="inline-block mt-6 bg-gradient-to-r from-yellow-300 to-lime-500 hover:bg-lime-600 transition px-6 py-3 rounded-lg text-black font-bold"
+                className="inline-block mt-8 bg-gradient-to-r from-yellow-300 to-lime-500 hover:bg-lime-600 transition px-6 py-3 rounded-lg text-black font-bold"
                 whileHover={{ scale: 1.05 }}
               >
                 Get to know me
