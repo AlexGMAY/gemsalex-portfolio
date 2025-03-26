@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Merveille Alexander",
-  description: "FullStack Software Engineer, WordPress Developer and Auto-entrepreneur",
+  description: "FullStack Software Engineer, Web Developer, WordPress Developer and Freelance",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/jsm-logo.png" sizes="any" />
+        <link rel="icon" href="/favicon-MA.png" sizes="any" />
       </head>
       <body className={inter.className}>
         <ThemeProvider

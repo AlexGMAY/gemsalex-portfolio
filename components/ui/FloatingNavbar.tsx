@@ -61,7 +61,7 @@ export const FloatingNav = ({
           // change rounded-full to rounded-lg
           // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
           // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex gap-6 max-w-fit md:min-w-[70vw] lg:min-w-5xl fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-between space-x-4",
+          "flex gap-6 max-w-fit md:min-w-[70vw] lg:min-w-5xl fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-2 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-between space-x-4",
           className
         )}
         style={{
@@ -72,8 +72,12 @@ export const FloatingNav = ({
         }}
       >
         <div className="flex items-center hidden md:block lg:block">
-          <a href="/" className="text-xl font-bold">
-            M<span className="text-lime-500">Xander.</span>
+          <a href="/">
+            <img
+              src="/logo-MA.png"
+              alt="Merveille Alexander"
+              className="w-20 h-20 object-contain"
+            />
           </a>
         </div>
         <div className="relative items-center flex gap-2 space-x-1">
@@ -82,7 +86,7 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                "dark:text-neutral-50 text-neutral-600 dark:hover:text-lime-500 hover:text-lime-500"
+                "dark:text-neutral-50 text-neutral-600 dark:hover:text-blue-200 hover:text-blue-200"
               )}
             >
               <span className="block sm:hidden">{navItem.icon}</span>

@@ -76,6 +76,7 @@ const Platforms = () => {
               <PlatformsColumn platforms={platforms} />
               <PlatformsColumn
                 platforms={platforms.slice().reverse()}
+                reversed
                 className="hidden md:flex"
               />
             </div>

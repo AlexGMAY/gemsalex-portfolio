@@ -20,6 +20,7 @@ import Faqs from "@/components/Faqs";
 import Skills from "@/components/Skills";
 import Realisations from "@/components/Realisations";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import ServicesSection from "@/components/ServicesSection";
 
 const Home = () => {
   return (
@@ -35,7 +36,8 @@ const Home = () => {
         <Platforms />
         <Skills />
         <RecentProjects />
-        <Realisations />
+        <ServicesSection isHomePage={true} />
+        <Realisations isHomePage={true} />
         <Clients />
         <Experience />
         <Approach />

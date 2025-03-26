@@ -2,8 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import MagicButton from "./MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 const AboutMe = () => {
+  const router = useRouter(); // Initialize the router
+
+  const handleSeeMore = () => {
+    router.push("/about"); // Redirect to the Projects page
+  };
   return (
     <section id="about" className="py-24 text-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
@@ -66,14 +72,14 @@ const AboutMe = () => {
             </div>
 
             {/* CTA */}
-            <div className="flex items-center justify-between">
-              <motion.a
-                href="/about"
-                className="inline-block mt-8 bg-gradient-to-r from-yellow-300 to-lime-500 hover:bg-lime-600 transition px-6 py-3 rounded-lg text-black font-bold"
+            <div className="flex items-center justify-between">              
+              <motion.button
+                onClick={handleSeeMore}
+                className="mt-10 bg-gradient-to-r from-lime-500 to-yellow-600 text-white px-8 py-3 rounded-lg hover:from-lime-600 hover:to-yellow-700 transition-all transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
               >
-                Get to know me
-              </motion.a>
+                Read More About Me
+              </motion.button>
               <a href="#">
                 <MagicButton
                   title="DONWLOAD CV"

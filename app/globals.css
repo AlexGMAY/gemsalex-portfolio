@@ -83,3 +83,30 @@
     @apply font-bold text-4xl md:text-5xl text-center;
   }
 }
+
+/* Custom Scrollbar Styles */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 15px;
+  /* Width of the scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #374151;
+  /* Track color (gray-700) */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  /* Thumb color (gray-500) */
+  border-radius: 10px;
+  /* Rounded corners */
+  border: 2px solid #374151;
+  /* Adds padding around the thumb */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+  /* Thumb color on hover (gray-400) */
+}

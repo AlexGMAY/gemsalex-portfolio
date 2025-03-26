@@ -123,7 +123,7 @@ const Faqs = () => {
           questions so you can get to know me better.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <div className="grid lg:grid-cols-2 gap-10 mt-10">
           {/* Video Presentation */}
           <div className="rounded-xl overflow-hidden shadow-lg">            
             <div className="w-full md:h-full border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
