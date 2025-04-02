@@ -3,8 +3,8 @@ import { motion, useAnimate } from "framer-motion";
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import GlowingStar from "./ui/GlowingStar";
 import { useEffect } from "react";
+import { TwinklingStar } from "./ui/TwinklingStar";
 
 const Hero = () => {
   const [leftPictureScope, leftPictureAnimate] = useAnimate();
@@ -70,7 +70,7 @@ const Hero = () => {
           src="/dashboard.jpeg"
           alt="Web apps development"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
-          draggable = "false"
+          draggable="false"
         />
       </motion.div>
       <motion.div
@@ -87,10 +87,10 @@ const Hero = () => {
         />
       </motion.div>
       <div className="absolute left-40 top-40">
-        <GlowingStar />
+        <TwinklingStar />
       </div>
       <div className="absolute right-40 bottom-16">
-        <GlowingStar />
+        <TwinklingStar />
       </div>
 
       <div className="flex justify-center relative my-20 z-10">

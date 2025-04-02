@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -53,13 +55,13 @@ const BlogPreview = () => {
           transition={{ duration: 0.5 }}
           className="heading mb-12"
         >
-          Recent <span className="text-blue-200">Articles</span>
+          Recent <span className="text-lime-400">Articles</span>
         </motion.h2>
         <p className="text-lg text-center text-neutral-400 mb-24">
           Browse through some of my articles accross different categories.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {featuredPosts.map((post, index) => (
             <motion.article
               key={post.id}

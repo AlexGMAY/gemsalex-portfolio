@@ -58,7 +58,7 @@ const StatItem = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ delay: duration * 0.8 }}
-        className="text-xl text-blue-100"
+        className="text-xl text-blue-300 font-medium border-t border-gray-800"
       >
         {label}
       </motion.p>
@@ -85,7 +85,7 @@ const StatsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

@@ -1,10 +1,10 @@
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Services", link: "#services" },
-  { name: "Realisations", link: "#projects" },
-  { name: "Pricing", link: "#pricing" },
-  { name: "Articles", link: "#blog" },
-  { name: "Contact", link: "#contact" },
+  { name: "About Me", link: "/about" },
+  { name: "Projects", link: "/projects" },
+  { name: "Pricing", link: "/pricing" },
+  { name: "Products", link: "/products" },
+  { name: "Articles", link: "/blog" },
+  { name: "Contact", link: "/contact" },
 ];
 
 export const gridItems = [
@@ -224,215 +224,575 @@ export const socialMedia = [
   },
 ];
 
-export const services = [
+// @/data/services.ts
+export interface Feature {
+  id: string;
+  name: string;
+  description?: string;
+  price: number; // USD
+  checked?: boolean;
+  category: 'core' | 'addon';
+}
+
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  basePrice: number; // USD
+  localPrice?: number; // Fixed TND
+  deliveryTime: string;
+  popular?: boolean;
+  features: Feature[];
+}
+
+// @/data/services.ts
+export const services: Service[] = [
   {
-    title: "Business Website",
-    description:
-      "A professional website for your business with modern design and functionality.",
-    basePrice: 799,
+    id: 'business-website',
+    title: 'Business Website',
+    description: 'Premium website with conversion-focused design and guaranteed performance',
+    basePrice: 1750,
+    localPrice: 5500,
+    deliveryTime: '2-3 weeks',
+    popular: true,
     features: [
-      { name: "Custom Design", price: 100, checked: true },
-      { name: "SEO Optimization", price: 150, checked: true },
-      { name: "Mobile Responsive", price: 100, checked: true },
-      { name: "Fast Loading", price: 100, checked: false },
-      { name: "Contact Form", price: 50, checked: false },
-      { name: "Blog Integration", price: 100, checked: false },
-      { name: "Newsletter Subscription", price: 80, checked: false },
-      { name: "Google Maps Integration", price: 70, checked: false },
-      { name: "Social Media Integration", price: 80, checked: false }, // Added
-      { name: "Google Analytics Setup", price: 70, checked: false }, // Added
-      { name: "SSL Certificate", price: 50, checked: false }, // Added
-    ],
+      {
+        id: 'bw-core-1',
+        name: 'Custom High-End Design',
+        description: 'Figma-designed UI with 3 revisions',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'bw-core-2',
+        name: 'Advanced SEO Setup',
+        description: 'Technical SEO + content strategy',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'bw-core-3',
+        name: 'Mobile-Optimized',
+        description: 'Perfect scores on all devices',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'bw-addon-1',
+        name: 'Fast Loading (90+ Lighthouse)',
+        price: 200,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-2',
+        name: 'Blog Integration',
+        price: 250,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-3',
+        name: 'Newsletter System',
+        price: 300,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-4',
+        name: 'Google Maps Integration',
+        price: 150,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-5',
+        name: 'Social Media Integration',
+        price: 225,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-6',
+        name: 'Google Analytics Setup',
+        price: 175,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-7',
+        name: 'AI Chatbot Integration',
+        price: 600,
+        category: 'addon'
+      },
+      {
+        id: 'bw-addon-8',
+        name: 'Premium Security Suite',
+        price: 450,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "Showcase Website",
-    description:
-      "Perfect for displaying portfolios, businesses, and projects beautifully.",
-    basePrice: 599,
+    id: 'showcase-website',
+    title: 'Showcase Website',
+    description: 'High-end portfolio with premium presentation features',
+    basePrice: 1500,
+    localPrice: 4700,
+    deliveryTime: '2-3 weeks',
     features: [
-      { name: "Minimalist UI", price: 80, checked: true },
-      { name: "Fast Performance", price: 100, checked: true },
-      { name: "Contact Form", price: 50, checked: true },
-      { name: "Gallery & Portfolio", price: 100, checked: false },
-      { name: "Testimonials Section", price: 80, checked: false },
-      { name: "Google Maps Integration", price: 70, checked: false },
-      { name: "Video Backgrounds", price: 120, checked: false }, // Added
-      { name: "Parallax Scrolling", price: 100, checked: false }, // Added
-      { name: "Social Media Feeds Integration", price: 80, checked: false }, // Added
-      { name: "Lightbox Gallery", price: 70, checked: false }, // Added
-      { name: "SSL Certificate", price: 50, checked: false }, // Added
-    ],
+      {
+        id: 'sw-core-1',
+        name: 'Minimalist Premium UI',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'sw-core-2',
+        name: 'Performance Optimized',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'sw-core-3',
+        name: 'Contact Form',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'sw-addon-1',
+        name: 'Gallery & Portfolio System',
+        price: 300,
+        category: 'addon'
+      },
+      {
+        id: 'sw-addon-2',
+        name: 'Video Backgrounds',
+        price: 350,
+        category: 'addon'
+      },
+      {
+        id: 'sw-addon-3',
+        name: 'Parallax Scrolling',
+        price: 250,
+        category: 'addon'
+      },
+      {
+        id: 'sw-addon-4',
+        name: '3D Model Integration',
+        price: 600,
+        category: 'addon'
+      },
+      {
+        id: 'sw-addon-5',
+        name: 'Client Testimonial System',
+        price: 200,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "E-commerce Website",
-    description:
-      "Sell products online with a secure and scalable e-commerce platform.",
-    basePrice: 1499,
+    id: 'ecommerce-store',
+    title: 'E-Commerce Store',
+    description: 'Enterprise-grade online store with premium integrations',
+    basePrice: 4000,
+    localPrice: 12500,
+    deliveryTime: '4-6 weeks',
+    popular: true,
     features: [
-      { name: "Product Management", price: 200, checked: true },
-      { name: "Payment Integration", price: 250, checked: true },
-      { name: "Cart & Checkout System", price: 250, checked: true },
-      { name: "SEO & Analytics", price: 150, checked: false },
-      { name: "Customer Reviews & Ratings", price: 100, checked: false },
-      { name: "Coupon & Discount System", price: 120, checked: false },
-      { name: "Wishlist & Favorites", price: 90, checked: false },
-      { name: "Live Chat Support", price: 100, checked: false },
-      { name: "Product Search & Filters", price: 200, checked: false }, // Added
-      { name: "Inventory Management", price: 250, checked: false }, // Added
-      { name: "Shipping Integration", price: 300, checked: false }, // Added
-      { name: "Abandoned Cart Recovery", price: 150, checked: false }, // Added
-    ],
+      {
+        id: 'ec-core-1',
+        name: 'Product Management (100 SKUs)',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'ec-core-2',
+        name: 'Payment Gateways',
+        description: 'Stripe/PayPal/Local options',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'ec-core-3',
+        name: 'Cart & Checkout System',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'ec-addon-1',
+        name: 'Inventory Management',
+        price: 600,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-2',
+        name: 'Product Search & Filters',
+        price: 500,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-3',
+        name: 'Abandoned Cart Recovery',
+        price: 400,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-4',
+        name: 'AI Product Recommendations',
+        price: 900,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-5',
+        name: 'AR Product Previews',
+        price: 1500,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-6',
+        name: 'Subscription System',
+        price: 800,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "E-learning Platform",
-    description:
-      "A learning management system with courses, quizzes, and certifications.",
-    basePrice: 2499,
+    id: 'elearning-platform',
+    title: 'E-Learning Platform',
+    description: 'Complete LMS with advanced course management',
+    basePrice: 6000,
+    localPrice: 19000,
+    deliveryTime: '6-8 weeks',
     features: [
-      { name: "Student Dashboard", price: 300, checked: true },
-      { name: "Payment Gateway", price: 250, checked: true },
-      { name: "Course Management", price: 350, checked: true },
-      { name: "Quiz System", price: 200, checked: false },
-      { name: "Certification Issuance", price: 150, checked: false },
-      { name: "Discussion Forum", price: 180, checked: false },
-      { name: "Instructor Dashboard", price: 200, checked: false },
-      { name: "Progress Tracking", price: 180, checked: false },
-      { name: "Video Streaming Integration", price: 300, checked: false }, // Added
-      { name: "Gamification (Badges, Points)", price: 200, checked: false }, // Added
-      { name: "Live Class Integration", price: 250, checked: false }, // Added
-    ],
+      {
+        id: 'el-core-1',
+        name: 'Student Dashboard',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'el-core-2',
+        name: 'Payment Gateway Integration',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'el-core-3',
+        name: 'Course Management',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'el-addon-1',
+        name: 'Video Streaming',
+        price: 1000,
+        category: 'addon'
+      },
+      {
+        id: 'el-addon-2',
+        name: 'Gamification System',
+        price: 900,
+        category: 'addon'
+      },
+      {
+        id: 'el-addon-3',
+        name: 'AI Tutor Integration',
+        price: 1200,
+        category: 'addon'
+      },
+      {
+        id: 'el-addon-4',
+        name: 'SCORM Compliance',
+        price: 800,
+        category: 'addon'
+      },
+      {
+        id: 'el-addon-5',
+        name: 'Certification Automation',
+        price: 700,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "SaaS Platform",
-    description:
-      "Custom Software as a Service (SaaS) solution tailored to your needs.",
-    basePrice: 3999,
+    id: 'saas-platform',
+    title: 'SaaS Platform',
+    description: 'Custom cloud solution with microservices architecture',
+    basePrice: 10000,
+    deliveryTime: '8-12 weeks',
     features: [
-      { name: "Cloud Hosting", price: 400, checked: true },
-      { name: "User Authentication", price: 300, checked: true },
-      { name: "API Integrations", price: 350, checked: true },
-      { name: "Subscription System", price: 400, checked: false },
-      { name: "Multi-Tenant Architecture", price: 500, checked: false },
-      { name: "Admin Dashboard", price: 250, checked: false },
-      { name: "Custom Analytics", price: 350, checked: false },
-      { name: "Multi-Language Support", price: 300, checked: false }, // Added
-      { name: "Custom API Documentation", price: 200, checked: false }, // Added
-      { name: "Data Export/Import", price: 150, checked: false }, // Added
-      { name: "Audit Logs", price: 180, checked: false }, // Added
-    ],
+      {
+        id: 'saas-core-1',
+        name: 'Cloud Hosting Setup',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'saas-core-2',
+        name: 'User Authentication',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'saas-core-3',
+        name: 'API Integrations',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'saas-addon-1',
+        name: 'Admin Dashboard',
+        price: 1250,
+        category: 'addon'
+      },
+      {
+        id: 'saas-addon-2',
+        name: 'Custom Analytics',
+        price: 1500,
+        category: 'addon'
+      },
+      {
+        id: 'saas-addon-3',
+        name: 'White-label Solution',
+        price: 2000,
+        category: 'addon'
+      },
+      {
+        id: 'saas-addon-4',
+        name: 'AI Module Integration',
+        price: 2500,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "Plugin Development",
-    description: "Custom plugins for WordPress, Shopify, or other platforms.",
-    basePrice: 499,
+    id: 'plugin-development',
+    title: 'Plugin Development',
+    description: 'High-quality plugins with premium support',
+    basePrice: 1000,
+    localPrice: 3100,
+    deliveryTime: '3-4 weeks',
     features: [
-      { name: "Custom Functionality", price: 150, checked: true },
-      { name: "Seamless Integration", price: 120, checked: true },
-      { name: "Performance Optimized", price: 100, checked: true },
-      { name: "Security Enhancements", price: 80, checked: false },
-      { name: "Regular Updates", price: 90, checked: false },
-      { name: "Custom Shortcodes", price: 80, checked: false }, // Added
-      { name: "Widget Integration", price: 70, checked: false }, // Added
-      { name: "Multisite Compatibility", price: 100, checked: false }, // Added
-      { name: "Debugging Tools", price: 90, checked: false }, // Added
-    ],
+      {
+        id: 'pd-core-1',
+        name: 'Custom Functionality',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'pd-core-2',
+        name: 'Seamless Integration',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'pd-addon-1',
+        name: 'Security Enhancements',
+        price: 250,
+        category: 'addon'
+      },
+      {
+        id: 'pd-addon-2',
+        name: 'Multisite Compatibility',
+        price: 300,
+        category: 'addon'
+      },
+      {
+        id: 'pd-addon-3',
+        name: 'Performance Optimization',
+        price: 350,
+        category: 'addon'
+      },
+      {
+        id: 'pd-addon-4',
+        name: 'Auto-update System',
+        price: 200,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "SEO Optimization",
-    description:
-      "Boost your website’s ranking and visibility on search engines.",
-    basePrice: 499,
+    id: 'seo-optimization',
+    title: 'SEO Optimization',
+    description: 'Comprehensive technical and content SEO',
+    basePrice: 1250,
+    localPrice: 3900,
+    deliveryTime: '2 weeks',
     features: [
-      { name: "Keyword Research", price: 150, checked: true },
-      { name: "On-Page SEO", price: 100, checked: true },
-      { name: "Technical SEO", price: 120, checked: false },
-      { name: "Backlink Strategy", price: 150, checked: false },
-      { name: "Speed Optimization", price: 100, checked: false },
-      { name: "Content Optimization", price: 150, checked: false }, // Added
-      { name: "Schema Markup Implementation", price: 120, checked: false }, // Added
-      { name: "Competitor Analysis", price: 200, checked: false }, // Added
-      { name: "Monthly SEO Reports", price: 100, checked: false }, // Added
-    ],
+      {
+        id: 'seo-core-1',
+        name: 'Keyword Research',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'seo-core-2',
+        name: 'Technical Audit',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'seo-addon-1',
+        name: 'Competitor Analysis',
+        price: 400,
+        category: 'addon'
+      },
+      {
+        id: 'seo-addon-2',
+        name: 'Monthly SEO Reports',
+        price: 250,
+        category: 'addon'
+      },
+      {
+        id: 'seo-addon-3',
+        name: 'International SEO Setup',
+        price: 600,
+        category: 'addon'
+      },
+      {
+        id: 'seo-addon-4',
+        name: 'Content Strategy Plan',
+        price: 500,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "Mobile App Design",
-    description: "User-centric mobile app UI/UX designs for better engagement.",
-    basePrice: 799,
+    id: 'custom-crm',
+    title: 'Custom CRM',
+    description: 'Tailored sales pipeline management system',
+    basePrice: 7500,
+    localPrice: 23500,
+    deliveryTime: '8-12 weeks',
     features: [
-      { name: "Custom UI/UX", price: 200, checked: true },
-      { name: "iOS & Android Compatible", price: 300, checked: true },
-      { name: "Interactive Prototyping", price: 150, checked: false },
-      { name: "Modern Design", price: 100, checked: false },
-      { name: "Dark Mode Support", price: 150, checked: false }, // Added
-      { name: "Push Notifications", price: 120, checked: false }, // Added
-      { name: "Offline Mode", price: 100, checked: false }, // Added
-      { name: "Custom Animations", price: 200, checked: false }, // Added
-    ],
+      {
+        id: 'crm-core-1',
+        name: 'Lead Management',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'crm-core-2',
+        name: 'Analytics Dashboard',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'crm-addon-1',
+        name: 'Email Campaign Integration',
+        price: 1000,
+        category: 'addon'
+      },
+      {
+        id: 'crm-addon-2',
+        name: 'Custom Workflows',
+        price: 1250,
+        category: 'addon'
+      },
+      {
+        id: 'crm-addon-3',
+        name: 'Mobile App Sync',
+        price: 1500,
+        category: 'addon'
+      },
+      {
+        id: 'crm-addon-4',
+        name: 'AI Lead Scoring',
+        price: 1800,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "AI-Powered Chatbots",
-    description: "Automate customer interactions with AI chatbots.",
-    basePrice: 1299,
+    id: 'ai-integration',
+    title: 'AI Integration',
+    description: 'Add cutting-edge AI capabilities to your systems',
+    basePrice: 3500,
+    localPrice: 11000,
+    deliveryTime: '4-5 weeks',
     features: [
-      { name: "NLP & AI Integration", price: 300, checked: true },
-      { name: "24/7 Support Bot", price: 250, checked: true },
-      { name: "Custom Responses", price: 200, checked: false },
-      { name: "Multilingual Support", price: 180, checked: false },
-      { name: "Sentiment Analysis", price: 200, checked: false }, // Added
-      { name: "Voice Recognition", price: 250, checked: false }, // Added
-      { name: "Integration with CRM", price: 300, checked: false }, // Added
-      { name: "Custom AI Training", price: 400, checked: false }, // Added
-    ],
+      {
+        id: 'ai-core-1',
+        name: 'LLM Integration (GPT/Claude)',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'ai-addon-1',
+        name: 'Custom Model Fine-Tuning',
+        price: 1500,
+        category: 'addon'
+      },
+      {
+        id: 'ai-addon-2',
+        name: 'Voice Interface',
+        price: 1200,
+        category: 'addon'
+      },
+      {
+        id: 'ai-addon-3',
+        name: 'Automated Content Generation',
+        price: 900,
+        category: 'addon'
+      }
+    ]
   },
   {
-    title: "Custom CRM Development",
-    description: "A CRM solution tailored for your business workflow.",
-    basePrice: 3499,
+    id: 'web3-development',
+    title: 'Web3 Development',
+    description: 'Blockchain and smart contract solutions',
+    basePrice: 6000,
+    deliveryTime: '6-10 weeks',
     features: [
-      { name: "User Management", price: 500, checked: true },
-      { name: "Analytics Dashboard", price: 450, checked: true },
-      { name: "Responsive CRM", price: 400, checked: true }, // Added
-      { name: "Lead Tracking", price: 400, checked: false },
-      { name: "Custom Reports", price: 350, checked: false },
-      { name: "Email Campaign Integration", price: 300, checked: false }, // Added
-      { name: "Task Automation", price: 250, checked: false }, // Added
-      { name: "Custom Workflows", price: 350, checked: false }, // Added
-      { name: "Mobile App Integration", price: 799, checked: false },      
-    ],
-  },
-  {
-    title: "Membership & Subscription Sites",
-    description: "Monetize your content with a subscription-based platform.",
-    basePrice: 2999,
-    features: [
-      { name: "Secure Payment Gateway", price: 400, checked: true },
-      { name: "Member Dashboard", price: 350, checked: true },
-      { name: "Recurring Billing", price: 300, checked: false },
-      { name: "Access Control", price: 250, checked: false },
-      { name: "Tiered Membership Levels", price: 200, checked: false }, // Added
-      { name: "Content Dripping", price: 150, checked: false }, // Added
-      { name: "Member Community Forums", price: 250, checked: false }, // Added
-      { name: "Payment Plan Options", price: 180, checked: true }, // Added
-    ],
-  },
-  {
-    title: "Portal Website",
-    description:
-      "A comprehensive Web portal for managing multiple services, users, and content.",
-    basePrice: 2999,
-    features: [
-      { name: "User Registration & Login", price: 300, checked: true },
-      { name: "Role-Based Access Control", price: 400, checked: true },
-      { name: "Dashboard for Admins & Users", price: 500, checked: true },
-      { name: "Content Management System (CMS)", price: 600, checked: false },
-      { name: "Payment Gateway Integration", price: 400, checked: false },
-      { name: "Multi-Language Support", price: 300, checked: false },
-      { name: "Advanced Search Functionality", price: 250, checked: false },
-      { name: "API Integrations", price: 350, checked: false },
-      { name: "Custom Analytics", price: 300, checked: false },
-    ],
-  },
+      {
+        id: 'web3-core-1',
+        name: 'Smart Contract Development',
+        price: 0,
+        checked: true,
+        category: 'core'
+      },
+      {
+        id: 'web3-addon-1',
+        name: 'Tokenomics Design',
+        price: 2000,
+        category: 'addon'
+      },
+      {
+        id: 'web3-addon-2',
+        name: 'NFT Marketplace',
+        price: 3000,
+        category: 'addon'
+      },
+      {
+        id: 'web3-addon-3',
+        name: 'DAO Integration',
+        price: 2500,
+        category: 'addon'
+      }
+    ]
+  }
 ];
+
+// Conversion utility (1.57 TND = 1 USD)
+export const convertToTnd = (usd: number) => Math.round(usd * 1.57);
+
 
 // Complete list of 9 projects
 export const projects = [

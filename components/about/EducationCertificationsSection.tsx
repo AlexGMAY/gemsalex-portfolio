@@ -13,7 +13,7 @@ const EducationCertificationsSection = () => {
           transition={{ duration: 0.8 }}
           className="heading mb-12"
         >
-          Education & Certifications
+          Education & <span className="text-lime-400">Certifications</span>
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Education */}

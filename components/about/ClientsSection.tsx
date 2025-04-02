@@ -10,35 +10,35 @@ interface Client {
 
 const clients: Client[] = [
   {
-    name: "TechCorp",
-    logo: "/logos/techcorp.svg",
+    name: "ELINsas",
+    logo: "/avatars/logo-elin.jpg",
     url: "#",
     testimonial:
       '"Revolutionized our web platform with cutting-edge Next.js optimizations"',
   },
   {
-    name: "DesignHub",
-    logo: "/logos/designhub.svg",
+    name: "BigClick Digitale",
+    logo: "/avatars/logo-abcd.jpg",
     url: "#",
     testimonial: '"Delivered our design system 2 weeks ahead of schedule"',
   },
   {
-    name: "InnovateCo",
-    logo: "/logos/innovateco.svg",
+    name: "GGTE",
+    logo: "/avatars/logo-ggte.jpg",
     url: "#",
     testimonial:
       '"Implemented CI/CD pipeline that reduced deployment times by 70%"',
   },
   {
-    name: "DigitalSolutions",
-    logo: "/logos/digitalsolutions.svg",
+    name: "Marvelbiz Solutions",
+    logo: "/avatars/digitalsolutions.svg",
     url: "#",
     testimonial:
       '"Migrated our legacy system to modern React with zero downtime"',
   },
   {
-    name: "WebCraft",
-    logo: "/logos/webcraft.svg",
+    name: "Collaboration Capital",
+    logo: "/avatars/webcraft.svg",
     url: "#",
     testimonial: '"Provided ongoing maintenance that saved us $15k annually"',
   },
@@ -96,7 +96,7 @@ const ClientsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12 text-gray-600 text-lg font-medium"
+          className="text-center mb-12 text-blue-300 text-lg font-medium"
         >
           Trusted by innovative teams worldwide
         </motion.h3>

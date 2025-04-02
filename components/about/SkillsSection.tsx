@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -23,9 +25,9 @@ const SkillsSection = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12"
+          className="heading mb-12"
         >
-          Technical Skills
+          Skills & <span className="text-lime-400">Expertise</span>
         </motion.h2>
 
         {/* Category Filter */}
@@ -51,7 +53,7 @@ const SkillsSection = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {filteredSkills.map((skill, index) => (
             <motion.div
               key={skill.name}

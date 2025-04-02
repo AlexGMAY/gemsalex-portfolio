@@ -3,6 +3,10 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "./provider";
+import { FloatingNav } from "@/components/Navbar";
+import { navItems } from "@/data";
+import { PageTransitionWrapper } from "@/components/PageTransition";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +32,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <FloatingNav navItems={navItems} />
           {children}
+          {/* <PageTransitionWrapper></PageTransitionWrapper> */}
         </ThemeProvider>
       </body>
     </html>

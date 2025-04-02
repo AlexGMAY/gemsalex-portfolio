@@ -4,27 +4,27 @@ import { useState } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc.",
+    name: "John Believe Batubenga",
+    role: "CEO, Elongo Investissons - ELIN Sas.",
     content:
-      "Working with [Your Name] was transformative for our digital presence. Their Next.js expertise helped us increase conversions by 40%.",
-    avatar: "/avatars/sarah.jpg",
+      "Working with Alexander was transformative for our digital presence. His WordPress and management expertise helped us increase conversions by 40%.",
+    avatar: "/avatars/logo-elin.jpg",
   },
   {
     id: 2,
     name: "Michael Chen",
-    role: "Director of Product, SaaS Co.",
+    role: "Manager of BigClick Digital, ABC Digitale.",
     content:
-      "The e-commerce solution delivered exceeded all expectations. Incredible attention to detail and technical mastery.",
-    avatar: "/avatars/michael.jpg",
+      "The business portfolio solution delivered exceeded all expectations. Incredible attention to detail and technical mastery.",
+    avatar: "/avatars/logo-abcd.jpg",
   },
   {
     id: 3,
-    name: "Emma Rodriguez",
-    role: "Founder, Creative Agency",
+    name: "Dieu Mulundu Tankwe",
+    role: "Founder & CEO, GGTE Sarl",
     content:
       "Our new portfolio website has attracted 3x more client inquiries. The animations and performance optimizations made all the difference.",
-    avatar: "/avatars/emma.jpg",
+    avatar: "/avatars/logo-ggte.jpg",
   },
 ];
 
@@ -50,9 +50,9 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12"
+          className="heading mb-12"
         >
-          Client Testimonials
+          Client <span className="text-lime-400">Testimonials</span>
         </motion.h2>
 
         <div className="relative max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ const TestimonialsSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="bg-black-200 rounded-xl shadow-lg p-8"
+              className="flex flex-col items-center justify-center bg-black-200 rounded-xl shadow-lg p-8"
             >
               <div className="flex items-center mb-6">
                 <img
@@ -76,12 +76,12 @@ const TestimonialsSection = () => {
                   <h4 className="text-xl font-semibold">
                     {testimonials[currentIndex].name}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-yellow-400">
                     {testimonials[currentIndex].role}
                   </p>
                 </div>
               </div>
-              <p className="text-gray-700 italic">
+              <p className="text-blue-300 italic text-center">
                 "{testimonials[currentIndex].content}"
               </p>
             </motion.div>
