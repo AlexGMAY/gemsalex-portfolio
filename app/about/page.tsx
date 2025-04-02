@@ -15,7 +15,7 @@ import TestimonialsSection from "@/components/about/TestimonialsSection";
 import SkillsSection from "@/components/about/SkillsSection";
 import BlogSection from "@/components/BlogSection";
 import BlogPreview from "@/components/about/BlogPreview";
-import Experience from "@/components/Experience";
+import { UltimateTimeline } from "@/components/Experience";
 import StatsSection from "@/components/about/StatsSection";
 import ClientsSection from "@/components/about/ClientsSection";
 import FunFacts from "@/components/about/FunFacts";
@@ -34,7 +34,7 @@ const page = () => {
           <StatsSection />
           <EducationCertificationsSection />
           <SkillsSection />
-          <Experience />
+          <UltimateTimeline />
           <FunFacts />
           <TwinklingStar />
           {/* <ProjectsSection />
@@ -42,7 +42,7 @@ const page = () => {
           <TestimonialsSection />
           <BlogPreview />
           <ClientsSection />
-          <ScrollToTop />         
+          <ScrollToTop />
           <Footer />
         </div>
       </div>

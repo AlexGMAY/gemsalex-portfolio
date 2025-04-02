@@ -178,36 +178,36 @@ export const companies = [
   },
 ];
 
-export const workExperience = [
-  {
-    id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
-  },
-  {
-    id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
-  },
-];
+// export const workExperience = [
+//   {
+//     id: 1,
+//     title: "Frontend Engineer Intern",
+//     desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+//     className: "md:col-span-2",
+//     thumbnail: "/exp1.svg",
+//   },
+//   {
+//     id: 2,
+//     title: "Mobile App Dev - JSM Tech",
+//     desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+//     className: "md:col-span-2", // change to md:col-span-2
+//     thumbnail: "/exp2.svg",
+//   },
+//   {
+//     id: 3,
+//     title: "Freelance App Dev Project",
+//     desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+//     className: "md:col-span-2", // change to md:col-span-2
+//     thumbnail: "/exp3.svg",
+//   },
+//   {
+//     id: 4,
+//     title: "Lead Frontend Developer",
+//     desc: "Developed and maintained user-facing features using modern frontend technologies.",
+//     className: "md:col-span-2",
+//     thumbnail: "/exp4.svg",
+//   },
+// ];
 
 export const socialMedia = [
   {
@@ -224,7 +224,7 @@ export const socialMedia = [
   },
 ];
 
-// @/data/services.ts
+
 export interface Feature {
   id: string;
   name: string;
@@ -245,7 +245,7 @@ export interface Service {
   features: Feature[];
 }
 
-// @/data/services.ts
+
 export const services: Service[] = [
   {
     id: 'business-website',
@@ -1122,59 +1122,73 @@ export const educationBoard = [
 ];
 
 export const certificationBoard = [
-    {
-      name: "AWS Certified Developer",
-      issuer: "Amazon Web Services",
-      icon: "/icons/aws-certified.png",
-    },
-    {
-      name: "Google Analytics Certified",
-      issuer: "Google",
-      icon: "/icons/google-analytics.png",
-    },
-    {
-      name: "Microsoft Certified: Azure Fundamentals",
-      issuer: "Microsoft",
-      icon: "/icons/azure-certified.png",
-    },
-    {
-      name: "Certified Scrum Master (CSM)",
-      issuer: "Scrum Alliance",
-      icon: "/icons/scrum-certified.png",
-    },
-    {
-      name: "Oracle Certified Java Programmer",
-      issuer: "Oracle",
-      icon: "/icons/oracle-certified.png",
-    },
+  {
+    name: "AWS Certified Developer",
+    issuer: "Amazon Web Services",
+    icon: "/icons/aws-certified.png",
+    year: "2020",
+    link: "#",
+  },
+  {
+    name: "Google Analytics Certified",
+    issuer: "Google",
+    icon: "/icons/google-analytics.png",
+    year: "2020",
+    link: "#",
+  },
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    issuer: "Microsoft",
+    icon: "/icons/azure-certified.png",
+    year: "2020",
+    link: "#",
+  },
+  {
+    name: "Certified Scrum Master (CSM)",
+    issuer: "Scrum Alliance",
+    icon: "/icons/scrum-certified.png",
+    year: "2020",
+    link: "#",
+  },
+  {
+    name: "Oracle Certified Java Programmer",
+    issuer: "Oracle",
+    icon: "/icons/oracle-certified.png",
+    year: "2020",
+    link: "#",
+  },
 ];
 
 export const courseBoard = [
-    {
-      name: "Advanced React",
-      platform: "Udemy",
-      year: "2023",
-    },
-    {
-      name: "Fullstack Web Development",
-      platform: "Coursera",
-      year: "2022",
-    },
-    {
-      name: "Node.js: The Complete Guide",
-      platform: "Udemy",
-      year: "2021",
-    },
-    {
-      name: "Machine Learning with Python",
-      platform: "edX",
-      year: "2020",
-    },
-    {
-      name: "UI/UX Design Fundamentals",
-      platform: "Skillshare",
-      year: "2019",
-    },
+  {
+    name: "Advanced React",
+    platform: "Udemy",
+    year: "2023",
+    link: "#",
+  },
+  {
+    name: "Fullstack Web Development",
+    platform: "Coursera",
+    year: "2022",
+    link: "#",
+  },
+  {
+    name: "Node.js: The Complete Guide",
+    platform: "Udemy",
+    year: "2021",
+  },
+  {
+    name: "Machine Learning with Python",
+    platform: "edX",
+    year: "2020",
+    link: "#",
+  },
+  {
+    name: "UI/UX Design Fundamentals",
+    platform: "Skillshare",
+    year: "2019",
+    link: "#",
+  },
 ];
 
 export const skills = [
