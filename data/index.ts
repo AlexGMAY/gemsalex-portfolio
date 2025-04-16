@@ -1,8 +1,11 @@
+import { ReactNode } from "react";
+
 export const navItems = [
   { name: "About Me", link: "/about" },
   { name: "Projects", link: "/projects" },
   { name: "Pricing", link: "/pricing" },
   { name: "Products", link: "/products" },
+  { name: "Gallery", link: "/gallery" },
   { name: "Articles", link: "/blog" },
   { name: "Contact", link: "/contact" },
 ];
@@ -209,18 +212,31 @@ export const companies = [
 //   },
 // ];
 
-export const socialMedia = [
+interface SocialMediaItem {
+  id: number;
+  img: string;
+  alt: string;
+  link?: string;
+}
+
+export const socialMedia: SocialMediaItem[]= [
   {
     id: 1,
     img: "/git.svg",
+    alt: "GitHub Profile",
+    link: "https://github.com/yourusername",
   },
   {
     id: 2,
     img: "/twit.svg",
+    alt: "X Profile",
+    link: "https://github.com/yourusername",
   },
   {
     id: 3,
     img: "/link.svg",
+    alt: "GitHub Profile",
+    link: "https://github.com/yourusername",
   },
 ];
 
@@ -1201,3 +1217,20 @@ export const skills = [
   { name: "GraphQL", level: 75, category: "API", icon: "📊" },
   { name: "AWS", level: 70, category: "DevOps", icon: "☁️" },
 ];
+
+export interface ContactMethod {
+  id: string;
+  name: string;
+  icon: ReactNode;
+  responseTime: string;
+  bestFor: string[];
+  action: {
+    label: string;
+    url: string;
+  };
+  colorScheme: {
+    bg: string;
+    text: string;
+    border: string;
+  };
+}

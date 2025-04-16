@@ -20,13 +20,17 @@ const HeroSection = () => {
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
       {/* Video Background */}
-      {/* <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop className="w-full h-full object-cover">
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>       
-        <div className="absolute inset-0 bg-black-100 bg-opacity-50"></div>
-      </div> */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          className="w-full h-full object-cover opacity-20" // Reduced opacity for readability
+        >
+          <source src="/videos/web-design-vid.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black-100 bg-opacity-90"></div>
+      </div>
 
       <TwinklingStar />
       <FloatingElements />
@@ -36,10 +40,7 @@ const HeroSection = () => {
         <div className="inline-flex mt-20 py-2 px-3 bg-gradient-to-r from-blue-300 to-blue-200 rounded-full font-semibold">
           <p className="uppercase tracking-widest text-xs text-center text-neutral-950">
             {/* text-blue-100 max-w-82 */}
-            About{" "}
-            <span className="font-semibold text-blue-100">
-              Me
-            </span>
+            About <span className="font-semibold text-blue-100">Me</span>
           </p>
         </div>
         <motion.h1

@@ -5,7 +5,10 @@ import "./globals.css";
 import { ThemeProvider } from "./provider";
 import { FloatingNav } from "@/components/Navbar";
 import { navItems } from "@/data";
-import { PageTransitionWrapper } from "@/components/PageTransition";
+// import { PageTransitionWrapper } from "@/components/PageTransition";
+import ScrollToTop from "@/components/ui/ScrollToTop";
+// import Footer from "@/components/Footer";
+import FooterGrid from "@/components/Footer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon-MA.png" sizes="any" />
+        <link rel="icon" href="/logo-MA.png" sizes="any" />
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -32,8 +35,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FloatingNav navItems={navItems} />
-          {children}
+          <div className="relative bg-black-100 overflow-hidden mx-auto">
+            <FloatingNav navItems={navItems} />
+            {children}
+            <ScrollToTop />
+            <div>
+              <FooterGrid />
+            </div>
+          </div>
           {/* <PageTransitionWrapper></PageTransitionWrapper> */}
         </ThemeProvider>
       </body>

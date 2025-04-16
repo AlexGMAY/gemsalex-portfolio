@@ -1,3 +1,5 @@
+"use client";
+
 import { platform } from 'os';
 import React from 'react'
 import PlatformsColumn from './ui/PlatformsColumn';

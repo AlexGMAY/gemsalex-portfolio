@@ -110,3 +110,16 @@
   background: #9ca3af;
   /* Thumb color on hover (gray-400) */
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  transition: transform 0.5s ease;
+}
