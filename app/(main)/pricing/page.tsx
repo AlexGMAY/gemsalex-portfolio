@@ -15,6 +15,7 @@ import FAQSection from "@/components/pricing/FAQSection";
 import Approach from "@/components/Approach";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Clients from "@/components/Clients";
+import Grid from "@/components/Grid";
 
 
 const page = () => {
@@ -23,8 +24,9 @@ const page = () => {
       <Hero />
       <div className="max-w-7xl w-full sm:px-10 px-5">
         <TechLogos />
-        <SuperPricing />
+        <SuperPricing pageType="pricing" />
         <Approach />
+        <Grid />
         <FAQSection />
         {/* <TestimonialsSection /> */}
         <Clients />

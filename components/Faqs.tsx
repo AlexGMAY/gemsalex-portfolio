@@ -116,7 +116,10 @@ const Faqs = () => {
     <section className="py-20 bg-black-100 text-white">
       <div className="container mx-auto px-6">
         <h2 className="heading font-semibold text-center">
-          Get to Know <span className="text-lime-400">Me</span>
+          Get to Know{" "}
+          <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
+            Me
+          </span>
         </h2>
         <p className="text-xl text-center text-neutral-400 mt-4">
           Frequently asked <span className="text-lime-400">Interview</span>{" "}
@@ -125,7 +128,7 @@ const Faqs = () => {
 
         <div className="grid lg:grid-cols-2 gap-10 mt-10">
           {/* Video Presentation */}
-          <div className="rounded-xl overflow-hidden shadow-lg">            
+          <div className="rounded-xl overflow-hidden shadow-lg">
             <div className="w-full md:h-full border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
               <img
                 src="/cute-alex.jpg"

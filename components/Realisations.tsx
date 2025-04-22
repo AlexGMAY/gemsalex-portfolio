@@ -2,113 +2,137 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { useRouter } from "next/navigation";
 import { projects, categories } from "@/data";
 
 type RealisationsProps = {
-  isHomePage?: boolean; // Prop to determine if the component is on the Home page
+  isHomePage?: boolean;
 };
 
 const Realisations = ({ isHomePage = false }: RealisationsProps) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const router = useRouter(); // Initialize the router
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
 
-  // Display only 6 projects on the Home page
   const displayedProjects = isHomePage
     ? filteredProjects.slice(0, 6)
     : filteredProjects;
 
-  const handleSeeMore = () => {
-    router.push("/projects"); // Redirect to the Projects page
-  };
-
   return (
-    <section className="py-24 text-white" id="projects">
-      <div className="container mx-auto px-6">
-        <h2 className="heading font-semibold text-center mb-8">
-          My <span className="text-lime-400">Projects</span>
-        </h2>
-        <p className="text-lg text-center text-neutral-400 mb-10">
-          Browse through some of my best work across different technologies.
-        </p>
+    <section className="py-16 md:py-24 text-white" id="projects">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-5xl font-bold mb-3"
+          >
+            My{" "}
+            <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
+              Creative
+            </span>{" "}
+            Projects
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-neutral-400 max-w-2xl mx-auto"
+          >
+            Browse through some of my best work across different technologies.
+          </motion.p>
+        </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
+        {/* Filter Chips */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           {categories.map((cat) => (
-            <Button
+            <button
               key={cat}
-              variant={selectedCategory === cat ? "default" : "outline"}
-              className={`capitalize px-6 py-3 rounded-full text-lg font-semibold transition-all duration-300 ease-in-out ${
-                selectedCategory === cat
-                  ? "bg-lime-400 text-gray-800 hover:bg-lime-500"
-                  : "border border-gray-600 text-white hover:bg-gray-700"
-              }`}
               onClick={() => setSelectedCategory(cat)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                selectedCategory === cat
+                  ? "bg-lime-400 text-gray-900 shadow-lg shadow-lime-400/20"
+                  : "bg-gray-800 text-white hover:bg-gray-700"
+              }`}
             >
               {cat}
-            </Button>
+            </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {displayedProjects.map((project) => (
             <motion.div
               key={project.id}
               layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
             >
-              <Card className="overflow-hidden bg-black-200 border-gray-700 hover:scale-105 transform transition duration-300 ease-in-out flex flex-col items-center justify-center text-center">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-52 object-cover mb-6 rounded-xl"
-                />
+              <Card className="h-full bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-lime-400/10 transition-all duration-300 group text-center">
+                <div className="relative overflow-hidden h-48 mb-4">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+                </div>
+
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
                 </CardHeader>
+
                 <CardContent>
-                  <p className="text-sm text-neutral-400 mb-2 hidden">
-                    {project.category}
-                  </p>
-                  <div className="flex justify-center items-center gap-2 mb-4">
+                  <div className="flex justify-center flex-wrap gap-2 mb-4">
                     {project.techStack.map((tech, index) => (
-                      <img
+                      <div
                         key={index}
-                        src={tech}
-                        alt="tech-stack-icon"
-                        className="h-6 w-6 object-contain"
-                      />
+                        className="bg-gray-800 rounded-full p-1.5"
+                      >
+                        <img
+                          src={tech}
+                          alt="tech-stack-icon"
+                          className="h-5 w-5 object-contain"
+                        />
+                      </div>
                     ))}
                   </div>
-                  <div className="flex justify-between gap-4 mt-4">
+
+                  <div className="flex justify-between gap-3 mt-4">
                     <Button
-                      variant="link"
-                      href={project.github}
-                      target="_blank"
-                      className={"text-yellow-500 hover:text-lime-400"}
+                      asChild
+                      variant="ghost"
+                      className="text-sm px-3 py-1.5 hover:bg-gray-800 text-yellow-400 hover:text-yellow-300"
                     >
-                      GitHub Repo
+                      <Link href={project.github} target="_blank">
+                        Code
+                      </Link>
                     </Button>
                     <Button
-                      variant="link"
-                      href={project.live}
-                      target="_blank"
-                      className={"text-lime-400 hover:text-yellow-500"}
+                      asChild
+                      variant="ghost"
+                      className="text-sm px-3 py-1.5 hover:bg-gray-800 text-lime-400 hover:text-lime-300"
                     >
-                      Check Live Site
+                      <Link href={project.live} target="_blank">
+                        Live Demo
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -117,16 +141,21 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
           ))}
         </motion.div>
 
-        {/* "See More Projects" Button (Only on Home Page) */}
+        {/* See More Button */}
         {isHomePage && (
-          <div className="flex justify-center mt-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center mt-16"
+          >
             <Button
-              onClick={handleSeeMore}
-              className="bg-gradient-to-r from-lime-500 to-yellow-600 text-white px-8 py-3 rounded-lg hover:from-lime-600 hover:to-yellow-700 transition-all transform hover:scale-105"
+              asChild
+              className="bg-gradient-to-r from-lime-500 to-lime-600 text-white px-8 py-3 rounded-lg hover:from-lime-600 hover:to-lime-700 shadow-lg hover:shadow-lime-500/20 transition-all"
             >
-              See More Projects
+              <Link href="/projects">View All Projects</Link>
             </Button>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

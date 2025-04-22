@@ -18,7 +18,7 @@ const FooterGrid = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 to-black border-t border-gray-800 overflow-hidden">
+    <footer className="relative z-0 bg-gradient-to-b from-black-100 to-black-200 border-t border-gray-800 overflow-hidden">
       {/* Background elements */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
         <img
@@ -29,7 +29,7 @@ const FooterGrid = () => {
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-20"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-lime-400 to-yellow-500 opacity-20"></div>
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-cyan-500/10 blur-3xl"></div>
       <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-pink-500/10 blur-3xl"></div>
 

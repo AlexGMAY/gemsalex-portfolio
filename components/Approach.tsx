@@ -7,7 +7,10 @@ const Approach = () => {
   return (
     <section className="w-full py-20">
       <h2 className="heading">
-        My <span className="text-lime-400">Work Process</span>
+        My{" "}
+        <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
+          Work Process
+        </span>
       </h2>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 grid grid-cols md:grid-cols-2 lg:grid-cols-4 items-center justify-center w-full gap-4">
@@ -39,7 +42,7 @@ const Approach = () => {
             ]}
             dotSize={2}
           />
-          {/* Radial gradient for the cute fade */}          
+          {/* Radial gradient for the cute fade */}
         </Card>
         <Card
           title="Design / Development"

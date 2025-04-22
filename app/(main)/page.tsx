@@ -4,11 +4,9 @@ import { navItems } from "@/data";
 
 import Hero from "@/components/Hero";
 import Grid from "@/components/Grid";
-import Footer from "@/components/Footer";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
 import RecentProjects from "@/components/RecentProjects";
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
 import TechLogos from "@/components/TechLogos";
@@ -18,28 +16,26 @@ import CallToAction from "@/components/CallToAction";
 import Faqs from "@/components/Faqs";
 import Skills from "@/components/Skills";
 import Realisations from "@/components/Realisations";
-import ScrollToTop from "@/components/ui/ScrollToTop";
-import ServicesSection from "@/components/ServicesSection";
+import NeonMatrix from "@/components/TechnoMosaic";
+import SuperPricing from "@/components/pricing/Pricing";
 
 const Home = () => {
   return (
     <main className="relative w-full">
       <Hero />
       <div className="w-full sm:px-10 px-5">
-        {/* <FloatingNav navItems={navItems} /> */}
-
         <TechLogos />
         <AboutMe />
         <Grid />
+        <NeonMatrix />
         <AnimatedQuote />
         <Services />
         <Platforms />
         <Skills />
-        <RecentProjects />
-        <ServicesSection isHomePage={true} />
+        <RecentProjects />       
+        <SuperPricing pageType="home" />
         <Realisations isHomePage={true} />
-        <Clients />
-        {/* <Experience /> */}
+        <Clients />        
         <Approach />
         <Faqs />
         <CallToAction />

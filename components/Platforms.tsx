@@ -64,13 +64,18 @@ const Platforms = () => {
             </div>
             <div className="">
               <h2 className="text-5xl font-bold lg:text-left mt-4">
-                Amazing <span className="text-lime-500"> Platforms </span>I use
+                Amazing{" "}
+                <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
+                  {" "}
+                  Platforms{" "}
+                </span>
+                I use
               </h2>
               <p className="mt-4 text-lg text-neutral-300">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima
                 omnis voluptas ut odit amet ullam nisi numquam! Doloremque,
                 officiis dolor.
-              </p>              
+              </p>
             </div>
           </div>
           <div>

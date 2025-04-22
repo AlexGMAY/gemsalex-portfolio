@@ -111,7 +111,8 @@ const AnimatedQuote = () => {
                 key={wordIndex}
                 className={twMerge(
                   "transition duration-500 text-neutral-700",
-                  wordIndex < currentWord && "text-yellow-500"
+                  wordIndex < currentWord &&
+                    "bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent"
                 )}
                 style={{
                   opacity: wordIndex < currentWord ? 1 : 0.5, // Fade in as animation progresses

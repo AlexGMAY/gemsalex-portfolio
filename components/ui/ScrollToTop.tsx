@@ -27,7 +27,7 @@ const ScrollToTop = () => {
     <div>
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-16 right-6 p-3 bg-lime-500 text-black rounded-full shadow-md transition-all duration-300 ${
+        className={`fixed bottom-16 right-6 z-20 p-3 bg-lime-500 text-black rounded-full shadow-md transition-all duration-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         } hover:bg-lime-600`}
       >

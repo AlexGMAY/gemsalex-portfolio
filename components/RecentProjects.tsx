@@ -39,14 +39,14 @@ const RecentProjects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500">
-              Creative
+            The{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-blue-300">
+              Inside
             </span>{" "}
-            Works
+            Scoop
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Interactive showcase of my latest projects with immersive 3D effects
+            Interactive showcase of my products in development with immersive 3D effects
           </p>
         </motion.div>
 

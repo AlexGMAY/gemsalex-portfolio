@@ -219,7 +219,7 @@ interface SocialMediaItem {
   link?: string;
 }
 
-export const socialMedia: SocialMediaItem[]= [
+export const socialMedia: SocialMediaItem[] = [
   {
     id: 1,
     img: "/git.svg",
@@ -235,8 +235,8 @@ export const socialMedia: SocialMediaItem[]= [
   {
     id: 3,
     img: "/link.svg",
-    alt: "GitHub Profile",
-    link: "https://github.com/yourusername",
+    alt: "LinkedIn Profile",
+    link: "https://www.linkedin.com/in/alexandre-merveille-may/",
   },
 ];
 
