@@ -31,7 +31,7 @@ const clients: Client[] = [
   },
   {
     name: "Marvelbiz Solutions",
-    logo: "/avatars/digitalsolutions.svg",
+    logo: "/avatars/themarvelbiz.jpeg",
     url: "#",
     testimonial:
       '"Migrated our legacy system to modern React with zero downtime"',

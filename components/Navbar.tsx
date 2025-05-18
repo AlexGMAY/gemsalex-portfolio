@@ -99,7 +99,7 @@ export const FloatingNav = ({
           <Link href={appointmentLink}>
             <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white">
               <span className="relative z-10">Get an appointment</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
               <span className="absolute inset-0.5 rounded-full bg-black/10 backdrop-blur-sm" />
             </button>
           </Link>

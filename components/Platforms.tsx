@@ -1,52 +1,54 @@
 "use client";
 
-import { platform } from 'os';
 import React from 'react'
 import PlatformsColumn from './ui/PlatformsColumn';
-import GlowingStar from './ui/GlowingStar';
+
 
 const platforms = [
   {
     id: 1,
-    name: "cloudinary",
+    name: "Cloudinary",
     img: "/cloud.svg",
     nameImg: "/cloudName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    description:
+      "Advanced media management and optimization for images and videos",
   },
   {
     id: 2,
-    name: "appwrite",
+    name: "Appwrite",
     img: "/app.svg",
     nameImg: "/appName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    description: "Open-source backend server for web and mobile applications",
   },
   {
     id: 3,
-    name: "HOSTINGER",
+    name: "Hostinger",
     img: "/host.svg",
     nameImg: "/hostName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    description: "High-performance web hosting with global data centers",
   },
   {
     id: 4,
-    name: "stream",
+    name: "Stream",
     img: "/s.svg",
     nameImg: "/streamName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    description: "Real-time activity feeds and chat API infrastructure",
   },
   {
     id: 5,
-    name: "docker.",
+    name: "Docker",
     img: "/dock.svg",
     nameImg: "/dockerName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    description:
+      "Containerization platform for consistent development environments",
   },
   {
     id: 6,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-    description: "lorem ipsum sit amet consectur est",
+    name: "Vercel",
+    img: "/vercel.png",
+    nameImg: "/vercelName.svg",
+    description:
+      "Instant deployments and edge network for frontend applications",
   },
 ];
 export type PlatformsType = typeof platforms;
@@ -64,17 +66,16 @@ const Platforms = () => {
             </div>
             <div className="">
               <h2 className="text-5xl font-bold lg:text-left mt-4">
-                Amazing{" "}
+                Powerful{" "}
                 <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
-                  {" "}
-                  Platforms{" "}
-                </span>
-                I use
+                  Development Platforms
+                </span>{" "}
+                I Trust
               </h2>
               <p className="mt-4 text-lg text-neutral-300">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima
-                omnis voluptas ut odit amet ullam nisi numquam! Doloremque,
-                officiis dolor.
+                These cutting-edge tools power my projects with scalability,
+                performance, and reliability. Each platform is carefully
+                selected for its unique strengths in modern web development.
               </p>
             </div>
           </div>

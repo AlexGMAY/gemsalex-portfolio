@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
 import { projects, categories } from "@/data";
 
 type RealisationsProps = {
@@ -121,8 +122,13 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
                       variant="ghost"
                       className="text-sm px-3 py-1.5 hover:bg-gray-800 text-yellow-400 hover:text-yellow-300"
                     >
-                      <Link href={project.github} target="_blank">
-                        Code
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        className="flex items-center gap-2"
+                      >
+                        <FiGithub size={16} />
+                        <span>Code</span>
                       </Link>
                     </Button>
                     <Button
@@ -130,8 +136,13 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
                       variant="ghost"
                       className="text-sm px-3 py-1.5 hover:bg-gray-800 text-lime-400 hover:text-lime-300"
                     >
-                      <Link href={project.live} target="_blank">
-                        Live Demo
+                      <Link
+                        href={project.live}
+                        target="_blank"
+                        className="flex items-center gap-2"
+                      >
+                        <FiExternalLink size={16} />
+                        <span>Live Demo</span>
                       </Link>
                     </Button>
                   </div>
@@ -151,9 +162,12 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
           >
             <Button
               asChild
-              className="bg-gradient-to-r from-lime-500 to-lime-600 text-white px-8 py-3 rounded-lg hover:from-lime-600 hover:to-lime-700 shadow-lg hover:shadow-lime-500/20 transition-all"
+              className="bg-gradient-to-r from-blue-200 to-blue-300 text-white px-8 py-3 rounded-lg hover:from-lime-500 hover:to-blue-500 shadow-lg hover:shadow-lime-500/20 transition-all"
             >
-              <Link href="/projects">View All Projects</Link>
+              <Link href="/projects" className="flex items-center gap-2 transition all group">
+                View All Projects
+                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </motion.div>
         )}

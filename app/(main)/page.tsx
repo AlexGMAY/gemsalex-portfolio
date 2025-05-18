@@ -32,11 +32,11 @@ const Home = () => {
         <Services />
         <Platforms />
         <Skills />
-        <RecentProjects />       
+        <RecentProjects />
         <SuperPricing pageType="home" />
         <Realisations isHomePage={true} />
-        <Clients />        
         <Approach />
+        <Clients />
         <Faqs />
         <CallToAction />
       </div>
