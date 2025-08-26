@@ -118,7 +118,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
 
                   <div className="flex justify-between gap-3 mt-4">
                     <Button
-                      asChild
+                      // asChild
                       variant="ghost"
                       className="text-sm px-3 py-1.5 hover:bg-gray-800 text-yellow-400 hover:text-yellow-300"
                     >
@@ -132,7 +132,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
                       </Link>
                     </Button>
                     <Button
-                      asChild
+                      // asChild
                       variant="ghost"
                       className="text-sm px-3 py-1.5 hover:bg-gray-800 text-lime-400 hover:text-lime-300"
                     >
@@ -161,7 +161,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
             className="flex justify-center mt-16"
           >
             <Button
-              asChild
+              // asChild
               className="bg-gradient-to-r from-blue-200 to-blue-300 text-white px-8 py-3 rounded-lg hover:from-lime-500 hover:to-blue-500 shadow-lg hover:shadow-lime-500/20 transition-all"
             >
               <Link href="/projects" className="flex items-center gap-2 transition all group">

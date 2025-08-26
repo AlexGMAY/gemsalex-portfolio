@@ -8,13 +8,13 @@ export interface BlogPost {
   tags: string[];
   image?: string;
   slug: string;
-  type?: "article" | "tutorial";
-  level?: "Beginner" | "Intermediate" | "Advanced";
+  type?: "article" | "tutorial" | "resource";
+  level?: "beginner" | "intermediate" | "advanced";
   learningPoints?: string[];
   category: string;
   featured?: boolean;
   views: number;
-  progress?: number;  
+  progress?: number;
   comments?: number;
 }
 

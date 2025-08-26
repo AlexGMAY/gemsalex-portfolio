@@ -40,31 +40,41 @@ import type { Metadata } from "next";
 //   },
 // };
 
+export function getFeaturedPosts(posts: BlogPost[]) {
+  return posts.filter((post) => post.featured);
+}
+
+export function getPostsByCategory(posts: BlogPost[], category: string) {
+  return posts.filter((post) => post.category === category);
+}
+
 export default function BlogPage() {
-  // Convert date strings to Date objects for proper sorting
   const allPosts: BlogPost[] = blogPosts
     .map((post) => ({
       ...post,
       date: new Date(post.date),
-      // Transform single tag to tags array if needed
       tags: post.tag ? [post.tag] : [],
-      // Add missing required fields with defaults
       content: post.content || "",
-      image: post.image || "/client-collab-dark.jpg",
+      image: post.image || "/default-blog-image.jpg",
       type: post.type || "article",
       level: post.level || "intermediate",
-      // Ensure featured is always boolean
       featured: post.featured || false,
     }))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+  const featuredPosts = getFeaturedPosts(allPosts);
+  const tutorialPosts = getPostsByCategory(allPosts, "Development");
+  const resourcePosts = getPostsByCategory(allPosts, "Resources");
+
+
   return (
-    <main className="relative w-full ">
+    <main className="relative w-full">
       <BlogHero allPosts={allPosts} />
       <div className="w-full flex justify-center items-center flex-col sm:px-10 px-5">
-        <BlogFeaturedSection allPosts={allPosts} />
-        <BlogSection />
-        <BlogTutorialsSection posts={allPosts} />
-        <BlogResourcesSection />
+        <BlogFeaturedSection posts={featuredPosts} />
+        <BlogSection posts={allPosts} />
+        <BlogTutorialsSection posts={tutorialPosts} />
+        <BlogResourcesSection posts={resourcePosts} />
       </div>
     </main>
   );
