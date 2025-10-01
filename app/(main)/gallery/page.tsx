@@ -11,6 +11,8 @@ import MemoryHighlights from "@/components/gallery/MemoryHighlights";
 import PeopleSpotlight from "@/components/gallery/PeopleSpotlight";
 import YearInReview from "@/components/gallery/YearInReview";
 import MonthlyMoodBoard from "@/components/gallery/MonthlyMoodBoard";
+import StudentsGallery from "@/components/gallery/StudentsGallery";
+import FamilyGallery from '@/components/gallery/FamilyGallery';
 
 
 const page = () => {
@@ -21,9 +23,11 @@ const page = () => {
         <FeaturedMemories />
         <MediaGalleryPage />
         <MemoryHighlights />
-        <PeopleSpotlight />
-        <YearInReview />
-        <MonthlyMoodBoard />
+        {/* <PeopleSpotlight /> */}
+        <FamilyGallery />
+        <StudentsGallery />
+        {/* <YearInReview /> */}
+        {/* <MonthlyMoodBoard /> */}
       </div>
     </main>
   );
