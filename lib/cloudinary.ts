@@ -106,3 +106,13 @@ export async function getAllGalleryData(): Promise<{
     };
   }
 }
+
+// Utility function to check if resource is a video
+export function isVideoResource(resource: CloudinaryResource): boolean {
+  return resource.resource_type === 'video';
+}
+
+// Utility function to check if resource is an image
+export function isImageResource(resource: CloudinaryResource): boolean {
+  return resource.resource_type === 'image';
+}

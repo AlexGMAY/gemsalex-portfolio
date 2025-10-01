@@ -13,6 +13,7 @@ import YearInReview from "@/components/gallery/YearInReview";
 import MonthlyMoodBoard from "@/components/gallery/MonthlyMoodBoard";
 import StudentsGallery from "@/components/gallery/StudentsGallery";
 import FamilyGallery from '@/components/gallery/FamilyGallery';
+import MediaGallery from "@/components/gallery/MediaGallery";
 
 
 const page = () => {
@@ -20,8 +21,9 @@ const page = () => {
     <main className="relative w-full">
       <HeroGallery />
       <div className="w-full sm:px-10 px-5">
-        <FeaturedMemories />
-        <MediaGalleryPage />
+        {/* <FeaturedMemories /> */}
+        {/* <MediaGalleryPage /> */}
+        <MediaGallery />
         <MemoryHighlights />
         {/* <PeopleSpotlight /> */}
         <FamilyGallery />
