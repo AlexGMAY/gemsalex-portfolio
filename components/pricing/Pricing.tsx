@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGlobe,
@@ -9,10 +9,17 @@ import {
   FaLock,
   FaRocket,
   FaArrowRight,
+  FaCheckCircle,
+  FaTimesCircle,
 } from "react-icons/fa";
 import { services, Feature, Service } from "@/data";
 import { GiTunisia } from "react-icons/gi";
 import Link from "next/link";
+import {
+  PricingFormData,
+  PricingApiResponse,
+  ToastState,
+} from "@/types/pricing";
 
 type Currency = "USD" | "TND";
 type PricingPageType = "home" | "pricing";
@@ -31,10 +38,37 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   }>({});
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<Feature[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<ToastState>({
+    show: false,
+    type: "",
+    message: "",
+  });
+  const [csrfToken, setCsrfToken] = useState("");
 
   // Filter services based on page type
   const displayedServices =
     pageType === "home" ? services.slice(0, 3) : services;
+
+  // Fetch CSRF token
+  useEffect(() => {
+    fetchCsrfToken();
+  }, []);
+
+  const fetchCsrfToken = async (): Promise<void> => {
+    try {
+      const response = await fetch("/api/csrf");
+      const data = await response.json();
+      setCsrfToken(data.csrfToken);
+    } catch (error) {
+      console.error("Failed to fetch CSRF token:", error);
+    }
+  };
+
+  const showToast = (type: "success" | "error", message: string): void => {
+    setToast({ show: true, type, message });
+    setTimeout(() => setToast({ show: false, type: "", message: "" }), 5000);
+  };
 
   // Live currency conversion
   const convertPrice = (usd: number) =>
@@ -70,6 +104,77 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     detect();
   }, []);
 
+  // Handle form submission
+  const handlePricingSubmit = async (
+    e: FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+
+    if (!selectedService || isSubmitting || !csrfToken) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+
+      const submissionData: PricingFormData = {
+        name: formData.get("name") as string,
+        email: formData.get("email") as string,
+        projectDetails: formData.get("projectDetails") as string,
+        serviceId: selectedService.id,
+        serviceTitle: selectedService.title,
+        basePrice:
+          currency === "USD"
+            ? selectedService.basePrice
+            : selectedService.localPrice ||
+              convertPrice(selectedService.basePrice),
+        currency,
+        totalAmount: calculateTotal(),
+        selectedFeatures: selectedFeatures.map((feature) => ({
+          id: feature.id,
+          name: feature.name,
+          price: convertPrice(feature.price),
+          category: feature.category,
+        })),
+        website: formData.get("website") as string,
+      };
+
+      const response = await fetch("/api/pricing", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...submissionData,
+          csrfToken,
+        }),
+      });
+
+      const data: PricingApiResponse = await response.json();
+
+      if (data.success) {
+        showToast("success", `${data.message} Order ID: ${data.orderId}`);
+        // Reset form and close modal
+        setSelectedService(null);
+        setSelectedFeatures([]);
+        await fetchCsrfToken();
+      } else {
+        showToast(
+          "error",
+          data.message || "Failed to submit project inquiry. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      showToast(
+        "error",
+        "Network error. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Surprise Feature 1: Dynamic price suggestions
   const getPriceHint = (service: Service) => {
     const base =
@@ -89,6 +194,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       whileHover={{ scale: 1.05 }}
     >
       <button
+        type="button"
         onClick={() => setCurrency("USD")}
         className={`flex items-center px-4 py-2 rounded-full ${
           currency === "USD" ? "bg-blue-600 text-white" : "text-gray-300"
@@ -103,6 +209,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         <FaExchangeAlt />
       </motion.span>
       <button
+        type="button"
         onClick={() => setCurrency("TND")}
         className={`flex items-center px-4 py-2 rounded-full ${
           currency === "TND" ? "bg-red-600 text-white" : "text-gray-300"
@@ -115,6 +222,27 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 
   return (
     <section className="py-24 px-4">
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toast.show && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg border ${
+              toast.type === "success"
+                ? "bg-green-500/20 border-green-400 text-green-400"
+                : "bg-red-500/20 border-red-400 text-red-400"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              {toast.type === "success" ? <FaCheckCircle /> : <FaTimesCircle />}
+              <span>{toast.message}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto">
         {/* Header with currency toggle */}
         <motion.div
@@ -246,7 +374,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                     <div className="flex items-center gap-4">
                       <CurrencyToggle />
                       <button
-                        onClick={() => setSelectedService(null)}
+                        type="button"
+                        onClick={() => {
+                          setSelectedService(null);
+                          setSelectedFeatures([]);
+                        }}
                         className="text-gray-400 hover:text-white"
                       >
                         ✕
@@ -356,39 +488,63 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   </div>
 
                   {/* Contact form */}
-                  <form className="space-y-4">
+                  <form onSubmit={handlePricingSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <input
                         type="text"
+                        name="name"
                         placeholder="Full Name"
                         required
+                        disabled={isSubmitting}
                         className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
                       />
                       <input
                         type="email"
+                        name="email"
                         placeholder="Email"
                         required
+                        disabled={isSubmitting}
                         className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
                       />
                     </div>
                     <textarea
+                      name="projectDetails"
                       placeholder="Project details (requirements, timeline, etc.)"
                       rows={3}
+                      required
+                      disabled={isSubmitting}
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
                     ></textarea>
-                    <input type="hidden" name="currency" value={currency} />
-                    <input
-                      type="hidden"
-                      name="total"
-                      value={calculateTotal()}
-                    />
+
+                    {/* Honeypot Field */}
+                    <div className="hidden" aria-hidden="true">
+                      <label htmlFor="website">Website</label>
+                      <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                      whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                       type="submit"
-                      className="w-full bg-gradient-to-r from-lime-600 to-yellow-600 text-white font-bold py-3 rounded-lg"
+                      disabled={isSubmitting || !csrfToken}
+                      className={`w-full bg-gradient-to-r from-lime-600 to-yellow-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 ${
+                        isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
                     >
-                      Secure My Project ({currency})
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                          <span>Submitting...</span>
+                        </>
+                      ) : (
+                        `Secure My Project (${currency})`
+                      )}
                     </motion.button>
                   </form>
                 </div>

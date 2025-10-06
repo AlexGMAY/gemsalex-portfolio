@@ -38,6 +38,7 @@
     "react-tilt": "^1.0.2",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "resend": "^6.1.2",
     "swiper": "^11.2.5",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
@@ -46,9 +47,11 @@
     "vercel": "^34.0.0"
   },
   "devDependencies": {
+    "@types/cookie": "^0.6.0",
     "@types/google.maps": "^3.58.1",
     "@types/lodash": "^4.17.16",
-    "@types/node": "^20",
+    "@types/node": "^20.19.19",
+    "@types/nodemailer": "^7.0.2",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-lottie": "^1.2.10",
