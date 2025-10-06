@@ -7,18 +7,22 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        pathname: '**',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: false,
+  experimental: {
+    serverComponentsExternalPackages: ['cloudinary'],
   },
+  // Disable image optimization in development to avoid the fetch error
+  ...(process.env.NODE_ENV === 'development' && {
+    images: {
+      unoptimized: true
+    }
+  })
 };
+
 
 export default withSentryConfig(nextConfig, {
 // For all available options, see:

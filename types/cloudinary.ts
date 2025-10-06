@@ -12,8 +12,17 @@ export interface CloudinaryResource {
     custom?: {
       alt?: string;
       caption?: string;
+      duration?: string;
     };
   };
+  // Add these optional properties to match Cloudinary's response
+  asset_id?: string;
+  version?: number;
+  type?: string;
+  placeholder?: boolean;
+  url?: string;
+  // Allow any other properties
+  [key: string]: any;
 }
 
 export interface CloudinaryApiResponse {
@@ -68,6 +77,7 @@ export interface MemoryResource extends CloudinaryResource {
       location?: string;
       description?: string;
       featured?: boolean;
+      duration?: string;
     };
   };
 }

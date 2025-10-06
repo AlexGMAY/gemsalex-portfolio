@@ -1,4 +1,3 @@
-// import MemoriesGallery from "@/components/sections/MemoriesGallery";
 import MemoryHighlights from "@/components/gallery/MemoryHighlights";
 import { getMemories } from "@/lib/cloudinary";
 import { MemoryResource } from "@/types/cloudinary";

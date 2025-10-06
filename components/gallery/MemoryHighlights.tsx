@@ -9,6 +9,7 @@ import {
   FiMapPin,
   FiChevronLeft,
   FiChevronRight,
+  FiClock,
 } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -327,8 +328,9 @@ export default function MemoriesGallery({
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Once Upon {""}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
-              Memory Timeline
+              A Time !
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
@@ -403,128 +405,202 @@ export default function MemoriesGallery({
               }
             }}
           >
+            {/* Memory Card */}
             {memories.map((memory, index) => (
               <motion.div
                 key={memory.public_id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex-shrink-0 w-80 snap-center"
+                className="flex-shrink-0 w-96 snap-center"
               >
-                {/* Memory Card */}
+                {/* Horizontal Memory Card */}
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="relative rounded-2xl overflow-hidden border border-white/10 bg-gray-800/50 backdrop-blur-sm group cursor-pointer h-96"
+                  className="relative rounded-2xl overflow-hidden border border-white/10 bg-gray-800/50 backdrop-blur-sm group cursor-pointer h-64 flex"
                   onClick={() => setSelectedMemory(memory)}
                 >
-                  {/* Media container */}
-                  <div className="relative h-48 overflow-hidden">
-                    {memory.secure_url.includes("placeholder") ? (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900">
+                  {/* Media container - Left side */}
+                  <div className="relative w-2/5 h-full overflow-hidden flex-shrink-0">
+                    {memory.secure_url.includes("placeholder") ||
+                    !memory.secure_url.includes("res.cloudinary.com") ? (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/20 to-blue-900/20">
                         <div className="text-center">
-                          <span className="text-4xl mb-2">
+                          <span className="text-3xl mb-2">
                             {isVideo(memory) ? "🎥" : "📷"}
                           </span>
-                          <p className="text-gray-400 text-sm">Memory Photo</p>
+                          <p className="text-gray-400 text-xs">
+                            {isVideo(memory) ? "Video Memory" : "Memory"}
+                          </p>
                         </div>
                       </div>
                     ) : isVideo(memory) ? (
-                      <div className="relative w-full h-full bg-gray-700 flex items-center justify-center">
-                        <FiPlay className="text-white text-4xl" />
-                        <div className="absolute top-3 right-3 bg-black/70 rounded-full p-2">
-                          <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                            <FiPlay className="text-white" size={10} />
+                      // Video with thumbnail preview
+                      <div className="relative w-full h-full bg-gray-900">
+                        {/* Video thumbnail from Cloudinary */}
+                        <Image
+                          src={memory.secure_url.replace(
+                            "/upload/",
+                            "/upload/w_400,h_300,c_fill,q_auto,f_auto/"
+                          )}
+                          alt={
+                            memory.context?.custom?.alt ||
+                            "Video memory thumbnail"
+                          }
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="200px"
+                        />
+                        {/* Play button overlay */}
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-all duration-300">
+                          <div className="relative">
+                            <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-red-500/30">
+                              <FiPlay className="text-white text-lg ml-0.5" />
+                            </div>
+                            {/* Pulsing animation */}
+                            <div className="absolute inset-0 w-12 h-12 bg-red-400 rounded-full animate-ping opacity-20"></div>
+                          </div>
+                        </div>
+                        {/* Video badge */}
+                        <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                          <div className="flex items-center gap-1">
+                            <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                            <span className="text-white text-xs font-semibold">
+                              VIDEO
+                            </span>
+                          </div>
+                        </div>
+                        {/* Duration badge if available */}
+                        {memory.context?.custom?.duration && (
+                          <div className="absolute bottom-2 left-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                            <span className="text-white text-xs font-medium">
+                              {memory.context.custom.duration}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      // Image memory
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={memory.secure_url}
+                          alt={memory.context?.custom?.alt || "Memory"}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="200px"
+                        />
+                        {/* Image badge */}
+                        <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                          <div className="flex items-center gap-1">
+                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                            <span className="text-white text-xs font-semibold">
+                              PHOTO
+                            </span>
                           </div>
                         </div>
                       </div>
-                    ) : (
-                      <Image
-                        src={memory.secure_url}
-                        alt={memory.context?.custom?.alt || "Memory"}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        sizes="320px"
-                      />
                     )}
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                      <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">
-                          {memory.context?.custom?.memoryTitle ||
-                            "Special Memory"}
-                        </h3>
-                        <div className="flex items-center gap-3 text-xs text-gray-300">
-                          {memory.context?.custom?.memoryDate && (
-                            <div className="flex items-center gap-1">
-                              <FiCalendar size={12} />
-                              <span>
-                                {formatDate(memory.context.custom.memoryDate)}
-                              </span>
-                            </div>
-                          )}
-                          {memory.context?.custom?.location && (
-                            <div className="flex items-center gap-1">
-                              <FiMapPin size={12} />
-                              <span className="line-clamp-1">
-                                {memory.context.custom.location}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
 
                     {/* Featured badge */}
                     {memory.context?.custom?.featured && (
-                      <div className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-lime-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      <div className="absolute top-2 left-2 bg-gradient-to-r from-blue-500 to-lime-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                         Featured
                       </div>
                     )}
                   </div>
 
-                  {/* Content */}
-                  <div className="p-4">
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="flex-1">
-                        <h3 className="font-bold text-white text-lg mb-1 line-clamp-1">
+                  {/* Content - Right side */}
+                  <div className="flex-1 p-4 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="font-bold text-white text-lg line-clamp-2">
                           {memory.context?.custom?.memoryTitle ||
                             "Special Memory"}
                         </h3>
-                        <p className="text-gray-400 text-sm line-clamp-2">
-                          {memory.context?.custom?.description ||
-                            "A beautiful memory worth remembering"}
-                        </p>
+                        {/* Media type indicator */}
+                        <span
+                          className={`text-xs px-2 py-1 rounded-full ${
+                            isVideo(memory)
+                              ? "bg-red-500/20 text-red-400"
+                              : "bg-blue-500/20 text-blue-400"
+                          }`}
+                        >
+                          {isVideo(memory) ? "VIDEO" : "PHOTO"}
+                        </span>
+                      </div>
+
+                      <p className="text-gray-400 text-sm line-clamp-3 mb-3">
+                        {memory.context?.custom?.description ||
+                          "A beautiful memory worth remembering for years to come"}
+                      </p>
+
+                      {/* Location and Date */}
+                      <div className="space-y-2">
+                        {memory.context?.custom?.location && (
+                          <div className="flex items-center gap-2 text-xs text-gray-400">
+                            <FiMapPin size={12} />
+                            <span className="line-clamp-1">
+                              {memory.context.custom.location}
+                            </span>
+                          </div>
+                        )}
+                        {memory.context?.custom?.memoryDate && (
+                          <div className="flex items-center gap-2 text-xs text-gray-400">
+                            <FiCalendar size={12} />
+                            <span>
+                              {formatDate(memory.context.custom.memoryDate)}
+                            </span>
+                          </div>
+                        )}
+                        {/* Video duration if available */}
+                        {isVideo(memory) &&
+                          memory.context?.custom?.duration && (
+                            <div className="flex items-center gap-2 text-xs text-gray-400">
+                              <FiClock size={12} />
+                              <span>
+                                Duration: {memory.context.custom.duration}
+                              </span>
+                            </div>
+                          )}
                       </div>
                     </div>
 
-                    {/* Like button and date */}
-                    <div className="flex justify-between items-center">
+                    {/* Like button */}
+                    <div className="flex justify-between items-center pt-3 border-t border-gray-700/50">
                       <button
-                        onClick={(e) => handleLike(memory.public_id, e)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleLike(memory.public_id, e);
+                        }}
                         className={`flex items-center gap-2 text-sm px-3 py-1.5 rounded-full border transition-all duration-300 ${
                           isLiked(memory.public_id)
                             ? "bg-red-500/20 border-red-500 text-red-400"
-                            : "bg-white/10 border-white/20 text-gray-300 hover:bg-white/20"
+                            : "bg-white/10 border-white/20 text-gray-300 hover:bg-white/20 hover:text-white"
                         }`}
                       >
                         <FiHeart
                           className={
                             isLiked(memory.public_id) ? "fill-current" : ""
                           }
+                          size={14}
                         />
-                        <span>
+                        <span className="text-xs">
                           {isLiked(memory.public_id) ? "Liked" : "Like"}
                         </span>
                       </button>
 
-                      {memory.context?.custom?.memoryDate && (
-                        <div className="text-xs text-gray-500">
-                          {formatDate(memory.context.custom.memoryDate)}
-                        </div>
-                      )}
+                      <div className="text-xs text-gray-500">
+                        {new Date(memory.created_at).getFullYear()}
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-end pr-8">
+                    <span className="text-white font-semibold text-lg transform translate-x-4 group-hover:translate-x-0 transition-transform duration-300">
+                      {isVideo(memory) ? "Watch Video →" : "View Details →"}
+                    </span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -576,12 +652,22 @@ export default function MemoriesGallery({
           onClick={() => setSelectedMemory(null)}
         >
           <div
-            className="bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
+            className="bg-gray-800 rounded-2xl max-w-7xl w-full max-h-[95vh] overflow-hidden border border-gray-700 flex flex-col lg:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-96 bg-gradient-to-br from-gray-700 to-gray-900">
-              {selectedMemory.secure_url.includes("placeholder") ? (
-                <div className="w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedMemory(null)}
+              className="absolute top-4 right-4 w-10 h-10 bg-gray-900 bg-opacity-90 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-colors border border-gray-700 z-10 hover:bg-gray-800"
+            >
+              ✕
+            </button>
+
+            {/* Media Section - Right Side */}
+            <div className="lg:w-1/2 w-full h-96 lg:h-auto bg-gray-900 flex items-center justify-center p-4 lg:p-8">
+              {selectedMemory.secure_url.includes("placeholder") ||
+              !selectedMemory.secure_url.includes("res.cloudinary.com") ? (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-xl">
                   <div className="text-center">
                     <span className="text-6xl mb-4">
                       {isVideo(selectedMemory) ? "🎥" : "📷"}
@@ -590,85 +676,203 @@ export default function MemoriesGallery({
                   </div>
                 </div>
               ) : isVideo(selectedMemory) ? (
-                <div className="w-full h-full flex items-center justify-center bg-gray-700">
-                  <div className="text-center">
-                    <FiPlay className="text-white text-6xl mb-4" />
-                    <p className="text-gray-400">Video Memory</p>
+                <div className="w-full h-full max-w-2xl mx-auto">
+                  {/* Video Player */}
+                  <video
+                    controls
+                    autoPlay
+                    className="w-full h-full max-h-[70vh] rounded-xl object-contain bg-black"
+                    poster={selectedMemory.secure_url.replace(
+                      "/upload/",
+                      "/upload/so_0.1/"
+                    )}
+                  >
+                    <source
+                      src={selectedMemory.secure_url}
+                      type={`video/${selectedMemory.format}`}
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  {/* Fallback for video if autoPlay is blocked */}
+                  <div className="text-center mt-4">
+                    <p className="text-gray-400 text-sm">
+                      Click the play button to start video
+                    </p>
                   </div>
                 </div>
               ) : (
-                <Image
-                  src={selectedMemory.secure_url}
-                  alt={selectedMemory.context?.custom?.alt || "Memory"}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 800px"
-                />
+                /* Image Display */
+                <div className="relative w-full h-full max-w-2xl mx-auto flex items-center justify-center">
+                  <Image
+                    src={selectedMemory.secure_url}
+                    alt={selectedMemory.context?.custom?.alt || "Memory"}
+                    fill
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
               )}
-
-              <button
-                onClick={() => setSelectedMemory(null)}
-                className="absolute top-4 right-4 w-8 h-8 bg-gray-900 bg-opacity-90 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-colors border border-gray-700"
-              >
-                ✕
-              </button>
             </div>
 
-            <div className="p-8">
+            {/* Content Section - Left Side */}
+            <div className="lg:w-1/2 w-full flex flex-col p-6 lg:p-8 overflow-y-auto">
+              {/* Header */}
               <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                <div className="flex-1">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
                     {selectedMemory.context?.custom?.memoryTitle ||
                       "Special Memory"}
                   </h3>
-                  <div className="flex items-center gap-6 text-gray-400">
+                  <div className="flex flex-wrap items-center gap-3 text-gray-400">
+                    <div
+                      className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                        isVideo(selectedMemory)
+                          ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                          : "bg-purple-500/20 text-purple-400 border border-purple-500/30"
+                      }`}
+                    >
+                      {isVideo(selectedMemory)
+                        ? "🎥 VIDEO MEMORY"
+                        : "📷 PHOTO MEMORY"}
+                    </div>
                     {selectedMemory.context?.custom?.memoryDate && (
-                      <div className="flex items-center gap-2">
-                        <FiCalendar />
+                      <div className="flex items-center gap-2 text-sm bg-gray-700/50 px-3 py-1 rounded-full">
+                        <FiCalendar className="text-blue-400" />
                         <span>
                           {formatDate(selectedMemory.context.custom.memoryDate)}
                         </span>
                       </div>
                     )}
-                    {selectedMemory.context?.custom?.location && (
-                      <div className="flex items-center gap-2">
-                        <FiMapPin />
-                        <span>{selectedMemory.context.custom.location}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
+              </div>
+
+              {/* Like Button */}
+              <div className="mb-6">
                 <button
                   onClick={(e) => handleLike(selectedMemory.public_id, e)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300 ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl border transition-all duration-300 ${
                     isLiked(selectedMemory.public_id)
-                      ? "bg-red-500/20 border-red-500 text-red-400"
-                      : "bg-gray-700 text-white border-gray-600 hover:bg-gray-600"
+                      ? "bg-red-500/20 border-red-500 text-red-400 shadow-lg shadow-red-500/20"
+                      : "bg-gray-700 text-white border-gray-600 hover:bg-gray-600 hover:border-gray-500"
                   }`}
                 >
                   <FiHeart
-                    className={
+                    className={`text-lg ${
                       isLiked(selectedMemory.public_id) ? "fill-current" : ""
-                    }
+                    }`}
                   />
-                  <span>
+                  <span className="font-semibold">
                     {isLiked(selectedMemory.public_id)
                       ? "Liked"
-                      : "Like Memory"}
+                      : "Like this Memory"}
                   </span>
+                  {isLiked(selectedMemory.public_id) && (
+                    <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+                  )}
                 </button>
               </div>
 
-              {selectedMemory.context?.custom?.description && (
-                <div className="bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg p-6 border border-gray-600 mb-6">
-                  <h4 className="font-semibold text-gray-300 mb-3">
-                    About This Memory
+              {/* Memory Details */}
+              <div className="space-y-6">
+                {/* Location */}
+                {selectedMemory.context?.custom?.location && (
+                  <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-4 border border-gray-600">
+                    <div className="flex items-center gap-3">
+                      <FiMapPin className="text-blue-400 text-lg" />
+                      <div>
+                        <p className="text-gray-400 text-sm">Location</p>
+                        <p className="text-white font-medium">
+                          {selectedMemory.context.custom.location}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Description */}
+                {selectedMemory.context?.custom?.description && (
+                  <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-xl p-6 border border-purple-500/20">
+                    <h4 className="font-semibold text-gray-300 mb-4 flex items-center gap-2 text-lg">
+                      <span>📖</span>
+                      Memory Story
+                    </h4>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {selectedMemory.context.custom.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Memory Information */}
+                <div className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 rounded-xl p-6 border border-gray-600">
+                  <h4 className="font-semibold text-gray-300 mb-4 flex items-center gap-2 text-lg">
+                    <span>ℹ️</span>
+                    Memory Details
                   </h4>
-                  <p className="text-gray-400 text-lg leading-relaxed">
-                    {selectedMemory.context.custom.description}
-                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-gray-400 text-sm">Capture Date</p>
+                      <p className="text-white font-medium">
+                        {selectedMemory.context?.custom?.memoryDate
+                          ? formatDate(selectedMemory.context.custom.memoryDate)
+                          : new Date(
+                              selectedMemory.created_at
+                            ).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">Uploaded</p>
+                      <p className="text-white font-medium">
+                        {new Date(selectedMemory.created_at).toLocaleDateString(
+                          "en-US",
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          }
+                        )}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">Dimensions</p>
+                      <p className="text-white font-medium">
+                        {selectedMemory.width} × {selectedMemory.height}px
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">File Size</p>
+                      <p className="text-white font-medium">
+                        {(selectedMemory.bytes / 1024 / 1024).toFixed(2)} MB
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              )}
+
+                {/* Tags */}
+                {selectedMemory.tags && selectedMemory.tags.length > 0 && (
+                  <div>
+                    <h4 className="font-semibold text-gray-300 mb-3 flex items-center gap-2">
+                      <span>🏷️</span>
+                      Memory Tags
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMemory.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm border border-purple-500/30"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

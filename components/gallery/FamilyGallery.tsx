@@ -218,26 +218,26 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            The incredible people who make my world complete
+            Some incredible people who are family
           </p>
         </div>
 
         {/* Circular carousel */}
         <div className="relative h-[70vh] max-h-[600px] min-h-[500px] flex items-center justify-center">
-          {/* Center profile */}
+          {/* Center profile - MAIN CIRCLE */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center"
             style={{ rotate: rotateInverse }}
           >
             <div
-              className={`relative w-48 h-48 md:w-56 md:h-56 rounded-full border-4 bg-gradient-to-r ${getRelationshipColor(
+              className={`relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 bg-gradient-to-r ${getRelationshipColor(
                 familyMembers[activeIndex].context?.custom?.relationship || ""
               )} border-amber-400/30 overflow-hidden shadow-2xl`}
             >
               {familyMembers[activeIndex].secure_url.includes("placeholder") ? (
                 <div className="w-full h-full flex items-center justify-center bg-gray-800">
                   <div className="text-center">
-                    <span className="text-4xl">
+                    <span className="text-4xl lg:text-5xl">
                       {getRelationshipIcon(
                         familyMembers[activeIndex].context?.custom
                           ?.relationship || ""
@@ -247,23 +247,27 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
                   </div>
                 </div>
               ) : (
-                <Image
-                  src={familyMembers[activeIndex].secure_url}
-                  alt={
-                    familyMembers[activeIndex].context?.custom?.alt ||
-                    "Family member"
-                  }
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
+                // FULL RESPONSIVE IMAGE - NO CROPPING
+                <div className="relative w-full h-full">
+                  <Image
+                    src={familyMembers[activeIndex].secure_url}
+                    alt={
+                      familyMembers[activeIndex].context?.custom?.alt ||
+                      "Family member"
+                    }
+                    fill
+                    className="object-contain scale-105" // Changed to object-contain for full image display
+                    sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
+                    priority
+                  />
+                </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                <h3 className="text-xl font-bold text-white text-center">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 lg:p-6">
+                <h3 className="text-lg lg:text-xl font-bold text-white text-center line-clamp-1">
                   {familyMembers[activeIndex].context?.custom?.memberName ||
                     "Family Member"}
                 </h3>
-                <p className="text-amber-300 text-sm text-center">
+                <p className="text-amber-300 text-sm lg:text-base text-center">
                   {familyMembers[activeIndex].context?.custom?.relationship ||
                     "Family"}
                 </p>
@@ -271,7 +275,7 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
             </div>
           </motion.div>
 
-          {/* Rotating items */}
+          {/* Rotating items - SMALLER CIRCLES */}
           <motion.div
             ref={carouselRef}
             className="absolute inset-0"
@@ -286,7 +290,7 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
               return (
                 <motion.div
                   key={member.public_id}
-                  className={`absolute w-20 h-20 md:w-24 md:h-24 rounded-full border-2 ${
+                  className={`absolute w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full border-2 ${
                     activeIndex === index
                       ? "border-amber-400 scale-110 shadow-lg shadow-amber-400/50"
                       : "border-white/20"
@@ -308,23 +312,26 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
                 >
                   {member.secure_url.includes("placeholder") ? (
                     <div className="w-full h-full flex items-center justify-center bg-gray-700">
-                      <span className="text-xl">
+                      <span className="text-xl lg:text-2xl">
                         {getRelationshipIcon(
                           member.context?.custom?.relationship || ""
                         )}
                       </span>
                     </div>
                   ) : (
-                    <Image
-                      src={member.secure_url}
-                      alt={
-                        member.context?.custom?.alt ||
-                        `Family member ${index + 1}`
-                      }
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100px, 150px"
-                    />
+                    // FULL RESPONSIVE IMAGE IN SMALL CIRCLES - NO CROPPING
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={member.secure_url}
+                        alt={
+                          member.context?.custom?.alt ||
+                          `Family member ${index + 1}`
+                        }
+                        fill
+                        className="object-contain scale-110" // Changed to object-contain for full image display
+                        sizes="(max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+                      />
+                    </div>
                   )}
                 </motion.div>
               );
@@ -338,26 +345,26 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mt-12 max-w-2xl mx-auto text-center"
+          className="mt-12 max-w-2xl mx-auto text-center px-4"
         >
-          <blockquote className="text-xl md:text-2xl italic mb-6 text-gray-300 font-light">
+          <blockquote className="text-lg md:text-xl lg:text-2xl italic mb-6 text-gray-300 font-light leading-relaxed">
             "
             {familyMembers[activeIndex].context?.custom?.description ||
               "A special part of our family story"}
             "
           </blockquote>
 
-          <div className="flex justify-center gap-8 flex-wrap">
-            <div className="flex items-center gap-3 text-amber-300">
-              <FiUser size={20} className="flex-shrink-0" />
-              <span className="font-semibold">
+          <div className="flex justify-center gap-6 lg:gap-8 flex-wrap">
+            <div className="flex items-center gap-2 lg:gap-3 text-amber-300">
+              <FiUser size={18} className="flex-shrink-0" />
+              <span className="font-semibold text-sm lg:text-base">
                 {familyMembers[activeIndex].context?.custom?.relationship ||
                   "Family Member"}
               </span>
             </div>
-            <div className="flex items-center gap-3 text-gray-400">
-              <FiHeart size={20} className="flex-shrink-0" />
-              <span>
+            <div className="flex items-center gap-2 lg:gap-3 text-gray-400">
+              <FiHeart size={18} className="flex-shrink-0" />
+              <span className="text-sm lg:text-base">
                 {familyMembers[activeIndex].context?.custom?.role ||
                   "Loved One"}
               </span>
@@ -366,7 +373,7 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
         </motion.div>
 
         {/* Navigation dots */}
-        <div className="flex justify-center gap-3 mt-8">
+        <div className="flex justify-center gap-3 mt-8 px-4">
           {familyMembers.map((_, index) => (
             <button
               key={index}
@@ -385,7 +392,6 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
             />
           ))}
         </div>
-        
       </div>
     </section>
   );

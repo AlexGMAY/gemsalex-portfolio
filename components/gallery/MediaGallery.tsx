@@ -299,7 +299,7 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
   return (
     <section className="py-24 bg-gradient-to-b from-black-100 to-black-100 relative">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-emerald-400 opacity-20"></div>
+      {/* <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-emerald-400 opacity-20"></div> */}
       <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
 
@@ -307,8 +307,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
-              Media Gallery
+            Personal Media {""}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
+              Gallery
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
@@ -334,7 +335,7 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                 onClick={() => setActiveFilter(filter.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeFilter === filter.id
-                    ? "bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-lg shadow-cyan-500/25"
+                    ? "bg-gradient-to-r from-blue-500 to-lime-500 text-white shadow-lg shadow-lime-500/25"
                     : "bg-gray-700 text-gray-300 hover:bg-gray-600"
                 }`}
               >
@@ -366,7 +367,7 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                 onClick={() => setViewMode("masonry")}
                 className={`p-2 rounded-full transition-all ${
                   viewMode === "masonry"
-                    ? "bg-cyan-500 text-white"
+                    ? "bg-blue-500 text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -376,7 +377,7 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-full transition-all ${
                   viewMode === "grid"
-                    ? "bg-cyan-500 text-white"
+                    ? "bg-blue-500 text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -446,22 +447,62 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                             </div>
                           </div>
                         ) : isVideo(item) ? (
-                          <div className="relative w-full h-full bg-gray-700 flex items-center justify-center">
-                            <FiPlay className="text-white text-4xl" />
-                            <div className="absolute top-3 right-3 bg-black/70 rounded-full p-2">
-                              <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                                <FiPlay className="text-white" size={10} />
+                          // Video with thumbnail preview
+                          <div className="relative w-full h-full bg-gray-900">
+                            {/* Video Thumbnail */}
+                            <Image
+                              src={item.secure_url.replace('/upload/', '/upload/w_800,h_600,c_fill,q_auto,f_auto/')}
+                              alt={item.context?.custom?.alt || "Video thumbnail"}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-500"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                            />
+                            {/* Play Button Overlay */}
+                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-all duration-300">
+                              <div className="relative">
+                                <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-2xl shadow-red-500/30">
+                                  <FiPlay className="text-white text-xl ml-1" />
+                                </div>
+                                {/* Pulsing animation */}
+                                <div className="absolute inset-0 w-16 h-16 bg-red-400 rounded-full animate-ping opacity-20"></div>
+                              </div>
+                            </div>
+                            {/* Video Badge */}
+                            <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+                              <div className="flex items-center gap-1.5">
+                                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                                <span className="text-white text-xs font-semibold">VIDEO</span>
+                              </div>
+                            </div>
+                            {/* Duration Badge - if available in context */}
+                            {item.context?.custom?.duration && (
+                              <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                                <span className="text-white text-xs font-medium">
+                                  {item.context.custom.duration}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          // Image
+                          <div className="relative w-full h-full flex items-center justify-center">
+                            <div className="relative w-full h-full max-w-full max-h-full">
+                              <Image
+                                src={item.secure_url}
+                                alt={item.context?.custom?.alt || "Media item"}
+                                fill
+                                className="object-contain group-hover:scale-110 transition-transform duration-500"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                              />
+                            </div>
+                            {/* Image Badge */}
+                            <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+                              <div className="flex items-center gap-1.5">
+                                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <span className="text-white text-xs font-semibold">IMAGE</span>
                               </div>
                             </div>
                           </div>
-                        ) : (
-                          <Image
-                            src={item.secure_url}
-                            alt={item.context?.custom?.alt || "Media item"}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-500"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-                          />
                         )}
 
                         {/* Overlay */}
@@ -530,22 +571,52 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                       </div>
                     </div>
                   ) : isVideo(item) ? (
-                    <div className="relative w-full h-full bg-gray-700 flex items-center justify-center">
-                      <FiPlay className="text-white text-4xl" />
-                      <div className="absolute top-3 right-3 bg-black/70 rounded-full p-2">
-                        <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                          <FiPlay className="text-white" size={10} />
+                    // Video with thumbnail preview for grid
+                    <div className="relative w-full h-full bg-gray-900">
+                      {/* Video Thumbnail */}
+                      <Image
+                        src={item.secure_url.replace('/upload/', '/upload/w_600,h_600,c_fill,q_auto,f_auto/')}
+                        alt={item.context?.custom?.alt || "Video thumbnail"}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-all duration-300">
+                        <div className="relative">
+                          <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-red-500/30">
+                            <FiPlay className="text-white text-lg ml-0.5" />
+                          </div>
+                          {/* Pulsing animation */}
+                          <div className="absolute inset-0 w-12 h-12 bg-red-400 rounded-full animate-ping opacity-20"></div>
+                        </div>
+                      </div>
+                      {/* Video Badge */}
+                      <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                          <span className="text-white text-xs font-semibold">VIDEO</span>
                         </div>
                       </div>
                     </div>
                   ) : (
-                    <Image
-                      src={item.secure_url}
-                      alt={item.context?.custom?.alt || "Media item"}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
+                    // Image for grid
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={item.secure_url}
+                        alt={item.context?.custom?.alt || "Media item"}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      {/* Image Badge */}
+                      <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                          <span className="text-white text-xs font-semibold">IMAGE</span>
+                        </div>
+                      </div>
+                    </div>
                   )}
 
                   {/* Overlay */}
@@ -616,19 +687,29 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
         )}
       </div>
 
-      {/* Media Detail Modal */}
+      {/* Media Detail Modal */}      
       {selectedMedia && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedMedia(null)}
         >
           <div
-            className="bg-gray-800 rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
+            className="bg-gray-800 rounded-2xl max-w-7xl w-full max-h-[95vh] overflow-hidden border border-gray-700 flex flex-col lg:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-96 bg-gradient-to-br from-gray-700 to-gray-900">
-              {selectedMedia.secure_url.includes("placeholder") ? (
-                <div className="w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedMedia(null)}
+              className="absolute top-4 right-4 w-10 h-10 bg-gray-900 bg-opacity-90 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-colors border border-gray-700 z-10 hover:bg-gray-800"
+            >
+              ✕
+            </button>
+
+            {/* Media Section - Right Side */}
+            <div className="lg:w-1/2 w-full h-96 lg:h-auto bg-gray-900 flex items-center justify-center p-4 lg:p-8">
+              {selectedMedia.secure_url.includes("placeholder") ||
+              !selectedMedia.secure_url.includes("res.cloudinary.com") ? (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl">
                   <div className="text-center">
                     <span className="text-6xl mb-4">
                       {isVideo(selectedMedia) ? "🎥" : "🖼️"}
@@ -637,80 +718,174 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                   </div>
                 </div>
               ) : isVideo(selectedMedia) ? (
-                <div className="w-full h-full flex items-center justify-center bg-gray-700">
-                  <div className="text-center">
-                    <FiPlay className="text-white text-6xl mb-4" />
-                    <p className="text-gray-400">Video Content</p>
+                <div className="w-full h-full max-w-2xl mx-auto">
+                  {/* Video Player */}
+                  <video
+                    controls
+                    autoPlay
+                    className="w-full h-full max-h-[70vh] rounded-xl object-contain bg-black"
+                    poster={selectedMedia.secure_url.replace(
+                      "/upload/",
+                      "/upload/so_0.1/"
+                    )} // Low quality placeholder
+                  >
+                    <source
+                      src={selectedMedia.secure_url}
+                      type={`video/${selectedMedia.format}`}
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  {/* Fallback for video if autoPlay is blocked */}
+                  <div className="text-center mt-4">
+                    <p className="text-gray-400 text-sm">
+                      Click the play button to start video
+                    </p>
                   </div>
                 </div>
               ) : (
-                <Image
-                  src={selectedMedia.secure_url}
-                  alt={selectedMedia.context?.custom?.alt || "Media"}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 1200px"
-                />
+                /* Image Display */
+                <div className="relative w-full h-full max-w-2xl mx-auto flex items-center justify-center">
+                  <Image
+                    src={selectedMedia.secure_url}
+                    alt={selectedMedia.context?.custom?.alt || "Media"}
+                    fill
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
               )}
-
-              <button
-                onClick={() => setSelectedMedia(null)}
-                className="absolute top-4 right-4 w-8 h-8 bg-gray-900 bg-opacity-90 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-colors border border-gray-700"
-              >
-                ✕
-              </button>
             </div>
 
-            <div className="p-8">
+            {/* Content Section - Left Side */}
+            <div className="lg:w-1/2 w-full flex flex-col p-6 lg:p-8 overflow-y-auto">
+              {/* Header */}
               <div className="flex items-start justify-between mb-6">
                 <div className="flex-1">
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
                     {selectedMedia.context?.custom?.caption ||
-                      (isVideo(selectedMedia) ? "Video" : "Image")}
+                      (isVideo(selectedMedia) ? "Video Content" : "Image")}
                   </h3>
-                  <div className="flex items-center gap-4 text-gray-400">
+                  <div className="flex flex-wrap items-center gap-3 text-gray-400">
                     <div
                       className={`px-3 py-1 rounded-full text-sm font-semibold ${
                         isVideo(selectedMedia)
-                          ? "bg-red-500/20 text-red-400"
-                          : "bg-blue-500/20 text-blue-400"
+                          ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                          : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                       }`}
                     >
-                      {isVideo(selectedMedia) ? "VIDEO" : "IMAGE"}
+                      {isVideo(selectedMedia) ? "🎥 VIDEO" : "🖼️ IMAGE"}
                     </div>
-                    <div className="text-sm">
-                      Uploaded:{" "}
+                    <div className="text-sm bg-gray-700/50 px-3 py-1 rounded-full">
+                      📅{" "}
                       {new Date(selectedMedia.created_at).toLocaleDateString()}
                     </div>
+                    {selectedMedia.format && (
+                      <div className="text-sm bg-gray-700/50 px-3 py-1 rounded-full">
+                        📁 {selectedMedia.format.toUpperCase()}
+                      </div>
+                    )}
                   </div>
                 </div>
+              </div>
+
+              {/* Like Button */}
+              <div className="mb-6">
                 <button
                   onClick={(e) => handleLike(selectedMedia.public_id, e)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300 ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl border transition-all duration-300 ${
                     isLiked(selectedMedia.public_id)
-                      ? "bg-red-500/20 border-red-500 text-red-400"
-                      : "bg-gray-700 text-white border-gray-600 hover:bg-gray-600"
+                      ? "bg-red-500/20 border-red-500 text-red-400 shadow-lg shadow-red-500/20"
+                      : "bg-gray-700 text-white border-gray-600 hover:bg-gray-600 hover:border-gray-500"
                   }`}
                 >
                   <FiHeart
-                    className={
+                    className={`text-lg ${
                       isLiked(selectedMedia.public_id) ? "fill-current" : ""
-                    }
+                    }`}
                   />
-                  <span>
-                    {isLiked(selectedMedia.public_id) ? "Liked" : "Like Media"}
+                  <span className="font-semibold">
+                    {isLiked(selectedMedia.public_id)
+                      ? "Liked"
+                      : "Like this Media"}
                   </span>
+                  {isLiked(selectedMedia.public_id) && (
+                    <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+                  )}
                 </button>
               </div>
 
+              {/* Description */}
               {selectedMedia.context?.custom?.alt && (
-                <div className="bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg p-6 border border-gray-600">
-                  <h4 className="font-semibold text-gray-300 mb-3">
+                <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-gray-600 mb-6">
+                  <h4 className="font-semibold text-gray-300 mb-4 flex items-center gap-2 text-lg">
+                    <span>📝</span>
                     Description
                   </h4>
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                  <p className="text-gray-300 text-lg leading-relaxed">
                     {selectedMedia.context.custom.alt}
                   </p>
+                </div>
+              )}
+
+              {/* Media Information */}
+              <div className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 rounded-xl p-6 border border-gray-600">
+                <h4 className="font-semibold text-gray-300 mb-4 flex items-center gap-2 text-lg">
+                  <span>ℹ️</span>
+                  Media Information
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-gray-400 text-sm">Dimensions</p>
+                    <p className="text-white font-medium">
+                      {selectedMedia.width} × {selectedMedia.height}px
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm">File Size</p>
+                    <p className="text-white font-medium">
+                      {(selectedMedia.bytes / 1024 / 1024).toFixed(2)} MB
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm">Resource Type</p>
+                    <p className="text-white font-medium capitalize">
+                      {selectedMedia.resource_type}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm">Upload Date</p>
+                    <p className="text-white font-medium">
+                      {new Date(selectedMedia.created_at).toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tags */}
+              {selectedMedia.tags && selectedMedia.tags.length > 0 && (
+                <div className="mt-6">
+                  <h4 className="font-semibold text-gray-300 mb-3 flex items-center gap-2">
+                    <span>🏷️</span>
+                    Tags
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedMedia.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

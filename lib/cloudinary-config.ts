@@ -1,21 +1,49 @@
 import { v2 as cloudinary } from "cloudinary";
 
-if (!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME) {
-  throw new Error("NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is not set");
+// Validate environment variables at startup
+function validateEnv() {
+  const missingVars: string[] = [];
+
+  if (!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME) {
+    missingVars.push("CLOUDINARY_CLOUD_NAME");
+  }
+
+  if (!process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY) {
+    missingVars.push("CLOUDINARY_API_KEY");
+  }
+
+  if (!process.env.CLOUDINARY_API_SECRET) {
+    missingVars.push("CLOUDINARY_API_SECRET");
+  }
+
+  if (missingVars.length > 0) {
+    console.warn(
+      `⚠️  Missing Cloudinary environment variables: ${missingVars.join(", ")}`
+    );
+    console.warn("   Cloudinary functionality will be disabled");
+    return false;
+  }
+
+  return true;
 }
 
-if (!process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY) {
-  throw new Error("NEXT_PUBLIC_CLOUDINARY_API_KEY is not set");
-}
+const isEnvValid = validateEnv();
 
-if (!process.env.CLOUDINARY_API_SECRET) {
-  throw new Error("CLOUDINARY_API_SECRET is not set");
+if (isEnvValid) {
+  try {
+    cloudinary.config({
+      cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+      secure: true,
+    });
+    console.log("✅ Cloudinary configured successfully");
+  } catch (error) {
+    console.error("❌ Cloudinary configuration failed:", error);
+  }
+} else {
+  console.log("❌ Cloudinary not configured - missing environment variables");
 }
-
-cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 export default cloudinary;
+export { isEnvValid };
