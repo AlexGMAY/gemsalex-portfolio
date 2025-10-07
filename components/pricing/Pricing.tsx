@@ -221,7 +221,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   );
 
   return (
-    <section className="py-24 px-4">
+    <section id="pricing" className="py-24 px-4">
       {/* Toast Notification */}
       <AnimatePresence>
         {toast.show && (

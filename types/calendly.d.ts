@@ -6,10 +6,14 @@ declare global {
       initInlineWidget: (options: {
         url: string;
         parentElement: HTMLElement | null;
-        prefill: Record<string, unknown>;
-        utm: Record<string, unknown>;
+        prefill?: object;
+        utm?: object;
       }) => void;
       initPopupWidget: (options: { url: string }) => void;
+      showPopupWidget: (url: string) => void;
+      closePopupWidget: () => void;
     };
   }
 }
+
+export {};
