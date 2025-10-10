@@ -9,21 +9,31 @@ import {
   FiChevronRight,
   FiClock,
 } from "react-icons/fi";
-import { BlogPost } from "@/lib/BlogPost";
+import { Resource } from "@/lib/resources";
 import { useState } from "react";
 
-const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
-  const [knowledgeLevel, setKnowledgeLevel] = useState<string>("All Levels");
-  const [expandedPost, setExpandedPost] = useState<number | null>(null);
+interface ResourcesTutorialsSectionProps {
+  resources?: Resource[]; // Make it optional and use Resource type
+}
 
-  // Filter tutorials from all posts
-  const tutorialPosts = posts.filter((post) => post.type === "tutorial");
+const ResourcesTutorialsSection = ({
+  resources = [],
+}: ResourcesTutorialsSectionProps) => {
+  const [knowledgeLevel, setKnowledgeLevel] = useState<string>("All Levels");
+  const [expandedResource, setExpandedResource] = useState<string | null>(null);
+
+  // Safe filtering with fallback
+  const tutorialResources = Array.isArray(resources)
+    ? resources.filter((resource) => resource.type === "tutorials")
+    : [];
 
   // Filter by knowledge level
-  const filteredPosts =
+  const filteredResources =
     knowledgeLevel === "All Levels"
-      ? tutorialPosts
-      : tutorialPosts.filter((post) => post.level === knowledgeLevel);
+      ? tutorialResources
+      : tutorialResources.filter(
+          (resource) => resource.level === knowledgeLevel.toLowerCase()
+        );
 
   // Knowledge level options
   const levels = ["All Levels", "Beginner", "Intermediate", "Advanced"];
@@ -38,12 +48,19 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
         "State Management",
         "Advanced Patterns",
       ],
-      posts: tutorialPosts.filter((post) => post.tags.includes("React")),
+      resources: tutorialResources.filter(
+        (resource) =>
+          resource.tags?.includes("react") || resource.tags?.includes("React")
+      ),
     },
     {
       title: "Fullstack Next.js",
       steps: ["Next.js Basics", "API Routes", "Authentication", "Deployment"],
-      posts: tutorialPosts.filter((post) => post.tags.includes("Next.js")),
+      resources: tutorialResources.filter(
+        (resource) =>
+          resource.tags?.includes("nextjs") ||
+          resource.tags?.includes("Next.js")
+      ),
     },
   ];
 
@@ -143,22 +160,40 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
                           {step}
                         </h5>
                         {i === 0 &&
-                          path.posts.filter((p) =>
-                            p.tags.includes(step.replace(" ", ""))
+                          path.resources.filter((resource) =>
+                            resource.tags?.some(
+                              (tag) =>
+                                step
+                                  .toLowerCase()
+                                  .includes(tag.toLowerCase()) ||
+                                tag
+                                  .toLowerCase()
+                                  .includes(step.toLowerCase().replace(" ", ""))
+                            )
                           ).length > 0 && (
                             <div className="mt-2 flex flex-wrap gap-2">
-                              {path.posts
-                                .filter((p) =>
-                                  p.tags.includes(step.replace(" ", ""))
+                              {path.resources
+                                .filter((resource) =>
+                                  resource.tags?.some(
+                                    (tag) =>
+                                      step
+                                        .toLowerCase()
+                                        .includes(tag.toLowerCase()) ||
+                                      tag
+                                        .toLowerCase()
+                                        .includes(
+                                          step.toLowerCase().replace(" ", "")
+                                        )
+                                  )
                                 )
                                 .slice(0, 2)
-                                .map((post) => (
+                                .map((resource) => (
                                   <a
-                                    key={post.id}
-                                    href={`/blog/${post.slug}`}
+                                    key={resource.slug}
+                                    href={`/resources/${resource.type}/${resource.slug}`}
                                     className="text-xs px-2 py-1 bg-gray-700/50 rounded-full text-gray-300 hover:bg-blue-400/10 hover:text-blue-400 transition-colors"
                                   >
-                                    {post.title}
+                                    {resource.title}
                                   </a>
                                 ))}
                             </div>
@@ -168,9 +203,9 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
                   ))}
                 </div>
 
-                {path.posts.length > 0 && (
+                {path.resources.length > 0 && (
                   <a
-                    href={`/blog?tag=${path.title.split(" ")[0].toLowerCase()}`}
+                    href={`/resources/tutorials`}
                     className="mt-6 inline-flex items-center text-sm text-blue-400 hover:text-white transition-colors"
                   >
                     Explore all {path.title.split(" ")[0]} tutorials
@@ -185,14 +220,14 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
         {/* Tutorials Grid */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
+            {filteredResources.map((resource) => (
               <motion.article
-                key={post.id}
+                key={resource.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className={`bg-gray-800/50 backdrop-blur-sm rounded-2xl border ${
-                  expandedPost === post.id
+                  expandedResource === resource.slug
                     ? "border-blue-400/50"
                     : "border-gray-700 hover:border-blue-400/30"
                 } overflow-hidden transition-all`}
@@ -200,37 +235,39 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
                 <div
                   className="p-6 cursor-pointer"
                   onClick={() =>
-                    setExpandedPost(expandedPost === post.id ? null : post.id)
+                    setExpandedResource(
+                      expandedResource === resource.slug ? null : resource.slug
+                    )
                   }
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div
                       className={`p-2 rounded-full ${
-                        post.level === "Beginner"
+                        resource.level === "beginner"
                           ? "bg-green-400/10 text-green-400"
-                          : post.level === "Intermediate"
+                          : resource.level === "intermediate"
                           ? "bg-blue-400/10 text-blue-400"
                           : "bg-purple-400/10 text-purple-400"
                       }`}
                     >
-                      {post.level === "Beginner" && <FiBook size={18} />}
-                      {post.level === "Intermediate" && (
+                      {resource.level === "beginner" && <FiBook size={18} />}
+                      {resource.level === "intermediate" && (
                         <FiBarChart2 size={18} />
                       )}
-                      {post.level === "Advanced" && <FiCode size={18} />}
+                      {resource.level === "advanced" && <FiCode size={18} />}
                     </div>
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-700/50 text-gray-300">
-                      {post.level}
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-700/50 text-gray-300 capitalize">
+                      {resource.level}
                     </span>
                   </div>
 
                   <h3 className="text-xl font-bold mb-2 text-white">
-                    {post.title}
+                    {resource.title}
                   </h3>
-                  <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                  <p className="text-gray-400 mb-4">{resource.excerpt}</p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 3).map((tag, index) => (
+                    {resource.tags?.slice(0, 3).map((tag, index) => (
                       <span
                         key={index}
                         className="px-2 py-1 bg-gray-700/50 text-xs rounded-full text-gray-300"
@@ -241,7 +278,7 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
                   </div>
                 </div>
 
-                {expandedPost === post.id && (
+                {expandedResource === resource.slug && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -253,17 +290,19 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
                         What you'll learn:
                       </h4>
                       <ul className="list-disc list-inside text-gray-400 space-y-1 text-sm">
-                        {post.learningPoints?.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        )) || <li>Core concepts and practical applications</li>}
+                        {/* You can extract learning points from content or add a new field */}
+                        <li>Core concepts and practical applications</li>
+                        <li>Step-by-step implementation guide</li>
+                        <li>Best practices and optimization tips</li>
                       </ul>
 
                       <div className="mt-4 flex justify-between items-center">
                         <span className="text-sm text-gray-500 flex items-center gap-1">
-                          <FiClock size={14} /> {post.readTime}
+                          <FiClock size={14} />{" "}
+                          {resource.readTime || "5 min read"}
                         </span>
                         <a
-                          href={`/blog/${post.slug}`}
+                          href={`/resources/${resource.type}/${resource.slug}`}
                           className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-400 to-cyan-500 text-black font-medium text-sm hover:shadow-lg hover:shadow-blue-400/20 transition-all"
                         >
                           Start Learning
@@ -276,7 +315,7 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
             ))}
           </div>
 
-          {filteredPosts.length === 0 && (
+          {filteredResources.length === 0 && (
             <div className="text-center py-12">
               <h4 className="text-xl text-gray-400 mb-2">
                 No tutorials found for {knowledgeLevel}
@@ -295,4 +334,4 @@ const BlogTutorialsSection = ({ posts }: { posts: BlogPost[] }) => {
   );
 };
 
-export default BlogTutorialsSection;
+export default ResourcesTutorialsSection;
