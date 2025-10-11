@@ -29,9 +29,9 @@ export default withSentryConfig(nextConfig, {
 // https://github.com/getsentry/sentry-webpack-plugin#options
 
 // Suppresses source map uploading logs during build
-silent: true,
-org: "javascript-mastery",
-project: "javascript-nextjs",
+silent: true, // !process.env.CI
+org: "marvelbiz-solutions",
+project: "portfolio-nextjs",
 }, {
 // For all available options, see:
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
@@ -60,5 +60,3 @@ disableLogger: true,
 // https://vercel.com/docs/cron-jobs
 automaticVercelMonitors: true,
 });
-
-// export default nextConfig;
