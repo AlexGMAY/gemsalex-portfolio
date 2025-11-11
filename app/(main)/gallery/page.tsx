@@ -1,31 +1,12 @@
 import React from "react";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import ScrollToTop from "@/components/ui/ScrollToTop";
-import MediaGalleryPage from "@/components/gallery/MediaGalleryPage";
 import HeroGallery from "@/components/gallery/HeroGallery";
-import FeaturedMemories from "@/components/gallery/FeaturedMemories";
 import MemoryHighlights from "@/components/gallery/MemoryHighlights";
-import PeopleSpotlight from "@/components/gallery/PeopleSpotlight";
-import YearInReview from "@/components/gallery/YearInReview";
-import MonthlyMoodBoard from "@/components/gallery/MonthlyMoodBoard";
 import StudentsGallery from "@/components/gallery/StudentsGallery";
 import FamilyGallery from "@/components/gallery/FamilyGallery";
 import MediaGallery from "@/components/gallery/MediaGallery";
-import {
-  getStudentsServer,
-  getGalleryMediaServer,
-  getMemoriesServer,
-  getAllGalleryDataServer,
-  getFamilyServer,
-} from "@/lib/cloudinary-server";
+import { getAllGalleryDataServer } from "@/lib/cloudinary-server";
 
-const page = async () => {
-  // const [students, galleryMedia, memories] = await Promise.all([
-  //   getStudentsServer(),
-  //   getGalleryMediaServer(),
-  //   getMemoriesServer(),
-  // ]);
+const page = async () => {  
 
   const galleryData = await getAllGalleryDataServer();
 

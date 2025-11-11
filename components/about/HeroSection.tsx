@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import { Spotlight } from "../ui/Spotlight";

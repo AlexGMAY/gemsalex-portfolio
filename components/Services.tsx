@@ -7,9 +7,9 @@ import { Code, BarChart, Globe, Smartphone, Plug, Cloud } from "lucide-react";
 const services = [
   {
     id: 1,
-    title: "Web Development",
+    title: "Revenue-Driving Web Platforms",
     description:
-      "Custom, responsive websites built with modern technologies using React, Next.js, Laravel, and WordPress.",
+      "Convert visitors into customers with high-performance websites engineered for user engagement and conversion optimization.",
     icon: <Globe className="h-8 w-8" />,
     color: "text-lime-400",
     borderColor: "border-lime-400",
@@ -17,9 +17,9 @@ const services = [
   },
   {
     id: 2,
-    title: "SaaS Development",
+    title: "Scalable SaaS Solutions",
     description:
-      "Scalable, cloud-based applications tailored to your business needs.",
+      "Transform your business operations with custom software that automates workflows and scales with your growth.",
     icon: <Code className="h-8 w-8" />,
     color: "text-blue-300",
     borderColor: "border-blue-300",
@@ -27,9 +27,9 @@ const services = [
   },
   {
     id: 3,
-    title: "Mobile & Web Applications",
+    title: "Cross-Platform Business Applications",
     description:
-      "Full-stack applications with seamless cross-platform experience using React, Next.js and React Native.",
+      "Engage your customers anywhere with seamless mobile and web experiences that drive retention and loyalty.",
     icon: <Smartphone className="h-8 w-8" />,
     color: "text-blue-400",
     borderColor: "border-blue-400",
@@ -37,9 +37,9 @@ const services = [
   },
   {
     id: 4,
-    title: "Cloud & DevOps",
+    title: "Cloud Infrastructure & Scalability",
     description:
-      "Docker, containerization, Cloud deployment, CI/CD pipelines, Kubernetes and AWS/Azure solutions.",
+      "Future-proof your technology with robust cloud architecture that ensures reliability, security, and unlimited growth potential.",
     icon: <Cloud className="h-8 w-8" />,
     color: "text-indigo-400",
     borderColor: "border-indigo-400",
@@ -47,9 +47,9 @@ const services = [
   },
   {
     id: 5,
-    title: "SEO & Performance Optimization",
+    title: "Digital Visibility & Performance",
     description:
-      "Boost your online presence and website speed with expert strategies.",
+      "Dominate search rankings and accelerate user experience with SEO-optimized, lightning-fast applications.",
     icon: <BarChart className="h-8 w-8" />,
     color: "text-yellow-400",
     borderColor: "border-yellow-400",
@@ -57,9 +57,9 @@ const services = [
   },
   {
     id: 6,
-    title: "API Development",
+    title: "Integration & Automation Systems",
     description:
-      "Secure REST & GraphQL APIs, third-party integrations, and backend services.",
+      "Connect your business ecosystem with secure APIs and automation that eliminate manual work and data silos.",
     icon: <Plug className="h-8 w-8" />,
     color: "text-cyan-400",
     borderColor: "border-cyan-400",
@@ -107,11 +107,13 @@ const Services = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-lime-400">
-              My Digital Services
+              Business Growth Through Technology
             </span>
           </h2>
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
-            High-quality development services tailored to your business needs.
+            I deliver custom software solutions that solve real business
+            problems, drive revenue, and create sustainable competitive
+            advantages.
           </p>
         </motion.div>
 
@@ -159,25 +161,31 @@ const Services = () => {
                   ))}
                 </div>
 
-                <CardHeader className="pb-4 relative z-10">
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className={`${service.color} mb-4 inline-block`}
-                  >
-                    {service.icon}
-                  </motion.div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                <CardHeader>
+                  <div className="pb-4 relative z-10">
+                    <motion.div
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className={`${service.color} mb-4 inline-block`}
+                    >
+                      {service.icon}
+                    </motion.div>
+                    <div className="text-xl">
+                      <CardTitle>{service.title}</CardTitle>
+                    </div>
+                  </div>
                 </CardHeader>
-                <CardContent className="relative z-10">
-                  <motion.p
-                    className="text-neutral-400"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                  >
-                    {service.description}
-                  </motion.p>
+                <CardContent>
+                  <div className="relative z-10">
+                    <motion.p
+                      className="text-neutral-400"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
+                    >
+                      {service.description}
+                    </motion.p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

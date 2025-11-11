@@ -8,7 +8,7 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -39,10 +39,10 @@ const config = {
           200: "#C1C2D3",
         },
         blue: {
-         100: "#E4ECFF",
-         200: "#128AD4",
-         300: "#50D3F1",
-         800: "#172129",
+          100: "#E4ECFF",
+          200: "#128AD4",
+          300: "#50D3F1",
+          800: "#172129",
         },
         yellow: {
           DEFAULT: "",

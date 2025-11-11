@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { FiChevronDown, FiMail, FiCalendar, FiMessageSquare } from "react-icons/fi";
 

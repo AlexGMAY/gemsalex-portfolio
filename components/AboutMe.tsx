@@ -17,9 +17,17 @@ const AboutMe = () => {
   ];
 
   const stats = [
-    { value: "8+", label: "Years Experience", icon: <FiAward /> },
-    { value: "50+", label: "Projects Completed", icon: <FiCode /> },
-    { value: "100%", label: "Client Satisfaction", icon: <FiUser /> },
+    {
+      value: "8+",
+      label: "Years Solving Business Challenges",
+      icon: <FiAward />,
+    },
+    {
+      value: "50+",
+      label: "Successful Client Transformations",
+      icon: <FiCode />,
+    },
+    { value: "100%", label: "Focus On Your ROI", icon: <FiUser /> },
   ];
 
   return (
@@ -35,12 +43,13 @@ const AboutMe = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Learn {" "}
-            <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
-              About Me
-            </span>            
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            The Mind{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
+              Behind Your Success
+            </span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-lime-400 to-blue-300 mx-auto rounded-full" />
+          <div className="w-80 h-1 bg-gradient-to-r from-lime-400 to-blue-300 mx-auto rounded-full" />
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-16 items-center">
@@ -59,8 +68,8 @@ const AboutMe = () => {
               {/* Image container - now with explicit dimensions */}
               <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full h-full min-h-[500px] lg:min-h-[650px]">
                 <Image
-                  src="/alex-smile.jpg"
-                  alt="Merveille Alexandre"
+                  src="/gallery/alex-office.jpg"
+                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre"
                   fill
                   className="object-cover object-center" // Changed from object-top to center
                   quality={100}
@@ -68,7 +77,7 @@ const AboutMe = () => {
                   sizes="(max-width: 768px) 100vw, 50vw" // Added responsive sizing
                 />
                 {/* Gradient overlay with smile icon */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end justify-end p-6">
                   <motion.div
                     animate={{ rotate: [0, 10, -10, 0] }}
                     transition={{ repeat: Infinity, duration: 3 }}
@@ -91,22 +100,23 @@ const AboutMe = () => {
           >
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Full-Stack Developer & UI Enthusiast
+                From Complex Business Problems <br />- To Scalable Technical Solutions
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                I'm a passionate developer with expertise in modern web
-                technologies. I specialize in building performant, accessible,
-                and responsive web applications that deliver exceptional user
-                experiences. With a keen eye for design and a commitment to
-                clean code, I bridge the gap between functionality and
-                aesthetics.
+                I transform business challenges into competitive advantages
+                through strategic software engineering. With over 8 years of
+                experience, I don't just write code—I solve the operational
+                inefficiencies, scalability bottlenecks, and revenue-limiting
+                problems that hold businesses back. My approach combines
+                technical expertise with deep business understanding to deliver
+                solutions that drive measurable growth.
               </p>
             </div>
 
             {/* Soft Skills */}
             <div>
               <h4 className="text-xl font-semibold text-white mb-4">
-                My Soft Skills
+                How I Deliver Exceptional Results
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {softSkills.map((skill, index) => (
@@ -126,7 +136,7 @@ const AboutMe = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* <div className="grid grid-cols-3 gap-4">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -143,7 +153,7 @@ const AboutMe = () => {
                   <p className="text-gray-400 text-sm">{stat.label}</p>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
 
             {/* CTA */}
             <motion.div
@@ -160,7 +170,7 @@ const AboutMe = () => {
                   whileTap={{ scale: 0.97 }}
                   className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium shadow-lg hover:shadow-blue-500/30 transition-all cursor-pointer"
                 >
-                  <FiUser /> Learn More About Me
+                  <FiUser /> Get to know me
                 </motion.a>
               </Link>
 

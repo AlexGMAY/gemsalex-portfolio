@@ -48,32 +48,3 @@ function getResourceLevel(
   if (tags.includes("beginner")) return "beginner";
   return "intermediate";
 }
-
-// import { NextResponse } from "next/server";
-// import { getAllResources, getResourceTypes } from "@/lib/resources";
-
-// export async function GET() {
-//   try {
-//     const resources = getAllResources();
-//     const types = getResourceTypes();
-
-//     return NextResponse.json({
-//       resources: resources.map((resource) => ({
-//         ...resource,
-//         date: resource.date.toISOString(), // Convert Date to string for JSON
-//       })),
-//       types,
-//     });
-//   } catch (error) {
-//     console.error("Error in resources API:", error);
-//     return NextResponse.json(
-//       {
-//         resources: [],
-//         types: ["blog", "tutorials", "links"],
-//         error: "Failed to load resources",
-//       },
-//       { status: 500 }
-//     );
-//   }
-// }
-

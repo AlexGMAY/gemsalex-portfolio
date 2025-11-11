@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -7,48 +9,48 @@ const Approach = () => {
   return (
     <section className="w-full py-20">
       <h2 className="heading">
-        My{" "}
-        <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
-          Work Process
+        Your Success{" "}
+        <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
+          Built on a Proven Process
         </span>
       </h2>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 grid grid-cols md:grid-cols-2 lg:grid-cols-4 items-center justify-center w-full gap-4">
         {/* add des prop */}
+        {/* Card 1 - Discovery */}
         <Card
-          title="Discovery Call"
+          title="Strategic Discovery"
           icon={<AceternityIcon order="Phase 1" />}
-          des="Free, no obligation consultation to understand your needs.  We'll discuss structure and content requirements."
+          des="We'll uncover your unique business challenges and define clear objectives to ensure your project delivers maximum ROI."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
-            // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
             containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
           />
         </Card>
+
+        {/* Card 2 - Planning */}
         <Card
-          title="Proposal & Contract"
+          title="Strategic Planning"
           icon={<AceternityIcon order="Phase 2" />}
-          des="Fixed scope with transparent pricing, no hidden fees. We'll collaborate to map out your website's goals, target audience, and key functionalities."
+          des="Clear roadmap with fixed pricing. We'll define measurable success metrics and create a timeline that aligns with your business goals."
         >
           <CanvasRevealEffect
             animationSpeed={3}
-            // change bg-black to bg-pink-900
             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
             colors={[
-              // change the colors of the
               [255, 166, 158],
               [221, 255, 247],
             ]}
             dotSize={2}
           />
-          {/* Radial gradient for the cute fade */}
         </Card>
+
+        {/* Card 3 - Execution */}
         <Card
-          title="Design / Development"
+          title="Strategic Execution"
           icon={<AceternityIcon order="Phase 3" />}
-          des="Weekly updates with progress demos. This is where the magic happens!
-          I'll build your website from the ground up."
+          des="Weekly progress demos ensure we're building exactly what you need. Your vision comes to life with precision and quality."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -56,10 +58,12 @@ const Approach = () => {
             colors={[[125, 211, 252]]}
           />
         </Card>
+
+        {/* Card 4 - Launch */}
         <Card
-          title="Revisions & Launch"
+          title="Results Delivery"
           icon={<AceternityIcon order="Phase 4" />}
-          des="Your satisfaction guaranteed before final delivery."
+          des="We ensure your solution drives real business impact before launch, with ongoing support for continued success."
         >
           <CanvasRevealEffect
             animationSpeed={3}

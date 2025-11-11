@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { educationBoard, certificationBoard, courseBoard } from "@/data";
 import { FaGraduationCap, FaCertificate, FaBook } from "react-icons/fa";

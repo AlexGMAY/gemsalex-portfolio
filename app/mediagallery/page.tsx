@@ -2,7 +2,7 @@ import MediaGallery from '@/components/gallery/MediaGallery';
 import { getImagesAndVideos } from '@/lib/cloudinary';
 
 export default async function GalleryPage() {
-  let media = [];
+  let media: Awaited<ReturnType<typeof getImagesAndVideos>> = [];
   
   try {
     media = await getImagesAndVideos();

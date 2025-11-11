@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from 'framer-motion'
 import React from 'react'
 
@@ -17,9 +19,12 @@ const CallToAction = () => {
           className="flex flex-none gap-16 text-7xl md:text-8xl font-medium"
         >
           {Array.from({ length: 10 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-16 hover:text-lime-500">
+            <div
+              key={i}
+              className="flex items-center gap-16 hover:text-lime-500"
+            >
               <span className="text-yellow-500 text-7xl">&#10038;</span>
-              <span className="heading">Let&apos;s Work Together !</span>
+              <span className="heading">Let's Build Your Success Story !</span>
             </div>
           ))}
         </motion.div>

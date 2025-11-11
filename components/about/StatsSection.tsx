@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, useAnimation } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";

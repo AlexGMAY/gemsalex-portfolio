@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { FiClock, FiUsers, FiGlobe } from "react-icons/fi";
 import { useState, useEffect } from "react";

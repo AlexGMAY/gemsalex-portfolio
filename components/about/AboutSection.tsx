@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { FiUser, FiTarget, FiAward } from "react-icons/fi";
 import { FaCode, FaLightbulb } from "react-icons/fa";

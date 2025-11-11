@@ -3,6 +3,7 @@
 import { FaArrowRight, FaCode, FaPalette } from "react-icons/fa";
 import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 
 const Hero = () => {
   const [leftPictureScope, leftPictureAnimate] = useAnimate();
@@ -86,7 +87,7 @@ const Hero = () => {
       >
         <img
           src="/dashboard.jpeg"
-          alt="Web apps development"
+          alt="Custom Business Dashboard Development - Operational Efficiency Software"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
           draggable="false"
         />
@@ -99,7 +100,7 @@ const Hero = () => {
       >
         <img
           src="/realestate-dark.jpg"
-          alt="Website Development"
+          alt="Real Estate Technology Solutions - Custom Software Development"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
           draggable="false"
         />
@@ -167,26 +168,26 @@ const Hero = () => {
       {/* Centered content */}
       <motion.div
         style={{ y: yText }}
-        className="relative z-10 w-full max-w-[89vw] md:max-w-2xl lg:max-w-[70vw] px-6 text-center my-20"
+        className="relative z-10 w-full max-w-[89vw] md:max-w-2xl lg:max-w-[73vw] px-6 text-center my-20"
       >
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="text-[40px] md:text-5xl lg:text-7xl font-bold leading-tight mb-6"
+          className="text-[40px] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
-            Digital Experiences
+            Custom Software Solutions
           </span>{" "}
           <br />
           That{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-lime-400">
-            Convert
+          <span className="text-[40px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
+            Drive Growth
           </span>{" "}
           &{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
-            Inspire
+          <span className="text-[40px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
+            Maximize ROI
           </span>
         </motion.h1>
 
@@ -195,14 +196,16 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl max-w-2xl mx-auto mb-8"
+          className="md:tracking-wider mb-4 text-sm md:text-lg lg:text-1xl max-w-4xl mx-auto mb-8"
         >
           I'm{" "}
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-lime-400">
+          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
             Merveille Alexander
           </span>
-          , crafting high-performance web applications with pixel-perfect design
-          and cutting-edge technology.
+          , a strategic software engineer who transforms complex business
+          challenges into scalable, revenue-driving applications. I specialize
+          in building custom solutions that eliminate operational inefficiencies
+          and create competitive advantages.
         </motion.p>
 
         {/* Buttons */}
@@ -212,66 +215,20 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          <a
-            href="#work"
+          <Link
+            href="#case-studies"
             className="flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-200 to-blue-300 text-white font-medium hover:shadow-lg transition-all"
           >
-            View My Work <FaArrowRight />
-          </a>
-          <a
-            href="#contact"
+            See Client Success Stories <FaArrowRight />
+          </Link>
+          <Link
+            href="/contact"
             className="flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/20 text-white font-medium hover:bg-white/5 transition-all"
           >
-            Let's Collaborate
-          </a>
+            Get Free Technical Audit
+          </Link>
         </motion.div>
-
-        {/* Glass card - now centered below */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-          className="backdrop-blur-lg bg-white/5 rounded-2xl border border-white/10 shadow-xl overflow-hidden p-8 max-w-2xl mx-auto"
-        >
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-full bg-blue-500/10">
-                <FaCode className="text-blue-400 text-xl" />
-              </div>
-              <h3 className="text-xl font-bold text-white">
-                Technical Excellence
-              </h3>
-            </div>
-            <p className="text-neutral-300">
-              React, Next.js, Node.js, and modern web technologies to build
-              fast, scalable applications.
-            </p>
-
-            <div className="flex items-center gap-4 mt-8">
-              <div className="p-3 rounded-full bg-purple-500/10">
-                <FaPalette className="text-purple-400 text-xl" />
-              </div>
-              <h3 className="text-xl font-bold text-white">Design Focused</h3>
-            </div>
-            <p className="text-neutral-300">
-              Beautiful interfaces that prioritize user experience and
-              conversion optimization.
-            </p>
-          </div>
-        </motion.div> */}
       </motion.div>
-
-      {/* Scroll indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-      >
-        <div className="animate-bounce w-8 h-14 rounded-full border-2 border-white/30 flex justify-center p-1">
-          <div className="w-2 h-2 rounded-full bg-white/80 mt-2" />
-        </div>
-      </motion.div> */}
     </section>
   );
 };

@@ -1,5 +1,3 @@
-"use client";
-
 import CalendlyScheduler from "@/components/contact/CalendlyScheduler";
 import ClientMap from "@/components/contact/ClientMap";
 import ContactHero from "@/components/contact/ContactHero";

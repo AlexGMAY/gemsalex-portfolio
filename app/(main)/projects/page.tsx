@@ -1,10 +1,5 @@
-"use client"
-
 import React from "react";
-
 import Realisations from "@/components/Realisations";
-import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ui/ScrollToTop";
 import CallToAction from "@/components/CallToAction";
 import SkillsSection from "@/components/about/SkillsSection";
 import Clients from "@/components/Clients";

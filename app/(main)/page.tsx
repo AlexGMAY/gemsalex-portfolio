@@ -1,7 +1,3 @@
-"use client";
-
-import { navItems } from "@/data";
-
 import Hero from "@/components/Hero";
 import Grid from "@/components/Grid";
 import Clients from "@/components/Clients";
@@ -18,28 +14,89 @@ import Skills from "@/components/Skills";
 import Realisations from "@/components/Realisations";
 import NeonMatrix from "@/components/TechnoMosaic";
 import SuperPricing from "@/components/pricing/Pricing";
+import { Metadata } from "next";
+
+// SEO Metadata for server component
+export const metadata: Metadata = {
+  title:
+    "Merveille Alexander - Strategic Software Engineer & Business Solution Developer",
+  description:
+    "Transform your business with custom software solutions. Full-stack developer specializing in SaaS platforms, web applications, and digital growth strategies. Drive ROI with proven technology.",
+  keywords:
+    "software engineer, full-stack developer, SaaS development, custom software solutions, business automation, web application development, React developer, Next.js developer",
+  authors: [{ name: "Merveille Alexander" }],
+  metadataBase: new URL('https://gemsalex.com'),
+  openGraph: {
+    title: "Merveille Alexander - Strategic Software Engineer",
+    description:
+      "Transform your business with custom software solutions that drive growth and deliver ROI",
+    type: "website",
+    locale: "en_US",
+    siteName: "Merveille Alexander Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg", // Add your OG image
+        width: 1200,
+        height: 630,
+        alt: "Merveille Alexander - Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Merveille Alexander - Strategic Software Engineer",
+    description: "Custom software solutions for business growth",
+    images: ["/og-image.jpg"], // Add your Twitter image
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+
 
 const Home = () => {
   return (
-    <main className="relative w-full">
-      <Hero />
-      <div className="w-full sm:px-10 px-5">
-        <TechLogos />
-        <AboutMe />
-        <Grid />
-        <NeonMatrix />
-        <AnimatedQuote />
-        <Services />
-        <Platforms />
-        <Skills />
-        <RecentProjects />
-        <SuperPricing pageType="home" />
-        <Realisations isHomePage={true} />
-        <Approach />
-        <Clients />
-        <Faqs />
-        <CallToAction />
-      </div>
+    <main className="relative w-full">     
+
+      {/* Semantic HTML structure for SEO */}
+      <article itemScope itemType="https://schema.org/Article">
+        <meta
+          itemProp="name"
+          content="Merveille Alexander - Software Engineering Portfolio"
+        />
+        <meta
+          itemProp="description"
+          content="Expert full-stack developer building custom software solutions that drive business growth and deliver measurable ROI"
+        />
+
+        <Hero />
+        <div className="w-full sm:px-10 px-5">
+          <TechLogos />
+          <AboutMe />
+          <Grid />
+          <NeonMatrix />
+          <AnimatedQuote />
+          <Services />
+          <Platforms />
+          <Skills />
+          <RecentProjects />
+          <SuperPricing pageType="home" />
+          <Realisations isHomePage={true} />
+          <Approach />
+          <Clients />
+          <Faqs />
+          <CallToAction />
+        </div>
+      </article>
     </main>
   );
 };

@@ -25,7 +25,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
     : filteredProjects;
 
   return (
-    <section className="py-16 md:py-24 text-white" id="projects">
+    <section className="py-16 md:py-24 text-white" id="case-studies">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <motion.h2
@@ -35,7 +35,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
             className="text-3xl md:text-5xl font-bold mb-3"
           >
             My{" "}
-            <span className="bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
               Creative
             </span>{" "}
             Projects
@@ -46,7 +46,8 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
             transition={{ delay: 0.2 }}
             className="text-lg text-neutral-400 max-w-2xl mx-auto"
           >
-            Browse through some of my best work across different technologies.
+            Proven solutions that drive business growth and solve real-world
+            challenges
           </motion.p>
         </div>
 
@@ -162,9 +163,12 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
           >
             <Button
               // asChild
-              className="bg-gradient-to-r from-blue-200 to-blue-300 text-white px-8 py-3 rounded-lg hover:from-lime-500 hover:to-blue-500 shadow-lg hover:shadow-lime-500/20 transition-all"
+              className="bg-gradient-to-r from-blue-200 to-blue-300 text-white px-8 py-3 rounded-lg hover:from-blue-500 hover:to-lime-500 shadow-lg hover:shadow-lime-500/20 transition-all"
             >
-              <Link href="/projects" className="flex items-center gap-2 transition all group">
+              <Link
+                href="/projects"
+                className="flex items-center gap-2 transition all group"
+              >
                 View All Projects
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>

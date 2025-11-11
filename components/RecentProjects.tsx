@@ -8,18 +8,27 @@ const projects = [
   {
     id: 1,
     title: "RDCEMPLOIS Platform",
-    description: "High-performance and modern Job board platform",
+    description:
+      "Job board platform that connects employers with qualified candidates faster",
     tech: ["PHP", "WordPress", "MySQL", "AI", "JavaScript"],
     image: "/projects/rdcemplois.webp",
     github: "#",
-    live: "#",
+    live: "https://rdcemplois.com",
     category: "SaaS",
   },
   {
     id: 2,
     title: "ReviewGenie Platform",
-    description: "Online Reputation Management Platform",
-    tech: ["React", "React Router", "Node", "TailwindCss", "Express", "MongoDB"],
+    description:
+      "Reputation management system that boosts business credibility and trust",
+    tech: [
+      "React",
+      "React Router",
+      "Node",
+      "TailwindCss",
+      "Express",
+      "MongoDB",
+    ],
     image: "/projects/home-reviewgenie.png",
     github: "#",
     live: "#",
@@ -28,7 +37,8 @@ const projects = [
   {
     id: 3,
     title: "SmartPost Optimizer",
-    description: "SEO Optimized Content Wordpress Plugin for blogs",
+    description:
+      "WordPress plugin that increases blog traffic through AI-powered SEO",
     tech: ["PHP", "MySQL", "WordPress"],
     image: "/favicon-MA.png",
     github: "#",
@@ -39,7 +49,7 @@ const projects = [
     id: 4,
     title: "UIForge AI Platform",
     description:
-      "AI-powered web app that instantly generates high-fidelity, professional-grade UI designs",
+      "AI tool that generates professional UI designs in seconds, saving development time",
     tech: ["Next.js", "React", "Mongodb", "Tailwind", "Express"],
     image: "/favicon-MA.png",
     github: "#",
@@ -49,7 +59,8 @@ const projects = [
   {
     id: 5,
     title: "WP CRM Enterprise Plugin",
-    description: "AI-powered WordPress CRM Enterprise plugin for business",
+    description:
+      "WordPress CRM that streamlines customer management and boosts sales",
     tech: ["PHP", "WordPress", "MySQL"],
     image: "/projects/wp-crm-plugin.webp",
     github: "#",
@@ -60,7 +71,7 @@ const projects = [
     id: 6,
     title: "ScreenFlow Pro",
     description:
-      "Futuristic Screen Sharing and Video Editing and collaboration App",
+      "Collaboration platform for seamless screen sharing and video editing",
     tech: ["Next.js", "React", "Mongodb", "Tailwind", "Express"],
     image: "/favicon-MA.png",
     github: "#",
@@ -89,14 +100,14 @@ export default function RecentProjects() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             The{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
               Inside
             </span>{" "}
             Scoop
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Cutting-edge solutions built with modern technologies
-          </p>
+            Enterprise-grade software solutions in development with modern technologies
+          </p>        
         </motion.div>
 
         {/* Projects grid */}
@@ -164,7 +175,7 @@ export default function RecentProjects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-200 to-blue-300 text-white text-sm font-medium transition-all hover:from-lime-500 hover:to-blue-500"
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-200 to-blue-300 text-white text-sm font-medium transition-all hover:from-blue-500 hover:to-lime-500"
                     >
                       <FiExternalLink size={16} />
                       <span>Live Demo</span>
@@ -185,7 +196,7 @@ export default function RecentProjects() {
         >
           <Link
             href="/products"
-            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-200 to-blue-300 text-white font-medium hover:from-lime-500 hover:to-blue-500 transition-all group"
+            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-200 to-blue-300 text-white font-medium hover:from-blue-500 hover:to-lime-500 transition-all group"
           >
             View All Products
             <FiArrowRight className="group-hover:translate-x-1 transition-transform" />

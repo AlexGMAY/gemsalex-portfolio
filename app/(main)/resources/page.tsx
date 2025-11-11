@@ -1,12 +1,9 @@
 "use client";
 
 import ResourcesBlogSection from "@/components/resources/ResourcesBlogSection";
-// import ResourcesFeaturedSection from "@/components/resources/ResourcesFeaturedSection";
 import ResourcesHero from "@/components/resources/ResourcesHero";
 import ResourcesLinksSection from "@/components/resources/ResourcesLinksSection";
 import ResourcesTutorialsSection from "@/components/resources/ResourcesTutorialsSection";
-// import ResourcesBlogSection from "@/components/resources/ResourcesBlogSection";
-// import ResourcesAllSection from "@/components/resources/ResourcesAllSection";
 import { Resource } from "@/lib/resources";
 import type { Metadata } from "next";
 import { useState, useEffect } from "react";
@@ -115,9 +112,7 @@ export default function ResourcesPage() {
   return (
     <main className="relative w-full">
       <ResourcesHero allResources={allResources} />
-      <div className="w-full flex justify-center items-center flex-col sm:px-10 px-5">
-        {/* <ResourcesFeaturedSection resources={featuredResources} />
-        <ResourcesAllSection resources={latestResources} /> */}
+      <div className="w-full flex justify-center items-center flex-col sm:px-10 px-5">        
         <ResourcesBlogSection resources={blogResources} />
         <ResourcesTutorialsSection resources={tutorialResources} />
         <ResourcesLinksSection resources={linkResources} />

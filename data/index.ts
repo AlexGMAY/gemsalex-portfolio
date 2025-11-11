@@ -13,7 +13,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Your vision, delivered with precision",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -23,7 +23,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
+    title: "Available in your timezone",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -33,8 +33,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "Proven tech stack",
+    description: "Built for results",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -43,7 +43,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Driven by your success",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -51,11 +51,10 @@ export const gridItems = [
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
-
   {
     id: 5,
-    title: "Currently building 5+ commercial SAAS applications...",
-    description: "The Inside Scoop",
+    title: "Building revenue-driving SaaS platforms",
+    description: "Client success stories",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -64,7 +63,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Ready to grow your business?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -74,72 +73,44 @@ export const gridItems = [
   },
 ];
 
-export const recentProjects = [
-  {
-    id: 1,
-    title: "ReviewGenie - SaaS Platform",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/yourreviewgenie.com",
-  },
-  {
-    id: 2,
-    title: "RDCEMPLOIS - SaaS Platform",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
-  },
-  {
-    id: 3,
-    title: "SmartPost Optimizer - WP Plugin",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
-  },
-  {
-    id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
-  },
-];
+
 
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Mr Alexander transformed our loan enterprise website with SEO-optimized content that actually converts. Our online applications increased by 40% within 3 months. His strategic approach to onmine visibility combined with client-centered design delivered real business results.",
+    name: "John Batubenga",
+    title: "CEO at Elinsas Loans",
+    avatar: "/avatars/logo-elin.jpg",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, but more importantly, it loads instantly and converts visitors into clients seamlessly. The custom CMS he created saves us hours of work daily. Truly a partner who understands business needs.",
+    name: "Sarah Chen",
+    title: "Marketing Director at ABC Digitale",
+    avatar: "/avatars/logo-abcd.jpg",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "GGTE needed a modern, professional website that reflected our construction expertise. Mr Merveille Alexander delivered a stunning platform that showcases our projects beautifully. The site performance is exceptional, and the admin panel makes content updates effortless. Our project inquiries have doubled since launch.",
+    name: "Dieu Tankwe Mulundu",
+    title: "CEO at GGTE Construction",
+    avatar: "/avatars/logo-ggte.jpg",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "As a SaaS startup, we needed both technical excellence and business acumen. Merveille built our entire platform architecture, implemented secure payment systems, and created an intuitive user experience. His code is clean, scalable, and he delivered at schedule. One of the best technical investment we've made.",
+    name: "Alex Rivera",
+    title: "Founder at CloudFlow SaaS",
+    avatar: "/avatars/logo-abcd.jpg",
   },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
+  // {
+  //   quote:
+  //     "Most developers just write code. Merveille solves business problems. He automated our entire client onboarding process, reducing manual work by 15 hours per week. The system he built is reliable, easy to use, and has scaled perfectly as we've grown. He's more than a developer - he's a strategic partner.",
+  //   name: "Marcus Thorne",
+  //   title: "Operations Director at ScaleRight Inc",
+  //   avatar: "/avatars/logo-abcd.jpg",
+  // },
 ];
 
 export const companies = [
@@ -181,36 +152,7 @@ export const companies = [
   },
 ];
 
-// export const workExperience = [
-//   {
-//     id: 1,
-//     title: "Frontend Engineer Intern",
-//     desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-//     className: "md:col-span-2",
-//     thumbnail: "/exp1.svg",
-//   },
-//   {
-//     id: 2,
-//     title: "Mobile App Dev - JSM Tech",
-//     desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-//     className: "md:col-span-2", // change to md:col-span-2
-//     thumbnail: "/exp2.svg",
-//   },
-//   {
-//     id: 3,
-//     title: "Freelance App Dev Project",
-//     desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-//     className: "md:col-span-2", // change to md:col-span-2
-//     thumbnail: "/exp3.svg",
-//   },
-//   {
-//     id: 4,
-//     title: "Lead Frontend Developer",
-//     desc: "Developed and maintained user-facing features using modern frontend technologies.",
-//     className: "md:col-span-2",
-//     thumbnail: "/exp4.svg",
-//   },
-// ];
+
 
 interface SocialMediaItem {
   id: number;
@@ -223,19 +165,19 @@ export const socialMedia: SocialMediaItem[] = [
   {
     id: 1,
     img: "/git.svg",
-    alt: "GitHub Profile",
-    link: "https://github.com/yourusername",
+    alt: "GitHub Profile - Merveille Alexander - Fullstack Software Engineer",
+    link: "https://github.com/AlexGMAY/",
   },
   {
     id: 2,
     img: "/twit.svg",
-    alt: "X Profile",
-    link: "https://github.com/yourusername",
+    alt: "X Profile - Merveille Alexander - Fullstack Software Engineer",
+    link: "https://x.com/@themarvelbiz/",
   },
   {
     id: 3,
     img: "/link.svg",
-    alt: "LinkedIn Profile",
+    alt: "LinkedIn Profile - Merveille Alexander - Fullstack Software Engineer",
     link: "https://www.linkedin.com/in/alexandre-merveille-may/",
   },
 ];
@@ -887,16 +829,16 @@ export const projects = [
     title: "GGTE Sarl",
     category: "Nextjs",
     img: "/avatars/logo-ggte.jpg",
-    github: "https://github.com/yourusername/vuejs-admin-panel",
-    live: "https://yourlivewebsite.com",
+    github: "https://github.com/AlexGMAY/ggtesarl",
+    live: "https://ggtesarl.gemsalex.com",
     techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
   },
   {
     id: 6,
     title: "Zando Market",
-    category: "Mern",
+    category: "Nextjs",
     img: "/p2.svg",
-    github: "https://github.com/yourusername/mern-social-media-app",
+    github: "https://github.com/AlexGMAY/Zando-Central-Market",
     live: "https://yourlivewebsite.com",
     techStack: [
       "/next.svg",
@@ -909,10 +851,10 @@ export const projects = [
   {
     id: 7,
     title: "Cyberperformance Review Platform",
-    category: "SaaS",
+    category: "Mern",
     img: "/p3.svg",
-    github: "https://github.com/yourusername/saas-marketing-site",
-    live: "https://yourlivewebsite.com",
+    github: "https://github.com/AlexGMAY/Cyberperformance-Review-App",
+    live: "https://cyberperformance.gemsalex.com",
     techStack: [
       "/re.svg",
       "/tail.svg",
@@ -962,95 +904,9 @@ export const categories = [
   "All",
   "WordPress",
   "React",
-  "Nextjs",
-  "Laravel",
-  "Vuejs",
+  "Nextjs",  
   "Mern",
   "SaaS",
-];
-
-const educations = [
-  {
-    degree: "Bachelor’s in Computer Science",
-    institution: "Stanford University",
-    year: "2020",
-  },
-  {
-    degree: "Master’s in Software Engineering",
-    institution: "Massachusetts Institute of Technology (MIT)",
-    year: "2022",
-  },
-  {
-    degree: "Diploma in Web Development",
-    institution: "General Assembly",
-    year: "2019",
-  },
-  {
-    degree: "High School Diploma",
-    institution: "Greenwood High",
-    year: "2016",
-  },
-  {
-    degree: "Online Course in Data Structures",
-    institution: "Coursera",
-    year: "2021",
-  },
-];
-
-const certifications = [
-  {
-    name: "AWS Certified Developer",
-    issuer: "Amazon Web Services",
-    icon: "/icons/aws-certified.png",
-  },
-  {
-    name: "Google Analytics Certified",
-    issuer: "Google",
-    icon: "/icons/google-analytics.png",
-  },
-  {
-    name: "Microsoft Certified: Azure Fundamentals",
-    issuer: "Microsoft",
-    icon: "/icons/azure-certified.png",
-  },
-  {
-    name: "Certified Scrum Master (CSM)",
-    issuer: "Scrum Alliance",
-    icon: "/icons/scrum-certified.png",
-  },
-  {
-    name: "Oracle Certified Java Programmer",
-    issuer: "Oracle",
-    icon: "/icons/oracle-certified.png",
-  },
-];
-
-const courses = [
-  {
-    name: "Advanced React",
-    platform: "Udemy",
-    year: "2023",
-  },
-  {
-    name: "Fullstack Web Development",
-    platform: "Coursera",
-    year: "2022",
-  },
-  {
-    name: "Node.js: The Complete Guide",
-    platform: "Udemy",
-    year: "2021",
-  },
-  {
-    name: "Machine Learning with Python",
-    platform: "edX",
-    year: "2020",
-  },
-  {
-    name: "UI/UX Design Fundamentals",
-    platform: "Skillshare",
-    year: "2019",
-  },
 ];
 
 export interface BlogPost {
@@ -1067,110 +923,6 @@ export interface BlogPost {
   progress?: number;
 }
 
-export const blogPosts = [
-  {
-    id: "1",
-    title: "Advanced Next.js Optimization Techniques",
-    excerpt:
-      "Learn how to achieve 95+ Lighthouse scores with these proven methods.",
-    date: "May 15, 2023",
-    slug: "/blog/nextjs-optimization",
-    readTime: "8 min read",
-    tag: "Performance",
-    category: "Development",
-    featured: true,
-    views: 1245,
-    progress: 85,
-  },
-  {
-    id: "2",
-    title: "Building Scalable React Architecture",
-    excerpt:
-      "Patterns for maintaining large-scale React applications with ease.",
-    date: "April 2, 2023",
-    slug: "/blog/react-architecture",
-    readTime: "10 min read",
-    tag: "Frontend",
-    category: "Development",
-    featured: true,
-    views: 982,
-    progress: 78,
-  },
-  {
-    id: "3",
-    title: "TypeScript Best Practices for Fullstack Devs",
-    excerpt: "Type-safe patterns I wish I knew when starting with TypeScript.",
-    date: "March 18, 2023",
-    slug: "/blog/typescript-best-practices",
-    readTime: "6 min read",
-    tag: "TypeScript",
-    category: "Development",
-    views: 1560,
-    progress: 92,
-  },
-  {
-    id: "4",
-    title: "UI/UX Design Principles for Developers",
-    excerpt: "Essential design concepts every developer should know.",
-    date: "February 5, 2023",
-    slug: "/blog/design-principles",
-    readTime: "5 min read",
-    tag: "Design",
-    category: "Design",
-    views: 875,
-    progress: 65,
-  },
-  {
-    id: "5",
-    title: "Freelancing Business Strategies",
-    excerpt: "How I built a sustainable freelance development business.",
-    date: "January 12, 2023",
-    slug: "/blog/freelancing-strategies",
-    readTime: "12 min read",
-    tag: "Business",
-    category: "Business",
-    featured: true,
-    views: 2100,
-    progress: 88,
-  },
-  {
-    id: "6",
-    title: "Modern CSS Techniques You Should Know",
-    excerpt: "Explore cutting-edge CSS features for better styling solutions.",
-    date: "December 8, 2022",
-    slug: "/blog/modern-css",
-    readTime: "7 min read",
-    tag: "CSS",
-    category: "Frontend",
-    views: 1320,
-    progress: 72,
-  },
-  {
-    id: "7",
-    title: "Authentication Patterns in Next.js",
-    excerpt: "Comparing different auth strategies for Next.js applications.",
-    date: "November 21, 2022",
-    slug: "/blog/nextjs-auth",
-    readTime: "9 min read",
-    tag: "Security",
-    category: "Development",
-    views: 1450,
-    progress: 81,
-  },
-  {
-    id: "8",
-    title: "Building Accessible Web Applications",
-    excerpt: "Practical accessibility tips for developers.",
-    date: "October 15, 2022",
-    slug: "/blog/web-accessibility",
-    readTime: "11 min read",
-    tag: "Accessibility",
-    category: "Best Practices",
-    featured: true,
-    views: 920,
-    progress: 68,
-  },
-];
 
 export const educationBoard = [
   {
