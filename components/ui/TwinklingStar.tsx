@@ -14,7 +14,7 @@ export function TwinklingStar({ size = 24 }: { size?: number }) {
       ]);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [setKeyframes, keyframes]);
 
   return (
     <div className="relative" style={{ width: size, height: size }}>

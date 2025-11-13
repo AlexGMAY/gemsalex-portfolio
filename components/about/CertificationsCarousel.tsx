@@ -8,6 +8,7 @@ import {
   FiAward,
 } from "react-icons/fi";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const CertificationsCarousel = () => {
   const certifications = [
@@ -209,9 +210,16 @@ const CertificationsCarousel = () => {
                     <div className="h-full bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-2xl flex flex-col">
                       {/* Certificate image */}
                       <div className="h-2/3 relative overflow-hidden bg-black-100 flex items-center justify-center">
-                        <img
+                        {/* <img
                           src={cert.image}
                           alt={cert.title}
+                          className="max-w-full max-h-full object-contain p-3"
+                        /> */}
+                        <Image
+                          src={cert.image}
+                          alt={cert.title}
+                          width={400}
+                          height={300}
                           className="max-w-full max-h-full object-contain p-3"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

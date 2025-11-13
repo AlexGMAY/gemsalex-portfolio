@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode, Key } from "react";
 
 const ProjectsSection = () => {
@@ -98,9 +99,16 @@ const ProjectsSection = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="bg-black-200 rounded-lg shadow-md p-6"
             >
-              <img
+              {/* <img
                 src={project.image}
                 alt={project.name}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              /> */}
+              <Image
+                src={project.image}
+                alt={project.name}
+                width={400}
+                height={192}
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
               <h3 className="text-2xl font-semibold mb-2">{project.name}</h3>

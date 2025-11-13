@@ -42,7 +42,7 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Have a project in mind or want to collaborate? Drop me a message!

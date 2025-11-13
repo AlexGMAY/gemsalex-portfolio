@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Image from 'next/image';
 
 export const InfiniteMovingCards = ({
   items,
@@ -26,7 +27,8 @@ export const InfiniteMovingCards = ({
 
   useEffect(() => {
     addAnimation();
-  }, []);
+  }, [addAnimation]);
+
   const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -93,15 +95,17 @@ export const InfiniteMovingCards = ({
             //   change md:w-[450px] to md:w-[60vw] , px-8 py-6 to p-16, border-slate-700 to border-slate-800
             className="w-[90vw] max-w-full relative rounded-2xl border border-b-0
              flex-shrink-0 border-slate-800 p-5 md:p-16 md:w-[60vw] bg-black-200"
-            style={{
-              //   background:
-              //     "linear-gradient(180deg, var(--slate-800), var(--slate-900)", //remove this one
-              //   add these two
-              //   you can generate the color from here https://cssgradient.io/
-              // background: "rgb(4,7,29)",
-              // backgroundColor:
-              //   "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
+            style={
+              {
+                //   background:
+                //     "linear-gradient(180deg, var(--slate-800), var(--slate-900)", //remove this one
+                //   add these two
+                //   you can generate the color from here https://cssgradient.io/
+                // background: "rgb(4,7,29)",
+                // backgroundColor:
+                //   "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+              }
+            }
             // change to idx cuz we have the same name
             key={idx}
           >
@@ -116,8 +120,14 @@ export const InfiniteMovingCards = ({
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 {/* add this div for the profile img */}
-                <div className="me-3">
-                  <img src={item.avatar} alt="profile" />
+                <div className="me-3">                  
+                  <Image
+                    src={item.avatar || ""}
+                    alt="profile"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-contain rounded-full"
+                  />
                 </div>
                 <span className="flex flex-col gap-1">
                   {/* change text color, font-normal to font-bold, text-xl */}

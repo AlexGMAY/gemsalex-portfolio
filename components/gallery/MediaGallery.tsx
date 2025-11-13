@@ -287,8 +287,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">Gallery</h2>
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
-              No media available yet. Upload images with tag "gallery-image" and
-              videos with tag "gallery-video" to Cloudinary.
+              No media available yet. Upload images with tag
+              &quot;gallery-image&quot; and videos with tag
+              &quot;gallery-video&quot; to Cloudinary.
             </p>
           </div>
         </div>
@@ -397,7 +398,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                 • {activeFilter === "images" ? "Images only" : "Videos only"}
               </span>
             )}
-            {searchQuery && <span> • Searching for "{searchQuery}"</span>}
+            {searchQuery && (
+              <span> • Searching for &quot;{searchQuery}&quot;</span>
+            )}
           </p>
         </div>
 
@@ -451,8 +454,13 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                           <div className="relative w-full h-full bg-gray-900">
                             {/* Video Thumbnail */}
                             <Image
-                              src={item.secure_url.replace('/upload/', '/upload/w_800,h_600,c_fill,q_auto,f_auto/')}
-                              alt={item.context?.custom?.alt || "Video thumbnail"}
+                              src={item.secure_url.replace(
+                                "/upload/",
+                                "/upload/w_800,h_600,c_fill,q_auto,f_auto/"
+                              )}
+                              alt={
+                                item.context?.custom?.alt || "Video thumbnail"
+                              }
                               fill
                               className="object-cover group-hover:scale-110 transition-transform duration-500"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
@@ -471,7 +479,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                             <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm rounded-full px-3 py-1.5">
                               <div className="flex items-center gap-1.5">
                                 <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                                <span className="text-white text-xs font-semibold">VIDEO</span>
+                                <span className="text-white text-xs font-semibold">
+                                  VIDEO
+                                </span>
                               </div>
                             </div>
                             {/* Duration Badge - if available in context */}
@@ -499,7 +509,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                             <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm rounded-full px-3 py-1.5">
                               <div className="flex items-center gap-1.5">
                                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                <span className="text-white text-xs font-semibold">IMAGE</span>
+                                <span className="text-white text-xs font-semibold">
+                                  IMAGE
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -575,7 +587,10 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                     <div className="relative w-full h-full bg-gray-900">
                       {/* Video Thumbnail */}
                       <Image
-                        src={item.secure_url.replace('/upload/', '/upload/w_600,h_600,c_fill,q_auto,f_auto/')}
+                        src={item.secure_url.replace(
+                          "/upload/",
+                          "/upload/w_600,h_600,c_fill,q_auto,f_auto/"
+                        )}
                         alt={item.context?.custom?.alt || "Video thumbnail"}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -595,7 +610,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                       <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
                         <div className="flex items-center gap-1">
                           <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
-                          <span className="text-white text-xs font-semibold">VIDEO</span>
+                          <span className="text-white text-xs font-semibold">
+                            VIDEO
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -613,7 +630,9 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
                       <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
                         <div className="flex items-center gap-1">
                           <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                          <span className="text-white text-xs font-semibold">IMAGE</span>
+                          <span className="text-white text-xs font-semibold">
+                            IMAGE
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -687,7 +706,7 @@ export default function MediaGallery({ initialMedia }: MediaGalleryProps) {
         )}
       </div>
 
-      {/* Media Detail Modal */}      
+      {/* Media Detail Modal */}
       {selectedMedia && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"

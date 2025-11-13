@@ -50,7 +50,7 @@ const ClientMap = () => {
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, [activeRegion]);
+  }, [activeRegion, regions]);
 
   return (
     <div className="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden">

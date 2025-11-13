@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowRight, FiCamera, FiHeart, FiMessageSquare } from "react-icons/fi";
 import { useRef } from "react";
+import Image from "next/image";
 
 const FeaturedMemories = () => {
   const featuredItems = [
@@ -104,10 +105,16 @@ const FeaturedMemories = () => {
               >
                 {/* Media content */}
                 {item.type === "image" ? (
-                  <img
+                  // <img
+                  //   src={item.image}
+                  //   className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+                  //   alt={item.title}
+                  // />
+                  <Image 
                     src={item.image}
                     className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
                     alt={item.title}
+                    fill
                   />
                 ) : (
                   <video

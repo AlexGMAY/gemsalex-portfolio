@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   FiBookOpen,
   FiBookmark,
@@ -143,9 +144,16 @@ const BookshelfCarousel = () => {
               >
                 {/* Book cover with dark mode border */}
                 <div className="relative h-64 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 group-hover:border-amber-400 transition-all">
-                  <img
+                  {/* <img
                     src={book.cover}
                     alt={book.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  /> */}
+                  <Image
+                    src={book.cover}
+                    alt={book.title}
+                    width={200}
+                    height={300}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {/* Rating - Dark Mode Version */}
@@ -208,9 +216,16 @@ const BookshelfCarousel = () => {
                       {/* Book cover */}
                       <div className="bg-gray-900 p-8 flex items-center justify-center">
                         <div className="relative h-80 w-full max-w-xs">
-                          <img
+                          {/* <img
                             src={book.cover}
                             alt={book.title}
+                            className="w-full h-full object-contain shadow-lg"
+                          /> */}
+                          <Image
+                            src={book.cover}
+                            alt={book.title}
+                            width={300}
+                            height={400}
                             className="w-full h-full object-contain shadow-lg"
                           />
                           {/* Page flipping effect */}

@@ -13,6 +13,7 @@ import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import MagicButton from "./MagicButton";
 import { socialMedia } from "@/data";
 import Link from "next/link";
+import Image from "next/image";
 
 const FooterGrid = () => {
   const currentYear = new Date().getFullYear();
@@ -21,10 +22,16 @@ const FooterGrid = () => {
     <footer className="relative z-0 bg-gradient-to-b from-black-100 to-black-200 border-t border-gray-800 overflow-hidden">
       {/* Background elements */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <img
+        {/* <img
           src="/footer-grid.svg"
           alt="grid"
           className="w-full h-full opacity-20"
+        /> */}
+        <Image
+          src="/footer-grid.svg"
+          alt="grid"
+          fill
+          className="w-full h-full opacity-20 object-cover"
         />
       </div>
 
@@ -61,7 +68,7 @@ const FooterGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <a href="mailto:contact.marvelbiz@gmail.com">
+            <a href="mailto:consultus@gemsalex.com">
               <MagicButton
                 title="Let's get in touch"
                 icon={<FaLocationArrow />}
@@ -81,15 +88,22 @@ const FooterGrid = () => {
             className="md:col-span-2"
           >
             <Link href="/" className="transition flex items-center">
-              <img
+              {/* <img
                 src="/logo-MA.png"
                 alt="Merveille Alexander"
+                className="w-20 h-20"
+              /> */}
+              <Image
+                src="/logo-MA.png"
+                alt="Strategic Software Developer and Business Problem Solver - Merveille Alexandre"
+                width={80}
+                height={80}
                 className="w-20 h-20"
               />
             </Link>
             <h3 className="text-xl font-bold mb-4">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                About Me
+                Merveille Alexander
               </span>
             </h3>
             <p className="text-gray-400 mb-6">
@@ -106,7 +120,7 @@ const FooterGrid = () => {
                   className:
                     "w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 hover:bg-white/10 transition",
                   children: (
-                    <img
+                    <Image
                       src={info.img}
                       alt={info.alt || ""}
                       width={20}

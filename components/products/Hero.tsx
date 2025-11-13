@@ -90,7 +90,7 @@ export default function Hero() {
         >
           Pioneering{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-200">
-            Tomorrow's
+            Tomorrow&apos;s
           </span>{" "}
           Tech
         </motion.h1>

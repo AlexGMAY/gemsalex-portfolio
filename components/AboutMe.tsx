@@ -105,7 +105,7 @@ const AboutMe = () => {
               <p className="text-gray-300 leading-relaxed">
                 I transform business challenges into competitive advantages
                 through strategic software engineering. With over 8 years of
-                experience, I don't just write code—I solve the operational
+                experience, I don&apos;t just write code—I solve the operational
                 inefficiencies, scalability bottlenecks, and revenue-limiting
                 problems that hold businesses back. My approach combines
                 technical expertise with deep business understanding to deliver

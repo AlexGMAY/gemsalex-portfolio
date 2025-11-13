@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -69,9 +70,16 @@ const TestimonialsSection = () => {
               className="flex flex-col items-center justify-center bg-black-200 rounded-xl shadow-lg p-8"
             >
               <div className="flex items-center mb-6">
-                <img
+                {/* <img
                   src={testimonials[currentIndex].avatar}
                   alt={testimonials[currentIndex].name}
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                /> */}
+                <Image
+                  src={testimonials[currentIndex].avatar}
+                  alt={testimonials[currentIndex].name}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
@@ -84,7 +92,7 @@ const TestimonialsSection = () => {
                 </div>
               </div>
               <p className="text-blue-300 italic text-center">
-                "{testimonials[currentIndex].content}"
+                &quot;{testimonials[currentIndex].content}&quot;
               </p>
             </motion.div>
           </div>

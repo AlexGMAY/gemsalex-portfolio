@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+
 
 const faqs = [
   {
@@ -110,7 +112,7 @@ const Faqs = () => {
           </span>
         </h2>
         <p className="text-xl text-center text-neutral-400 mt-4">
-          Clear answers about how we'll work together to achieve{" "}
+          Clear answers about how we&apos;ll work together to achieve{" "}
           <span className="text-lime-400">your business goals</span>.
         </p>
 
@@ -118,10 +120,11 @@ const Faqs = () => {
           {/* Video Presentation */}
           <div className="rounded-xl overflow-hidden shadow-lg">
             <div className="w-full md:h-full border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
-              <img
+              <Image
                 src="/cute-alex.jpg"
                 alt="Merveille Alexander - Strategic Software Partner"
                 className="w-full md:h-full p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg relative z-10"
+                fill
               />
             </div>
           </div>

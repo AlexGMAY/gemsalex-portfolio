@@ -55,7 +55,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
   useEffect(() => {
     performSearch(searchQuery);
     return () => performSearch.cancel();
-  }, [searchQuery]);
+  }, [searchQuery, performSearch]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -214,8 +214,8 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
 
             {/* Search suggestions */}
             <div className="mt-3 text-xs text-gray-600 text-left ml-2">
-              Try: "React tutorials", "Next.js guides", or "TypeScript
-              resources"
+              {`Try: "React tutorials", "Next.js guides", or "TypeScript
+              resources"`}
             </div>
 
             {/* Live Search Results */}
@@ -300,7 +300,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
                 animate={{ opacity: 1 }}
                 className="absolute top-full left-0 right-0 mt-2 bg-gray-800/90 backdrop-blur-lg rounded-xl border border-gray-700 p-4 text-center text-gray-400"
               >
-                No resources found for "{searchQuery}"
+                No resources found for &quot;{searchQuery}&quot;
               </motion.div>
             )}
           </motion.div>
@@ -329,7 +329,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
                 {topic}
               </motion.span>
             ))}
-          </motion.div>          
+          </motion.div>
         </div>
       </div>
 

@@ -64,7 +64,7 @@ const ContactHero = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-lime-400"
           >
-            Let's Build Something{" "}
+            Let&apos;s Build Something{" "}
             <span className="text-lime-400">Remarkable</span>
           </motion.h1>
 

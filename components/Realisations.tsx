@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
@@ -89,10 +90,16 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
             >
               <Card className="h-full bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-lime-400/10 transition-all duration-300 group text-center">
                 <div className="relative overflow-hidden h-48 mb-4">
-                  <img
+                  {/* <img
                     src={project.img}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  /> */}
+                  <Image 
+                    src={project.img}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
                 </div>
@@ -108,11 +115,18 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
                         key={index}
                         className="bg-gray-800 rounded-full p-1.5"
                       >
-                        <img
+                        {/* <img
                           src={tech}
                           alt="tech-stack-icon"
                           className="h-5 w-5 object-contain"
-                        />
+                        /> */}
+                        <Image
+                          src={tech}
+                          alt="tech-stack-icon"
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 object-contain"
+                         />
                       </div>
                     ))}
                   </div>

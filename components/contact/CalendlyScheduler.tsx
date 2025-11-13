@@ -237,7 +237,7 @@ const CalendlyScheduler = () => {
                         Calendar not working?
                       </p>
                       <p className="text-yellow-500/80 text-xs">
-                        If you're having issues with the embedded calendar, use
+                        If you&apos;re having issues with the embedded calendar, use
                         the direct links above to book your meeting directly on
                         Calendly.
                       </p>

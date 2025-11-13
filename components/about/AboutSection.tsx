@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiUser, FiTarget, FiAward } from "react-icons/fi";
 import { FaCode, FaLightbulb } from "react-icons/fa";
+import Image from "next/image";
 
 const AboutSection = () => {
   return (
@@ -72,7 +73,7 @@ const AboutSection = () => {
                 <h3 className="text-2xl font-bold text-white">Who Am I</h3>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Hello, I'm{" "}
+                Hello, I&apos;m{" "}
                 <span className="text-yellow-300 font-semibold">
                   Merveille Alexandre
                 </span>
@@ -143,7 +144,7 @@ const AboutSection = () => {
                   {" "}
                   bridge between vision and success
                 </span>
-                . My mission is to craft solutions that don't just look
+                . My mission is to craft solutions that don&apos;t just look
                 impressive but deliver
                 <span className="text-white font-semibold">
                   {" "}
@@ -164,9 +165,16 @@ const AboutSection = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-3xl opacity-20 blur-xl"></div>
             <div className="relative bg-gray-800 rounded-3xl overflow-hidden border border-gray-700 shadow-2xl">
-              <img
+              {/* <img
                 src="/gems-may.png"
                 alt="Merveille Alexandre"
+                className="w-full h-auto object-cover"
+              /> */}
+              <Image
+                src="/gems-may.png"
+                alt="Merveille Alexandre"
+                width={600}
+                height={400}
                 className="w-full h-auto object-cover"
               />
               <div className="absolute bottom-6 right-6 bg-gradient-to-br from-blue-600 to-emerald-600 p-6 rounded-2xl shadow-lg text-center">

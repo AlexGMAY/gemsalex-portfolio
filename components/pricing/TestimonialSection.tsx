@@ -22,8 +22,8 @@ export default function TestimonialSection() {
         >
           <div className="absolute top-0 left-8 text-6xl opacity-10">❝</div>
           <blockquote className="text-xl italic mb-6">
-            "The developer delivered our project 2 weeks early—and it crushed
-            our KPIs. 10/10!"
+            &quot;The developer delivered our project 2 weeks early—and it crushed
+            our KPIs. 10/10!&quot;
           </blockquote>
           <div className="flex items-center">
             <div className="bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4">

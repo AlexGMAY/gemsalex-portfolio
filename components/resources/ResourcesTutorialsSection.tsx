@@ -287,7 +287,7 @@ const ResourcesTutorialsSection = ({
                   >
                     <div className="border-t border-gray-700 pt-4">
                       <h4 className="font-medium text-blue-400 mb-2">
-                        What you'll learn:
+                        {`What you'll learn:`}
                       </h4>
                       <ul className="list-disc list-inside text-gray-400 space-y-1 text-sm">
                         {/* You can extract learning points from content or add a new field */}

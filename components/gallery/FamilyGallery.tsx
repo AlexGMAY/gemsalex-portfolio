@@ -132,7 +132,7 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
     });
 
     return () => animation.stop();
-  }, []);
+  }, [rotation]);
 
   // Update active index on hover
   const handleHover = (index: number) => {
@@ -194,7 +194,7 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
             <h2 className="text-3xl font-bold text-white mb-4">My Family</h2>
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
               No family photos available yet. Upload images to Cloudinary with
-              the "family" tag to showcase your family here.
+              the &quot;family&quot; tag to showcase your family here.
             </p>
           </div>
         </div>
@@ -348,10 +348,10 @@ export default function FamilyGallery({ initialFamily }: FamilyGalleryProps) {
           className="mt-12 max-w-2xl mx-auto text-center px-4"
         >
           <blockquote className="text-lg md:text-xl lg:text-2xl italic mb-6 text-gray-300 font-light leading-relaxed">
-            "
+            &quot;
             {familyMembers[activeIndex].context?.custom?.description ||
               "A special part of our family story"}
-            "
+            &quot;
           </blockquote>
 
           <div className="flex justify-center gap-6 lg:gap-8 flex-wrap">

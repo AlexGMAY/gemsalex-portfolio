@@ -309,7 +309,7 @@ export default function MemoriesGallery({
             <h2 className="text-3xl font-bold text-white mb-4">My Memories</h2>
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
               No memories available yet. Upload images and videos to Cloudinary
-              with the "memories" tag to showcase your moments here.
+              with the &quot;memories&quot; tag to showcase your moments here.
             </p>
           </div>
         </div>

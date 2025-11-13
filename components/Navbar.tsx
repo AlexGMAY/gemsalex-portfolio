@@ -8,6 +8,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
+import Image from "next/image";
 
 export const FloatingNav = ({
   navItems,
@@ -64,9 +65,16 @@ export const FloatingNav = ({
         >
           <div className="flex items-center">
             <Link href="/">
-              <img
+              {/* <img
                 src="/logo-MA.png"
                 alt="Merveille Alexander"
+                className="w-20 h-20 object-contain"
+              /> */}
+              <Image
+                src="/logo-MA.png"
+                alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
+                width={80}
+                height={80}
                 className="w-20 h-20 object-contain"
               />
             </Link>

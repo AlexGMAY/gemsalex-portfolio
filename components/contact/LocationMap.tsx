@@ -232,7 +232,7 @@ const LocationMap = () => {
       );
       scripts.forEach((script) => script.remove());
     };
-  }, []);
+  }, [initMap]);
 
   const handleGetDirections = () => {
     window.open(

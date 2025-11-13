@@ -247,7 +247,7 @@ export default function ResourcePage() {
             Resource not found
           </h1>
           <p className="text-gray-400 mb-8">
-            The resource you're looking for doesn't exist.
+            The resource you&apos;re looking for doesn&apos;t exist.
           </p>
           <Link
             href="/resources"

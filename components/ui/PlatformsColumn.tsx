@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import Image from 'next/image';
 import { type PlatformsType } from '../Platforms';
 import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
@@ -8,7 +9,7 @@ const PlatformsColumn = (props: { platforms: PlatformsType; className?: string; 
   return (
     <motion.div
       initial={{
-        y: reversed ? "-50%" : 0
+        y: reversed ? "-50%" : 0,
       }}
       animate={{
         y: reversed ? 0 : "-50%",
@@ -28,10 +29,18 @@ const PlatformsColumn = (props: { platforms: PlatformsType; className?: string; 
               className="flex flex-col justify-center items-center bg-black-200 border border-lime/10 rounded-3xl p-6"
             >
               <div className="flex justify-center bg-black-100 p-6 rounded-full w-fit">
-                <img
+                {/* {/* <img
                   src={platform.img}
                   alt={platform.name}
                   className="size-20"
+                
+                 /> */}
+                <Image
+                  src={platform.img}
+                  alt={platform.name}
+                  className="size-20"
+                  width={80}
+                  height={80}
                 />
               </div>
               <h3 className="text-3xl text-center mt-6">{platform.name}</h3>

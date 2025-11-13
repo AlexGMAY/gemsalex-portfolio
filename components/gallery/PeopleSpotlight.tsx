@@ -2,7 +2,8 @@
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { FiHeart, FiMessageSquare, FiShare2, FiUser } from "react-icons/fi";
-import { useEffect, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const PeopleSpotlight = () => {
   const people = [
@@ -62,10 +63,10 @@ const PeopleSpotlight = () => {
     });
 
     return () => animation.stop();
-  }, []);
+  }, [rotation]);
 
   // Update active index on hover
-  const handleHover = (index) => {
+  const handleHover = (index: SetStateAction<number>) => {
     setActiveIndex(index);
     // Pause rotation while hovering
     rotation.stop();
@@ -108,11 +109,18 @@ const PeopleSpotlight = () => {
             style={{ rotate: rotateInverse }}
           >
             <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-amber-400/30 overflow-hidden shadow-2xl">
-              <img
+              {/* <img
                 src={people[activeIndex].image}
                 alt={people[activeIndex].name}
                 className="w-full h-full object-cover"
-              />
+              /> */}
+              <Image
+                src={people[activeIndex].image}
+                alt={people[activeIndex].name}
+                width={256}
+                height={256}
+                className="w-full h-full object-cover"
+              /> 
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
                 <h3 className="text-xl font-bold text-center">
                   {people[activeIndex].name}
@@ -152,9 +160,16 @@ const PeopleSpotlight = () => {
                   onMouseLeave={handleHoverEnd}
                   whileHover={{ scale: 1.1 }}
                 >
-                  <img
+                  {/* <img
                     src={person.image}
                     alt={person.name}
+                    className="w-full h-full object-cover"
+                  /> */}
+                  <Image
+                    src={person.image}
+                    alt={person.name}
+                    width={128}
+                    height={128}
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -171,7 +186,7 @@ const PeopleSpotlight = () => {
           className="mt-12 max-w-2xl mx-auto text-center"
         >
           <blockquote className="text-xl italic mb-6">
-            "{people[activeIndex].quote}"
+            &quot;{people[activeIndex].quote}&quot;
           </blockquote>
           <div className="flex justify-center gap-6">
             <div className="flex items-center gap-2 text-amber-300">

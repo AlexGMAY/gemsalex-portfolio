@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from 'next/image';
 import {
   motion,
   AnimatePresence,
@@ -72,10 +73,12 @@ export const FloatingNav = ({
         }}
       >
         <div className="flex items-center hidden md:block lg:block">
-          <a href="/">
-            <img
+          <a href="/">            
+            <Image
               src="/logo-MA.png"
               alt="Merveille Alexander"
+              width={80}
+              height={80}
               className="w-20 h-20 object-contain"
             />
           </a>

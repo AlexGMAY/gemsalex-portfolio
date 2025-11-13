@@ -200,7 +200,7 @@ export default function PartnershipForm({
                     Strategic Partnership
                   </h2>
                   <p className="text-gray-400 text-sm">
-                    Let's build something amazing together
+                    Let&apos;s build something amazing together
                   </p>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import MagicButton from "./MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -23,10 +24,11 @@ const AboutMeSec = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-lime-500 rounded-2xl transform translate-x-6 translate-y-6"></div>
             <div className="border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
-              <img
+              <Image
                 src="/alex-smile.jpg"
                 alt="Merveille Alexander"
                 className="p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg relative z-10"
+                fill
               />
             </div>
           </motion.div>
@@ -38,7 +40,7 @@ const AboutMeSec = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-yellow-500">Merveille Alexander</span>
             </h2>
             <p className="text-neutral-300 mt-4 text-lg leading-relaxed">

@@ -167,7 +167,7 @@ const Skills: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Technologies I've mastered and those I'm actively improving
+            Technologies I&apos;ve mastered and those I&apos;m actively improving
           </p>
         </motion.div>
 

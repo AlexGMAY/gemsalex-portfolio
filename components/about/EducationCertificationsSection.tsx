@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { educationBoard, certificationBoard, courseBoard } from "@/data";
 import { FaGraduationCap, FaCertificate, FaBook } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
 
 const EducationCertificationsSection = () => {
   return (
@@ -91,9 +92,16 @@ const EducationCertificationsSection = () => {
                     <div className="flex-shrink-0">
                       <div className="h-12 w-12 rounded-lg bg-gray-700 flex items-center justify-center overflow-hidden">
                         {certification.icon ? (
-                          <img
+                          // <img
+                          //   src={certification.icon}
+                          //   alt={certification.name}
+                          //   className="h-8 w-8 object-contain"
+                          // />
+                          <Image
                             src={certification.icon}
                             alt={certification.name}
+                            width={32}
+                            height={32}
                             className="h-8 w-8 object-contain"
                           />
                         ) : (

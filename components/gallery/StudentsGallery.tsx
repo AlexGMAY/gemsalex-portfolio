@@ -280,7 +280,7 @@ export default function StudentsGallery({
             <h2 className="text-3xl font-bold text-white mb-4">My Students</h2>
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
               No student photos available yet. Upload images to Cloudinary with
-              the "students" tag to showcase your students here.
+              the &quot;students&quot; tag to showcase your students here.
             </p>
           </div>
         </div>

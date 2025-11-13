@@ -4,6 +4,7 @@ import { FaArrowRight, FaCode, FaPalette } from "react-icons/fa";
 import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   const [leftPictureScope, leftPictureAnimate] = useAnimate();
@@ -59,20 +60,20 @@ const Hero = () => {
 
   
   useEffect(() => {
-      leftPictureAnimate([
-        [leftPictureScope.current, { opacity: 1 }, { duration: 0.5 }],
-        [leftPictureScope.current, { y: 0, x: 0 }, { duration: 0.5 }],
-      ]);
-  
-      rightPictureAnimate([
-        [
-          rightPictureScope.current,
-          { opacity: 1 },
-          { duration: 0.5, delay: 1.5 },
-        ],
-        [rightPictureScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
-      ]);
-    }, [])
+    leftPictureAnimate([
+      [leftPictureScope.current, { opacity: 1 }, { duration: 0.5 }],
+      [leftPictureScope.current, { y: 0, x: 0 }, { duration: 0.5 }],
+    ]);
+
+    rightPictureAnimate([
+      [
+        rightPictureScope.current,
+        { opacity: 1 },
+        { duration: 0.5, delay: 1.5 },
+      ],
+      [rightPictureScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
+    ]);
+  }, [leftPictureAnimate, rightPictureAnimate, leftPictureScope, rightPictureScope]);
 
   return (
     <section
@@ -85,10 +86,17 @@ const Hero = () => {
         drag
         className="absolute -left-60 w-[30%] h-[380px] bottom-10 rounded-3xl p-2 hidden lg:block"
       >
-        <img
+        {/* <img
           src="/dashboard.jpeg"
           alt="Custom Business Dashboard Development - Operational Efficiency Software"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+          draggable="false"
+        /> */}
+        <Image
+          src="/dashboard.jpeg"
+          alt="Custom Business Dashboard Development - Operational Efficiency Software"
+          fill
+          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10 object-cover"
           draggable="false"
         />
       </motion.div>
@@ -98,10 +106,17 @@ const Hero = () => {
         drag
         className="absolute -right-64 w-[30%] h-[380px] top-120 rounded-3xl p-2 hidden lg:block"
       >
-        <img
+        {/* <img
           src="/realestate-dark.jpg"
           alt="Real Estate Technology Solutions - Custom Software Development"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
+          draggable="false"
+        /> */}
+        <Image
+          src="/realestate-dark.jpg"
+          alt="Real Estate Technology Solutions - Custom Software Development"
+          fill
+          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10 object-cover"
           draggable="false"
         />
       </motion.div>
@@ -198,7 +213,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           className="md:tracking-wider mb-4 text-sm md:text-lg lg:text-1xl max-w-4xl mx-auto mb-8"
         >
-          I'm{" "}
+          I&apos;m{" "}
           <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
             Merveille Alexander
           </span>

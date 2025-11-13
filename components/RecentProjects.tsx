@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 
 const projects = [
   {
@@ -124,9 +125,15 @@ export default function RecentProjects() {
               <div className="h-full bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-400/30 transition-all flex flex-col">
                 {/* Project image */}
                 <div className="relative aspect-video overflow-hidden">
-                  <img
+                  {/* <img
                     src={project.image}
                     alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  /> */}
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />

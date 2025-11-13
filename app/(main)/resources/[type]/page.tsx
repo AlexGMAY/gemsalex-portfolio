@@ -110,7 +110,7 @@ export default function ResourceTypePage() {
             Resource type not found
           </h1>
           <p className="text-gray-400 mb-8">
-            The resource type "{type}" doesn't exist.
+            The resource type &quot;{type}&quot; doesn&apos;t exist.
           </p>
           <Link
             href="/resources"
@@ -404,7 +404,7 @@ export default function ResourceTypePage() {
                   No {type} resources yet
                 </h3>
                 <p className="text-gray-400 mb-6">
-                  We're working on creating amazing {type} content. Check back
+                  We&apos;re working on creating amazing {type} content. Check back
                   soon for new resources!
                 </p>
                 <Link

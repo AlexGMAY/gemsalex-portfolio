@@ -302,7 +302,7 @@ const YearInReview = () => {
                             size={24}
                           />
                           <p className="text-gray-300">
-                            {months[activeMonth].name}'s Highlight
+                            {months[activeMonth].name}&apos;s Highlight
                           </p>
                           <p className="text-sm text-gray-500 mt-1">
                             {months[activeMonth].highlight}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiHeart, FiZoomIn, FiCalendar, FiMapPin, FiPlay } from "react-icons/fi";
 import { useState } from "react";
+import Image from "next/image";
 
 const MonthlyMoodBoard = () => {
   const [activeMonth, setActiveMonth] = useState("June");
@@ -144,7 +145,7 @@ const MonthlyMoodBoard = () => {
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A visual representation of each month's atmosphere and memories
+            A visual representation of each month&apos;s atmosphere and memories
           </p>
         </div>
 
@@ -183,9 +184,16 @@ const MonthlyMoodBoard = () => {
               style={{ backgroundColor: activeMonthData?.dominantColor }}
             >
               {item.type === "image" ? (
-                <img
+                // <img
+                //   src={item.src}
+                //   alt={`${activeMonth} memory`}
+                //   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                // />
+                <Image
                   src={item.src}
                   alt={`${activeMonth} memory`}
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (

@@ -383,7 +383,7 @@ export default function ProductsPage() {
             >
               Pioneering{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-200">
-                Tomorrow's
+                Tomorrow&apos;s
               </span>{" "}
               Tech
             </motion.h1>

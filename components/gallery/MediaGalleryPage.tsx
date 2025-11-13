@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   FiImage,
@@ -206,9 +207,16 @@ const MediaGalleryPage = () => {
               >
                 {item.type === "image" ? (
                   <div className="relative group">
-                    <img
+                    {/* <img
                       src={item.url}
                       alt={item.title}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
+                    /> */}
+                    <Image
+                      src={item.url}
+                      alt={item.title}
+                      width={640}
+                      height={480}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -283,9 +291,16 @@ const MediaGalleryPage = () => {
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-1/3 relative">
                     {item.type === "image" ? (
-                      <img
+                      // <img
+                      //   src={item.url}
+                      //   alt={item.title}
+                      //   className="w-full h-48 md:h-full object-cover"
+                      // />
+                      <Image
                         src={item.url}
                         alt={item.title}
+                        width={480}
+                        height={320}
                         className="w-full h-48 md:h-full object-cover"
                       />
                     ) : (
@@ -380,9 +395,16 @@ const MediaGalleryPage = () => {
 
               <div className="bg-gray-900 rounded-xl overflow-hidden">
                 {selectedItem.type === "image" ? (
-                  <img
+                  // <img
+                  //   src={selectedItem.url}
+                  //   alt={selectedItem.title}
+                  //   className="w-full max-h-[70vh] object-contain"
+                  // />
+                  <Image
                     src={selectedItem.url}
                     alt={selectedItem.title}
+                    width={960}
+                    height={640}
                     className="w-full max-h-[70vh] object-contain"
                   />
                 ) : (
