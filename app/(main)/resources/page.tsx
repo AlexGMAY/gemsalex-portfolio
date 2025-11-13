@@ -4,6 +4,11 @@ import ResourcesBlogSection from "@/components/resources/ResourcesBlogSection";
 import ResourcesHero from "@/components/resources/ResourcesHero";
 import ResourcesLinksSection from "@/components/resources/ResourcesLinksSection";
 import ResourcesTutorialsSection from "@/components/resources/ResourcesTutorialsSection";
+import {
+  getFeaturedResources,
+  getResourcesByType,
+  getLatestResources,
+} from "@/lib/resources-utils";
 import { Resource } from "@/lib/resources";
 import type { Metadata } from "next";
 import { useState, useEffect } from "react";
@@ -39,20 +44,20 @@ export const metadata: Metadata = {
 */
 
 // Helper functions similar to your blog structure
-export function getFeaturedResources(resources: Resource[]) {
-  return resources.filter((resource) => resource.featured);
-}
+// export function getFeaturedResources(resources: Resource[]) {
+//   return resources.filter((resource) => resource.featured);
+// }
 
-export function getResourcesByType(resources: Resource[], type: string) {
-  return resources.filter((resource) => resource.type === type);
-}
+// export function getResourcesByType(resources: Resource[], type: string) {
+//   return resources.filter((resource) => resource.type === type);
+// }
 
-export function getLatestResources(resources: Resource[], limit?: number) {
-  const sorted = resources.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-  return limit ? sorted.slice(0, limit) : sorted;
-}
+// export function getLatestResources(resources: Resource[], limit?: number) {
+//   const sorted = resources.sort(
+//     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+//   );
+//   return limit ? sorted.slice(0, limit) : sorted;
+// }
 
 export default function ResourcesPage() {
   const [resources, setResources] = useState<Resource[]>([]);
