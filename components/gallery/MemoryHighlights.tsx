@@ -317,6 +317,10 @@ export default function MemoriesGallery({
     );
   }
 
+  // Safe access to current memory data
+  const currentMemory = memories[currentIndex];
+  const currentMemoryDate = currentMemory?.context?.custom?.memoryDate;
+
   return (
     <section className="py-24 bg-gradient-to-b from-black-100 to-black-100 relative">
       {/* Decorative elements */}
@@ -635,11 +639,8 @@ export default function MemoriesGallery({
         >
           <p className="text-gray-400">
             Showing memory {currentIndex + 1} of {memories.length}
-            {memories[currentIndex]?.context?.custom?.memoryDate && (
-              <span>
-                {" "}
-                • {formatDate(memories[currentIndex].context.custom.memoryDate)}
-              </span>
+            {currentMemoryDate && (
+              <span> • {formatDate(currentMemoryDate)}</span>
             )}
           </p>
         </motion.div>
