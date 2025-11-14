@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "NODE_OPTIONS='--max-old-space-size=4096' next build",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm install"
 }
