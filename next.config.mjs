@@ -22,6 +22,7 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  productionBrowserSourceMaps: false,
   // Disable image optimization in development to avoid the fetch error
   ...(process.env.NODE_ENV === 'development' && {
     images: {

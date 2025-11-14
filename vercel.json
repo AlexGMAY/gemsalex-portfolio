@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "NODE_OPTIONS='--max-old-space-size=4096' npm run build",
+  "buildCommand": "NODE_OPTIONS='--max-old-space-size=4096' next build",
   "outputDirectory": ".next",
-  "installCommand": "npm install",
-  "functions": {
-    "**/*.html": {
-      "maxDuration": 30
-    }
-  }
+  "installCommand": "npm install"
 }
