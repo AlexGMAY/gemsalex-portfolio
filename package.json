@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
     "lint": "next lint",
     "deploy": "vercel --prod"
@@ -44,6 +44,7 @@
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
     "resend": "^6.1.2",
+    "sharp": "^0.34.5",
     "swiper": "^11.2.5",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
@@ -52,6 +53,7 @@
     "vercel": "^34.0.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.0.3",
     "@types/cookie": "^0.6.0",
     "@types/google.maps": "^3.58.1",
     "@types/lodash": "^4.17.16",

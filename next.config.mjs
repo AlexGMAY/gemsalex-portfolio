@@ -14,11 +14,18 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ['cloudinary'],
+    optimizeCss: true,
+  },
+  // Reduce memory usage
+  swcMinify: true,
+  compress: true,  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   // Disable image optimization in development to avoid the fetch error
   ...(process.env.NODE_ENV === 'development' && {
     images: {
-      unoptimized: true
+      unoptimized: false
     }
   })
 };

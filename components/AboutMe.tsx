@@ -69,8 +69,8 @@ const AboutMe = () => {
               <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full h-full min-h-[500px] lg:min-h-[650px]">
                 <Image
                   src="/gallery/alex-office.jpg"
-                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre"
-                  fill
+                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre" 
+                  fill                 
                   className="object-cover object-center" // Changed from object-top to center
                   quality={100}
                   priority

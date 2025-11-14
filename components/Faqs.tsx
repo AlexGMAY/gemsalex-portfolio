@@ -118,13 +118,30 @@ const Faqs = () => {
 
         <div className="grid lg:grid-cols-2 gap-10 mt-10">
           {/* Video Presentation */}
-          <div className="rounded-xl overflow-hidden shadow-lg">
-            <div className="w-full md:h-full border border-3xl border-lime-500 bg-gray-800 rounded-3xl p-2">
+          {/* <div className="rounded-xl overflow-hidden">
+            <div className="w-full aspect-square md:aspect-video border-2 border-lime-500 bg-gray-800 rounded-3xl p-2 relative">
+              <Image
+                src="/cute-alex.jpg"
+                alt="Merveille Alexander - Strategic Software developer Partner"
+                className="p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg object-cover"
+                // fill
+                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                width={600}
+                height={1200}
+              />
+            </div>
+          </div> */}
+          <div className="rounded-xl overflow-hidden max-w-2xl mx-auto">
+            {" "}
+            {/* Added max-width and margin */}
+            <div className="w-full h-auto border-2 border-lime-500 bg-gray-800 rounded-3xl p-2">
               <Image
                 src="/cute-alex.jpg"
                 alt="Merveille Alexander - Strategic Software Partner"
-                className="w-full md:h-full p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg relative z-10"
-                fill
+                className="w-full h-auto p-2 bg-black-100 border border-neutral-600 rounded-3xl shadow-lg"
+                width={800}
+                height={1200}
+                priority
               />
             </div>
           </div>
