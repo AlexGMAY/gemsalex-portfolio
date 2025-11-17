@@ -115,29 +115,43 @@ export const FloatingNav = ({
       </AnimatePresence>
 
       {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
-      <div className="lg:hidden fixed top-4 right-4 z-[5000]">
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-lg backdrop-blur-md bg-gray-800/80 border border-gray-700 hover:bg-gray-700/80 transition-colors"
-        >
-          <div className="w-6 h-6 flex flex-col justify-between">
-            <span
-              className={`block h-0.5 w-full bg-white transition-all ${
-                mobileMenuOpen ? "rotate-45 translate-y-2.5" : ""
-              }`}
-            ></span>
-            <span
-              className={`block h-0.5 w-full bg-white transition-all ${
-                mobileMenuOpen ? "opacity-0" : ""
-              }`}
-            ></span>
-            <span
-              className={`block h-0.5 w-full bg-white transition-all ${
-                mobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
-              }`}
-            ></span>
-          </div>
-        </button>
+      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000]">
+        {/* Logo mobile */}
+        <div className="flex items-center pl-4">
+          <Link href="/">
+            <Image
+              src="/logo-MA.png"
+              alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
+              width={80}
+              height={80}
+              className="w-20 h-20 object-contain"
+            />
+          </Link>
+        </div>
+        <div className="fixed right-8">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg backdrop-blur-md bg-gray-800/80 border border-gray-700 hover:bg-gray-700/80 transition-colors"
+          >
+            <div className="w-6 h-6 flex flex-col justify-between">
+              <span
+                className={`block h-0.5 w-full bg-white transition-all ${
+                  mobileMenuOpen ? "rotate-45 translate-y-2.5" : ""
+                }`}
+              ></span>
+              <span
+                className={`block h-0.5 w-full bg-white transition-all ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              ></span>
+              <span
+                className={`block h-0.5 w-full bg-white transition-all ${
+                  mobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
+                }`}
+              ></span>
+            </div>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

@@ -2,10 +2,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { World } from "./Globe";
 
-const World = dynamic(() => import("./Globe").then((m) => m.World), {
-  ssr: false,
-});
+// const World = dynamic(() => import("./Globe").then((m) => m.World), {
+//   ssr: false,
+// });
 
 const GridGlobe = () => {
   const globeConfig = {

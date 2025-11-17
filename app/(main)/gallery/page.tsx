@@ -63,16 +63,7 @@ const page = async () => {
   const family = (galleryData.family || []).map(transformFamilyItem);
   const students = galleryData.students || [];
 
-  // In your gallery page component - update the debug logs:
-  console.log("Gallery Data Summary:", {
-    imagesCount: galleryData.galleryMedia.images?.length || 0,
-    videosCount: galleryData.galleryMedia.videos?.length || 0,
-    memoriesCount: memories.length,
-    memoriesImages: memories.filter((m) => m.resource_type === "image").length,
-    memoriesVideos: memories.filter((m) => m.resource_type === "video").length,
-    studentsCount: students.length,
-  });
-
+  
   return (
     <main className="relative w-full">
       <HeroGallery />

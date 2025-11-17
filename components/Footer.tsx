@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiMail,
-  FiHeart,
-} from "react-icons/fi";
+import { FiHeart } from "react-icons/fi";
 import { FaReact, FaNodeJs, FaLocationArrow } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { SiNextdotjs, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiWordpress } from "react-icons/si";
 import MagicButton from "./MagicButton";
 import { socialMedia } from "@/data";
 import Link from "next/link";
@@ -22,11 +16,6 @@ const FooterGrid = () => {
     <footer className="relative z-0 bg-gradient-to-b from-black-100 to-black-200 border-t border-gray-800 overflow-hidden">
       {/* Background elements */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        {/* <img
-          src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-20"
-        /> */}
         <Image
           src="/footer-grid.svg"
           alt="grid"
@@ -42,8 +31,8 @@ const FooterGrid = () => {
 
       <div className="container mx-auto px-6 py-16 relative z-10">
         {/* Contact CTA */}
-        <div className="flex flex-col items-center mb-16">
-          <motion.h1
+        <div className="flex flex-col items-center mb-16 border-b border-gray-800 pb-16">
+          <motion.h2
             className="heading lg:max-w-[45vw] text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +40,7 @@ const FooterGrid = () => {
           >
             Ready to take <span className="text-lime-400">your</span> digital
             presence to the next level?
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             className="text-gray-400 md:mt-10 my-5 text-center max-w-2xl"
@@ -63,19 +52,34 @@ const FooterGrid = () => {
             achieve your goals.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <a href="mailto:consultus@gemsalex.com">
-              <MagicButton
-                title="Let's get in touch"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
-          </motion.div>
+          <div className="flex flex-col gap-2 md:flex md:flex-row md:gap-4 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <a href="mailto:consultus@gemsalex.com">
+                <MagicButton
+                  title="Email Me Now "
+                  icon={<FaLocationArrow />}
+                  position="left"
+                />
+              </a>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Link href="/contact">
+                <MagicButton
+                  title="Let's get in touch"
+                  icon={<FaLocationArrow />}
+                  position="right"
+                />
+              </Link>
+            </motion.div>
+          </div>
         </div>
 
         {/* Main footer content */}
@@ -88,11 +92,6 @@ const FooterGrid = () => {
             className="md:col-span-2"
           >
             <Link href="/" className="transition flex items-center">
-              {/* <img
-                src="/logo-MA.png"
-                alt="Merveille Alexander"
-                className="w-20 h-20"
-              /> */}
               <Image
                 src="/logo-MA.png"
                 alt="Strategic Software Developer and Business Problem Solver - Merveille Alexandre"
@@ -185,11 +184,11 @@ const FooterGrid = () => {
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
                 <Link
-                  href="/pricing"
+                  href="/solutions"
                   className="text-gray-400 hover:text-white transition flex items-center gap-2"
                 >
-                  <span className="w-1 h-1 rounded-full bg-pink-400"></span>
-                  Freelance Pricing
+                  <span className="w-1 h-1 rounded-full bg-teal-400"></span>
+                  Solutions & Pricing
                 </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
@@ -197,8 +196,17 @@ const FooterGrid = () => {
                   href="/products"
                   className="text-gray-400 hover:text-white transition flex items-center gap-2"
                 >
-                  <span className="w-1 h-1 rounded-full bg-pink-400"></span>
+                  <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
                   Products
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link
+                  href="/resources "
+                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
+                >
+                  <span className="w-1 h-1 rounded-full bg-lime-400"></span>
+                  Resources
                 </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
@@ -253,6 +261,34 @@ const FooterGrid = () => {
                 <FaNodeJs className="text-green-500" size={20} />
                 <span className="text-gray-300">Node.js</span>
               </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
+              >
+                <SiExpress className="text-green-500" size={20} />
+                <span className="text-gray-300">Express.js</span>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
+              >
+                <SiMongodb className="text-green-500" size={20} />
+                <span className="text-gray-300">MongoDB</span>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
+              >
+                <SiPostgresql className="text-green-500" size={20} />
+                <span className="text-gray-300">PostgreSQL</span>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
+              >
+                <SiWordpress className="text-green-500" size={20} />
+                <span className="text-gray-300">WordPress</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -286,12 +322,6 @@ const FooterGrid = () => {
               className="text-gray-500 hover:text-white transition text-sm"
             >
               Terms of Service
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-gray-500 hover:text-white transition text-sm"
-            >
-              Cookies
             </Link>
           </motion.div>
         </div>

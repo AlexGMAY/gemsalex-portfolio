@@ -1,4 +1,4 @@
-// import {withSentryConfig} from '@sentry/nextjs';
+import {withSentryConfig} from '@sentry/nextjs';
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {
 //   images: {
@@ -82,7 +82,7 @@ const nextConfig = {
     ],
     // Fix for development
     unoptimized: process.env.NODE_ENV === 'development',
-  },
+  },  
   // Remove experimental options for now
   swcMinify: true,
   compiler: {
@@ -92,17 +92,14 @@ const nextConfig = {
 };
 
 // Temporarily disable Sentry to test if it's causing memory issues
-// export default withSentryConfig(nextConfig, {
-//   silent: true,
-//   org: "marvelbiz-solutions",
-//   project: "portfolio-nextjs",
-// }, {
-//   widenClientFileUpload: true,
-//   transpileClientSDK: true,
-//   hideSourceMaps: true,
-//   disableLogger: true,
-//   automaticVercelMonitors: true,
-// });
-
-// Use this instead for now:
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  org: "marvelbiz-solutions",
+  project: "portfolio-nextjs",
+}, {
+  widenClientFileUpload: true,
+  transpileClientSDK: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  automaticVercelMonitors: true,
+});

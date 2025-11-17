@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaCode, FaRocket, FaMedal } from "react-icons/fa";
 import { GiTunisia } from "react-icons/gi";
 
 export default function HeroSection() {
   return (
-    <section className="relative text-white bg-gradient-to-br from-blue-900 to-gray-900 py-20 overflow-hidden">
+    <section className="relative text-white bg-gradient-to-br from-blue-900 to-gray-900 py-20">
       {/* Animated background elements */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -18,6 +19,37 @@ export default function HeroSection() {
         <div className="absolute bottom-10 right-10 w-60 h-60 bg-red-600 rounded-full filter blur-3xl opacity-50"></div>
         <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-yellow-500 rounded-full filter blur-3xl opacity-40"></div>
       </motion.div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{
+                    opacity: [0, 0.4, 0],
+                    y: [0, -15, 15, 0],
+                    x: [0, 15, -15, 0],
+                  }}
+                  transition={{
+                    duration: 20 + Math.random() * 10,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    delay: Math.random() * 8,
+                  }}
+                  className="absolute text-5xl"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                  }}
+          >
+            <span
+              // className="text-gray-700/20"
+            >
+              ✦
+            </span>
+          </motion.div>
+        ))}
+      </div>
 
       <div className="container mx-auto px-6 relative z-10 pt-24">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -31,7 +63,9 @@ export default function HeroSection() {
             >
               <div className="flex items-center bg-blue-800/30 border border-blue-600 rounded-full px-4 py-1">
                 <GiTunisia className="text-red-500 mr-2" />
-                <span className="text-sm font-medium">Tunisian Excellence</span>
+                <span className="text-sm font-medium">
+                  International Excellence
+                </span>
               </div>
             </motion.div>
 
@@ -41,7 +75,8 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
-              Premium Development <br />
+              Premium <br />
+              Software Solutions <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
                 Fair Pricing
               </span>
@@ -64,12 +99,16 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all shadow-lg">
-                View Pricing Plans
-              </button>
-              <button className="px-8 py-3 border border-blue-400 text-blue-100 rounded-lg font-medium hover:bg-blue-900/30 transition-all">
-                Case Studies
-              </button>
+              <Link href="#pricing">
+                <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-600 transition-all shadow-lg">
+                  View Pricing Plans
+                </button>
+              </Link>
+              <Link href="#solutions">
+                <button className="px-8 py-3 border border-blue-400 text-blue-100 rounded-lg font-medium hover:bg-blue-900/30 transition-all">
+                  Our Solutions
+                </button>
+              </Link>
             </motion.div>
           </div>
 
@@ -102,7 +141,7 @@ export default function HeroSection() {
               </div>
               <h3 className="text-xl font-bold mb-2">Local Advantage</h3>
               <p className="text-gray-300">
-                Tunisian quality with international standards at competitive
+                Tunisian advantage with international standards at competitive
                 rates.
               </p>
             </motion.div>
@@ -140,35 +179,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Animated scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          y: [0, 10, 0],
-        }}
-        transition={{
-          delay: 1.5,
-          duration: 2,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
-          <motion.div
-            animate={{
-              y: [0, 5, 0],
-              opacity: [0.6, 1, 0.6],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-            }}
-            className="w-1 h-2 bg-blue-400 rounded-full mt-2"
-          ></motion.div>
-        </div>
-      </motion.div>
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 export const navItems = [
   { name: "About Me", link: "/about" },
   { name: "Projects", link: "/projects" },
-  { name: "Pricing", link: "/pricing" },
+  { name: "Solutions & Pricing", link: "/solutions" },
   { name: "Products", link: "/products" },
   { name: "Gallery", link: "/gallery" },
   { name: "Resources", link: "/resources" },
