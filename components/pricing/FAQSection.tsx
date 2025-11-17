@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -126,12 +127,12 @@ export default function FAQSection() {
           transition={{ delay: 0.4 }}
           className="text-center mt-16"
         >
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-blue-300 to-blue-200 hover:from-lime-400 hover:to-yellow-500 transition-colors"
           >
             Need custom pricing?
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -147,16 +147,16 @@ const Page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
       <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto">
         <Hero />
         <div className="max-w-7xl w-full sm:px-10 px-5">
           <DetailedServices />
           <SuperPricing pageType="pricing" />
-          <Approach />
           <FAQSection />
+          <Approach />
           <Grid />
-          <Clients />        
+          <Clients />
         </div>
       </main>
     </>

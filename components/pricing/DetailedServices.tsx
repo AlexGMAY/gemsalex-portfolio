@@ -336,7 +336,7 @@ const DetailedServices = () => {
                 className={`bg-gradient-to-br ${detailedServices[activeService].bgGradient} border ${detailedServices[activeService].borderColor}/20 rounded-2xl overflow-hidden`}
               >
                 <CardHeader>
-                  <div className="flex items-center gap-4 mb-4 pb-6">
+                  <div className="flex flex-col items-center md:flex-row gap-4 mb-4 pb-6">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
