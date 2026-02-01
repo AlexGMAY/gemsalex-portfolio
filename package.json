@@ -2,6 +2,20 @@
   "name": "Alexander portfolio",
   "version": "0.1.0",
   "private": true,
+  "browserslist": {
+    "production": [
+      "defaults",
+      "not IE 11",
+      "not dead",
+      ">0.2%",
+      "last 2 versions"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,6 +34,7 @@
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.7.0",
     "clsx": "^2.1.0",
+    "critters": "^0.0.23",
     "framer-motion": "^10.16.0",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
@@ -53,7 +68,7 @@
     "vercel": "^34.0.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^16.0.3",
+    "@next/bundle-analyzer": "^16.1.6",
     "@types/cookie": "^0.6.0",
     "@types/google.maps": "^3.58.1",
     "@types/lodash": "^4.17.16",

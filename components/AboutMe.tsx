@@ -69,10 +69,11 @@ const AboutMe = () => {
               <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full h-full min-h-[500px] lg:min-h-[650px]">
                 <Image
                   src="/gallery/alex-office.jpg"
-                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre" 
-                  fill                 
+                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre"
+                  width={560} // EXACT displayed width
+                  height={767}
                   className="object-cover object-center" // Changed from object-top to center
-                  quality={100}
+                  quality={75}
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw" // Added responsive sizing
                 />
@@ -100,7 +101,8 @@ const AboutMe = () => {
           >
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                From Complex Business Problems <br />- To Scalable Technical Solutions
+                From Complex Business Problems <br />- To Scalable Technical
+                Solutions
               </h3>
               <p className="text-gray-300 leading-relaxed">
                 I transform business challenges into competitive advantages

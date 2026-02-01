@@ -154,16 +154,7 @@ const FooterGrid = () => {
                 Quick Links
               </span>
             </h3>
-            <ul className="space-y-3">
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-cyan-400"></span>
-                  Home
-                </Link>
-              </motion.li>
+            <ul className="space-y-3">              
               <motion.li whileHover={{ x: 5 }}>
                 <Link
                   href="/about"
@@ -198,6 +189,15 @@ const FooterGrid = () => {
                 >
                   <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
                   Products
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link
+                  href="/gallery"
+                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
+                >
+                  <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
+                  Gallery
                 </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>

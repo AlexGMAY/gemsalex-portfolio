@@ -86,12 +86,6 @@ const Hero = () => {
         drag
         className="absolute -left-60 w-[30%] h-[380px] bottom-10 rounded-3xl p-2 hidden lg:block"
       >
-        {/* <img
-          src="/dashboard.jpeg"
-          alt="Custom Business Dashboard Development - Operational Efficiency Software"
-          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
-          draggable="false"
-        /> */}
         <Image
           src="/dashboard.jpeg"
           alt="Custom Business Dashboard Development - Operational Efficiency Software"
@@ -106,16 +100,13 @@ const Hero = () => {
         drag
         className="absolute -right-64 w-[30%] h-[380px] top-120 rounded-3xl p-2 hidden lg:block"
       >
-        {/* <img
-          src="/realestate-dark.jpg"
-          alt="Real Estate Technology Solutions - Custom Software Development"
-          className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10"
-          draggable="false"
-        /> */}
         <Image
           src="/realestate-dark.jpg"
           alt="Real Estate Technology Solutions - Custom Software Development"
-          fill
+          width={383} // EXACT displayed width
+          height={383} // EXACT displayed height
+          quality={75}
+          sizes="100vw"
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10 object-cover"
           draggable="false"
         />
@@ -188,8 +179,8 @@ const Hero = () => {
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="text-[40px] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
@@ -200,7 +191,7 @@ const Hero = () => {
           <span className="text-[40px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
             Drive Growth
           </span>{" "}
-          &{" "}
+          & <br />
           <span className="text-[40px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
             Maximize ROI
           </span>

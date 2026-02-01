@@ -4,6 +4,7 @@ export const navItems = [
   { name: "About Me", link: "/about" },
   { name: "Projects", link: "/projects" },
   { name: "Solutions & Pricing", link: "/solutions" },
+  // { name: "Courses", link: "/courses" },
   { name: "Products", link: "/products" },
   { name: "Gallery", link: "/gallery" },
   { name: "Resources", link: "/resources" },
@@ -104,13 +105,13 @@ export const testimonials = [
     title: "Founder at CloudFlow SaaS",
     avatar: "/avatars/logo-abcd.jpg",
   },
-  // {
-  //   quote:
-  //     "Most developers just write code. Merveille solves business problems. He automated our entire client onboarding process, reducing manual work by 15 hours per week. The system he built is reliable, easy to use, and has scaled perfectly as we've grown. He's more than a developer - he's a strategic partner.",
-  //   name: "Marcus Thorne",
-  //   title: "Operations Director at ScaleRight Inc",
-  //   avatar: "/avatars/logo-abcd.jpg",
-  // },
+  {
+    quote:
+      "Most developers just write code. Merveille solves business problems. He automated our entire client onboarding process, reducing manual work by 15 hours per week. The system he built is reliable, easy to use, and has scaled perfectly as we've grown. He's more than a developer - he's a strategic partner.",
+    name: "Raoudha Bhira",
+    title: "Director at centre formation Leaderforma",
+    avatar: "/avatars/logo-leader-forma.png",
+  },
 ];
 
 export const companies = [
@@ -247,7 +248,7 @@ export const services: Service[] = [
       {
         id: 'bw-addon-2',
         name: 'Blog Integration',
-        price: 250,
+        price: 550,
         category: 'addon'
       },
       {
@@ -271,13 +272,13 @@ export const services: Service[] = [
       {
         id: 'bw-addon-6',
         name: 'Google Analytics Setup',
-        price: 175,
+        price: 200,
         category: 'addon'
       },
       {
         id: 'bw-addon-7',
         name: 'AI Chatbot Integration',
-        price: 600,
+        price: 800,
         category: 'addon'
       },
       {
@@ -320,7 +321,7 @@ export const services: Service[] = [
       {
         id: 'sw-addon-1',
         name: 'Gallery & Portfolio System',
-        price: 300,
+        price: 650,
         category: 'addon'
       },
       {
@@ -332,19 +333,19 @@ export const services: Service[] = [
       {
         id: 'sw-addon-3',
         name: 'Parallax Scrolling',
-        price: 250,
+        price: 150,
         category: 'addon'
       },
       {
         id: 'sw-addon-4',
         name: '3D Model Integration',
-        price: 600,
+        price: 800,
         category: 'addon'
       },
       {
         id: 'sw-addon-5',
         name: 'Client Testimonial System',
-        price: 200,
+        price: 250,
         category: 'addon'
       }
     ]
@@ -353,7 +354,7 @@ export const services: Service[] = [
     id: 'ecommerce-store',
     title: 'E-Commerce Store',
     description: 'Enterprise-grade online store with premium integrations',
-    basePrice: 4000,
+    basePrice: 6000,
     localPrice: 12500,
     deliveryTime: '4-6 weeks',
     popular: true,
@@ -383,7 +384,7 @@ export const services: Service[] = [
       {
         id: 'ec-addon-1',
         name: 'Inventory Management',
-        price: 600,
+        price: 1600,
         category: 'addon'
       },
       {
@@ -401,17 +402,23 @@ export const services: Service[] = [
       {
         id: 'ec-addon-4',
         name: 'AI Product Recommendations',
-        price: 900,
+        price: 1900,
         category: 'addon'
       },
       {
         id: 'ec-addon-5',
         name: 'AR Product Previews',
-        price: 1500,
+        price: 2500,
         category: 'addon'
       },
       {
         id: 'ec-addon-6',
+        name: 'Marketplace Multi-seller System',
+        price: 4800,
+        category: 'addon'
+      },
+      {
+        id: 'ec-addon-7',
         name: 'Subscription System',
         price: 800,
         category: 'addon'
@@ -422,8 +429,8 @@ export const services: Service[] = [
     id: 'elearning-platform',
     title: 'E-Learning Platform',
     description: 'Complete LMS with advanced course management',
-    basePrice: 6000,
-    localPrice: 19000,
+    basePrice: 8000,
+    localPrice: 20000,
     deliveryTime: '6-8 weeks',
     features: [
       {
@@ -450,19 +457,19 @@ export const services: Service[] = [
       {
         id: 'el-addon-1',
         name: 'Video Streaming',
-        price: 1000,
+        price: 1200,
         category: 'addon'
       },
       {
         id: 'el-addon-2',
         name: 'Gamification System',
-        price: 900,
+        price: 1200,
         category: 'addon'
       },
       {
         id: 'el-addon-3',
         name: 'AI Tutor Integration',
-        price: 1200,
+        price: 1800,
         category: 'addon'
       },
       {
@@ -510,7 +517,7 @@ export const services: Service[] = [
       {
         id: 'saas-addon-1',
         name: 'Admin Dashboard',
-        price: 1250,
+        price: 1850,
         category: 'addon'
       },
       {
@@ -558,25 +565,25 @@ export const services: Service[] = [
       {
         id: 'pd-addon-1',
         name: 'Security Enhancements',
-        price: 250,
+        price: 850,
         category: 'addon'
       },
       {
         id: 'pd-addon-2',
         name: 'Multisite Compatibility',
-        price: 300,
+        price: 650,
         category: 'addon'
       },
       {
         id: 'pd-addon-3',
         name: 'Performance Optimization',
-        price: 350,
+        price: 650,
         category: 'addon'
       },
       {
         id: 'pd-addon-4',
         name: 'Auto-update System',
-        price: 200,
+        price: 850,
         category: 'addon'
       }
     ]
@@ -585,8 +592,8 @@ export const services: Service[] = [
     id: 'seo-optimization',
     title: 'SEO Optimization',
     description: 'Comprehensive technical and content SEO',
-    basePrice: 1250,
-    localPrice: 3900,
+    basePrice: 1500,
+    localPrice: 4900,
     deliveryTime: '2 weeks',
     features: [
       {
@@ -606,7 +613,7 @@ export const services: Service[] = [
       {
         id: 'seo-addon-1',
         name: 'Competitor Analysis',
-        price: 400,
+        price: 800,
         category: 'addon'
       },
       {
@@ -618,13 +625,13 @@ export const services: Service[] = [
       {
         id: 'seo-addon-3',
         name: 'International SEO Setup',
-        price: 600,
+        price: 850,
         category: 'addon'
       },
       {
         id: 'seo-addon-4',
         name: 'Content Strategy Plan',
-        price: 500,
+        price: 1000,
         category: 'addon'
       }
     ]
@@ -633,7 +640,7 @@ export const services: Service[] = [
     id: 'custom-crm',
     title: 'Custom CRM',
     description: 'Tailored sales pipeline management system',
-    basePrice: 7500,
+    basePrice: 8500,
     localPrice: 23500,
     deliveryTime: '8-12 weeks',
     features: [
@@ -654,13 +661,13 @@ export const services: Service[] = [
       {
         id: 'crm-addon-1',
         name: 'Email Campaign Integration',
-        price: 1000,
+        price: 2000,
         category: 'addon'
       },
       {
         id: 'crm-addon-2',
         name: 'Custom Workflows',
-        price: 1250,
+        price: 1500,
         category: 'addon'
       },
       {
@@ -681,8 +688,8 @@ export const services: Service[] = [
     id: 'ai-integration',
     title: 'AI Integration',
     description: 'Add cutting-edge AI capabilities to your systems',
-    basePrice: 3500,
-    localPrice: 11000,
+    basePrice: 3800,
+    localPrice: 11500,
     deliveryTime: '4-5 weeks',
     features: [
       {
@@ -695,13 +702,13 @@ export const services: Service[] = [
       {
         id: 'ai-addon-1',
         name: 'Custom Model Fine-Tuning',
-        price: 1500,
+        price: 3500,
         category: 'addon'
       },
       {
         id: 'ai-addon-2',
         name: 'Voice Interface',
-        price: 1200,
+        price: 1800,
         category: 'addon'
       },
       {
@@ -716,8 +723,8 @@ export const services: Service[] = [
     id: 'web3-development',
     title: 'Web3 Development',
     description: 'Blockchain and smart contract solutions',
-    basePrice: 6000,
-    deliveryTime: '6-10 weeks',
+    basePrice: 8000,
+    deliveryTime: '6-14 weeks',
     features: [
       {
         id: 'web3-core-1',
@@ -729,13 +736,13 @@ export const services: Service[] = [
       {
         id: 'web3-addon-1',
         name: 'Tokenomics Design',
-        price: 2000,
+        price: 4000,
         category: 'addon'
       },
       {
         id: 'web3-addon-2',
         name: 'NFT Marketplace',
-        price: 3000,
+        price: 6000,
         category: 'addon'
       },
       {
@@ -748,11 +755,11 @@ export const services: Service[] = [
   }
 ];
 
-// Conversion utility (1.57 TND = 1 USD)
-export const convertToTnd = (usd: number) => Math.round(usd * 1.57);
+// Conversion utility (3.0 TND = 1 USD)
+export const convertToTnd = (usd: number) => Math.round(usd * 3.00);
 
 
-// Complete list of 9 projects
+// Complete list of 10 projects
 export const projects = [
   {
     id: 1,
@@ -837,9 +844,9 @@ export const projects = [
     id: 6,
     title: "Zando Market",
     category: "Nextjs",
-    img: "/p2.svg",
+    img: "/projects/zandokin.png",
     github: "https://github.com/AlexGMAY/Zando-Central-Market",
-    live: "https://yourlivewebsite.com",
+    live: "https://zandokin.vercel.app",
     techStack: [
       "/next.svg",
       "/tail.svg",
@@ -853,8 +860,8 @@ export const projects = [
     title: "Cyberperformance Review Platform",
     category: "Mern",
     img: "/p3.svg",
-    github: "https://github.com/AlexGMAY/Cyberperformance-Review-App",
-    live: "https://cyberperformance.gemsalex.com",
+    github: "#",
+    live: "https://cyberperformance.vercel.app",
     techStack: [
       "/re.svg",
       "/tail.svg",
@@ -883,19 +890,32 @@ export const projects = [
   },
   {
     id: 9,
-    title: "Esley Logistics",
-    category: "WordPress",
-    img: "/projects/esley-logistics.jpg",
+    title: "Leaderforma Soutien Scolaire",
+    category: "Nextjs",
+    img: "/projects/leaderforma.png",
     github: "#",
-    live: "https://esleylogistics.fr/",
+    live: "https://leader-soutien-scolaire.com/",
     techStack: [
-      "/html.png",
-      "/jquery.svg",
-      "/js.svg",
-      "/wordpress.svg",
-      "/php.svg",
-      "/css.svg",
-      "/mysql.svg",
+      "/next.svg",
+      "/tail.svg",
+      "/re.svg",
+      "/git.svg",
+      "/mongodb.svg",
+    ],
+  },
+  {
+    id: 10,
+    title: "Unidate : University Dating Platform",
+    category: "Nextjs",
+    img: "/projects/unidate.png",
+    github: "#",
+    live: "https://unidate-one.vercel.app/",
+    techStack: [
+      "/next.svg",
+      "/tail.svg",
+      "/re.svg",
+      "/git.svg",
+      "/mongodb.svg",
     ],
   },
 ];
