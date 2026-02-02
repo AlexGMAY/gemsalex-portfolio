@@ -22,8 +22,6 @@ import {
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Floating particles background component
 function FloatingParticles() {

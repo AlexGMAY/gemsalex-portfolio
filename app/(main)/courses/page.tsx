@@ -20,8 +20,6 @@ import {
 import Link from "next/link";
 import { Metadata } from "next";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 
 // SEO Metadata
