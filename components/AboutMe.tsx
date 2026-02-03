@@ -70,8 +70,8 @@ const AboutMe = () => {
                 <Image
                   src="/gallery/alex-office.jpg"
                   alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre"
-                  width={560} // EXACT displayed width
-                  height={767}
+                  width={580} // EXACT displayed width
+                  height={700}
                   className="object-cover object-center" // Changed from object-top to center
                   quality={75}
                   priority

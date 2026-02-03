@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
 import RecentProjects from "@/components/RecentProjects";
@@ -150,8 +149,7 @@ const Home = () => {
           <Hero />
           <div className="w-full sm:px-10 px-5">
             <TechLogos />
-            <AboutMe />
-            <Grid />
+            <AboutMe />            
             <NeonMatrix />
             <AnimatedQuote />
             <Services />
