@@ -178,7 +178,7 @@ const Hero = () => {
       >
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          // initial={{ opacity: 0, y: 20 }}
           // animate={{ opacity: 1, y: 0 }}
           // transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="text-[40px] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
