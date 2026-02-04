@@ -447,7 +447,7 @@ export default function CoursesPageClient() {
                 },
                 {
                   step: '03',
-                  title: 'Elite Live Sessions',
+                  title: 'Live Sessions',
                   description: '1-on-1 intensive training via Google Meet or MS Teams with direct expert mentorship',
                   icon: Users
                 },

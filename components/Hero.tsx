@@ -103,10 +103,11 @@ const Hero = () => {
         <Image
           src="/realestate-dark.jpg"
           alt="Real Estate Technology Solutions - Custom Software Development"
-          width={383} // EXACT displayed width
-          height={383} // EXACT displayed height
-          quality={75}
+          width={367}
+          height={367}
           sizes="100vw"
+          loading="lazy"
+          quality={75}
           className="w-full md:h-full p-2 bg-black-200 border border-lg border-neutral-700 rounded-3xl shadow-lg relative z-10 object-cover"
           draggable="false"
         />
@@ -199,9 +200,9 @@ const Hero = () => {
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          // initial={{ opacity: 0, y: 20 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           className="md:tracking-wider mb-4 text-sm md:text-lg lg:text-1xl max-w-4xl mx-auto mb-8"
         >
           I&apos;m{" "}
@@ -216,9 +217,9 @@ const Hero = () => {
 
         {/* Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+          // initial={{ opacity: 0, y: 20 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <Link

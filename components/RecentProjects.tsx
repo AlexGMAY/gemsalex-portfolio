@@ -37,6 +37,17 @@ const projects = [
   },
   {
     id: 3,
+    title: "Nexusamo SaaS",
+    description:
+      "WordPress plugin that increases blog traffic through AI-powered SEO",
+    tech: ["Next.js", "React", "TypeScript", "PostgreSQL", "Tailwind"],
+    image: "/nexusamo.png",
+    github: "#",
+    live: "https://nexusamo.vercel.app",
+    category: "SaaS",
+  },
+  {
+    id: 4,
     title: "SmartPost Optimizer",
     description:
       "WordPress plugin that increases blog traffic through AI-powered SEO",
@@ -47,7 +58,7 @@ const projects = [
     category: "Plugin",
   },
   {
-    id: 4,
+    id: 5,
     title: "UIForge AI Platform",
     description:
       "AI tool that generates professional UI designs in seconds, saving development time",
@@ -58,7 +69,7 @@ const projects = [
     category: "AI Design SaaS",
   },
   {
-    id: 5,
+    id: 6,
     title: "WP CRM Enterprise Plugin",
     description:
       "WordPress CRM that streamlines customer management and boosts sales",
@@ -68,17 +79,17 @@ const projects = [
     live: "#",
     category: "SaaS Plugin",
   },
-  {
-    id: 6,
-    title: "ScreenFlow Pro",
-    description:
-      "Collaboration platform for seamless screen sharing and video editing",
-    tech: ["Next.js", "React", "Mongodb", "Tailwind", "Express"],
-    image: "/favicon-MA.png",
-    github: "#",
-    live: "#",
-    category: "SaaS",
-  },
+  // {
+  //   id: 6,
+  //   title: "ScreenFlow Pro",
+  //   description:
+  //     "Collaboration platform for seamless screen sharing and video editing",
+  //   tech: ["Next.js", "React", "Mongodb", "Tailwind", "Express"],
+  //   image: "/favicon-MA.png",
+  //   github: "#",
+  //   live: "#",
+  //   category: "SaaS",
+  // },
 ];
 
 export default function RecentProjects() {

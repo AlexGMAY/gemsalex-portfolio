@@ -48,13 +48,10 @@ export const FloatingNav = ({
     <>
       {/* Desktop Navigation */}
       <AnimatePresence mode="wait">
-        <motion.div
-          initial={{ opacity: 1, y: -100 }}
-          animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
+        <motion.div          
           className={cn(
             "hidden lg:flex gap-6 max-w-fit md:min-w-[70vw] lg:min-w-5xl fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-2 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-between space-x-4",
-            className
+            className,
           )}
           style={{
             backdropFilter: "blur(16px) saturate(180%)",
@@ -64,12 +61,7 @@ export const FloatingNav = ({
           }}
         >
           <div className="flex items-center">
-            <Link href="/">
-              {/* <img
-                src="/logo-MA.png"
-                alt="Merveille Alexander"
-                className="w-20 h-20 object-contain"
-              /> */}
+            <Link href="/">              
               <Image
                 src="/logo-MA.png"
                 alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
@@ -86,7 +78,7 @@ export const FloatingNav = ({
                 href={navItem.link}
                 className={cn(
                   "text-neutral-50 hover:text-blue-200 transition-colors duration-200 relative group",
-                  pathname === navItem.link && "text-blue-300 font-medium"
+                  pathname === navItem.link && "text-blue-300 font-medium",
                 )}
               >
                 <span className="md:uppercase lg:uppercase font-semibold text-sm !cursor-pointer">
@@ -98,7 +90,7 @@ export const FloatingNav = ({
                     "absolute left-0 right-0 -bottom-1 h-0.5 bg-blue-300 transform scale-x-0 transition-transform duration-300",
                     pathname === navItem.link
                       ? "scale-x-100"
-                      : "group-hover:scale-x-75"
+                      : "group-hover:scale-x-75",
                   )}
                 />
               </Link>
@@ -131,6 +123,7 @@ export const FloatingNav = ({
         <div className="fixed right-8">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
             className="p-2 rounded-lg backdrop-blur-md bg-gray-800/80 border border-gray-700 hover:bg-gray-700/80 transition-colors"
           >
             <div className="w-6 h-6 flex flex-col justify-between">
@@ -174,7 +167,7 @@ export const FloatingNav = ({
                   href={navItem.link}
                   className={cn(
                     "text-neutral-50 hover:text-blue-200 px-4 py-2 transition-colors duration-200 relative group",
-                    pathname === navItem.link && "text-blue-300 font-medium"
+                    pathname === navItem.link && "text-blue-300 font-medium",
                   )}
                 >
                   <div className="flex items-center">
@@ -190,7 +183,7 @@ export const FloatingNav = ({
                       "absolute left-4 right-4 bottom-0 h-0.5 bg-blue-300 transform scale-x-0 transition-transform duration-300",
                       pathname === navItem.link
                         ? "scale-x-100"
-                        : "group-hover:scale-x-75"
+                        : "group-hover:scale-x-75",
                     )}
                   />
                 </Link>

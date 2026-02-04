@@ -16,33 +16,33 @@ const clients: Client[] = [
     logo: "/avatars/logo-elin.jpg",
     url: "#",
     testimonial:
-      '"Revolutionized our web platform with cutting-edge Next.js optimizations"',
+      '"Revolutionized our web platform with cutting-edge optimizations"',
   },
   {
     name: "BigClick Digitale",
     logo: "/avatars/logo-abcd.jpg",
     url: "#",
-    testimonial: '"Delivered our design system 2 weeks ahead of schedule"',
+    testimonial: '"Delivered our marketing website design system 2 weeks ahead of schedule"',
   },
   {
     name: "GGTE",
     logo: "/avatars/logo-ggte.jpg",
     url: "#",
     testimonial:
-      '"Implemented CI/CD pipeline that reduced deployment times by 70%"',
+      '"Designed and developed a custom website for our construction company GGTE that boosted our visibility by 50% and attracted more house builders."',
   },
   {
-    name: "Marvelbiz Solutions",
-    logo: "/avatars/themarvelbiz.jpeg",
+    name: "One Beat Records",
+    logo: "/avatars/logo-one-beat.png",
     url: "#",
     testimonial:
-      '"Migrated our legacy system to modern React with zero downtime"',
+      '"Created a sleek, modern website for our record label that increased fan engagement by 40% and streamlined our online presence."',
   },
   {
-    name: "Collaboration Capital",
-    logo: "/avatars/webcraft.svg",
-    url: "#",
-    testimonial: '"Provided ongoing maintenance that saved us $15k annually"',
+    name: "Leaderforma Soutien Scolaire",
+    logo: "/avatars/logo-leader-forma.png",
+    url: "https://leader-soutien-scolaire.com",
+    testimonial: '"Alexander built us a custom website that boosted engagement by 50% and proved invaluable for our online presence."',
   },
 ];
 

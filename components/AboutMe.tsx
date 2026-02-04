@@ -66,18 +66,20 @@ const AboutMe = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-teal-400 rounded-2xl opacity-75 blur-sm group-hover:opacity-100 transition-all duration-300" />
 
               {/* Image container - now with explicit dimensions */}
-              <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full h-full min-h-[500px] lg:min-h-[650px]">
-                <Image
-                  src="/gallery/alex-office.jpg"
-                  alt="Strategic Software Engineer & Business Problem Solver - Merveille Alexandre"
-                  width={580} // EXACT displayed width
-                  height={700}
-                  className="object-cover object-center" // Changed from object-top to center
-                  quality={75}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw" // Added responsive sizing
-                />
-                {/* Gradient overlay with smile icon */}
+              <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full">
+                {/* Aspect ratio container for precise control */}
+                <div className="relative pt-[137%]"> {/* 806/588 = ~137% */}
+                  <Image
+                    src="/gallery/alex-office.jpg"
+                    alt="Strategic Software Engineer & Business Problem Solver"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                    className="object-cover"
+                    quality={75}
+                  />
+                </div>
+                {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end justify-end p-6">
                   <motion.div
                     animate={{ rotate: [0, 10, -10, 0] }}

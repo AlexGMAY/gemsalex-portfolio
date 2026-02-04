@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
@@ -20,42 +20,47 @@ const AnimatedQuote = () => {
 
   useEffect(() => {
     const unsubscribe = wordIndex.on("change", (latest) => {
-      // Round the latest value to the nearest integer
       const roundedIndex = Math.round(latest);
       setCurrentWord(roundedIndex);
     });
 
-    return () => unsubscribe(); // Cleanup the listener
+    return () => unsubscribe();
   }, [wordIndex]);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative md:overflow-hidden bg-black-100">
       {/* Sticky Container */}
-      <div className="sticky top-20 lg:top-40 h-screen flex flex-col justify-center items-center">
+      <div className="sticky top-20 lg:top-40 h-screen flex flex-col justify-center items-center px-4 sm:px-6">
         <div className="inline-flex border border-lime-400 gap-2 text-lime-500 px-3 py-1 rounded-full items-center text-sm uppercase font-semibold">
           <span>&#10038;</span>
           <span>Strategic Software Craftsmanship</span>
         </div>
-        <div className="text-4xl md:text-6xl text-center font-medium mt-10">
-          <span className="">Your Competitive Advantage Starts Here.</span>{" "}
-          <span className="">
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-medium mt-6 sm:mt-8 md:mt-10 max-w-4xl mx-auto">
+          <span className="text-white block mb-4 sm:mb-6">
+            Your Competitive Advantage Starts Here.
+          </span>
+
+          {/* FIXED: Better contrast for inactive words */}
+          <p className="leading-relaxed sm:leading-normal">
             {words.map((word, wordIndex) => (
               <motion.span
                 key={wordIndex}
                 className={twMerge(
-                  "transition duration-500 text-neutral-700",
-                  wordIndex < currentWord &&
-                    "bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent"
+                  "transition duration-500",
+                  wordIndex < currentWord
+                    ? "bg-gradient-to-r from-lime-400 to-blue-300 bg-clip-text text-transparent"
+                    : "text-neutral-300", // Changed from text-neutral-700 with opacity
                 )}
                 style={{
-                  opacity: wordIndex < currentWord ? 1 : 0.5, // Fade in as animation progresses
+                  opacity: wordIndex < currentWord ? 1 : 0.7, // Reduced from 0.5 to 0.7 for better contrast
                 }}
               >
                 {`${word} `}
               </motion.span>
             ))}
-          </span>
-          <span className="text-lime-400 font-semibold block">
+          </p>
+
+          <span className="text-lime-400 font-semibold block mt-4 sm:mt-6 md:mt-8">
             Let&apos;s Build Your Success Story!{" "}
           </span>
         </div>
