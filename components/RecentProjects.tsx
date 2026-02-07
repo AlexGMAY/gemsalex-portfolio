@@ -41,7 +41,7 @@ const projects = [
     description:
       "WordPress plugin that increases blog traffic through AI-powered SEO",
     tech: ["Next.js", "React", "TypeScript", "PostgreSQL", "Tailwind"],
-    image: "/nexusamo.png",
+    image: "/projects/nexusamo.png",
     github: "#",
     live: "https://nexusamo.vercel.app",
     category: "SaaS",
@@ -111,11 +111,11 @@ export default function RecentProjects() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            The{" "}
+            Recent{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
-              Inside
+              Products
             </span>{" "}
-            Scoop
+            In Development
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Enterprise-grade software solutions in development with modern technologies
@@ -135,12 +135,7 @@ export default function RecentProjects() {
             >
               <div className="h-full bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-400/30 transition-all flex flex-col">
                 {/* Project image */}
-                <div className="relative aspect-video overflow-hidden">
-                  {/* <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  /> */}
+                <div className="relative aspect-video overflow-hidden">                  
                   <Image
                     src={project.image}
                     alt={project.title}

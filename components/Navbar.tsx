@@ -48,7 +48,11 @@ export const FloatingNav = ({
     <>
       {/* Desktop Navigation */}
       <AnimatePresence mode="wait">
-        <motion.div          
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -20 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
           className={cn(
             "hidden lg:flex gap-6 max-w-fit md:min-w-[70vw] lg:min-w-5xl fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-2 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-between space-x-4",
             className,

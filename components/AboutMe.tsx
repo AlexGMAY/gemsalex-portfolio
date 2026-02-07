@@ -68,7 +68,9 @@ const AboutMe = () => {
               {/* Image container - now with explicit dimensions */}
               <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full">
                 {/* Aspect ratio container for precise control */}
-                <div className="relative pt-[137%]"> {/* 806/588 = ~137% */}
+                <div className="relative pt-[137%]">
+                  {" "}
+                  {/* 806/588 = ~137% */}
                   <Image
                     src="/gallery/alex-office.jpg"
                     alt="Strategic Software Engineer & Business Problem Solver"
@@ -115,6 +117,15 @@ const AboutMe = () => {
                 technical expertise with deep business understanding to deliver
                 solutions that drive measurable growth.
               </p>
+              <p className="text-gray-300 leading-relaxed mt-4">
+                I also share this expertise through personalized professional
+                training, helping ambitious individuals and teams master the
+                exact skills needed to accelerate their careers. Whether
+                you&apos;re looking to upskill for promotion, transition into
+                tech, or optimize your business operations, my 1-on-1 training
+                delivers practical, results-driven learning tailored to your
+                specific goals and schedule.
+              </p>
             </div>
 
             {/* Soft Skills */}
@@ -137,27 +148,7 @@ const AboutMe = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
-
-            {/* Stats */}
-            {/* <div className="grid grid-cols-3 gap-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700 text-center"
-                >
-                  <div className="text-blue-400 text-2xl mb-2 flex justify-center">
-                    {stat.icon}
-                  </div>
-                  <h4 className="text-white text-xl font-bold">{stat.value}</h4>
-                  <p className="text-gray-400 text-sm">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div> */}
+            </div>            
 
             {/* CTA */}
             <motion.div

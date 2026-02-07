@@ -4,6 +4,7 @@ import Hero from "@/components/products/Hero";
 import Products from "@/components/products/Products";
 import TechLogos from "@/components/TechLogos";
 import { productsByCategory } from "@/data/products";
+import RecentProjects from "@/components/RecentProjects";
 
 export const metadata: Metadata = {
   title:
@@ -135,6 +136,7 @@ const Page = () => {
         <Hero />
         <div className="w-full sm:px-10 px-5">
           <TechLogos />
+          <RecentProjects />
           <Products productsByCategory={productsByCategory} />
           <Platforms />
         </div>

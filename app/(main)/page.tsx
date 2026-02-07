@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
-import RecentProjects from "@/components/RecentProjects";
 import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
 import TechLogos from "@/components/TechLogos";
@@ -154,8 +153,7 @@ const Home = () => {
             <AnimatedQuote />
             <Services />
             <Platforms />
-            <Skills />
-            <RecentProjects />
+            <Skills />            
             <SuperPricing pageType="home" />
             <Realisations isHomePage={true} />
             <Approach />

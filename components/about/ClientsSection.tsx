@@ -14,15 +14,15 @@ const clients: Client[] = [
   {
     name: "ELINsas",
     logo: "/avatars/logo-elin.jpg",
-    url: "#",
+    url: "https://elinsas.co",
     testimonial:
       '"Revolutionized our web platform with cutting-edge optimizations"',
   },
   {
     name: "BigClick Digitale",
     logo: "/avatars/logo-abcd.jpg",
-    url: "#",
-    testimonial: '"Delivered our marketing website design system 2 weeks ahead of schedule"',
+    url: "https://abc-digitale.com",
+    testimonial: '"Delivered our marketing website design system exacltly as we envisioned it"',
   },
   {
     name: "GGTE",
@@ -34,7 +34,7 @@ const clients: Client[] = [
   {
     name: "One Beat Records",
     logo: "/avatars/logo-one-beat.png",
-    url: "#",
+    url: "https://one-beat.co",
     testimonial:
       '"Created a sleek, modern website for our record label that increased fan engagement by 40% and streamlined our online presence."',
   },
