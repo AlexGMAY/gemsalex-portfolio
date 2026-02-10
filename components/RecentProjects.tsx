@@ -198,23 +198,7 @@ export default function RecentProjects() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* View All Projects Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="flex justify-center"
-        >
-          <Link
-            href="/products"
-            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-200 to-blue-300 text-white font-medium hover:from-blue-500 hover:to-lime-500 transition-all group"
-          >
-            View All Products
-            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
+        </div>       
       </div>
     </section>
   );

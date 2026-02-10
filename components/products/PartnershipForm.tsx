@@ -104,7 +104,7 @@ export default function PartnershipForm({
       if (data.success) {
         showToast(
           "success",
-          "Partnership request sent successfully! We'll contact you within 24 hours."
+          "Partnership request sent successfully!"
         );
         // Reset form
         setFormData({
@@ -171,7 +171,7 @@ export default function PartnershipForm({
         )}
       </AnimatePresence>
 
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[5001] flex items-center justify-center p-4">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -399,10 +399,10 @@ export default function PartnershipForm({
                 disabled={isSubmitting || !csrfToken}
                 whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 ${
+                className={`w-full bg-gradient-to-r from-blue-600 to-lime-600 text-white font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 ${
                   isSubmitting || !csrfToken
                     ? "opacity-50 cursor-not-allowed"
-                    : "hover:from-blue-700 hover:to-purple-700"
+                    : "hover:from-blue-700 hover:to-lime-700"
                 }`}
               >
                 {isSubmitting ? (

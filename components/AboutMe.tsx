@@ -59,7 +59,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2 h-full"
+            className="w-full lg:w-1/2 h-auto lg:h-full"
           >
             <div className="relative group w-full h-full min-h-[500px] lg:min-h-[650px]">
               {/* Gradient border effect */}

@@ -65,7 +65,7 @@ export const FloatingNav = ({
           }}
         >
           <div className="flex items-center">
-            <Link href="/">              
+            <Link href="/">
               <Image
                 src="/logo-MA.png"
                 alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
@@ -111,7 +111,7 @@ export const FloatingNav = ({
       </AnimatePresence>
 
       {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
-      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000]">
+      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] w-full mx-5 space-x-4">
         {/* Logo mobile */}
         <div className="flex items-center pl-4">
           <Link href="/">
@@ -158,7 +158,7 @@ export const FloatingNav = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden fixed top-20 right-4 z-[4999] rounded-lg backdrop-blur-md bg-gray-800/95 border border-gray-700 p-4 shadow-xl min-w-[200px]"
+            className="lg:hidden fixed top-24 right-4 z-[4999] rounded-lg backdrop-blur-md bg-gray-800/95 border border-gray-700 p-4 shadow-xl min-w-[200px]"
             style={{
               backdropFilter: "blur(16px) saturate(180%)",
               backgroundColor: "rgba(17, 25, 40, 0.95)",

@@ -175,21 +175,21 @@ const Hero = () => {
       {/* Centered content */}
       <motion.div
         style={{ y: yText }}
-        className="relative z-10 w-full max-w-[89vw] md:max-w-2xl lg:max-w-[73vw] px-6 text-center my-20"
+        className="relative z-10 w-full max-w-[90vw] md:max-w-2xl lg:max-w-[73vw] px-6 text-center my-20"
       >
         {/* Headline */}
         <motion.h1
           // initial={{ opacity: 0, y: 20 }}
           // animate={{ opacity: 1, y: 0 }}
           // transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="text-[40px] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          className="text-[22px] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-300">
             Custom Software Solutions
           </span>{" "}
           <br />
           That{" "}
-          <span className="text-[40px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
+          <span className="text-[34px] md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-400">
             Drive Growth
           </span>{" "}
           & <br />
@@ -226,7 +226,7 @@ const Hero = () => {
             href="#case-studies"
             className="flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-200 to-blue-300 text-white font-medium hover:shadow-lg transition-all"
           >
-            See Client Success Stories <FaArrowRight />
+            Client Success Stories <FaArrowRight />
           </Link>
           <Link
             href="/contact"

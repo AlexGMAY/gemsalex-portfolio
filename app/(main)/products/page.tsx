@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Platforms from "@/components/Platforms";
 import Hero from "@/components/products/Hero";
-import Products from "@/components/products/Products";
+// import Products from "@/components/products/Products";
 import TechLogos from "@/components/TechLogos";
-import { productsByCategory } from "@/data/products";
+// import { productsByCategory } from "@/data/products";
 import RecentProjects from "@/components/RecentProjects";
 
 export const metadata: Metadata = {
@@ -137,7 +137,7 @@ const Page = () => {
         <div className="w-full sm:px-10 px-5">
           <TechLogos />
           <RecentProjects />
-          <Products productsByCategory={productsByCategory} />
+          {/* <Products productsByCategory={productsByCategory} /> */}
           <Platforms />
         </div>
       </main>

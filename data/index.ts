@@ -197,7 +197,8 @@ export interface Service {
   title: string;
   description: string;
   basePrice: number; // USD
-  localPrice?: number; // Fixed TND
+  localPrice?: number; // TND price
+  euroPrice?: number; // EUR price 
   deliveryTime: string;
   popular?: boolean;
   features: Feature[];
@@ -206,552 +207,865 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: 'business-website',
-    title: 'Business Website',
-    description: 'Premium website with conversion-focused design and guaranteed performance',
-    basePrice: 1750,
-    localPrice: 5500,
-    deliveryTime: '2-3 weeks',
+    id: "business-website",
+    title: "Business Website",
+    description:
+      "Premium website with conversion-focused design and guaranteed performance",
+    basePrice: 1750, // USD
+    localPrice: 5500, // TND
+    euroPrice: 1610, // EUR
+    deliveryTime: "3-4 weeks", // Increased from 2-3 weeks (more realistic)
     popular: true,
     features: [
       {
-        id: 'bw-core-1',
-        name: 'Custom High-End Design',
-        description: 'Figma-designed UI with 3 revisions',
+        id: "bw-core-1",
+        name: "Custom High-End Design",
+        description: "Figma-designed UI with 3 revision rounds",
         price: 0,
         checked: true,
-        category: 'core'
+        category: "core",
       },
       {
-        id: 'bw-core-2',
-        name: 'Advanced SEO Setup',
-        description: 'Technical SEO + content strategy',
+        id: "bw-core-2",
+        name: "Advanced SEO Setup",
+        description: "Technical SEO audit + on-page optimization",
         price: 0,
         checked: true,
-        category: 'core'
+        category: "core",
       },
       {
-        id: 'bw-core-3',
-        name: 'Mobile-Optimized',
-        description: 'Perfect scores on all devices',
+        id: "bw-core-3",
+        name: "Mobile-Optimized & Responsive",
+        description: "Perfect scores on all devices & screen sizes",
         price: 0,
         checked: true,
-        category: 'core'
+        category: "core",
       },
       {
-        id: 'bw-addon-1',
-        name: 'Fast Loading (90+ Lighthouse)',
-        price: 200,
-        category: 'addon'
+        id: "bw-addon-1",
+        name: "Fast Loading (95+ Lighthouse Score)",
+        description: "Advanced performance optimization",
+        price: 400, // Increased from $200
+        category: "addon",
       },
       {
-        id: 'bw-addon-2',
-        name: 'Blog Integration',
-        price: 550,
-        category: 'addon'
+        id: "bw-addon-2",
+        name: "Blog/CMS Integration",
+        description: "WordPress or headless CMS setup",
+        price: 750, // Increased from $550
+        category: "addon",
       },
       {
-        id: 'bw-addon-3',
-        name: 'Newsletter System',
-        price: 300,
-        category: 'addon'
+        id: "bw-addon-3",
+        name: "Newsletter & Email Marketing",
+        description: "Mailchimp/Klaviyo integration + automation",
+        price: 450, // Increased from $300
+        category: "addon",
       },
       {
-        id: 'bw-addon-4',
-        name: 'Google Maps Integration',
-        price: 150,
-        category: 'addon'
+        id: "bw-addon-4",
+        name: "Google Maps & Location Services",
+        description: "Interactive maps + store locator",
+        price: 250, // Increased from $150
+        category: "addon",
       },
       {
-        id: 'bw-addon-5',
-        name: 'Social Media Integration',
-        price: 225,
-        category: 'addon'
+        id: "bw-addon-5",
+        name: "Social Media Integration",
+        description: "Auto-posting + social feeds + sharing",
+        price: 350, // Increased from $225
+        category: "addon",
       },
       {
-        id: 'bw-addon-6',
-        name: 'Google Analytics Setup',
-        price: 200,
-        category: 'addon'
+        id: "bw-addon-6",
+        name: "Google Analytics 4 + Tag Manager",
+        description: "Complete tracking setup with dashboards",
+        price: 300, // Increased from $200
+        category: "addon",
       },
       {
-        id: 'bw-addon-7',
-        name: 'AI Chatbot Integration',
-        price: 800,
-        category: 'addon'
+        id: "bw-addon-7",
+        name: "AI Chatbot Integration",
+        description: "Custom-trained chatbot with 24/7 support",
+        price: 1200, // Increased from $800
+        category: "addon",
       },
       {
-        id: 'bw-addon-8',
-        name: 'Premium Security Suite',
-        price: 450,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'showcase-website',
-    title: 'Showcase Website',
-    description: 'High-end portfolio with premium presentation features',
-    basePrice: 1500,
-    localPrice: 4700,
-    deliveryTime: '2-3 weeks',
-    features: [
-      {
-        id: 'sw-core-1',
-        name: 'Minimalist Premium UI',
-        price: 0,
-        checked: true,
-        category: 'core'
+        id: "bw-addon-8",
+        name: "Premium Security Suite",
+        description: "SSL, firewall, malware protection, backups",
+        price: 600, // Increased from $450
+        category: "addon",
       },
+      // NEW ADDONS:
       {
-        id: 'sw-core-2',
-        name: 'Performance Optimized',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'sw-core-3',
-        name: 'Contact Form',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'sw-addon-1',
-        name: 'Gallery & Portfolio System',
-        price: 650,
-        category: 'addon'
-      },
-      {
-        id: 'sw-addon-2',
-        name: 'Video Backgrounds',
-        price: 350,
-        category: 'addon'
-      },
-      {
-        id: 'sw-addon-3',
-        name: 'Parallax Scrolling',
-        price: 150,
-        category: 'addon'
-      },
-      {
-        id: 'sw-addon-4',
-        name: '3D Model Integration',
-        price: 800,
-        category: 'addon'
-      },
-      {
-        id: 'sw-addon-5',
-        name: 'Client Testimonial System',
-        price: 250,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'ecommerce-store',
-    title: 'E-Commerce Store',
-    description: 'Enterprise-grade online store with premium integrations',
-    basePrice: 6000,
-    localPrice: 12500,
-    deliveryTime: '4-6 weeks',
-    popular: true,
-    features: [
-      {
-        id: 'ec-core-1',
-        name: 'Product Management (100 SKUs)',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'ec-core-2',
-        name: 'Payment Gateways',
-        description: 'Stripe/PayPal/Local options',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'ec-core-3',
-        name: 'Cart & Checkout System',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'ec-addon-1',
-        name: 'Inventory Management',
-        price: 1600,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-2',
-        name: 'Product Search & Filters',
-        price: 500,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-3',
-        name: 'Abandoned Cart Recovery',
-        price: 400,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-4',
-        name: 'AI Product Recommendations',
-        price: 1900,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-5',
-        name: 'AR Product Previews',
-        price: 2500,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-6',
-        name: 'Marketplace Multi-seller System',
-        price: 4800,
-        category: 'addon'
-      },
-      {
-        id: 'ec-addon-7',
-        name: 'Subscription System',
-        price: 800,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'elearning-platform',
-    title: 'E-Learning Platform',
-    description: 'Complete LMS with advanced course management',
-    basePrice: 8000,
-    localPrice: 20000,
-    deliveryTime: '6-8 weeks',
-    features: [
-      {
-        id: 'el-core-1',
-        name: 'Student Dashboard',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'el-core-2',
-        name: 'Payment Gateway Integration',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'el-core-3',
-        name: 'Course Management',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'el-addon-1',
-        name: 'Video Streaming',
-        price: 1200,
-        category: 'addon'
-      },
-      {
-        id: 'el-addon-2',
-        name: 'Gamification System',
-        price: 1200,
-        category: 'addon'
-      },
-      {
-        id: 'el-addon-3',
-        name: 'AI Tutor Integration',
-        price: 1800,
-        category: 'addon'
-      },
-      {
-        id: 'el-addon-4',
-        name: 'SCORM Compliance',
-        price: 800,
-        category: 'addon'
-      },
-      {
-        id: 'el-addon-5',
-        name: 'Certification Automation',
-        price: 700,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'saas-platform',
-    title: 'SaaS Platform',
-    description: 'Custom cloud solution with microservices architecture',
-    basePrice: 10000,
-    deliveryTime: '8-12 weeks',
-    features: [
-      {
-        id: 'saas-core-1',
-        name: 'Cloud Hosting Setup',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'saas-core-2',
-        name: 'User Authentication',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'saas-core-3',
-        name: 'API Integrations',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'saas-addon-1',
-        name: 'Admin Dashboard',
-        price: 1850,
-        category: 'addon'
-      },
-      {
-        id: 'saas-addon-2',
-        name: 'Custom Analytics',
-        price: 1500,
-        category: 'addon'
-      },
-      {
-        id: 'saas-addon-3',
-        name: 'White-label Solution',
-        price: 2000,
-        category: 'addon'
-      },
-      {
-        id: 'saas-addon-4',
-        name: 'AI Module Integration',
-        price: 2500,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'plugin-development',
-    title: 'Plugin Development',
-    description: 'High-quality plugins with premium support',
-    basePrice: 1000,
-    localPrice: 3100,
-    deliveryTime: '3-4 weeks',
-    features: [
-      {
-        id: 'pd-core-1',
-        name: 'Custom Functionality',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'pd-core-2',
-        name: 'Seamless Integration',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'pd-addon-1',
-        name: 'Security Enhancements',
-        price: 850,
-        category: 'addon'
-      },
-      {
-        id: 'pd-addon-2',
-        name: 'Multisite Compatibility',
-        price: 650,
-        category: 'addon'
-      },
-      {
-        id: 'pd-addon-3',
-        name: 'Performance Optimization',
-        price: 650,
-        category: 'addon'
-      },
-      {
-        id: 'pd-addon-4',
-        name: 'Auto-update System',
-        price: 850,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'seo-optimization',
-    title: 'SEO Optimization',
-    description: 'Comprehensive technical and content SEO',
-    basePrice: 1500,
-    localPrice: 4900,
-    deliveryTime: '2 weeks',
-    features: [
-      {
-        id: 'seo-core-1',
-        name: 'Keyword Research',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'seo-core-2',
-        name: 'Technical Audit',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'seo-addon-1',
-        name: 'Competitor Analysis',
-        price: 800,
-        category: 'addon'
-      },
-      {
-        id: 'seo-addon-2',
-        name: 'Monthly SEO Reports',
-        price: 250,
-        category: 'addon'
-      },
-      {
-        id: 'seo-addon-3',
-        name: 'International SEO Setup',
-        price: 850,
-        category: 'addon'
-      },
-      {
-        id: 'seo-addon-4',
-        name: 'Content Strategy Plan',
-        price: 1000,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'custom-crm',
-    title: 'Custom CRM',
-    description: 'Tailored sales pipeline management system',
-    basePrice: 8500,
-    localPrice: 23500,
-    deliveryTime: '8-12 weeks',
-    features: [
-      {
-        id: 'crm-core-1',
-        name: 'Lead Management',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'crm-core-2',
-        name: 'Analytics Dashboard',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'crm-addon-1',
-        name: 'Email Campaign Integration',
-        price: 2000,
-        category: 'addon'
-      },
-      {
-        id: 'crm-addon-2',
-        name: 'Custom Workflows',
-        price: 1500,
-        category: 'addon'
-      },
-      {
-        id: 'crm-addon-3',
-        name: 'Mobile App Sync',
-        price: 1500,
-        category: 'addon'
-      },
-      {
-        id: 'crm-addon-4',
-        name: 'AI Lead Scoring',
-        price: 1800,
-        category: 'addon'
-      }
-    ]
-  },
-  {
-    id: 'ai-integration',
-    title: 'AI Integration',
-    description: 'Add cutting-edge AI capabilities to your systems',
-    basePrice: 3800,
-    localPrice: 11500,
-    deliveryTime: '4-5 weeks',
-    features: [
-      {
-        id: 'ai-core-1',
-        name: 'LLM Integration (GPT/Claude)',
-        price: 0,
-        checked: true,
-        category: 'core'
-      },
-      {
-        id: 'ai-addon-1',
-        name: 'Custom Model Fine-Tuning',
-        price: 3500,
-        category: 'addon'
-      },
-      {
-        id: 'ai-addon-2',
-        name: 'Voice Interface',
-        price: 1800,
-        category: 'addon'
-      },
-      {
-        id: 'ai-addon-3',
-        name: 'Automated Content Generation',
+        id: "bw-addon-9",
+        name: "Multilingual Support",
+        description: "2 additional languages (i18n setup)",
         price: 900,
-        category: 'addon'
-      }
-    ]
+        category: "addon",
+      },
+      {
+        id: "bw-addon-10",
+        name: "Accessibility Compliance (WCAG 2.1)",
+        description: "ADA compliant for all users",
+        price: 800,
+        category: "addon",
+      },
+      {
+        id: "bw-addon-11",
+        name: "Website Maintenance (3 months)",
+        description: "Updates, security patches, backups",
+        price: 500,
+        category: "addon",
+      },
+    ],
   },
   {
-    id: 'web3-development',
-    title: 'Web3 Development',
-    description: 'Blockchain and smart contract solutions',
-    basePrice: 8000,
-    deliveryTime: '6-14 weeks',
+    id: "showcase-website",
+    title: "Showcase Website",
+    description: "High-end portfolio with premium presentation features",
+    basePrice: 1500, // USD
+    localPrice: 4700, // TND
+    euroPrice: 1380, // EUR
+    deliveryTime: "3-4 weeks", // Increased from 2-3 weeks
     features: [
       {
-        id: 'web3-core-1',
-        name: 'Smart Contract Development',
+        id: "sw-core-1",
+        name: "Premium Minimalist UI Design",
+        description: "Award-winning design aesthetics",
         price: 0,
         checked: true,
-        category: 'core'
+        category: "core",
       },
       {
-        id: 'web3-addon-1',
-        name: 'Tokenomics Design',
-        price: 4000,
-        category: 'addon'
+        id: "sw-core-2",
+        name: "Performance Optimized",
+        description: "95+ PageSpeed scores guaranteed",
+        price: 0,
+        checked: true,
+        category: "core",
       },
       {
-        id: 'web3-addon-2',
-        name: 'NFT Marketplace',
-        price: 6000,
-        category: 'addon'
+        id: "sw-core-3",
+        name: "Contact & Lead Capture System",
+        description: "Advanced forms with CRM integration",
+        price: 0,
+        checked: true,
+        category: "core",
       },
       {
-        id: 'web3-addon-3',
-        name: 'DAO Integration',
-        price: 2500,
-        category: 'addon'
-      }
-    ]
-  }
+        id: "sw-addon-1",
+        name: "Interactive Gallery & Portfolio",
+        description: "Lightbox, filtering, categories",
+        price: 850, // Increased from $650
+        category: "addon",
+      },
+      {
+        id: "sw-addon-2",
+        name: "Video Backgrounds & Animations",
+        description: "Custom animations & video integration",
+        price: 550, // Increased from $350
+        category: "addon",
+      },
+      {
+        id: "sw-addon-3",
+        name: "Parallax & Scroll Effects",
+        description: "Advanced scroll-triggered animations",
+        price: 300, // Increased from $150
+        category: "addon",
+      },
+      {
+        id: "sw-addon-4",
+        name: "3D Model & AR Integration",
+        description: "Three.js models with AR viewing",
+        price: 1200, // Increased from $800
+        category: "addon",
+      },
+      {
+        id: "sw-addon-5",
+        name: "Client Testimonial System",
+        description: "Ratings, reviews, and trust badges",
+        price: 400, // Increased from $250
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "sw-addon-6",
+        name: "Case Study Presentation",
+        description: "Interactive case studies with metrics",
+        price: 700,
+        category: "addon",
+      },
+      {
+        id: "sw-addon-7",
+        name: "Dark/Light Mode Toggle",
+        description: "Custom theme switching",
+        price: 450,
+        category: "addon",
+      },
+      {
+        id: "sw-addon-8",
+        name: "PDF Portfolio Generator",
+        description: "Automated PDF export of portfolio",
+        price: 600,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "ecommerce-store",
+    title: "E-Commerce Store",
+    description: "Enterprise-grade online store with premium integrations",
+    basePrice: 8000, // USD - CONSIDER INCREASING TO $8,000+
+    localPrice: 18500, // TND
+    euroPrice: 6520, // EUR
+    deliveryTime: "6-8 weeks", // Increased from 4-6 weeks
+    popular: true,
+    features: [
+      {
+        id: "ec-core-1",
+        name: "Product Management (Up to 200 SKUs)",
+        description: "Categories, variants, inventory",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ec-core-2",
+        name: "Payment Gateway Integration",
+        description: "Stripe, PayPal, Apple/Google Pay",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ec-core-3",
+        name: "Cart & Checkout System",
+        description: "One-page checkout, guest checkout",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ec-addon-1",
+        name: "Advanced Inventory Management",
+        description: "Low stock alerts, bulk imports",
+        price: 2200, // Increased from $1600
+        category: "addon",
+      },
+      {
+        id: "ec-addon-2",
+        name: "Smart Product Search & Filters",
+        description: "AI-powered search with faceted filtering",
+        price: 800, // Increased from $500
+        category: "addon",
+      },
+      {
+        id: "ec-addon-3",
+        name: "Abandoned Cart Recovery System",
+        description: "Email/SMS sequences + automation",
+        price: 700, // Increased from $400
+        category: "addon",
+      },
+      {
+        id: "ec-addon-4",
+        name: "AI Product Recommendations",
+        description: "Personalized recommendations engine",
+        price: 2500, // Increased from $1900
+        category: "addon",
+      },
+      {
+        id: "ec-addon-5",
+        name: "AR/VR Product Previews",
+        description: "3D product viewing + virtual try-on",
+        price: 3500, // Increased from $2500
+        category: "addon",
+      },
+      {
+        id: "ec-addon-6",
+        name: "Marketplace Multi-seller System",
+        description: "Vendor dashboards + commission system",
+        price: 6500, // Increased from $4800
+        category: "addon",
+      },
+      {
+        id: "ec-addon-7",
+        name: "Subscription & Recurring Payments",
+        description: "Membership boxes, SaaS billing",
+        price: 1200, // Increased from $800
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "ec-addon-8",
+        name: "POS System Integration",
+        description: "Connect online & physical store",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "ec-addon-9",
+        name: "Advanced Shipping Solutions",
+        description: "Real-time rates, label printing",
+        price: 900,
+        category: "addon",
+      },
+      {
+        id: "ec-addon-10",
+        name: "Customer Loyalty Program",
+        description: "Points, rewards, referral system",
+        price: 1400,
+        category: "addon",
+      },
+      {
+        id: "ec-addon-11",
+        name: "B2B Wholesale Features",
+        description: "Price lists, minimum orders, quotes",
+        price: 2800,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "elearning-platform",
+    title: "E-Learning Platform",
+    description: "Complete LMS with advanced course management",
+    basePrice: 8000, // USD
+    localPrice: 20000, // TND
+    euroPrice: 7360, // EUR
+    deliveryTime: "8-10 weeks", // Increased from 6-8 weeks
+    features: [
+      {
+        id: "el-core-1",
+        name: "Student & Instructor Dashboards",
+        description: "Progress tracking, analytics",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "el-core-2",
+        name: "Payment & Enrollment System",
+        description: "One-time, subscriptions, bundles",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "el-core-3",
+        name: "Course Management System",
+        description: "Modules, lessons, quizzes",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "el-addon-1",
+        name: "Video Streaming & DRM",
+        description: "Secure video hosting with protection",
+        price: 1800, // Increased from $1200
+        category: "addon",
+      },
+      {
+        id: "el-addon-2",
+        name: "Gamification & Engagement",
+        description: "Badges, leaderboards, points",
+        price: 1600, // Increased from $1200
+        category: "addon",
+      },
+      {
+        id: "el-addon-3",
+        name: "AI Tutor & Personalization",
+        description: "Adaptive learning paths",
+        price: 2500, // Increased from $1800
+        category: "addon",
+      },
+      {
+        id: "el-addon-4",
+        name: "SCORM/xAPI Compliance",
+        description: "Enterprise LMS compatibility",
+        price: 1200, // Increased from $800
+        category: "addon",
+      },
+      {
+        id: "el-addon-5",
+        name: "Certification & Badge Automation",
+        description: "Digital certificates with verification",
+        price: 1000, // Increased from $700
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "el-addon-6",
+        name: "Live Class Integration",
+        description: "Zoom, Teams, interactive whiteboard",
+        price: 1400,
+        category: "addon",
+      },
+      {
+        id: "el-addon-7",
+        name: "Assignment & Grading System",
+        description: "Auto-grading, peer reviews",
+        price: 1100,
+        category: "addon",
+      },
+      {
+        id: "el-addon-8",
+        name: "Discussion Forums & Community",
+        description: "Q&A, groups, social learning",
+        price: 900,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "saas-platform",
+    title: "SaaS Platform",
+    description: "Custom cloud solution with microservices architecture",
+    basePrice: 15000, // USD - CONSIDER INCREASING TO $15,000+
+    localPrice: 38000, // TND
+    euroPrice: 12500, // EUR
+    deliveryTime: "12-16 weeks", // Increased from 8-12 weeks
+    features: [
+      {
+        id: "saas-core-1",
+        name: "Cloud Infrastructure Setup",
+        description: "AWS/Azure/GCP with CI/CD",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "saas-core-2",
+        name: "User Authentication & Roles",
+        description: "OAuth, JWT, RBAC, SSO ready",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "saas-core-3",
+        name: "API Development & Integration",
+        description: "REST/GraphQL with documentation",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "saas-addon-1",
+        name: "Advanced Admin Dashboard",
+        description: "Analytics, user management, logs",
+        price: 2500, // Increased from $1850
+        category: "addon",
+      },
+      {
+        id: "saas-addon-2",
+        name: "Custom Analytics & Reporting",
+        description: "Real-time dashboards, exports",
+        price: 2200, // Increased from $1500
+        category: "addon",
+      },
+      {
+        id: "saas-addon-3",
+        name: "White-label & Branding",
+        description: "Custom domains, branding, themes",
+        price: 3000, // Increased from $2000
+        category: "addon",
+      },
+      {
+        id: "saas-addon-4",
+        name: "AI/ML Module Integration",
+        description: "Predictive analytics, automation",
+        price: 3500, // Increased from $2500
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "saas-addon-5",
+        name: "Multi-tenancy Architecture",
+        description: "Data isolation, custom instances",
+        price: 4500,
+        category: "addon",
+      },
+      {
+        id: "saas-addon-6",
+        name: "WebSocket & Real-time Features",
+        description: "Live notifications, chat, updates",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "saas-addon-7",
+        name: "Payment & Billing System",
+        description: "Stripe/Braintree integration",
+        price: 2000,
+        category: "addon",
+      },
+      {
+        id: "saas-addon-8",
+        name: "API Rate Limiting & Monitoring",
+        description: "Usage tracking, alerts, analytics",
+        price: 1200,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "plugin-development",
+    title: "Plugin Development",
+    description: "High-quality plugins with premium support",
+    basePrice: 1000, // USD - CONSIDER INCREASING TO $1500+
+    localPrice: 3100, // TND
+    euroPrice: 920, // EUR
+    deliveryTime: "4-5 weeks", // Increased from 3-4 weeks
+    features: [
+      {
+        id: "pd-core-1",
+        name: "Custom Functionality Development",
+        description: "Tailored to your specific needs",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "pd-core-2",
+        name: "Seamless Integration",
+        description: "Tested with latest versions",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "pd-addon-1",
+        name: "Enterprise Security Features",
+        description: "Vulnerability scanning, encryption",
+        price: 1200, // Increased from $850
+        category: "addon",
+      },
+      {
+        id: "pd-addon-2",
+        name: "Multisite & Network Compatibility",
+        description: "Tested on large installations",
+        price: 900, // Increased from $650
+        category: "addon",
+      },
+      {
+        id: "pd-addon-3",
+        name: "Performance Optimization",
+        description: "Caching, lazy loading, minification",
+        price: 900, // Increased from $650
+        category: "addon",
+      },
+      {
+        id: "pd-addon-4",
+        name: "Auto-update & License System",
+        description: "Secure licensing with updates",
+        price: 1200, // Increased from $850
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "pd-addon-5",
+        name: "REST API Endpoints",
+        description: "Custom API for integration",
+        price: 800,
+        category: "addon",
+      },
+      {
+        id: "pd-addon-6",
+        name: "Import/Export & Migration",
+        description: "Data migration tools",
+        price: 700,
+        category: "addon",
+      },
+      {
+        id: "pd-addon-7",
+        name: "Documentation & User Guides",
+        description: "Comprehensive documentation",
+        price: 500,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "seo-optimization",
+    title: "SEO Optimization",
+    description: "Comprehensive technical and content SEO",
+    basePrice: 1500, // USD
+    localPrice: 4900, // TND
+    euroPrice: 1380, // EUR
+    deliveryTime: "3-4 weeks", // Increased from 2 weeks
+    features: [
+      {
+        id: "seo-core-1",
+        name: "Comprehensive Keyword Research",
+        description: "500+ keywords with competition analysis",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "seo-core-2",
+        name: "Technical SEO Audit & Fixes",
+        description: "Full site audit with implementation",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "seo-addon-1",
+        name: "Competitor Analysis Report",
+        description: "10 competitors, gap analysis",
+        price: 1100, // Increased from $800
+        category: "addon",
+      },
+      {
+        id: "seo-addon-2",
+        name: "Monthly SEO Performance Reports",
+        description: "3 months of tracking + recommendations",
+        price: 400, // Increased from $250
+        category: "addon",
+      },
+      {
+        id: "seo-addon-3",
+        name: "International & Local SEO",
+        description: "hreflang, geo-targeting, GMB",
+        price: 1200, // Increased from $850
+        category: "addon",
+      },
+      {
+        id: "seo-addon-4",
+        name: "Content Strategy & Optimization",
+        description: "10 pages optimized with copywriting",
+        price: 1500, // Increased from $1000
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "seo-addon-5",
+        name: "Schema Markup Implementation",
+        description: "Rich snippets for better CTR",
+        price: 700,
+        category: "addon",
+      },
+      {
+        id: "seo-addon-6",
+        name: "Core Web Vitals Optimization",
+        description: "Fix LCP, FID, CLS issues",
+        price: 900,
+        category: "addon",
+      },
+      {
+        id: "seo-addon-7",
+        name: "Backlink Audit & Strategy",
+        description: "Link profile analysis + outreach plan",
+        price: 1300,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "custom-crm",
+    title: "Custom CRM",
+    description: "Tailored sales pipeline management system",
+    basePrice: 8500, // USD - CONSIDER INCREASING TO $12,000+
+    localPrice: 23500, // TND
+    euroPrice: 7820, // EUR
+    deliveryTime: "12-16 weeks", // Increased from 8-12 weeks
+    features: [
+      {
+        id: "crm-core-1",
+        name: "Lead & Contact Management",
+        description: "Import, segmentation, tracking",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "crm-core-2",
+        name: "Sales Pipeline & Analytics",
+        description: "Funnel visualization, forecasting",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "crm-addon-1",
+        name: "Email & SMS Campaign Integration",
+        description: "Automated sequences, templates",
+        price: 2800, // Increased from $2000
+        category: "addon",
+      },
+      {
+        id: "crm-addon-2",
+        name: "Custom Workflows & Automation",
+        description: "Visual workflow builder",
+        price: 2200, // Increased from $1500
+        category: "addon",
+      },
+      {
+        id: "crm-addon-3",
+        name: "Mobile App & Offline Sync",
+        description: "iOS/Android app with sync",
+        price: 2200, // Increased from $1500
+        category: "addon",
+      },
+      {
+        id: "crm-addon-4",
+        name: "AI Lead Scoring & Prioritization",
+        description: "Predictive scoring + recommendations",
+        price: 2500, // Increased from $1800
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "crm-addon-5",
+        name: "Calendar & Meeting Scheduling",
+        description: "Google/Outlook sync, booking pages",
+        price: 1200,
+        category: "addon",
+      },
+      {
+        id: "crm-addon-6",
+        name: "Document & Contract Management",
+        description: "E-signatures, templates, storage",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "crm-addon-7",
+        name: "Integration with 3rd Party Tools",
+        description: "API connections to your stack",
+        price: 1500,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "ai-integration",
+    title: "AI Integration",
+    description: "Add cutting-edge AI capabilities to your systems",
+    basePrice: 3800, // USD
+    localPrice: 11500, // TND
+    euroPrice: 3496, // EUR
+    deliveryTime: "5-7 weeks", // Increased from 4-5 weeks
+    features: [
+      {
+        id: "ai-core-1",
+        name: "LLM Integration (GPT-4/Claude/Gemini)",
+        description: "API integration with prompt engineering",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ai-addon-1",
+        name: "Custom Model Fine-Tuning & Training",
+        description: "Train on your data, private hosting",
+        price: 5000, // Increased from $3500
+        category: "addon",
+      },
+      {
+        id: "ai-addon-2",
+        name: "Voice & Speech Interface",
+        description: "Speech-to-text, voice commands",
+        price: 2500, // Increased from $1800
+        category: "addon",
+      },
+      {
+        id: "ai-addon-3",
+        name: "Automated Content Generation",
+        description: "Articles, social media, product descriptions",
+        price: 1400, // Increased from $900
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "ai-addon-4",
+        name: "Computer Vision & Image Analysis",
+        description: "Image recognition, OCR, analysis",
+        price: 3200,
+        category: "addon",
+      },
+      {
+        id: "ai-addon-5",
+        name: "Predictive Analytics Dashboard",
+        description: "Forecasting, trend analysis, insights",
+        price: 2800,
+        category: "addon",
+      },
+      {
+        id: "ai-addon-6",
+        name: "Chatbot Training & Optimization",
+        description: "Conversation flows, NLP tuning",
+        price: 1600,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "web3-development",
+    title: "Web3 Development",
+    description: "Blockchain and smart contract solutions",
+    basePrice: 12000, // USD - CONSIDER INCREASING TO $12,000+
+    localPrice: 30800, // TND
+    euroPrice: 10060, // EUR
+    deliveryTime: "8-16 weeks", // Already good range
+    features: [
+      {
+        id: "web3-core-1",
+        name: "Smart Contract Development & Audit",
+        description: "Security-focused, gas-optimized",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "web3-addon-1",
+        name: "Tokenomics Design & Implementation",
+        description: "ERC-20/721/1155, staking, rewards",
+        price: 6000, // Increased from $4000
+        category: "addon",
+      },
+      {
+        id: "web3-addon-2",
+        name: "NFT Marketplace Development",
+        description: "Minting, trading, royalties",
+        price: 8500, // Increased from $6000
+        category: "addon",
+      },
+      {
+        id: "web3-addon-3",
+        name: "DAO Integration & Governance",
+        description: "Voting, proposals, treasury management",
+        price: 3500, // Increased from $2500
+        category: "addon",
+      },
+      // NEW ADDONS:
+      {
+        id: "web3-addon-4",
+        name: "DeFi Protocol Integration",
+        description: "Liquidity pools, yield farming",
+        price: 7500,
+        category: "addon",
+      },
+      {
+        id: "web3-addon-5",
+        name: "Cross-chain Bridge Development",
+        description: "Multi-chain compatibility",
+        price: 9500,
+        category: "addon",
+      },
+      {
+        id: "web3-addon-6",
+        name: "Web3 Authentication (Wallet Connect)",
+        description: "Crypto wallet login, non-custodial",
+        price: 2000,
+        category: "addon",
+      },
+    ],
+  },
 ];
 
 // Conversion utility (3.0 TND = 1 USD)
