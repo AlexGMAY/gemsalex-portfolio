@@ -15,16 +15,35 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Zap,  
+  Zap,
   Shield,
   Users,
-  ExternalLink,  
+  ExternalLink,
   Clock,
   DollarSign,
 } from "lucide-react";
 
-// Service data with Unsplash images
-const servicesData = [
+// Define proper types
+type ServiceColor = "lime" | "blue" | "cyan" | "indigo" | "yellow" | "green";
+
+interface Service {
+  id: number;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  icon: React.ReactNode;
+  color: ServiceColor;
+  features: string[];
+  deliverables: string[];
+  timeline: string;
+  startingPrice: string;
+  imageUrl: string;
+  imageAlt: string;
+  idealFor: string;
+}
+
+// Service data with proper typing
+const servicesData: Service[] = [
   {
     id: 1,
     title: "Revenue-Driving Web Platforms",
@@ -193,7 +212,7 @@ const servicesData = [
     fullDescription:
       "Your business tools should work together seamlessly. I design and implement integration systems that connect your CRM, ERP, marketing platforms, and custom software—automating workflows and creating a unified data ecosystem.",
     icon: <Plug className="h-6 w-6" />,
-    color: "purple",
+    color: "green",
     features: [
       "Custom API development",
       "Third-party platform integration",
@@ -219,10 +238,56 @@ const servicesData = [
   },
 ];
 
+// Type-safe color classes
+const colorClasses: Record<
+  ServiceColor,
+  {
+    bg: string;
+    border: string;
+    text: string;
+    button: string;
+  }
+> = {
+  lime: {
+    bg: "bg-gradient-to-br from-lime-500/10 to-lime-600/5",
+    border: "border-lime-500/30",
+    text: "text-lime-400",
+    button: "bg-lime-600 hover:bg-lime-700",
+  },
+  blue: {
+    bg: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
+    border: "border-blue-500/30",
+    text: "text-blue-400",
+    button: "bg-blue-600 hover:bg-blue-700",
+  },
+  cyan: {
+    bg: "bg-gradient-to-br from-cyan-500/10 to-cyan-600/5",
+    border: "border-cyan-500/30",
+    text: "text-cyan-400",
+    button: "bg-cyan-600 hover:bg-cyan-700",
+  },
+  indigo: {
+    bg: "bg-gradient-to-br from-indigo-500/10 to-indigo-600/5",
+    border: "border-indigo-500/30",
+    text: "text-indigo-400",
+    button: "bg-indigo-600 hover:bg-indigo-700",
+  },
+  yellow: {
+    bg: "bg-gradient-to-br from-yellow-500/10 to-yellow-600/5",
+    border: "border-yellow-500/30",
+    text: "text-yellow-400",
+    button: "bg-yellow-600 hover:bg-yellow-700",
+  },
+  green: {
+    bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
+    border: "border-green-500/30",
+    text: "text-green-400",
+    button: "bg-green-600 hover:bg-green-700",
+  },
+};
+
 const ServicesGrid = () => {
-  const [selectedService, setSelectedService] = useState<
-    (typeof servicesData)[0] | null
-  >(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-rotate on mobile
@@ -233,47 +298,12 @@ const ServicesGrid = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const colorClasses = {
-    lime: {
-      bg: "bg-gradient-to-br from-lime-500/10 to-lime-600/5",
-      border: "border-lime-500/30",
-      text: "text-lime-400",
-      button: "bg-lime-600 hover:bg-lime-700",
-    },
-    blue: {
-      bg: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
-      border: "border-blue-500/30",
-      text: "text-blue-400",
-      button: "bg-blue-600 hover:bg-blue-700",
-    },
-    cyan: {
-      bg: "bg-gradient-to-br from-cyan-500/10 to-cyan-600/5",
-      border: "border-cyan-500/30",
-      text: "text-cyan-400",
-      button: "bg-cyan-600 hover:bg-cyan-700",
-    },
-    indigo: {
-      bg: "bg-gradient-to-br from-indigo-500/10 to-indigo-600/5",
-      border: "border-indigo-500/30",
-      text: "text-indigo-400",
-      button: "bg-indigo-600 hover:bg-indigo-700",
-    },
-    yellow: {
-      bg: "bg-gradient-to-br from-yellow-500/10 to-yellow-600/5",
-      border: "border-yellow-500/30",
-      text: "text-yellow-400",
-      button: "bg-yellow-600 hover:bg-yellow-700",
-    },
-    green: {
-      bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
-      border: "border-green-500/30",
-      text: "text-green-400",
-      button: "bg-green-600 hover:bg-green-700",
-    },
+  const getColors = (color: ServiceColor) => {
+    return colorClasses[color] || colorClasses.lime; // Fallback to lime
   };
 
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-8">
+    <section className="py-16 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -296,82 +326,78 @@ const ServicesGrid = () => {
         {/* Mobile Slider */}
         <div className="lg:hidden">
           <div className="relative h-[500px] overflow-hidden rounded-2xl">
-            {servicesData.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={false}
-                animate={{
-                  x: `${(index - currentIndex) * 100}%`,
-                  opacity: index === currentIndex ? 1 : 0.3,
-                  scale: index === currentIndex ? 1 : 0.9,
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <div
-                  className={`relative h-full rounded-2xl overflow-hidden ${colorClasses[service.color as keyof typeof colorClasses].bg} ${colorClasses[service.color as keyof typeof colorClasses].border} border`}
+            {servicesData.map((service, index) => {
+              const colors = getColors(service.color);
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={false}
+                  animate={{
+                    x: `${(index - currentIndex) * 100}%`,
+                    opacity: index === currentIndex ? 1 : 0.3,
+                    scale: index === currentIndex ? 1 : 0.9,
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="absolute inset-0 w-full h-full"
                 >
-                  {/* Image */}
-                  <div className="absolute inset-0">
-                    <div className="relative w-full h-48">
-                      <Image
-                        src={service.imageUrl}
-                        alt={service.imageAlt}
-                        fill
-                        className="object-cover"
-                        sizes="100vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+                  <div
+                    className={`relative h-full rounded-2xl overflow-hidden ${colors.bg} ${colors.border} border`}
+                  >
+                    {/* Image */}
+                    <div className="absolute inset-0">
+                      <div className="relative w-full h-48">
+                        <Image
+                          src={service.imageUrl}
+                          alt={service.imageAlt}
+                          fill
+                          className="object-cover"
+                          sizes="100vw"
+                          priority={index === currentIndex}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="relative p-6 pt-56 h-full flex flex-col">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div
-                        className={`p-2 rounded-lg ${colorClasses[service.color as keyof typeof colorClasses].bg} border ${colorClasses[service.color as keyof typeof colorClasses].border}`}
-                      >
-                        <span
-                          className={
-                            colorClasses[
-                              service.color as keyof typeof colorClasses
-                            ].text
-                          }
+                    {/* Content */}
+                    <div className="relative p-6 pt-56 h-full flex flex-col">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div
+                          className={`p-2 rounded-lg ${colors.bg} border ${colors.border}`}
                         >
-                          {service.icon}
-                        </span>
+                          <span className={colors.text}>{service.icon}</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white">
+                          {service.title}
+                        </h3>
                       </div>
-                      <h3 className="text-xl font-bold text-white">
-                        {service.title}
-                      </h3>
+
+                      <p className="text-gray-300 mb-4 flex-grow">
+                        {service.shortDescription}
+                      </p>
+
+                      <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                        <div className="flex items-center gap-2">
+                          <Clock className="h-4 w-4" />
+                          <span>{service.timeline}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="h-4 w-4" />
+                          <span>From {service.startingPrice}</span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => setSelectedService(service)}
+                        className={`w-full py-3 rounded-lg text-white font-medium flex items-center justify-center gap-2 ${colors.button}`}
+                      >
+                        <span>View Details</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
                     </div>
-
-                    <p className="text-gray-300 mb-4 flex-grow">
-                      {service.shortDescription}
-                    </p>
-
-                    <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        <span>{service.timeline}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <DollarSign className="h-4 w-4" />
-                        <span>From {service.startingPrice}</span>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => setSelectedService(service)}
-                      className={`w-full py-3 rounded-lg text-white font-medium flex items-center justify-center gap-2 ${colorClasses[service.color as keyof typeof colorClasses].button}`}
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
 
             {/* Slider Controls */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
@@ -411,8 +437,7 @@ const ServicesGrid = () => {
         {/* Desktop Grid */}
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicesData.map((service) => {
-            const colors =
-              colorClasses[service.color as keyof typeof colorClasses];
+            const colors = getColors(service.color);
             return (
               <motion.div
                 key={service.id}
@@ -510,7 +535,7 @@ const ServicesGrid = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl ${colorClasses[selectedService.color as keyof typeof colorClasses].bg} border ${colorClasses[selectedService.color as keyof typeof colorClasses].border}`}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-gradient-to-b from-gray-900 to-black border border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -531,20 +556,15 @@ const ServicesGrid = () => {
                     fill
                     className="object-cover rounded-t-2xl"
                     sizes="100vw"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`p-3 rounded-xl ${colorClasses[selectedService.color as keyof typeof colorClasses].bg} border ${colorClasses[selectedService.color as keyof typeof colorClasses].border}`}
+                        className={`p-3 rounded-xl bg-gradient-to-br ${getColors(selectedService.color).bg} border ${getColors(selectedService.color).border}`}
                       >
-                        <span
-                          className={
-                            colorClasses[
-                              selectedService.color as keyof typeof colorClasses
-                            ].text
-                          }
-                        >
+                        <span className={getColors(selectedService.color).text}>
                           {selectedService.icon}
                         </span>
                       </div>
@@ -596,7 +616,7 @@ const ServicesGrid = () => {
                     </div>
                     <div className="p-4 rounded-xl bg-black/30 border border-gray-700">
                       <div className="flex items-center gap-2 mb-2">
-                        <Users className="h-5 w-5 text-lime-500" />
+                        <Users className="h-5 w-5 text-green-700" />
                         <span className="text-white font-medium">
                           Ideal For
                         </span>
@@ -667,7 +687,7 @@ const ServicesGrid = () => {
                             // Navigate to contact page with service pre-selected
                             window.location.href = '/contact';
                           }}
-                          className={`px-6 py-3 rounded-lg text-white font-medium ${colorClasses[selectedService.color as keyof typeof colorClasses].button}`}
+                          className={`px-6 py-3 rounded-lg text-white font-medium ${getColors(selectedService.color).button}`}
                         >
                           Get Started
                         </button>
