@@ -2,12 +2,13 @@ import React from "react";
 import type { Metadata } from "next";
 import SuperPricing from "@/components/pricing/Pricing";
 import Hero from "@/components/pricing/Hero";
-import TechLogos from "@/components/TechLogos";
 import FAQSection from "@/components/pricing/FAQSection";
 import Approach from "@/components/Approach";
 import Clients from "@/components/Clients";
 import Grid from "@/components/Grid";
 import DetailedServices from "@/components/pricing/DetailedServices";
+import CustomWebsiteSection from "@/components/pricing/CustomWebsiteSection";
+import TJMPricingSection from "@/components/pricing/TJMPricingSection";
 
 export const metadata: Metadata = {
   title: "Solutions & Pricing | Premium Software Development Services",
@@ -153,6 +154,8 @@ const Page = () => {
         <div className="max-w-7xl w-full sm:px-10 px-5">
           <DetailedServices />
           <SuperPricing pageType="pricing" />
+          <CustomWebsiteSection />
+          <TJMPricingSection />
           <FAQSection />
           <Approach />
           <Grid />

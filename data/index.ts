@@ -211,10 +211,10 @@ export const services: Service[] = [
     title: "Business Website",
     description:
       "Premium website with conversion-focused design and guaranteed performance",
-    basePrice: 1750, // USD
-    localPrice: 5500, // TND
-    euroPrice: 1610, // EUR
-    deliveryTime: "3-4 weeks", // Increased from 2-3 weeks (more realistic)
+    basePrice: 2500, // USD - INCREASED from $1,750
+    localPrice: 7750, // TND - INCREASED from 5,500 (using 3.1 rate)
+    euroPrice: 2300, // EUR - INCREASED from €1,610
+    deliveryTime: "3-4 weeks", // More realistic
     popular: true,
     features: [
       {
@@ -242,62 +242,69 @@ export const services: Service[] = [
         category: "core",
       },
       {
+        id: "bw-core-4",
+        name: "Contact & Lead Capture System",
+        description: "Advanced forms with CRM integration",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
         id: "bw-addon-1",
         name: "Fast Loading (95+ Lighthouse Score)",
         description: "Advanced performance optimization",
-        price: 400, // Increased from $200
+        price: 400,
         category: "addon",
       },
       {
         id: "bw-addon-2",
         name: "Blog/CMS Integration",
         description: "WordPress or headless CMS setup",
-        price: 750, // Increased from $550
+        price: 750,
         category: "addon",
       },
       {
         id: "bw-addon-3",
         name: "Newsletter & Email Marketing",
         description: "Mailchimp/Klaviyo integration + automation",
-        price: 450, // Increased from $300
+        price: 500,
         category: "addon",
       },
       {
         id: "bw-addon-4",
         name: "Google Maps & Location Services",
         description: "Interactive maps + store locator",
-        price: 250, // Increased from $150
+        price: 300,
         category: "addon",
       },
       {
         id: "bw-addon-5",
         name: "Social Media Integration",
         description: "Auto-posting + social feeds + sharing",
-        price: 350, // Increased from $225
+        price: 400,
         category: "addon",
       },
       {
         id: "bw-addon-6",
         name: "Google Analytics 4 + Tag Manager",
         description: "Complete tracking setup with dashboards",
-        price: 300, // Increased from $200
+        price: 350,
         category: "addon",
       },
       {
         id: "bw-addon-7",
         name: "AI Chatbot Integration",
         description: "Custom-trained chatbot with 24/7 support",
-        price: 1200, // Increased from $800
+        price: 1200,
         category: "addon",
       },
       {
         id: "bw-addon-8",
         name: "Premium Security Suite",
         description: "SSL, firewall, malware protection, backups",
-        price: 600, // Increased from $450
+        price: 600,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "bw-addon-9",
         name: "Multilingual Support",
@@ -316,7 +323,14 @@ export const services: Service[] = [
         id: "bw-addon-11",
         name: "Website Maintenance (3 months)",
         description: "Updates, security patches, backups",
-        price: 500,
+        price: 600,
+        category: "addon",
+      },
+      {
+        id: "bw-addon-12",
+        name: "E-commerce Lite Features",
+        description: "Simple product listing + payment",
+        price: 1500,
         category: "addon",
       },
     ],
@@ -325,10 +339,10 @@ export const services: Service[] = [
     id: "showcase-website",
     title: "Showcase Website",
     description: "High-end portfolio with premium presentation features",
-    basePrice: 1500, // USD
-    localPrice: 4700, // TND
-    euroPrice: 1380, // EUR
-    deliveryTime: "3-4 weeks", // Increased from 2-3 weeks
+    basePrice: 2000, // USD - INCREASED from $1,500
+    localPrice: 6200, // TND - INCREASED from 4,700
+    euroPrice: 1840, // EUR - INCREASED from €1,380
+    deliveryTime: "3-4 weeks", // More realistic
     features: [
       {
         id: "sw-core-1",
@@ -358,38 +372,37 @@ export const services: Service[] = [
         id: "sw-addon-1",
         name: "Interactive Gallery & Portfolio",
         description: "Lightbox, filtering, categories",
-        price: 850, // Increased from $650
+        price: 800,
         category: "addon",
       },
       {
         id: "sw-addon-2",
         name: "Video Backgrounds & Animations",
         description: "Custom animations & video integration",
-        price: 550, // Increased from $350
+        price: 600,
         category: "addon",
       },
       {
         id: "sw-addon-3",
         name: "Parallax & Scroll Effects",
         description: "Advanced scroll-triggered animations",
-        price: 300, // Increased from $150
+        price: 350,
         category: "addon",
       },
       {
         id: "sw-addon-4",
         name: "3D Model & AR Integration",
         description: "Three.js models with AR viewing",
-        price: 1200, // Increased from $800
+        price: 1200,
         category: "addon",
       },
       {
         id: "sw-addon-5",
         name: "Client Testimonial System",
         description: "Ratings, reviews, and trust badges",
-        price: 400, // Increased from $250
+        price: 450,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "sw-addon-6",
         name: "Case Study Presentation",
@@ -401,14 +414,28 @@ export const services: Service[] = [
         id: "sw-addon-7",
         name: "Dark/Light Mode Toggle",
         description: "Custom theme switching",
-        price: 450,
+        price: 500,
         category: "addon",
       },
       {
         id: "sw-addon-8",
         name: "PDF Portfolio Generator",
         description: "Automated PDF export of portfolio",
-        price: 600,
+        price: 650,
+        category: "addon",
+      },
+      {
+        id: "sw-addon-9",
+        name: "Video Introductions",
+        description: "Embedded video presentations",
+        price: 400,
+        category: "addon",
+      },
+      {
+        id: "sw-addon-10",
+        name: "Social Proof Integration",
+        description: "Live visitor counts, trust signals",
+        price: 300,
         category: "addon",
       },
     ],
@@ -417,10 +444,10 @@ export const services: Service[] = [
     id: "ecommerce-store",
     title: "E-Commerce Store",
     description: "Enterprise-grade online store with premium integrations",
-    basePrice: 8000, // USD - CONSIDER INCREASING TO $8,000+
-    localPrice: 18500, // TND
-    euroPrice: 6520, // EUR
-    deliveryTime: "6-8 weeks", // Increased from 4-6 weeks
+    basePrice: 8500, // USD - INCREASED from $6,000
+    localPrice: 26350, // TND - INCREASED from 12,500
+    euroPrice: 7820, // EUR - INCREASED from €5,520
+    deliveryTime: "6-8 weeks", // More realistic
     popular: true,
     features: [
       {
@@ -448,81 +475,95 @@ export const services: Service[] = [
         category: "core",
       },
       {
+        id: "ec-core-4",
+        name: "Responsive & Mobile-Optimized",
+        description: "Perfect mobile shopping experience",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
         id: "ec-addon-1",
         name: "Advanced Inventory Management",
         description: "Low stock alerts, bulk imports",
-        price: 2200, // Increased from $1600
+        price: 2200,
         category: "addon",
       },
       {
         id: "ec-addon-2",
         name: "Smart Product Search & Filters",
         description: "AI-powered search with faceted filtering",
-        price: 800, // Increased from $500
+        price: 900,
         category: "addon",
       },
       {
         id: "ec-addon-3",
         name: "Abandoned Cart Recovery System",
         description: "Email/SMS sequences + automation",
-        price: 700, // Increased from $400
+        price: 800,
         category: "addon",
       },
       {
         id: "ec-addon-4",
         name: "AI Product Recommendations",
         description: "Personalized recommendations engine",
-        price: 2500, // Increased from $1900
+        price: 2800,
         category: "addon",
       },
       {
         id: "ec-addon-5",
         name: "AR/VR Product Previews",
         description: "3D product viewing + virtual try-on",
-        price: 3500, // Increased from $2500
+        price: 3500,
         category: "addon",
       },
       {
         id: "ec-addon-6",
         name: "Marketplace Multi-seller System",
         description: "Vendor dashboards + commission system",
-        price: 6500, // Increased from $4800
+        price: 7500,
         category: "addon",
       },
       {
         id: "ec-addon-7",
         name: "Subscription & Recurring Payments",
         description: "Membership boxes, SaaS billing",
-        price: 1200, // Increased from $800
+        price: 1500,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "ec-addon-8",
         name: "POS System Integration",
         description: "Connect online & physical store",
-        price: 1800,
+        price: 2000,
         category: "addon",
       },
       {
         id: "ec-addon-9",
         name: "Advanced Shipping Solutions",
         description: "Real-time rates, label printing",
-        price: 900,
+        price: 1000,
         category: "addon",
       },
       {
         id: "ec-addon-10",
         name: "Customer Loyalty Program",
         description: "Points, rewards, referral system",
-        price: 1400,
+        price: 1600,
         category: "addon",
       },
       {
         id: "ec-addon-11",
         name: "B2B Wholesale Features",
         description: "Price lists, minimum orders, quotes",
-        price: 2800,
+        price: 3200,
+        category: "addon",
+      },
+      {
+        id: "ec-addon-12",
+        name: "Multi-currency & Tax Support",
+        description: "Automatic currency + tax calculations",
+        price: 1200,
         category: "addon",
       },
     ],
@@ -531,10 +572,10 @@ export const services: Service[] = [
     id: "elearning-platform",
     title: "E-Learning Platform",
     description: "Complete LMS with advanced course management",
-    basePrice: 8000, // USD
-    localPrice: 20000, // TND
-    euroPrice: 7360, // EUR
-    deliveryTime: "8-10 weeks", // Increased from 6-8 weeks
+    basePrice: 12000, // USD - INCREASED from $8,000
+    localPrice: 37200, // TND - INCREASED from 20,000
+    euroPrice: 11040, // EUR - INCREASED from €7,360
+    deliveryTime: "8-12 weeks", // More realistic
     features: [
       {
         id: "el-core-1",
@@ -561,60 +602,81 @@ export const services: Service[] = [
         category: "core",
       },
       {
+        id: "el-core-4",
+        name: "Video Hosting & Streaming",
+        description: "Secure video delivery",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
         id: "el-addon-1",
-        name: "Video Streaming & DRM",
+        name: "Advanced Video Streaming & DRM",
         description: "Secure video hosting with protection",
-        price: 1800, // Increased from $1200
+        price: 2200,
         category: "addon",
       },
       {
         id: "el-addon-2",
         name: "Gamification & Engagement",
         description: "Badges, leaderboards, points",
-        price: 1600, // Increased from $1200
+        price: 1800,
         category: "addon",
       },
       {
         id: "el-addon-3",
         name: "AI Tutor & Personalization",
         description: "Adaptive learning paths",
-        price: 2500, // Increased from $1800
+        price: 3200,
         category: "addon",
       },
       {
         id: "el-addon-4",
         name: "SCORM/xAPI Compliance",
         description: "Enterprise LMS compatibility",
-        price: 1200, // Increased from $800
+        price: 1500,
         category: "addon",
       },
       {
         id: "el-addon-5",
         name: "Certification & Badge Automation",
         description: "Digital certificates with verification",
-        price: 1000, // Increased from $700
+        price: 1200,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "el-addon-6",
         name: "Live Class Integration",
         description: "Zoom, Teams, interactive whiteboard",
-        price: 1400,
+        price: 1600,
         category: "addon",
       },
       {
         id: "el-addon-7",
         name: "Assignment & Grading System",
         description: "Auto-grading, peer reviews",
-        price: 1100,
+        price: 1400,
         category: "addon",
       },
       {
         id: "el-addon-8",
         name: "Discussion Forums & Community",
         description: "Q&A, groups, social learning",
-        price: 900,
+        price: 1100,
+        category: "addon",
+      },
+      {
+        id: "el-addon-9",
+        name: "Mobile App Development",
+        description: "iOS & Android companion apps",
+        price: 5000,
+        category: "addon",
+      },
+      {
+        id: "el-addon-10",
+        name: "Corporate Training Features",
+        description: "Team management, reporting",
+        price: 2500,
         category: "addon",
       },
     ],
@@ -623,10 +685,10 @@ export const services: Service[] = [
     id: "saas-platform",
     title: "SaaS Platform",
     description: "Custom cloud solution with microservices architecture",
-    basePrice: 15000, // USD - CONSIDER INCREASING TO $15,000+
-    localPrice: 38000, // TND
-    euroPrice: 12500, // EUR
-    deliveryTime: "12-16 weeks", // Increased from 8-12 weeks
+    basePrice: 18000, // USD - INCREASED from $10,000
+    localPrice: 55800, // TND - INCREASED from 31,000
+    euroPrice: 16560, // EUR - INCREASED from €9,200
+    deliveryTime: "12-16 weeks", // More realistic
     features: [
       {
         id: "saas-core-1",
@@ -656,57 +718,70 @@ export const services: Service[] = [
         id: "saas-addon-1",
         name: "Advanced Admin Dashboard",
         description: "Analytics, user management, logs",
-        price: 2500, // Increased from $1850
+        price: 3500,
         category: "addon",
       },
       {
         id: "saas-addon-2",
         name: "Custom Analytics & Reporting",
         description: "Real-time dashboards, exports",
-        price: 2200, // Increased from $1500
+        price: 3000,
         category: "addon",
       },
       {
         id: "saas-addon-3",
         name: "White-label & Branding",
         description: "Custom domains, branding, themes",
-        price: 3000, // Increased from $2000
+        price: 4500,
         category: "addon",
       },
       {
         id: "saas-addon-4",
         name: "AI/ML Module Integration",
         description: "Predictive analytics, automation",
-        price: 3500, // Increased from $2500
+        price: 5000,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "saas-addon-5",
         name: "Multi-tenancy Architecture",
         description: "Data isolation, custom instances",
-        price: 4500,
+        price: 6500,
         category: "addon",
       },
       {
         id: "saas-addon-6",
         name: "WebSocket & Real-time Features",
         description: "Live notifications, chat, updates",
-        price: 1800,
+        price: 2500,
         category: "addon",
       },
       {
         id: "saas-addon-7",
         name: "Payment & Billing System",
         description: "Stripe/Braintree integration",
-        price: 2000,
+        price: 2800,
         category: "addon",
       },
       {
         id: "saas-addon-8",
         name: "API Rate Limiting & Monitoring",
         description: "Usage tracking, alerts, analytics",
-        price: 1200,
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "saas-addon-9",
+        name: "Database Optimization",
+        description: "Sharding, replication, caching",
+        price: 3200,
+        category: "addon",
+      },
+      {
+        id: "saas-addon-10",
+        name: "Mobile App Integration",
+        description: "Native iOS/Android apps",
+        price: 7500,
         category: "addon",
       },
     ],
@@ -715,10 +790,10 @@ export const services: Service[] = [
     id: "plugin-development",
     title: "Plugin Development",
     description: "High-quality plugins with premium support",
-    basePrice: 1000, // USD - CONSIDER INCREASING TO $1500+
-    localPrice: 3100, // TND
-    euroPrice: 920, // EUR
-    deliveryTime: "4-5 weeks", // Increased from 3-4 weeks
+    basePrice: 1800, // USD - INCREASED from $1,000
+    localPrice: 5580, // TND - INCREASED from 3,100
+    euroPrice: 1656, // EUR - INCREASED from €920
+    deliveryTime: "4-6 weeks", // More realistic
     features: [
       {
         id: "pd-core-1",
@@ -740,50 +815,63 @@ export const services: Service[] = [
         id: "pd-addon-1",
         name: "Enterprise Security Features",
         description: "Vulnerability scanning, encryption",
-        price: 1200, // Increased from $850
+        price: 1200,
         category: "addon",
       },
       {
         id: "pd-addon-2",
         name: "Multisite & Network Compatibility",
         description: "Tested on large installations",
-        price: 900, // Increased from $650
+        price: 1000,
         category: "addon",
       },
       {
         id: "pd-addon-3",
         name: "Performance Optimization",
         description: "Caching, lazy loading, minification",
-        price: 900, // Increased from $650
+        price: 1000,
         category: "addon",
       },
       {
         id: "pd-addon-4",
         name: "Auto-update & License System",
         description: "Secure licensing with updates",
-        price: 1200, // Increased from $850
+        price: 1400,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "pd-addon-5",
         name: "REST API Endpoints",
         description: "Custom API for integration",
-        price: 800,
+        price: 900,
         category: "addon",
       },
       {
         id: "pd-addon-6",
         name: "Import/Export & Migration",
         description: "Data migration tools",
-        price: 700,
+        price: 800,
         category: "addon",
       },
       {
         id: "pd-addon-7",
         name: "Documentation & User Guides",
         description: "Comprehensive documentation",
-        price: 500,
+        price: 600,
+        category: "addon",
+      },
+      {
+        id: "pd-addon-8",
+        name: "Multi-language Support",
+        description: "Translation-ready architecture",
+        price: 700,
+        category: "addon",
+      },
+      {
+        id: "pd-addon-9",
+        name: "Premium Support Package",
+        description: "6 months priority support",
+        price: 800,
         category: "addon",
       },
     ],
@@ -792,10 +880,10 @@ export const services: Service[] = [
     id: "seo-optimization",
     title: "SEO Optimization",
     description: "Comprehensive technical and content SEO",
-    basePrice: 1500, // USD
-    localPrice: 4900, // TND
-    euroPrice: 1380, // EUR
-    deliveryTime: "3-4 weeks", // Increased from 2 weeks
+    basePrice: 2000, // USD - INCREASED from $1,500
+    localPrice: 6200, // TND - INCREASED from 4,900
+    euroPrice: 1840, // EUR - INCREASED from €1,380
+    deliveryTime: "3-4 weeks", // More realistic
     features: [
       {
         id: "seo-core-1",
@@ -817,50 +905,63 @@ export const services: Service[] = [
         id: "seo-addon-1",
         name: "Competitor Analysis Report",
         description: "10 competitors, gap analysis",
-        price: 1100, // Increased from $800
+        price: 1200,
         category: "addon",
       },
       {
         id: "seo-addon-2",
         name: "Monthly SEO Performance Reports",
         description: "3 months of tracking + recommendations",
-        price: 400, // Increased from $250
+        price: 500,
         category: "addon",
       },
       {
         id: "seo-addon-3",
         name: "International & Local SEO",
         description: "hreflang, geo-targeting, GMB",
-        price: 1200, // Increased from $850
+        price: 1500,
         category: "addon",
       },
       {
         id: "seo-addon-4",
         name: "Content Strategy & Optimization",
         description: "10 pages optimized with copywriting",
-        price: 1500, // Increased from $1000
+        price: 1800,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "seo-addon-5",
         name: "Schema Markup Implementation",
         description: "Rich snippets for better CTR",
-        price: 700,
+        price: 900,
         category: "addon",
       },
       {
         id: "seo-addon-6",
         name: "Core Web Vitals Optimization",
         description: "Fix LCP, FID, CLS issues",
-        price: 900,
+        price: 1100,
         category: "addon",
       },
       {
         id: "seo-addon-7",
         name: "Backlink Audit & Strategy",
         description: "Link profile analysis + outreach plan",
+        price: 1600,
+        category: "addon",
+      },
+      {
+        id: "seo-addon-8",
+        name: "E-commerce SEO Specialization",
+        description: "Product page optimization",
         price: 1300,
+        category: "addon",
+      },
+      {
+        id: "seo-addon-9",
+        name: "SEO Training Session",
+        description: "2-hour training for your team",
+        price: 400,
         category: "addon",
       },
     ],
@@ -869,10 +970,10 @@ export const services: Service[] = [
     id: "custom-crm",
     title: "Custom CRM",
     description: "Tailored sales pipeline management system",
-    basePrice: 8500, // USD - CONSIDER INCREASING TO $12,000+
-    localPrice: 23500, // TND
-    euroPrice: 7820, // EUR
-    deliveryTime: "12-16 weeks", // Increased from 8-12 weeks
+    basePrice: 14000, // USD - INCREASED from $8,500
+    localPrice: 43400, // TND - INCREASED from 23,500
+    euroPrice: 12880, // EUR - INCREASED from €7,820
+    deliveryTime: "12-16 weeks", // More realistic
     features: [
       {
         id: "crm-core-1",
@@ -894,49 +995,69 @@ export const services: Service[] = [
         id: "crm-addon-1",
         name: "Email & SMS Campaign Integration",
         description: "Automated sequences, templates",
-        price: 2800, // Increased from $2000
+        price: 3500,
         category: "addon",
       },
       {
         id: "crm-addon-2",
         name: "Custom Workflows & Automation",
         description: "Visual workflow builder",
-        price: 2200, // Increased from $1500
+        price: 2800,
         category: "addon",
       },
       {
         id: "crm-addon-3",
         name: "Mobile App & Offline Sync",
         description: "iOS/Android app with sync",
-        price: 2200, // Increased from $1500
+        price: 4500,
         category: "addon",
       },
       {
         id: "crm-addon-4",
         name: "AI Lead Scoring & Prioritization",
         description: "Predictive scoring + recommendations",
-        price: 2500, // Increased from $1800
+        price: 3200,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "crm-addon-5",
         name: "Calendar & Meeting Scheduling",
         description: "Google/Outlook sync, booking pages",
-        price: 1200,
+        price: 1800,
         category: "addon",
       },
       {
         id: "crm-addon-6",
         name: "Document & Contract Management",
         description: "E-signatures, templates, storage",
-        price: 1800,
+        price: 2200,
         category: "addon",
       },
       {
         id: "crm-addon-7",
         name: "Integration with 3rd Party Tools",
         description: "API connections to your stack",
+        price: 2000,
+        category: "addon",
+      },
+      {
+        id: "crm-addon-8",
+        name: "Custom Reporting & Dashboards",
+        description: "Advanced analytics and visualization",
+        price: 2500,
+        category: "addon",
+      },
+      {
+        id: "crm-addon-9",
+        name: "Voice & Call Integration",
+        description: "VoIP integration, call recording",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "crm-addon-10",
+        name: "Team Collaboration Features",
+        description: "Notes, tasks, internal messaging",
         price: 1500,
         category: "addon",
       },
@@ -946,10 +1067,10 @@ export const services: Service[] = [
     id: "ai-integration",
     title: "AI Integration",
     description: "Add cutting-edge AI capabilities to your systems",
-    basePrice: 3800, // USD
-    localPrice: 11500, // TND
-    euroPrice: 3496, // EUR
-    deliveryTime: "5-7 weeks", // Increased from 4-5 weeks
+    basePrice: 5500, // USD - INCREASED from $3,800
+    localPrice: 17050, // TND - INCREASED from 11,500
+    euroPrice: 5060, // EUR - INCREASED from €3,496
+    deliveryTime: "5-7 weeks", // More realistic
     features: [
       {
         id: "ai-core-1",
@@ -963,43 +1084,63 @@ export const services: Service[] = [
         id: "ai-addon-1",
         name: "Custom Model Fine-Tuning & Training",
         description: "Train on your data, private hosting",
-        price: 5000, // Increased from $3500
+        price: 6000,
         category: "addon",
       },
       {
         id: "ai-addon-2",
         name: "Voice & Speech Interface",
         description: "Speech-to-text, voice commands",
-        price: 2500, // Increased from $1800
+        price: 3200,
         category: "addon",
       },
       {
         id: "ai-addon-3",
         name: "Automated Content Generation",
         description: "Articles, social media, product descriptions",
-        price: 1400, // Increased from $900
+        price: 1800,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "ai-addon-4",
         name: "Computer Vision & Image Analysis",
         description: "Image recognition, OCR, analysis",
-        price: 3200,
+        price: 4500,
         category: "addon",
       },
       {
         id: "ai-addon-5",
         name: "Predictive Analytics Dashboard",
         description: "Forecasting, trend analysis, insights",
-        price: 2800,
+        price: 3800,
         category: "addon",
       },
       {
         id: "ai-addon-6",
         name: "Chatbot Training & Optimization",
         description: "Conversation flows, NLP tuning",
-        price: 1600,
+        price: 2200,
+        category: "addon",
+      },
+      {
+        id: "ai-addon-7",
+        name: "AI-Powered Search",
+        description: "Semantic search, natural language queries",
+        price: 2800,
+        category: "addon",
+      },
+      {
+        id: "ai-addon-8",
+        name: "Sentiment Analysis Integration",
+        description: "Customer feedback, social media monitoring",
+        price: 1900,
+        category: "addon",
+      },
+      {
+        id: "ai-addon-9",
+        name: "Document Processing Automation",
+        description: "PDF parsing, data extraction",
+        price: 2500,
         category: "addon",
       },
     ],
@@ -1008,10 +1149,10 @@ export const services: Service[] = [
     id: "web3-development",
     title: "Web3 Development",
     description: "Blockchain and smart contract solutions",
-    basePrice: 12000, // USD - CONSIDER INCREASING TO $12,000+
-    localPrice: 30800, // TND
-    euroPrice: 10060, // EUR
-    deliveryTime: "8-16 weeks", // Already good range
+    basePrice: 12000, // USD - INCREASED from $8,000
+    localPrice: 37200, // TND - INCREASED from 24,800
+    euroPrice: 11040, // EUR - INCREASED from €7,360
+    deliveryTime: "8-16 weeks", // More realistic
     features: [
       {
         id: "web3-core-1",
@@ -1025,43 +1166,442 @@ export const services: Service[] = [
         id: "web3-addon-1",
         name: "Tokenomics Design & Implementation",
         description: "ERC-20/721/1155, staking, rewards",
-        price: 6000, // Increased from $4000
+        price: 7500,
         category: "addon",
       },
       {
         id: "web3-addon-2",
         name: "NFT Marketplace Development",
         description: "Minting, trading, royalties",
-        price: 8500, // Increased from $6000
+        price: 10000,
         category: "addon",
       },
       {
         id: "web3-addon-3",
         name: "DAO Integration & Governance",
         description: "Voting, proposals, treasury management",
-        price: 3500, // Increased from $2500
+        price: 4000,
         category: "addon",
       },
-      // NEW ADDONS:
       {
         id: "web3-addon-4",
         name: "DeFi Protocol Integration",
         description: "Liquidity pools, yield farming",
-        price: 7500,
+        price: 9000,
         category: "addon",
       },
       {
         id: "web3-addon-5",
         name: "Cross-chain Bridge Development",
         description: "Multi-chain compatibility",
-        price: 9500,
+        price: 12000,
         category: "addon",
       },
       {
         id: "web3-addon-6",
         name: "Web3 Authentication (Wallet Connect)",
         description: "Crypto wallet login, non-custodial",
+        price: 2800,
+        category: "addon",
+      },
+      {
+        id: "web3-addon-7",
+        name: "Blockchain Analytics Dashboard",
+        description: "Transaction tracking, analytics",
+        price: 3500,
+        category: "addon",
+      },
+      {
+        id: "web3-addon-8",
+        name: "Gas Optimization Service",
+        description: "Reduce transaction costs",
+        price: 2200,
+        category: "addon",
+      },
+      {
+        id: "web3-addon-9",
+        name: "Audit & Security Review",
+        description: "Comprehensive security assessment",
+        price: 5000,
+        category: "addon",
+      },
+    ],
+  },
+  // NEW: Booking & Appointment System
+  {
+    id: "booking-system",
+    title: "Booking & Appointment Platform",
+    description:
+      "Complete scheduling system with calendar integration and automated reminders",
+    basePrice: 6500, // USD
+    localPrice: 20150, // TND (6500 × 3.1)
+    euroPrice: 5980, // EUR (6500 × 0.92)
+    deliveryTime: "5-7 weeks",
+    popular: true,
+    features: [
+      {
+        id: "bs-core-1",
+        name: "Multi-calendar Integration",
+        description: "Sync with Google, Outlook, Apple calendars",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "bs-core-2",
+        name: "Automated Reminders",
+        description: "Email & SMS reminders, confirmations",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "bs-core-3",
+        name: "Online Payment Integration",
+        description: "Stripe, PayPal, payment processing",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "bs-addon-1",
+        name: "Mobile App for Providers",
+        price: 4500,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-2",
+        name: "CRM Integration",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-3",
+        name: "Waitlist Management",
+        price: 900,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-4",
+        name: "Video Consultation Integration",
+        price: 1500,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-5",
+        name: "Multi-location Support",
+        price: 1200,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-6",
+        name: "Class/Group Booking",
+        price: 1100,
+        category: "addon",
+      },
+      {
+        id: "bs-addon-7",
+        name: "Resource Management",
+        price: 1600,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "real-estate-portal",
+    title: "Real Estate Platform",
+    description: "Property listings with virtual tours and agent management",
+    basePrice: 9500, // USD
+    localPrice: 29450, // TND
+    euroPrice: 8740, // EUR
+    deliveryTime: "8-10 weeks",
+    popular: true,
+    features: [
+      {
+        id: "re-core-1",
+        name: "Property Listing Management",
+        description: "Unlimited listings with advanced filters",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "re-core-2",
+        name: "Virtual Tour Integration",
+        description: "360° tours, video walkthroughs",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "re-core-3",
+        name: "Agent & Broker CRM",
+        description: "Lead management, client tracking",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "re-addon-1",
+        name: "Mortgage Calculator & Tools",
+        price: 1200,
+        category: "addon",
+      },
+      {
+        id: "re-addon-2",
+        name: "Interactive Map Integration",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "re-addon-3",
+        name: "AI Property Recommendations",
+        price: 2500,
+        category: "addon",
+      },
+      {
+        id: "re-addon-4",
+        name: "Document Management (e-sign)",
+        price: 1600,
+        category: "addon",
+      },
+      {
+        id: "re-addon-5",
+        name: "Mobile App for Agents",
+        price: 5000,
+        category: "addon",
+      },
+      {
+        id: "re-addon-6",
+        name: "Neighborhood & School Data",
+        price: 1400,
+        category: "addon",
+      },
+      {
+        id: "re-addon-7",
+        name: "Multi-language Support",
         price: 2000,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "event-management",
+    title: "Event Management Platform",
+    description: "Complete event planning, ticketing, and management solution",
+    basePrice: 7500, // USD
+    localPrice: 23250, // TND
+    euroPrice: 6900, // EUR
+    deliveryTime: "6-8 weeks",
+    features: [
+      {
+        id: "em-core-1",
+        name: "Ticketing & Registration",
+        description: "Multiple ticket types, promo codes",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "em-core-2",
+        name: "Event Calendar & Scheduling",
+        description: "Recurring events, series management",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "em-core-3",
+        name: "Attendee Management",
+        description: "Check-in, badges, networking",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "em-addon-1",
+        name: "Virtual Event Capabilities",
+        price: 2800,
+        category: "addon",
+      },
+      {
+        id: "em-addon-2",
+        name: "Sponsorship Management",
+        price: 1500,
+        category: "addon",
+      },
+      {
+        id: "em-addon-3",
+        name: "Mobile Event App",
+        price: 4200,
+        category: "addon",
+      },
+      {
+        id: "em-addon-4",
+        name: "Session & Speaker Management",
+        price: 1300,
+        category: "addon",
+      },
+      {
+        id: "em-addon-5",
+        name: "Venue & Floor Plan Management",
+        price: 1100,
+        category: "addon",
+      },
+      {
+        id: "em-addon-6",
+        name: "Networking & Matchmaking",
+        price: 1900,
+        category: "addon",
+      },
+      {
+        id: "em-addon-7",
+        name: "Post-event Analytics",
+        price: 1400,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "membership-site",
+    title: "Membership & Subscription Platform",
+    description: "Gated content with recurring payments and member management",
+    basePrice: 7000, // USD
+    localPrice: 21700, // TND
+    euroPrice: 6440, // EUR
+    deliveryTime: "6-8 weeks",
+    popular: true,
+    features: [
+      {
+        id: "ms-core-1",
+        name: "Recurring Payment System",
+        description: "Stripe, PayPal subscriptions",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ms-core-2",
+        name: "Content Gating & Dripping",
+        description: "Schedule content release",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ms-core-3",
+        name: "Member Directory & Profiles",
+        description: "Custom member profiles",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "ms-addon-1",
+        name: "Multiple Membership Tiers",
+        price: 1200,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-2",
+        name: "Community Forums",
+        price: 1800,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-3",
+        name: "Learning Management Integration",
+        price: 2200,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-4",
+        name: "Private Messaging System",
+        price: 1500,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-5",
+        name: "Member Analytics Dashboard",
+        price: 1300,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-6",
+        name: "Automated Onboarding Sequences",
+        price: 1100,
+        category: "addon",
+      },
+      {
+        id: "ms-addon-7",
+        name: "Webinar & Live Stream Integration",
+        price: 1900,
+        category: "addon",
+      },
+    ],
+  },
+  {
+    id: "logistics-platform",
+    title: "Logistics & Delivery Platform",
+    description:
+      "Complete order management, route optimization, and fleet tracking system",
+    basePrice: 12000, // USD - High complexity
+    localPrice: 37200, // TND
+    euroPrice: 11040, // EUR
+    deliveryTime: "12-16 weeks",
+    features: [
+      {
+        id: "log-core-1",
+        name: "Order & Shipment Management",
+        description: "Real-time tracking, status updates",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "log-core-2",
+        name: "Route Optimization Engine",
+        description: "AI-powered delivery routes",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "log-core-3",
+        name: "Fleet & Driver Management",
+        description: "Vehicle tracking, driver assignments",
+        price: 0,
+        checked: true,
+        category: "core",
+      },
+      {
+        id: "log-addon-1",
+        name: "Warehouse Management",
+        price: 3500,
+        category: "addon",
+      },
+      {
+        id: "log-addon-2",
+        name: "Carrier API Integrations",
+        price: 2800,
+        category: "addon",
+      },
+      {
+        id: "log-addon-3",
+        name: "Proof of Delivery System",
+        price: 1600,
+        category: "addon",
+      },
+      {
+        id: "log-addon-4",
+        name: "Mobile Driver App",
+        price: 5000,
+        category: "addon",
+      },
+      {
+        id: "log-addon-5",
+        name: "Billing & Invoicing Automation",
+        price: 2200,
         category: "addon",
       },
     ],

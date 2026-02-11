@@ -92,8 +92,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Keep source maps disabled in production for now
-  productionBrowserSourceMaps: 'true',
+  productionBrowserSourceMaps: true,
 };
 
 
