@@ -13,7 +13,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.1 }}
         transition={{ duration: 2 }}
-        className="absolute top-0 left-0 w-full h-full overflow-hidden"
+        className="absolute top-0 left-0 w-full h-full"
       >
         <div className="absolute top-20 left-10 w-40 h-40 bg-blue-600 rounded-full filter blur-3xl opacity-70"></div>
         <div className="absolute bottom-10 right-10 w-60 h-60 bg-red-600 rounded-full filter blur-3xl opacity-50"></div>

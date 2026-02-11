@@ -4,7 +4,6 @@
 // import { motion, AnimatePresence } from "framer-motion";
 // import {
 //   FaGlobe,
-//   FaExchangeAlt,
 //   FaShoppingCart,
 //   FaLock,
 //   FaRocket,
@@ -14,6 +13,7 @@
 // } from "react-icons/fa";
 // import { services, Feature, Service } from "@/data";
 // import { GiTunisia } from "react-icons/gi";
+// import { RiMoneyEuroCircleLine } from "react-icons/ri";
 // import Link from "next/link";
 // import {
 //   PricingFormData,
@@ -21,7 +21,8 @@
 //   ToastState,
 // } from "@/types/pricing";
 
-// type Currency = "USD" | "TND";
+// // Add EUR to currency types
+// type Currency = "USD" | "TND" | "EUR";
 // type PricingPageType = "home" | "pricing";
 
 // interface SuperPricingProps {
@@ -31,7 +32,11 @@
 // export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 //   // Enhanced state
 //   const [currency, setCurrency] = useState<Currency>("USD");
-//   const [exchangeRate, setExchangeRate] = useState(3.1);
+//   const [exchangeRate, setExchangeRate] = useState({
+//     TND: 3.1,
+//     EUR: 0.92,
+//     USD: 1,
+//   });
 //   const [userLocation, setUserLocation] = useState<{
 //     country?: string;
 //     city?: string;
@@ -71,8 +76,10 @@
 //   };
 
 //   // Live currency conversion
-//   const convertPrice = (usd: number) =>
-//     currency === "USD" ? usd : Math.round(usd * exchangeRate);
+//   const convertPrice = (usd: number) => {
+//     if (currency === "USD") return usd;
+//     return Math.round(usd * exchangeRate[currency]);
+//   };
 
 //   // Dynamic total calculation
 //   const calculateTotal = () => {
@@ -81,7 +88,7 @@
 //     const base =
 //       currency === "USD"
 //         ? selectedService.basePrice
-//         : selectedService.localPrice || convertPrice(selectedService.basePrice);
+//         : convertPrice(selectedService.basePrice);
 
 //     return (
 //       base + selectedFeatures.reduce((sum, f) => sum + convertPrice(f.price), 0)
@@ -95,10 +102,16 @@
 //         const res = await fetch("https://ipapi.co/json/");
 //         const data = await res.json();
 //         setUserLocation({ country: data.country_name, city: data.city });
+
+//         // Auto-select currency based on location
 //         if (data.country === "TN") setCurrency("TND");
+//         else if (data.country_code === "EU" || data.continent_code === "EU")
+//           setCurrency("EUR");
+//         else setCurrency("USD");
 //       } catch {
 //         const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 //         if (timezone.includes("Tunis")) setCurrency("TND");
+//         else if (timezone.includes("Europe")) setCurrency("EUR");
 //       }
 //     };
 //     detect();
@@ -106,7 +119,7 @@
 
 //   // Handle form submission
 //   const handlePricingSubmit = async (
-//     e: FormEvent<HTMLFormElement>
+//     e: FormEvent<HTMLFormElement>,
 //   ): Promise<void> => {
 //     e.preventDefault();
 
@@ -123,11 +136,7 @@
 //         projectDetails: formData.get("projectDetails") as string,
 //         serviceId: selectedService.id,
 //         serviceTitle: selectedService.title,
-//         basePrice:
-//           currency === "USD"
-//             ? selectedService.basePrice
-//             : selectedService.localPrice ||
-//               convertPrice(selectedService.basePrice),
+//         basePrice: convertPrice(selectedService.basePrice),
 //         currency,
 //         totalAmount: calculateTotal(),
 //         selectedFeatures: selectedFeatures.map((feature) => ({
@@ -161,14 +170,14 @@
 //       } else {
 //         showToast(
 //           "error",
-//           data.message || "Failed to submit project inquiry. Please try again."
+//           data.message || "Failed to submit project inquiry. Please try again.",
 //         );
 //       }
 //     } catch (error) {
 //       console.error("Submission error:", error);
 //       showToast(
 //         "error",
-//         "Network error. Please check your connection and try again."
+//         "Network error. Please check your connection and try again.",
 //       );
 //     } finally {
 //       setIsSubmitting(false);
@@ -177,48 +186,95 @@
 
 //   // Surprise Feature 1: Dynamic price suggestions
 //   const getPriceHint = (service: Service) => {
-//     const base =
-//       currency === "USD"
-//         ? service.basePrice
-//         : service.localPrice || convertPrice(service.basePrice);
+//     const base = convertPrice(service.basePrice);
 
 //     if (base > 5000) return "Enterprise-grade";
 //     if (base > 3000) return "Best value";
 //     return "Starter";
 //   };
 
-//   // Surprise Feature 2: Animated currency toggle
+//   // Surprise Feature 2: Enhanced currency toggle
 //   const CurrencyToggle = () => (
-//     <motion.div
-//       className="flex items-center bg-gray-800 rounded-full p-1"
-//       whileHover={{ scale: 1.05 }}
-//     >
-//       <button
-//         type="button"
-//         onClick={() => setCurrency("USD")}
-//         className={`flex items-center px-4 py-2 rounded-full ${
-//           currency === "USD" ? "bg-blue-600 text-white" : "text-gray-300"
-//         }`}
+//     <motion.div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-0">
+//       <div className="flex items-center bg-gray-800 rounded-full p-1">
+//         <button
+//           type="button"
+//           onClick={() => setCurrency("USD")}
+//           className={`flex items-center px-4 py-2 rounded-full transition-all ${
+//             currency === "USD"
+//               ? "bg-blue-600 text-white shadow-lg"
+//               : "text-gray-300 hover:text-white"
+//           }`}
+//         >
+//           <FaGlobe className="mr-2" /> USD
+//         </button>
+//         <button
+//           type="button"
+//           onClick={() => setCurrency("EUR")}
+//           className={`flex items-center px-4 py-2 rounded-full transition-all ${
+//             currency === "EUR"
+//               ? "bg-gradient-to-r from-yellow-600 to-yellow-700 text-white shadow-lg"
+//               : "text-gray-300 hover:text-white"
+//           }`}
+//         >
+//           <RiMoneyEuroCircleLine className="mr-2 text-yellow-400" /> EUR
+//         </button>
+//         <button
+//           type="button"
+//           onClick={() => setCurrency("TND")}
+//           className={`flex items-center px-4 py-2 rounded-full transition-all ${
+//             currency === "TND"
+//               ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+//               : "text-gray-300 hover:text-white"
+//           }`}
+//         >
+//           <GiTunisia className="text-red-400 mr-2" /> TND
+//         </button>
+//       </div>
+
+//       {/* Exchange rate info */}
+//       <motion.div
+//         className="text-xs text-gray-400 mt-2 sm:mt-0 sm:ml-3"
+//         animate={{ opacity: 1 }}
+//         initial={{ opacity: 0 }}
 //       >
-//         <FaGlobe className="mr-2" /> USD
-//       </button>
-//       <motion.span
-//         className="mx-2 text-gray-400"
-//         animate={{ rotate: currency === "TND" ? 180 : 0 }}
-//       >
-//         <FaExchangeAlt />
-//       </motion.span>
-//       <button
-//         type="button"
-//         onClick={() => setCurrency("TND")}
-//         className={`flex items-center px-4 py-2 rounded-full ${
-//           currency === "TND" ? "bg-red-600 text-white" : "text-gray-300"
-//         }`}
-//       >
-//         <GiTunisia className="text-red-500 mr-2" /> TND
-//       </button>
+//         {currency === "EUR" && "€1 ≈ $1.09"}
+//         {currency === "TND" && "1 TND ≈ $0.32"}
+//       </motion.div>
 //     </motion.div>
 //   );
+
+//   // Get currency symbol
+//   const getCurrencySymbol = () => {
+//     switch (currency) {
+//       case "EUR":
+//         return "€";
+//       case "TND":
+//         return "";
+//       default:
+//         return "$";
+//     }
+//   };
+
+//   // Get currency suffix
+//   const getCurrencySuffix = () => {
+//     switch (currency) {
+//       case "TND":
+//         return " TND";
+//       case "EUR":
+//         return "";
+//       default:
+//         return "";
+//     }
+//   };
+
+//   // Format price display
+//   const formatPrice = (usdPrice: number) => {
+//     const converted = convertPrice(usdPrice);
+//     const symbol = getCurrencySymbol();
+//     const suffix = getCurrencySuffix();
+//     return `${symbol}${converted.toLocaleString()}${suffix}`;
+//   };
 
 //   return (
 //     <section id="pricing" className="py-24 px-4">
@@ -291,13 +347,7 @@
 //                 {/* Price display */}
 //                 <div className="my-4">
 //                   <p className="text-3xl font-bold text-white">
-//                     {currency === "USD" ? "$" : ""}
-//                     {currency === "USD"
-//                       ? service.basePrice.toLocaleString()
-//                       : (
-//                           service.localPrice || convertPrice(service.basePrice)
-//                         ).toLocaleString()}
-//                     {currency === "TND" ? " TND" : ""}
+//                     {formatPrice(service.basePrice)}
 //                   </p>
 //                   <p className="text-gray-400">{service.description}</p>
 //                 </div>
@@ -336,7 +386,7 @@
 //             transition={{ delay: 0.4 }}
 //             className="text-center mt-16"
 //           >
-//             <Link href="/pricing" passHref legacyBehavior>
+//             <Link href="/solutions" passHref legacyBehavior>
 //               <motion.a
 //                 whileHover={{ scale: 1.05 }}
 //                 whileTap={{ scale: 0.95 }}
@@ -404,7 +454,7 @@
 //                             setSelectedFeatures((prev) =>
 //                               prev.includes(feature)
 //                                 ? prev.filter((f) => f !== feature)
-//                                 : [...prev, feature]
+//                                 : [...prev, feature],
 //                             );
 //                           }}
 //                         >
@@ -414,9 +464,7 @@
 //                                 {feature.name}
 //                               </p>
 //                               <p className="text-sm text-gray-400">
-//                                 {currency === "USD" ? "$" : ""}
-//                                 {convertPrice(feature.price).toLocaleString()}
-//                                 {currency === "TND" ? " TND" : ""}
+//                                 {formatPrice(feature.price)}
 //                               </p>
 //                             </div>
 //                             <input
@@ -437,14 +485,7 @@
 //                       <div className="flex justify-between">
 //                         <span className="text-gray-300">Base Price:</span>
 //                         <span className="font-medium">
-//                           {currency === "USD" ? "$" : ""}
-//                           {currency === "USD"
-//                             ? selectedService.basePrice.toLocaleString()
-//                             : (
-//                                 selectedService.localPrice ||
-//                                 convertPrice(selectedService.basePrice)
-//                               ).toLocaleString()}
-//                           {currency === "TND" ? " TND" : ""}
+//                           {formatPrice(selectedService.basePrice)}
 //                         </span>
 //                       </div>
 
@@ -456,20 +497,14 @@
 //                           <span className="text-gray-400">
 //                             + {feature.name}
 //                           </span>
-//                           <span>
-//                             {currency === "USD" ? "$" : ""}
-//                             {convertPrice(feature.price).toLocaleString()}
-//                             {currency === "TND" ? " TND" : ""}
-//                           </span>
+//                           <span>{formatPrice(feature.price)}</span>
 //                         </div>
 //                       ))}
 
 //                       <div className="border-t border-gray-600 pt-2 mt-2 flex justify-between font-bold">
 //                         <span className="text-white">Total:</span>
 //                         <span className="text-lime-400">
-//                           {currency === "USD" ? "$" : ""}
-//                           {calculateTotal().toLocaleString()}
-//                           {currency === "TND" ? " TND" : ""}
+//                           {formatPrice(calculateTotal())}
 //                         </span>
 //                       </div>
 //                     </div>
@@ -559,18 +594,16 @@
 
 "use client";
 
-import { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGlobe,
-  FaExchangeAlt,
   FaShoppingCart,
   FaLock,
   FaRocket,
   FaArrowRight,
   FaCheckCircle,
   FaTimesCircle,
-  FaEuroSign,
 } from "react-icons/fa";
 import { services, Feature, Service } from "@/data";
 import { GiTunisia } from "react-icons/gi";
@@ -593,7 +626,7 @@ interface SuperPricingProps {
 export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   // Enhanced state
   const [currency, setCurrency] = useState<Currency>("USD");
-  const [exchangeRate, setExchangeRate] = useState({
+  const [exchangeRate] = useState({
     TND: 3.1,
     EUR: 0.92,
     USD: 1,
@@ -636,24 +669,47 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     setTimeout(() => setToast({ show: false, type: "", message: "" }), 5000);
   };
 
-  // Live currency conversion
-  const convertPrice = (usd: number) => {
-    if (currency === "USD") return usd;
-    return Math.round(usd * exchangeRate[currency]);
+  // Get service price based on currency (uses manual prices first)
+  const getServicePrice = (
+    service: Service,
+    targetCurrency: Currency,
+  ): number => {
+    switch (targetCurrency) {
+      case "USD":
+        return service.basePrice;
+      case "TND":
+        return (
+          service.localPrice || Math.round(service.basePrice * exchangeRate.TND)
+        );
+      case "EUR":
+        return (
+          service.euroPrice || Math.round(service.basePrice * exchangeRate.EUR)
+        );
+      default:
+        return service.basePrice;
+    }
   };
 
-  // Dynamic total calculation
-  const calculateTotal = () => {
+  // Convert feature prices (features only have USD prices)
+  const convertFeaturePrice = (
+    usdPrice: number,
+    targetCurrency: Currency,
+  ): number => {
+    if (targetCurrency === "USD") return usdPrice;
+    return Math.round(usdPrice * exchangeRate[targetCurrency]);
+  };
+
+  // Dynamic total calculation using smart conversion
+  const calculateTotal = (): number => {
     if (!selectedService) return 0;
 
-    const base =
-      currency === "USD"
-        ? selectedService.basePrice
-        : convertPrice(selectedService.basePrice);
-
-    return (
-      base + selectedFeatures.reduce((sum, f) => sum + convertPrice(f.price), 0)
+    const basePrice = getServicePrice(selectedService, currency);
+    const featuresTotal = selectedFeatures.reduce(
+      (sum, feature) => sum + convertFeaturePrice(feature.price, currency),
+      0,
     );
+
+    return basePrice + featuresTotal;
   };
 
   // Auto-detect location
@@ -697,13 +753,13 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         projectDetails: formData.get("projectDetails") as string,
         serviceId: selectedService.id,
         serviceTitle: selectedService.title,
-        basePrice: convertPrice(selectedService.basePrice),
+        basePrice: getServicePrice(selectedService, currency), // FIXED
         currency,
         totalAmount: calculateTotal(),
         selectedFeatures: selectedFeatures.map((feature) => ({
           id: feature.id,
           name: feature.name,
-          price: convertPrice(feature.price),
+          price: convertFeaturePrice(feature.price, currency), // FIXED
           category: feature.category,
         })),
         website: formData.get("website") as string,
@@ -747,7 +803,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 
   // Surprise Feature 1: Dynamic price suggestions
   const getPriceHint = (service: Service) => {
-    const base = convertPrice(service.basePrice);
+    const base = getServicePrice(service, currency);
 
     if (base > 5000) return "Enterprise-grade";
     if (base > 3000) return "Best value";
@@ -829,12 +885,20 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     }
   };
 
-  // Format price display
-  const formatPrice = (usdPrice: number) => {
-    const converted = convertPrice(usdPrice);
+  // Format service price display (uses manual prices)
+  const formatServicePrice = (service: Service): string => {
+    const price = getServicePrice(service, currency);
     const symbol = getCurrencySymbol();
     const suffix = getCurrencySuffix();
-    return `${symbol}${converted.toLocaleString()}${suffix}`;
+    return `${symbol}${price.toLocaleString()}${suffix}`;
+  };
+
+  // Format feature price display (converts from USD)
+  const formatFeaturePrice = (usdPrice: number): string => {
+    const price = convertFeaturePrice(usdPrice, currency);
+    const symbol = getCurrencySymbol();
+    const suffix = getCurrencySuffix();
+    return `${symbol}${price.toLocaleString()}${suffix}`;
   };
 
   return (
@@ -905,10 +969,10 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   </span>
                 </div>
 
-                {/* Price display */}
+                {/* Price display - FIXED! */}
                 <div className="my-4">
                   <p className="text-3xl font-bold text-white">
-                    {formatPrice(service.basePrice)}
+                    {formatServicePrice(service)}
                   </p>
                   <p className="text-gray-400">{service.description}</p>
                 </div>
@@ -947,7 +1011,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
             transition={{ delay: 0.4 }}
             className="text-center mt-16"
           >
-            <Link href="/pricing" passHref legacyBehavior>
+            <Link href="/solutions" passHref legacyBehavior>
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -1025,7 +1089,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                                 {feature.name}
                               </p>
                               <p className="text-sm text-gray-400">
-                                {formatPrice(feature.price)}
+                                {formatFeaturePrice(feature.price)}
                               </p>
                             </div>
                             <input
@@ -1039,14 +1103,14 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       ))}
                   </div>
 
-                  {/* Order summary */}
+                  {/* Order summary - FIXED! */}
                   <div className="p-4 bg-gray-700 rounded-lg mb-6">
                     <h4 className="font-bold text-white mb-3">Order Summary</h4>
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-300">Base Price:</span>
                         <span className="font-medium">
-                          {formatPrice(selectedService.basePrice)}
+                          {formatServicePrice(selectedService)}
                         </span>
                       </div>
 
@@ -1058,14 +1122,16 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                           <span className="text-gray-400">
                             + {feature.name}
                           </span>
-                          <span>{formatPrice(feature.price)}</span>
+                          <span>{formatFeaturePrice(feature.price)}</span>
                         </div>
                       ))}
 
                       <div className="border-t border-gray-600 pt-2 mt-2 flex justify-between font-bold">
                         <span className="text-white">Total:</span>
                         <span className="text-lime-400">
-                          {formatPrice(calculateTotal())}
+                          {getCurrencySymbol()}
+                          {calculateTotal().toLocaleString()}
+                          {getCurrencySuffix()}
                         </span>
                       </div>
                     </div>
@@ -1079,7 +1145,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1 bg-gray-700 rounded-full">
                       <FaRocket className="text-yellow-500" />
-                      <span className="text-xs">14-Day Delivery</span>
+                      <span className="text-xs">Fast Delivery</span>
                     </div>
                   </div>
 

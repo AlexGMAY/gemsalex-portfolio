@@ -148,14 +148,14 @@ const Home = () => {
           <Hero />
           <div className="w-full sm:px-10 px-5">
             <TechLogos />
-            <AboutMe />            
-            <NeonMatrix />
+            <AboutMe />
+            <Skills />
             <AnimatedQuote />
+            <NeonMatrix />
             <Services />
-            <Platforms />
-            <Skills />            
-            <SuperPricing pageType="home" />
             <Realisations isHomePage={true} />
+            <Platforms />
+            <SuperPricing pageType="home" />
             <Approach />
             <Clients />
             <Faqs />

@@ -21,7 +21,7 @@ import {
 
 const TJMPricingSection = () => {
   const [estimatedDays, setEstimatedDays] = useState(20);
-  const dailyRate = 550; // Your TJM as an experienced developer
+  const dailyRate = 750; // Your TJM as an experienced senior developer
 
   const includedServices = [
     {
@@ -82,7 +82,7 @@ const TJMPricingSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-blue-950/20 to-purple-950/20">
+    <section className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -98,7 +98,7 @@ const TJMPricingSection = () => {
           </div>
 
           <h2 className="text-4xl font-bold text-white mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-lime-400">
               Daily Rate (TJM) Pricing
             </span>
           </h2>
@@ -126,7 +126,7 @@ const TJMPricingSection = () => {
             <div className="inline-flex items-center gap-2 px-4 py-1 bg-lime-500/20 border border-lime-500 rounded-full mb-4">
               <FaRocket className="text-lime-400" />
               <span className="text-lime-400 font-medium">
-                Experienced Software Engineer
+                Senior Software Engineer
               </span>
             </div>
 
@@ -153,7 +153,7 @@ const TJMPricingSection = () => {
             </div>
 
             <p className="text-gray-300 mb-6">
-              As an experienced software engineer with 8+ years in full-stack
+              As an experienced senior software engineer with 8+ years in full-stack
               development, I provide expert-level solutions with transparent
               daily billing.
             </p>
@@ -355,7 +355,7 @@ const TJMPricingSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-blue-700 rounded-2xl p-8 text-center"
+          className="bg-gradient-to-r from-blue-900/30 to-lime-900/30 border border-blue-700 rounded-2xl p-8 text-center"
         >
           <h3 className="text-2xl font-bold text-white mb-4">
             Interested in Daily Rate (TJM) Pricing?

@@ -9,6 +9,7 @@ import Grid from "@/components/Grid";
 import DetailedServices from "@/components/pricing/DetailedServices";
 import CustomWebsiteSection from "@/components/pricing/CustomWebsiteSection";
 import TJMPricingSection from "@/components/pricing/TJMPricingSection";
+import ServicesGrid from "@/components/pricing/ServicesGrid";
 
 export const metadata: Metadata = {
   title: "Solutions & Pricing | Premium Software Development Services",
@@ -77,13 +78,7 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    // Add your verification codes here when available
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // yahoo: 'your-yahoo-verification-code',
-  },
+  },  
   category: "technology",
 };
 
@@ -153,6 +148,7 @@ const Page = () => {
         <Hero />
         <div className="max-w-7xl w-full sm:px-10 px-5">
           <DetailedServices />
+          <ServicesGrid />
           <SuperPricing pageType="pricing" />
           <CustomWebsiteSection />
           <TJMPricingSection />
