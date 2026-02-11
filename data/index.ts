@@ -1266,7 +1266,7 @@ export const services: Service[] = [
       {
         id: "bs-addon-1",
         name: "Mobile App for Providers",
-        price: 4500,
+        price: 5500,
         category: "addon",
       },
       {

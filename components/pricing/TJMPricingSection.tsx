@@ -362,8 +362,8 @@ const TJMPricingSection = () => {
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
             Perfect for evolving projects, ongoing maintenance, or when you need
-            flexibility in development. Let's discuss your project during a free
-            discovery call.
+            flexibility in development. Let&apos;s discuss your project during a
+            free discovery call.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
