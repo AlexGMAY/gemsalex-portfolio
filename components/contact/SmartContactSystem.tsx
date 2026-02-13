@@ -52,10 +52,25 @@ const SmartContactSystem = () => {
   const fetchCsrfToken = async (): Promise<void> => {
     try {
       const response = await fetch("/api/csrf");
-      const data: CsrfResponse = await response.json();
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Show the refresh message from the API
+        showToast(
+          "error",
+          data.message ||
+            "Failed to fetch security token. Please refresh the page with Ctrl+F5.",
+        );
+        return;
+      }
+
       setCsrfToken(data.csrfToken);
     } catch (error) {
       console.error("Failed to fetch CSRF token:", error);
+      showToast(
+        "error",
+        "Connection error. Please refresh the page with Ctrl+F5 and try again.",
+      );
     }
   };
 
@@ -170,10 +185,10 @@ const SmartContactSystem = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg border ${
+            className={`fixed top-4 right-4 z-[5001] p-4 rounded-lg shadow-lg border ${
               toast.type === "success"
-                ? "bg-green-500/20 border-green-400 text-green-400"
-                : "bg-red-500/20 border-red-400 text-red-400"
+                ? "bg-green-700/80 border-green-600 text-green-400"
+                : "bg-red-700/80 border-red-600 text-red-400"
             }`}
           >
             <div className="flex items-center gap-2">

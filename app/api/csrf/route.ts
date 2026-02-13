@@ -3,7 +3,7 @@ import { generateCsrfToken } from "@/lib/utils/security";
 import { CsrfResponse } from "@/types/contact";
 
 export async function GET(): Promise<
-  NextResponse<CsrfResponse | { error: string }>
+  NextResponse<CsrfResponse | { error: string; message?: string }>
 > {
   try {
     const token = generateCsrfToken();
@@ -22,8 +22,12 @@ export async function GET(): Promise<
   } catch (error) {
     console.error("CSRF token generation error:", error);
     return NextResponse.json(
-      { error: "Failed to generate CSRF token" },
-      { status: 500 }
+      {
+        error: "Failed to generate CSRF token",
+        message:
+          "Unable to generate security token. Please refresh the page with Ctrl+F5 (Windows/Linux) or Cmd+Shift+R (Mac) and try again.",
+      },
+      { status: 500 },
     );
   }
 }

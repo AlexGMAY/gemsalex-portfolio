@@ -16,11 +16,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Zap,
-  Shield,
-  Users,
+  Target,
+  Shield,  
   ExternalLink,
-  Clock,
-  DollarSign,
+  Layers,
+  Sparkles,
 } from "lucide-react";
 
 // Define proper types
@@ -35,6 +35,7 @@ interface Service {
   color: ServiceColor;
   features: string[];
   deliverables: string[];
+  process: string[];
   timeline: string;
   startingPrice: string;
   imageUrl: string;
@@ -42,7 +43,6 @@ interface Service {
   idealFor: string;
 }
 
-// Service data with proper typing
 const servicesData: Service[] = [
   {
     id: 1,
@@ -67,6 +67,14 @@ const servicesData: Service[] = [
       "Performance audit report",
       "Analytics dashboard setup",
       "Documentation and training",
+    ],
+    process: [
+      "Discovery & strategy session",
+      "UX/UI prototyping",
+      "Development sprint",
+      "Quality assurance testing",
+      "Performance optimization",
+      "Launch & analytics setup",
     ],
     timeline: "3-4 weeks",
     startingPrice: "$2,500",
@@ -100,6 +108,14 @@ const servicesData: Service[] = [
       "Deployment pipeline",
       "Monitoring and alerting systems",
     ],
+    process: [
+      "Product strategy workshop",
+      "Technical architecture planning",
+      "Agile development sprints",
+      "Security and scalability testing",
+      "CI/CD pipeline setup",
+      "Launch and iteration planning",
+    ],
     timeline: "8-12 weeks",
     startingPrice: "$12,000",
     imageUrl:
@@ -131,6 +147,14 @@ const servicesData: Service[] = [
       "App store deployment (iOS/Android)",
       "Offline capability setup",
       "Performance optimization",
+    ],
+    process: [
+      "Cross-platform strategy session",
+      "Unified design system creation",
+      "Core platform development",
+      "Platform-specific optimization",
+      "Testing across devices",
+      "App store deployment",
     ],
     timeline: "6-8 weeks",
     startingPrice: "$8,500",
@@ -164,6 +188,14 @@ const servicesData: Service[] = [
       "Security audit report",
       "Scalability documentation",
     ],
+    process: [
+      "Infrastructure assessment",
+      "Architecture design review",
+      "Security and scaling planning",
+      "Implementation and migration",
+      "Load testing and optimization",
+      "Monitoring setup and handover",
+    ],
     timeline: "4-6 weeks",
     startingPrice: "$6,500",
     imageUrl:
@@ -195,6 +227,14 @@ const servicesData: Service[] = [
       "Google Analytics 4 setup",
       "Structured data markup",
       "Ongoing monitoring dashboard",
+    ],
+    process: [
+      "Comprehensive SEO audit",
+      "Performance baseline analysis",
+      "Technical implementation",
+      "Testing and validation",
+      "Analytics configuration",
+      "Ongoing optimization plan",
     ],
     timeline: "3-4 weeks",
     startingPrice: "$3,500",
@@ -228,6 +268,14 @@ const servicesData: Service[] = [
       "Data flow documentation",
       "Monitoring and error handling",
     ],
+    process: [
+      "Business process analysis",
+      "Integration architecture design",
+      "API and connector development",
+      "Testing and data validation",
+      "Deployment and monitoring",
+      "Documentation and training",
+    ],
     timeline: "5-7 weeks",
     startingPrice: "$7,500",
     imageUrl:
@@ -238,51 +286,78 @@ const servicesData: Service[] = [
   },
 ];
 
-// Type-safe color classes
+// Type-safe color classes 
 const colorClasses: Record<
   ServiceColor,
   {
     bg: string;
     border: string;
     text: string;
+    badge: string;
     button: string;
+    glow: string;
+    gradient: string;
   }
 > = {
   lime: {
     bg: "bg-gradient-to-br from-lime-500/10 to-lime-600/5",
     border: "border-lime-500/30",
     text: "text-lime-400",
-    button: "bg-lime-600 hover:bg-lime-700",
+    badge: "bg-lime-500/10 text-lime-400 border-lime-500/30",
+    button:
+      "bg-gradient-to-r from-lime-500 to-lime-600 hover:from-lime-600 hover:to-lime-700",
+    glow: "group-hover:shadow-lime-500/20",
+    gradient: "from-lime-500/20 to-lime-600/10",
   },
   blue: {
     bg: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
     border: "border-blue-500/30",
     text: "text-blue-400",
-    button: "bg-blue-600 hover:bg-blue-700",
+    badge: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+    button:
+      "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700",
+    glow: "group-hover:shadow-blue-500/20",
+    gradient: "from-blue-500/20 to-blue-600/10",
   },
   cyan: {
     bg: "bg-gradient-to-br from-cyan-500/10 to-cyan-600/5",
     border: "border-cyan-500/30",
     text: "text-cyan-400",
-    button: "bg-cyan-600 hover:bg-cyan-700",
+    badge: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
+    button:
+      "bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700",
+    glow: "group-hover:shadow-cyan-500/20",
+    gradient: "from-cyan-500/20 to-cyan-600/10",
   },
   indigo: {
     bg: "bg-gradient-to-br from-indigo-500/10 to-indigo-600/5",
     border: "border-indigo-500/30",
     text: "text-indigo-400",
-    button: "bg-indigo-600 hover:bg-indigo-700",
+    badge: "bg-indigo-500/10 text-indigo-400 border-indigo-500/30",
+    button:
+      "bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700",
+    glow: "group-hover:shadow-indigo-500/20",
+    gradient: "from-indigo-500/20 to-indigo-600/10",
   },
   yellow: {
     bg: "bg-gradient-to-br from-yellow-500/10 to-yellow-600/5",
     border: "border-yellow-500/30",
     text: "text-yellow-400",
-    button: "bg-yellow-600 hover:bg-yellow-700",
+    badge: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30",
+    button:
+      "bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700",
+    glow: "group-hover:shadow-yellow-500/20",
+    gradient: "from-yellow-500/20 to-yellow-600/10",
   },
   green: {
     bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
     border: "border-green-500/30",
     text: "text-green-400",
-    button: "bg-green-600 hover:bg-green-700",
+    badge: "bg-green-500/10 text-green-400 border-green-500/30",
+    button:
+      "bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700",
+    glow: "group-hover:shadow-green-500/20",
+    gradient: "from-green-500/20 to-green-600/10",
   },
 };
 
@@ -299,33 +374,49 @@ const ServicesGrid = () => {
   }, []);
 
   const getColors = (color: ServiceColor) => {
-    return colorClasses[color] || colorClasses.lime; // Fallback to lime
+    return colorClasses[color] || colorClasses.lime;
   };
 
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="solutions"
+      className="py-16 md:py-24 px-4 md:px-0 lg:px-0 relative overflow-hidden"
+    >
+      {/* Background decoration - green theme */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/20 to-transparent" />
+
+      <div className="max-w-8xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-lime-400">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-6">
+            <Sparkles className="h-4 w-4 text-green-400" />
+            <span className="text-sm font-medium text-green-400">
+              Tailored Solutions
+            </span>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-lime-400">
               Strategic Digital Solutions
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Beyond code—I deliver comprehensive technology strategies that solve
-            core business challenges.
+            core business challenges, drive sustainable growth, and create
+            lasting competitive advantages.
           </p>
         </motion.div>
 
-        {/* Mobile Slider */}
+        {/* Mobile Slider - Perfect for small screens */}
         <div className="lg:hidden">
-          <div className="relative h-[500px] overflow-hidden rounded-2xl">
+          <div className="relative h-[600px] overflow-hidden rounded-2xl">
             {servicesData.map((service, index) => {
               const colors = getColors(service.color);
               return (
@@ -337,13 +428,13 @@ const ServicesGrid = () => {
                     opacity: index === currentIndex ? 1 : 0.3,
                     scale: index === currentIndex ? 1 : 0.9,
                   }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className="absolute inset-0 w-full h-full"
                 >
                   <div
-                    className={`relative h-full rounded-2xl overflow-hidden ${colors.bg} ${colors.border} border`}
+                    className={`relative h-full rounded-2xl overflow-hidden ${colors.bg} ${colors.border} border shadow-xl ${colors.glow}`}
                   >
-                    {/* Image */}
+                    {/* Image with gradient overlay */}
                     <div className="absolute inset-0">
                       <div className="relative w-full h-48">
                         <Image
@@ -354,41 +445,46 @@ const ServicesGrid = () => {
                           sizes="100vw"
                           priority={index === currentIndex}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900" />
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="relative p-6 pt-56 h-full flex flex-col">
+                    <div className="relative p-6 pt-48 h-full flex flex-col">
                       <div className="flex items-center gap-3 mb-4">
                         <div
-                          className={`p-2 rounded-lg ${colors.bg} border ${colors.border}`}
+                          className={`p-2.5 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
                         >
                           <span className={colors.text}>{service.icon}</span>
                         </div>
-                        <h3 className="text-xl font-bold text-white">
+                        <h3 className="text-xl font-bold text-white line-clamp-2">
                           {service.title}
                         </h3>
                       </div>
 
-                      <p className="text-gray-300 mb-4 flex-grow">
+                      <p className="text-gray-300 mb-4 line-clamp-2">
                         {service.shortDescription}
                       </p>
 
-                      <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4" />
-                          <span>{service.timeline}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <DollarSign className="h-4 w-4" />
-                          <span>From {service.startingPrice}</span>
-                        </div>
+                      {/* Key Features Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {service.features.slice(0, 3).map((feature, idx) => (
+                          <span
+                            key={idx}
+                            className={`px-2 py-1 text-xs rounded-full ${colors.badge} border`}
+                          >
+                            {feature.split(" ").slice(0, 2).join(" ")}...
+                          </span>
+                        ))}
+                        <span className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700">
+                          +{service.features.length - 3} more
+                        </span>
                       </div>
 
+                      {/* View Details Button */}
                       <button
                         onClick={() => setSelectedService(service)}
-                        className={`w-full py-3 rounded-lg text-white font-medium flex items-center justify-center gap-2 ${colors.button}`}
+                        className={`mt-auto w-full py-3.5 rounded-xl text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-all duration-300 shadow-lg hover:shadow-xl`}
                       >
                         <span>View Details</span>
                         <ArrowRight className="h-4 w-4" />
@@ -400,18 +496,22 @@ const ServicesGrid = () => {
             })}
 
             {/* Slider Controls */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
               {servicesData.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? "bg-white w-8" : "bg-white/50"
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "w-8 bg-gradient-to-r from-green-400 to-lime-400"
+                      : "w-2 bg-white/30 hover:bg-white/50"
                   }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
 
+            {/* Navigation Arrows */}
             <button
               onClick={() =>
                 setCurrentIndex(
@@ -419,7 +519,8 @@ const ServicesGrid = () => {
                     (prev - 1 + servicesData.length) % servicesData.length,
                 )
               }
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors border border-white/10"
+              aria-label="Previous slide"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -427,15 +528,16 @@ const ServicesGrid = () => {
               onClick={() =>
                 setCurrentIndex((prev) => (prev + 1) % servicesData.length)
               }
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors border border-white/10"
+              aria-label="Next slide"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        {/* Desktop Grid */}
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Desktop Grid - 3 columns */}
+        <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {servicesData.map((service) => {
             const colors = getColors(service.color);
             return (
@@ -444,8 +546,9 @@ const ServicesGrid = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className={`relative group cursor-pointer rounded-2xl overflow-hidden border ${colors.border} ${colors.bg} transition-all duration-300`}
+                className={`group relative rounded-2xl overflow-hidden border ${colors.border} ${colors.bg} hover:border-${service.color}-500/50 transition-all duration-300 shadow-lg hover:shadow-2xl ${colors.glow} cursor-pointer`}
                 onClick={() => setSelectedService(service)}
               >
                 {/* Image */}
@@ -454,52 +557,52 @@ const ServicesGrid = () => {
                     src={service.imageUrl}
                     alt={service.imageAlt}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 1280px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/95" />
+
+                  {/* Icon */}
                   <div className="absolute top-4 left-4 z-10">
                     <div
-                      className={`p-2 rounded-lg ${colors.bg} border ${colors.border}`}
+                      className={`p-3 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
                     >
                       <span className={colors.text}>{service.icon}</span>
                     </div>
+                  </div>
+
+                  {/* Title Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 z-10">
+                    <h3 className="text-xl font-bold text-white line-clamp-2">
+                      {service.title}
+                    </h3>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-300 mb-4 line-clamp-2">
                     {service.shortDescription}
                   </p>
 
+                  {/* Key Features Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {service.features.slice(0, 3).map((feature, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 text-xs rounded-full bg-black/30 text-gray-300 border border-gray-700"
+                        className={`px-2.5 py-1 text-xs rounded-full ${colors.badge} border`}
                       >
                         {feature}
                       </span>
                     ))}
+                    <span className="px-2.5 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700">
+                      +{service.features.length - 3}
+                    </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4" />
-                      <span>{service.timeline}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="h-4 w-4" />
-                      <span>From {service.startingPrice}</span>
-                    </div>
-                  </div>
-
+                  {/* View Details Button */}
                   <button
-                    className={`w-full py-3 rounded-lg text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-colors`}
+                    className={`w-full py-3 rounded-xl text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
                   >
                     <span>View Details</span>
                     <ArrowRight className="h-4 w-4" />
@@ -508,16 +611,6 @@ const ServicesGrid = () => {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* View All Button (Mobile) */}
-        <div className="lg:hidden mt-8 text-center">
-          <button
-            onClick={() => setSelectedService(servicesData[0])}
-            className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-medium"
-          >
-            Explore All Services
-          </button>
         </div>
       </div>
 
@@ -528,174 +621,188 @@ const ServicesGrid = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto z-[5001]"
             onClick={() => setSelectedService(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-gradient-to-b from-gray-900 to-black border border-gray-700"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl bg-gradient-to-b from-gray-900 to-black border border-gray-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/80"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              {selectedService &&
+                (() => {
+                  const colors = getColors(selectedService.color);
 
-              {/* Modal Content */}
-              <div className="relative">
-                {/* Hero Image */}
-                <div className="relative h-64 md:h-80">
-                  <Image
-                    src={selectedService.imageUrl}
-                    alt={selectedService.imageAlt}
-                    fill
-                    className="object-cover rounded-t-2xl"
-                    sizes="100vw"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`p-3 rounded-xl bg-gradient-to-br ${getColors(selectedService.color).bg} border ${getColors(selectedService.color).border}`}
+                  return (
+                    <>
+                      {/* Close Button */}
+                      <button
+                        onClick={() => setSelectedService(null)}
+                        className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/80 transition-colors border border-white/10"
+                        aria-label="Close modal"
                       >
-                        <span className={getColors(selectedService.color).text}>
-                          {selectedService.icon}
-                        </span>
-                      </div>
-                      <div>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white">
-                          {selectedService.title}
-                        </h2>
-                        <p className="text-gray-300 mt-2">
-                          {selectedService.shortDescription}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        <X className="h-5 w-5" />
+                      </button>
 
-                <div className="p-6 md:p-8">
-                  {/* Overview */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                      <ExternalLink className="h-5 w-5 text-cyan-400" />
-                      Overview
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {selectedService.fullDescription}
-                    </p>
-                  </div>
+                      {/* Hero Image */}
+                      <div className="relative h-64 md:h-80 lg:h-96">
+                        <Image
+                          src={selectedService.imageUrl}
+                          alt={selectedService.imageAlt}
+                          fill
+                          className="object-cover"
+                          sizes="100vw"
+                          priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900" />
 
-                  {/* Quick Stats */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    <div className="p-4 rounded-xl bg-black/30 border border-gray-700">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Clock className="h-5 w-5 text-blue-400" />
-                        <span className="text-white font-medium">Timeline</span>
-                      </div>
-                      <p className="text-gray-300">
-                        {selectedService.timeline}
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-xl bg-black/30 border border-gray-700">
-                      <div className="flex items-center gap-2 mb-2">
-                        <DollarSign className="h-5 w-5 text-green-400" />
-                        <span className="text-white font-medium">
-                          Starting Price
-                        </span>
-                      </div>
-                      <p className="text-gray-300">
-                        {selectedService.startingPrice}
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-xl bg-black/30 border border-gray-700">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Users className="h-5 w-5 text-green-700" />
-                        <span className="text-white font-medium">
-                          Ideal For
-                        </span>
-                      </div>
-                      <p className="text-gray-300 text-sm">
-                        {selectedService.idealFor}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Features & Process */}
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {/* Features */}
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <Zap className="h-5 w-5 text-yellow-400" />
-                        Key Features
-                      </h3>
-                      <ul className="space-y-3">
-                        {selectedService.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-300">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Deliverables */}
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <Shield className="h-5 w-5 text-blue-400" />
-                        Key Deliverables
-                      </h3>
-                      <ul className="space-y-3">
-                        {selectedService.deliverables.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
-                              <span className="text-blue-400 text-xs font-bold">
-                                {idx + 1}
+                        {/* Title Section */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                          <div className="flex items-center gap-4">
+                            <div
+                              className={`p-4 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
+                            >
+                              <span className={colors.text}>
+                                {selectedService.icon}
                               </span>
                             </div>
-                            <span className="text-gray-300">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                            <div className="flex-1">
+                              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+                                {selectedService.title}
+                              </h2>
+                              <p className="text-lg text-gray-300">
+                                {selectedService.shortDescription}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                  {/* CTA */}
-                  <div className="mt-8 pt-6 border-t border-gray-700">
-                    <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
-                      <div>
-                        <p className="text-gray-300">
-                          Ready to transform your business with{" "}
-                          {selectedService.title.toLowerCase()}?
-                        </p>
-                      </div>
-                      <div className="flex gap-4">
-                        <button
-                          onClick={() => setSelectedService(null)}
-                          className="px-6 py-3 border border-gray-600 text-white rounded-lg hover:border-gray-400 transition-colors"
+                      {/* Content */}
+                      <div className="p-6 md:p-8 space-y-8">
+                        {/* Overview */}
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            <ExternalLink
+                              className={`h-5 w-5 ${colors.text}`}
+                            />
+                            Overview
+                          </h3>
+                          <p className="text-gray-300 leading-relaxed">
+                            {selectedService.fullDescription}
+                          </p>
+                        </div>
+
+                        {/* Ideal For - Green themed */}
+                        <div
+                          className={`p-6 rounded-xl bg-gradient-to-br ${colors.bg} border ${colors.border}`}
                         >
-                          Close
-                        </button>
-                        <button
-                          onClick={() => {
-                            // Navigate to contact page with service pre-selected
-                            window.location.href = '/contact';
-                          }}
-                          className={`px-6 py-3 rounded-lg text-white font-medium ${getColors(selectedService.color).button}`}
-                        >
-                          Get Started
-                        </button>
+                          <div className="flex items-start gap-3">
+                            <Target
+                              className={`h-6 w-6 ${colors.text} flex-shrink-0 mt-1`}
+                            />
+                            <div>
+                              <h4 className="text-lg font-semibold text-white mb-2">
+                                Ideal For
+                              </h4>
+                              <p className="text-gray-300">
+                                {selectedService.idealFor}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Two Column Layout - Features & Process */}
+                        <div className="grid md:grid-cols-2 gap-6">
+                          {/* Key Features */}
+                          <div className="space-y-4">
+                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                              <Zap className={`h-5 w-5 ${colors.text}`} />
+                              Key Features
+                            </h3>
+                            <ul className="space-y-3">
+                              {selectedService.features.map((feature, idx) => (
+                                <motion.li
+                                  key={idx}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: idx * 0.05 }}
+                                  className="flex items-start gap-3"
+                                >
+                                  <CheckCircle
+                                    className={`h-5 w-5 ${colors.text} flex-shrink-0 mt-0.5`}
+                                  />
+                                  <span className="text-gray-300">
+                                    {feature}
+                                  </span>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Development Process */}
+                          <div className="space-y-4">
+                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                              <Layers className={`h-5 w-5 ${colors.text}`} />
+                              Development Process
+                            </h3>
+                            <div className="space-y-3">
+                              {selectedService.process.map((step, idx) => (
+                                <motion.div
+                                  key={idx}
+                                  initial={{ opacity: 0, x: 10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: idx * 0.05 }}
+                                  className="flex items-start gap-3"
+                                >
+                                  <div
+                                    className={`flex-shrink-0 w-6 h-6 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
+                                  >
+                                    <span
+                                      className={`text-xs font-bold ${colors.text}`}
+                                    >
+                                      {idx + 1}
+                                    </span>
+                                  </div>
+                                  <span className="text-gray-300">{step}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Key Deliverables */}
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            <Shield className={`h-5 w-5 ${colors.text}`} />
+                            Key Deliverables
+                          </h3>
+                          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {selectedService.deliverables.map((item, idx) => (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="flex items-start gap-2 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50"
+                              >
+                                <CheckCircle
+                                  className={`h-4 w-4 ${colors.text} flex-shrink-0 mt-0.5`}
+                                />
+                                <span className="text-sm text-gray-300">
+                                  {item}
+                                </span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </>
+                  );
+                })()}
             </motion.div>
           </motion.div>
         )}

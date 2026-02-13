@@ -6,7 +6,6 @@ import FAQSection from "@/components/pricing/FAQSection";
 import Approach from "@/components/Approach";
 import Clients from "@/components/Clients";
 import Grid from "@/components/Grid";
-import DetailedServices from "@/components/pricing/DetailedServices";
 import CustomWebsiteSection from "@/components/pricing/CustomWebsiteSection";
 import TJMPricingSection from "@/components/pricing/TJMPricingSection";
 import ServicesGrid from "@/components/pricing/ServicesGrid";
@@ -147,7 +146,7 @@ const Page = () => {
       <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto">
         <Hero />
         <div className="max-w-7xl w-full sm:px-10 px-5">
-          <DetailedServices />
+          {/* <DetailedServices /> */}
           <ServicesGrid />
           <SuperPricing pageType="pricing" />
           <CustomWebsiteSection />
