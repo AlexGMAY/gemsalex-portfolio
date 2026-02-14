@@ -122,7 +122,7 @@ export const FloatingNav = ({
       </AnimatePresence>
 
       {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
-      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] w-full mx-5 space-x-4">
+      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] w-90 mx-5 space-x-4">
         {/* Logo mobile */}
         <div className="flex items-center pl-4">
           <Link href="/">

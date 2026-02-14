@@ -146,7 +146,7 @@ const Home = () => {
           />
 
           <Hero />
-          <div className="w-full sm:px-10 px-5">
+          <div className="max-w-7xl w-full sm:px-10 px-5">
             <TechLogos />
             <AboutMe />
             <Skills />

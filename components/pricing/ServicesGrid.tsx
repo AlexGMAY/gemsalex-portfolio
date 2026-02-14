@@ -450,7 +450,7 @@ const ServicesGrid = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="relative p-6 pt-48 h-full flex flex-col">
+                    <div className="relative p-6 h-full flex flex-col">
                       <div className="flex items-center gap-3 mb-4">
                         <div
                           className={`p-2.5 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}

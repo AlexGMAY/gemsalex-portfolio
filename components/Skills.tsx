@@ -14,7 +14,7 @@ import {
   SiRedux,
   SiWordpress,
 } from "react-icons/si";
-import { FaSearch, FaServer, FaLaptopCode } from "react-icons/fa";
+import { FaSearch, FaServer } from "react-icons/fa";
 
 // Define TypeScript interfaces
 interface Skill {
@@ -32,9 +32,29 @@ const masteredSkills: Skill[] = [
     icon: <SiTypescript className="text-[#3178C6]" />,
   },
   {
-    name: "Node.js",
+    name: "Node.js/Express",
     level: 82,
     icon: <SiNodedotjs className="text-[#339933]" />,
+  },  
+  {
+    name: "Tailwind CSS",
+    level: 92,
+    icon: <SiTailwindcss className="text-[#06B6D4]" />,
+  },
+  { name: "PHP", level: 85, icon: <SiRedux className="text-[#764ABC]" /> },
+  { name: "SEO", level: 90, icon: <FaSearch className="text-emerald-400" /> },
+  {
+    name: "WordPress",
+    level: 95,
+    icon: <SiWordpress className="text-[#21759B]" />,
+  },
+];
+
+const learningSkills: Skill[] = [
+  {
+    name: "GraphQL",
+    level: 80,
+    icon: <SiGraphql className="text-[#E10098]" />,
   },
   {
     name: "MongoDB",
@@ -42,38 +62,13 @@ const masteredSkills: Skill[] = [
     icon: <SiMongodb className="text-[#47A248]" />,
   },
   {
-    name: "Tailwind CSS",
-    level: 92,
-    icon: <SiTailwindcss className="text-[#06B6D4]" />,
-  },
-  {
-    name: "GraphQL",
-    level: 80,
-    icon: <SiGraphql className="text-[#E10098]" />,
-  },
-  { name: "Redux", level: 85, icon: <SiRedux className="text-[#764ABC]" /> },
-  {
-    name: "Web Apps",
-    level: 88,
-    icon: <FaLaptopCode className="text-lime-400" />,
-  },
-];
-
-const learningSkills: Skill[] = [
-  {
     name: "Firebase",
     level: 75,
     icon: <SiFirebase className="text-[#FFCA28]" />,
   },
-  { name: "SEO", level: 70, icon: <FaSearch className="text-emerald-400" /> },
   {
-    name: "WordPress",
-    level: 65,
-    icon: <SiWordpress className="text-[#21759B]" />,
-  },
-  {
-    name: "SaaS Development",
-    level: 75,
+    name: "Postgres Sql",
+    level: 78,
     icon: <FaServer className="text-blue-400" />,
   },
 ];
@@ -216,48 +211,6 @@ const Skills: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Surprise element - Skill level visualization */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-20 bg-gray-800/30 backdrop-blur-md p-6 rounded-2xl border border-gray-700"
-        >
-          <h4 className="text-xl font-semibold mb-4 text-center text-gray-300">
-            Skill Distribution
-          </h4>
-          <div className="flex flex-wrap justify-center gap-2">
-            {[...masteredSkills, ...learningSkills].map((skill) => (
-              <motion.div
-                key={skill.name}
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", bounce: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  width: `${skill.level * 0.8}px`,
-                  height: `${skill.level * 0.8}px`,
-                }}
-                className={`rounded-full flex items-center justify-center border-2 ${
-                  skill.level > 85
-                    ? "border-lime-400 bg-lime-400/10"
-                    : skill.level > 75
-                    ? "border-emerald-400 bg-emerald-400/10"
-                    : "border-blue-400 bg-blue-400/10"
-                }`}
-                title={`${skill.name}: ${skill.level}%`}
-              >
-                <span className="text-xs font-bold text-white opacity-80">
-                  {skill.level}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-center text-gray-400 mt-4 text-sm">
-            Bubble size represents proficiency level
-          </p>
-        </motion.div>
       </div>
     </section>
   );

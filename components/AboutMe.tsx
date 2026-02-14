@@ -75,9 +75,8 @@ const AboutMe = () => {
               {/* Image container - now with explicit dimensions */}
               <div className="relative rounded-xl overflow-hidden border-2 border-gray-700 w-full">
                 {/* Aspect ratio container for precise control */}
-                <div className="relative pt-[137%]">
-                  {" "}
-                  {/* 806/588 = ~137% */}
+                <div className="relative">
+                  {" "}                  
                   <Image
                     alt="Merveille Alexandre - Strategic Software Engineer and Instructor"
                     priority
@@ -89,8 +88,7 @@ const AboutMe = () => {
                     quality={75}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+                  />                  
                 </div>
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end justify-end p-6">
