@@ -112,23 +112,24 @@ export const FloatingNav = ({
         </motion.div>
       </AnimatePresence>
 
+      
       {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
-      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] max-w-2xl mx-auto space-x-4">
-        {/* Logo mobile */}
-        <div className="flex items-center pl-4">
-          <Link href="/">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-[5000] bg-black-100/90 backdrop-blur-md border-b border-gray-800/50">
+        <div className="flex items-center justify-between px-4 h-16 max-w-7xl mx-auto">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
             <Image
               alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
-              width={64}
-              height={64}
-              className="w-16 h-16 object-contain"
+              width={48}
+              height={48}
+              className="w-12 h-12 object-contain"
               src="/logo-MA.png"
               quality={80}
-              priority={false}
+              priority
             />
           </Link>
-        </div>
-        <div className="fixed right-8">
+
+          {/* Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
@@ -136,17 +137,17 @@ export const FloatingNav = ({
           >
             <div className="w-6 h-6 flex flex-col justify-between">
               <span
-                className={`block h-0.5 w-full bg-white transition-all ${
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? "rotate-45 translate-y-2.5" : ""
                 }`}
               ></span>
               <span
-                className={`block h-0.5 w-full bg-white transition-all ${
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? "opacity-0" : ""
                 }`}
               ></span>
               <span
-                className={`block h-0.5 w-full bg-white transition-all ${
+                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
                   mobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
                 }`}
               ></span>
@@ -154,6 +155,8 @@ export const FloatingNav = ({
           </button>
         </div>
       </div>
+
+      {/* Your existing dropdown component remains here */}
 
       <AnimatePresence>
         {mobileMenuOpen && (
