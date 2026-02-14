@@ -9,6 +9,7 @@ import {
   FiDatabase,
   FiLayout,
 } from "react-icons/fi";
+import Link from "next/link";
 
 const NeonMatrix = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -86,13 +87,15 @@ const NeonMatrix = () => {
                 </h3>
                 <p className="text-gray-400 text-sm mb-6">{card.description}</p>
                 <div className="mt-auto">
-                  <motion.button
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-1 text-sm text-white/80 hover:text-white"
-                  >
-                    <span>Explore</span>
-                    <FiArrowUpRight />
-                  </motion.button>
+                  <Link href={'/solutions#solutions'}>
+                    <motion.button
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-1 text-sm text-white/80 hover:text-white"
+                    >
+                      <span>Explore</span>
+                      <FiArrowUpRight />
+                    </motion.button>
+                  </Link>
                 </div>
               </div>
 
@@ -107,7 +110,7 @@ const NeonMatrix = () => {
                     <div
                       className={`absolute inset-0 rounded-xl bg-gradient-to-br ${card.glow.replace(
                         "hover:",
-                        ""
+                        "",
                       )} opacity-20 blur-lg`}
                     />
                   </motion.div>

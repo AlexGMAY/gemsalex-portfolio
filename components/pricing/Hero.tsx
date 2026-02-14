@@ -7,7 +7,7 @@ import { GiTunisia } from "react-icons/gi";
 
 export default function HeroSection() {
   return (
-    <section className="relative text-white bg-gradient-to-br from-blue-900 to-gray-900 py-20 h-screen">
+    <section className="relative text-white bg-gradient-to-br from-blue-900 to-gray-900 py-20 min-h-screen">
       {/* Animated background elements */}
       <motion.div
         initial={{ opacity: 0 }}

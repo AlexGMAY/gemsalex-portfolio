@@ -66,15 +66,6 @@ export const FloatingNav = ({
         >
           <div className="flex items-center">
             <Link href="/">
-              {/* <Image
-                alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
-                width={80}
-                height={80}
-                className="w-20 h-20 object-contain"
-                src="/logo-MA.png"
-                sizes="80px" // Fixed size
-                quality={75}
-              /> */}
               <Image
                 alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
                 width={64}
@@ -122,16 +113,18 @@ export const FloatingNav = ({
       </AnimatePresence>
 
       {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
-      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] w-90 mx-5 space-x-4">
+      <div className="lg:hidden flex items-center justify-between fixed top-4 z-[5000] bg-black-100 backdrop-blur-md rounded-3xl border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] w-80 mx-auto space-x-4">
         {/* Logo mobile */}
         <div className="flex items-center pl-4">
           <Link href="/">
             <Image
-              src="/logo-MA.png"
               alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
-              width={80}
-              height={80}
-              className="w-20 h-20 object-contain"
+              width={64}
+              height={64}
+              className="w-16 h-16 object-contain"
+              src="/logo-MA.png"
+              quality={80}
+              priority={false}
             />
           </Link>
         </div>
@@ -205,7 +198,7 @@ export const FloatingNav = ({
               ))}
               <Link href={appointmentLink}>
                 <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white">
-                  <span className="relative z-10">Get an appointment</span>
+                  <span className="relative z-10">Book An Appointment</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                   <span className="absolute inset-0.5 rounded-full bg-black/10 backdrop-blur-sm" />
                 </button>

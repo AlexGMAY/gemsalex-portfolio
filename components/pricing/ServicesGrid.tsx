@@ -450,7 +450,7 @@ const ServicesGrid = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="relative p-6 h-full flex flex-col">
+                    <div className="relative p-6 h-full pt-40 flex flex-col">
                       <div className="flex items-center gap-3 mb-4">
                         <div
                           className={`p-2.5 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
@@ -462,7 +462,7 @@ const ServicesGrid = () => {
                         </h3>
                       </div>
 
-                      <p className="text-gray-300 mb-4 line-clamp-2">
+                      <p className="text-gray-300pt-30  mb-4 line-clamp-2">
                         {service.shortDescription}
                       </p>
 
@@ -495,22 +495,6 @@ const ServicesGrid = () => {
               );
             })}
 
-            {/* Slider Controls */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-              {servicesData.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "w-8 bg-gradient-to-r from-green-400 to-lime-400"
-                      : "w-2 bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
             {/* Navigation Arrows */}
             <button
               onClick={() =>
@@ -533,6 +517,21 @@ const ServicesGrid = () => {
             >
               <ChevronRight className="h-5 w-5" />
             </button>
+          </div>
+          {/* Slider Controls */}
+          <div className="absolute bottom-4 mt-20 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+            {servicesData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "w-8 bg-gradient-to-r from-green-400 to-lime-400"
+                    : "w-2 bg-white/30 hover:bg-white/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 
