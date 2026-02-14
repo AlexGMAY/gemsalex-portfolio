@@ -70,7 +70,7 @@ const HeroSection = () => {
       <FloatingElements />
 
       {/* Main Content */}
-      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 md:py-0">
+      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 md:pt-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Main Message */}
@@ -169,30 +169,6 @@ const HeroSection = () => {
                   Schedule a Call
                   <FiZap className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 </Link>
-              </motion.div>
-
-              {/* Social proof */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-                className="mt-12 pt-8 border-t border-white/5"
-              >
-                <p className="text-sm text-gray-500 mb-4">
-                  Trusted by companies like
-                </p>
-                <div className="flex flex-wrap gap-6 items-center">
-                  {["Startups", "SaaS", "E-commerce", "Enterprise"].map(
-                    (item, idx) => (
-                      <span
-                        key={idx}
-                        className="text-gray-400 font-medium text-sm"
-                      >
-                        {item}
-                      </span>
-                    ),
-                  )}
-                </div>
               </motion.div>
             </motion.div>
 
