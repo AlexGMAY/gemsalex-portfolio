@@ -143,9 +143,9 @@ const Page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="relative bg-black-100 flex justify-center items-center flex-col">
+      <main className="relative bg-black-100 w-full">
         <Hero />
-        <div className="max-w-7xl w-full sm:px-10 px-5">
+        <div className="max-w-8xl w-full sm:px-10 px-5">
           {/* <DetailedServices /> */}
           <ServicesGrid />
           <SuperPricing pageType="pricing" />

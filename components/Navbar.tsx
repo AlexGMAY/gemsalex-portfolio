@@ -66,12 +66,23 @@ export const FloatingNav = ({
         >
           <div className="flex items-center">
             <Link href="/">
-              <Image
-                src="/logo-MA.png"
+              {/* <Image
                 alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
                 width={80}
                 height={80}
                 className="w-20 h-20 object-contain"
+                src="/logo-MA.png"
+                sizes="80px" // Fixed size
+                quality={75}
+              /> */}
+              <Image
+                alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
+                width={64}
+                height={64}
+                className="w-16 h-16 object-contain"
+                src="/logo-MA.png"
+                quality={80}
+                priority={false}
               />
             </Link>
           </div>

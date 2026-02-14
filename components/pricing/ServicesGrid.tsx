@@ -602,7 +602,7 @@ const ServicesGrid = () => {
 
                   {/* View Details Button */}
                   <button
-                    className={`w-full py-3 rounded-xl text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
+                    className={`w-full py-3 rounded-xl text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-all duration-300`}
                   >
                     <span>View Details</span>
                     <ArrowRight className="h-4 w-4" />

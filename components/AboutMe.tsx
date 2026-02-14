@@ -5,8 +5,15 @@ import { FiDownload, FiAward, FiUser, FiCode } from "react-icons/fi";
 import { FaSmileWink } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const AboutMe = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  
   const softSkills = [
     { name: "Problem Solving", icon: "🧩" },
     { name: "Team Collaboration", icon: "🤝" },
@@ -61,7 +68,7 @@ const AboutMe = () => {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 h-auto lg:h-full"
           >
-            <div className="relative group w-full h-full min-h-[500px] lg:min-h-[650px]">
+            <div className="relative group w-full h-full">
               {/* Gradient border effect */}
               <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-teal-400 rounded-2xl opacity-75 blur-sm group-hover:opacity-100 transition-all duration-300" />
 
@@ -72,14 +79,18 @@ const AboutMe = () => {
                   {" "}
                   {/* 806/588 = ~137% */}
                   <Image
-                    src="/gallery/alex-office.jpg"
-                    alt="Strategic Software Engineer & Business Problem Solver"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    alt="Merveille Alexandre - Strategic Software Engineer and Instructor"
                     priority
                     className="object-cover"
+                    src="/gallery/alex-office.jpg"
+                    width={isMobile ? 400 : 600}
+                    height={isMobile ? 550 : 825}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     quality={75}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
                   />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
                 </div>
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end justify-end p-6">
@@ -148,7 +159,7 @@ const AboutMe = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>            
+            </div>
 
             {/* CTA */}
             <motion.div

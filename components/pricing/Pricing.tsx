@@ -134,25 +134,159 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   };
 
   // Auto-detect location
-  useEffect(() => {
-    const detect = async () => {
-      try {
-        const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-        setUserLocation({ country: data.country_name, city: data.city });
+  // useEffect(() => {
+  //   const detect = async () => {
+  //     try {
+  //       const res = await fetch("https://ipapi.co/json/");
+  //       const data = await res.json();
+  //       setUserLocation({ country: data.country_name, city: data.city });
 
-        // Auto-select currency based on location
-        if (data.country === "TN") setCurrency("TND");
-        else if (data.country_code === "EU" || data.continent_code === "EU")
-          setCurrency("EUR");
-        else setCurrency("USD");
-      } catch {
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        if (timezone.includes("Tunis")) setCurrency("TND");
-        else if (timezone.includes("Europe")) setCurrency("EUR");
+  //       // Auto-select currency based on location
+  //       if (data.country === "TN") setCurrency("TND");
+  //       else if (data.country_code === "EU" || data.continent_code === "EU")
+  //         setCurrency("EUR");
+  //       else setCurrency("USD");
+  //     } catch {
+  //       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  //       if (timezone.includes("Tunis")) setCurrency("TND");
+  //       else if (timezone.includes("Europe")) setCurrency("EUR");
+  //     }
+  //   };
+  //   detect();
+  // }, []);
+
+  // components/SuperPricing.tsx - Replace the useEffect
+  useEffect(() => {
+    const detectLocation = async () => {
+      // First check if we already have cached location
+      const cachedData = localStorage.getItem("userLocationData");
+      const cachedTime = localStorage.getItem("userLocationTime");
+
+      // Use cache if less than 7 days old (ipapi.co limit is daily, so 7 days is safe)
+      if (cachedData && cachedTime) {
+        const age = Date.now() - parseInt(cachedTime);
+        if (age < 7 * 24 * 60 * 60 * 1000) {
+          // 7 days
+          const location = JSON.parse(cachedData);
+          setUserLocation(location);
+
+          // Auto-select currency based on cached data
+          if (location.country === "Tunisia") setCurrency("TND");
+          else if (
+            location.country === "France" ||
+            location.country === "Germany" ||
+            location.country === "Spain" ||
+            location.country === "Italy" ||
+            location.country === "Belgium" ||
+            location.country === "Netherlands" ||
+            location.country === "Switzerland"
+          ) {
+            setCurrency("EUR");
+          } else setCurrency("USD");
+
+          return;
+        }
+      }
+
+      // Try a FREE alternative with higher limits first (ipapi.is - 1000 requests/day)
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+        const res = await fetch("https://api.ipapi.is", {
+          signal: controller.signal,
+          headers: { "User-Agent": "MerveilleAlexandre-Portfolio/1.0" },
+        });
+
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const data = await res.json();
+          const location = {
+            country: data.location?.country || "Unknown",
+            city: data.location?.city || "Unknown",
+          };
+
+          // Cache it
+          localStorage.setItem("userLocationData", JSON.stringify(location));
+          localStorage.setItem("userLocationTime", Date.now().toString());
+
+          setUserLocation(location);
+
+          // Set currency
+          if (data.location?.country === "Tunisia") setCurrency("TND");
+          else if (data.location?.continent === "Europe") setCurrency("EUR");
+          else setCurrency("USD");
+
+          return;
+        }
+      } catch (error) {
+        console.debug("ipapi.is failed, trying backup...");
+      }
+
+      // Try ipapi.co as backup (but with retry logic)
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+        const res = await fetch("https://ipapi.co/json/", {
+          signal: controller.signal,
+          headers: {
+            "User-Agent": "MerveilleAlexandre-Portfolio/1.0",
+            Accept: "application/json",
+          },
+        });
+
+        clearTimeout(timeoutId);
+
+        if (res.status === 429) {
+          // Rate limited - just use timezone
+          throw new Error("Rate limited");
+        }
+
+        if (res.ok) {
+          const data = await res.json();
+          const location = { country: data.country_name, city: data.city };
+
+          // Cache it
+          localStorage.setItem("userLocationData", JSON.stringify(location));
+          localStorage.setItem("userLocationTime", Date.now().toString());
+
+          setUserLocation(location);
+
+          if (data.country === "TN") setCurrency("TND");
+          else if (data.continent_code === "EU") setCurrency("EUR");
+          else setCurrency("USD");
+
+          return;
+        }
+      } catch (error) {
+        console.debug("All location APIs failed, using timezone");
+      }
+
+      // Final fallback: timezone detection (always works, no API calls)
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const location = {
+        country: timezone.split("/")[0] || "International",
+        city: timezone.split("/")[1] || timezone,
+      };
+
+      // Cache it (shorter time since it's less accurate)
+      localStorage.setItem("userLocationData", JSON.stringify(location));
+      localStorage.setItem("userLocationTime", Date.now().toString());
+
+      setUserLocation(location);
+
+      if (timezone.includes("Tunis") || timezone.includes("Africa/Tunis")) {
+        setCurrency("TND");
+      } else if (timezone.includes("Europe")) {
+        setCurrency("EUR");
+      } else {
+        setCurrency("USD");
       }
     };
-    detect();
+
+    detectLocation();
   }, []);
 
   // Handle form submission
@@ -438,7 +572,8 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-blue-200 to-blue-300 hover:from-lime-500 hover:to-blue-500 transition-all"
               >
-                View All Services and Pricing<FaArrowRight className="ml-2" />
+                View All Services and Pricing
+                <FaArrowRight className="ml-2" />
               </motion.a>
             </Link>
           </motion.div>
@@ -476,7 +611,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       className="text-gray-400 hover:text-white"
                     >
                       ✕
-                    </button>                    
+                    </button>
                   </div>
                   {/* Currency Toggle  */}
                   <div className="mb-6">
