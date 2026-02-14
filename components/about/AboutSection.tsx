@@ -9,7 +9,7 @@ const AboutSection = () => {
   return (
     <section
       id="my-story"
-      className="py-24 relative bg-gradient-to-b from-gray-900 to-black"
+      className="py-24 relative"
     >
       {/* Background elements */}
       <div className="absolute inset-0 opacity-10">

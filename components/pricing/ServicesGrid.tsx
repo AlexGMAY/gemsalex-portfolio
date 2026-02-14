@@ -12,9 +12,7 @@ import {
   Plug,
   CheckCircle,
   ArrowRight,
-  X,
-  ChevronLeft,
-  ChevronRight,
+  X,  
   Zap,
   Target,
   Shield,  
@@ -414,129 +412,9 @@ const ServicesGrid = () => {
           </p>
         </motion.div>
 
-        {/* Mobile Slider - Perfect for small screens */}
-        <div className="lg:hidden">
-          <div className="relative h-[600px] overflow-hidden rounded-2xl">
-            {servicesData.map((service, index) => {
-              const colors = getColors(service.color);
-              return (
-                <motion.div
-                  key={service.id}
-                  initial={false}
-                  animate={{
-                    x: `${(index - currentIndex) * 100}%`,
-                    opacity: index === currentIndex ? 1 : 0.3,
-                    scale: index === currentIndex ? 1 : 0.9,
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <div
-                    className={`relative h-full rounded-2xl overflow-hidden ${colors.bg} ${colors.border} border shadow-xl ${colors.glow}`}
-                  >
-                    {/* Image with gradient overlay */}
-                    <div className="absolute inset-0">
-                      <div className="relative w-full h-48">
-                        <Image
-                          src={service.imageUrl}
-                          alt={service.imageAlt}
-                          fill
-                          className="object-cover"
-                          sizes="100vw"
-                          priority={index === currentIndex}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900" />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="relative p-6 h-full pt-40 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div
-                          className={`p-2.5 rounded-xl ${colors.bg} border ${colors.border} backdrop-blur-sm`}
-                        >
-                          <span className={colors.text}>{service.icon}</span>
-                        </div>
-                        <h3 className="text-xl font-bold text-white line-clamp-2">
-                          {service.title}
-                        </h3>
-                      </div>
-
-                      <p className="text-gray-300pt-30  mb-4 line-clamp-2">
-                        {service.shortDescription}
-                      </p>
-
-                      {/* Key Features Tags */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {service.features.slice(0, 3).map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className={`px-2 py-1 text-xs rounded-full ${colors.badge} border`}
-                          >
-                            {feature.split(" ").slice(0, 2).join(" ")}...
-                          </span>
-                        ))}
-                        <span className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700">
-                          +{service.features.length - 3} more
-                        </span>
-                      </div>
-
-                      {/* View Details Button */}
-                      <button
-                        onClick={() => setSelectedService(service)}
-                        className={`mt-auto w-full py-3.5 rounded-xl text-white font-medium flex items-center justify-center gap-2 ${colors.button} transition-all duration-300 shadow-lg hover:shadow-xl`}
-                      >
-                        <span>View Details</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={() =>
-                setCurrentIndex(
-                  (prev) =>
-                    (prev - 1 + servicesData.length) % servicesData.length,
-                )
-              }
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors border border-white/10"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={() =>
-                setCurrentIndex((prev) => (prev + 1) % servicesData.length)
-              }
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors border border-white/10"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-          {/* Slider Controls */}
-          <div className="absolute bottom-4 mt-20 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-            {servicesData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "w-8 bg-gradient-to-r from-green-400 to-lime-400"
-                    : "w-2 bg-white/30 hover:bg-white/50"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
+        
         {/* Desktop Grid - 3 columns */}
-        <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {servicesData.map((service) => {
             const colors = getColors(service.color);
             return (
