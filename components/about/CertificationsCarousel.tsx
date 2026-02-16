@@ -48,24 +48,24 @@ const CertificationsCarousel = () => {
       image: "/certs/UC-python-bootcamp.jpg",
       downloadUrl: "/certs/UC-python-bootcamp.pdf",
     },
-    // {
-    //   id: 5,
-    //   title: "Advanced React Patterns",
-    //   issuer: "Udemy",
-    //   date: "November 2021",
-    //   credentialId: "REACT5678",
-    //   image: "/certs/UC-react.jpg",
-    //   downloadUrl: "/certs/UC-react.pdf",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Cloud Architecture",
-    //   issuer: "AWS",
-    //   date: "March 2022",
-    //   credentialId: "AWS7890",
-    //   image: "/certs/UC-cloud.jpg",
-    //   downloadUrl: "/certs/UC-cloud.pdf",
-    // },
+    {
+      id: 5,
+      title: "Big Data - AWS",
+      issuer: "Udemy",
+      date: "September 2020",
+      credentialId: "BGD5678",
+      image: "/certs/UC-big-data-aws.jpg",
+      downloadUrl: "/certs/UC-big-data-aws.pdf",
+    },
+    {
+      id: 6,
+      title: "Art of Sell",
+      issuer: "Udemy",
+      date: "October 2020",
+      credentialId: "AOS7890",
+      image: "/certs/UC-art-of-sell.jpg",
+      downloadUrl: "/certs/UC-art-of-sell.pdf",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

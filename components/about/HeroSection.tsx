@@ -87,7 +87,7 @@ const HeroSection = () => {
       <FloatingElements />
 
       {/* Main Content */}
-      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 lg:pt-80 ">
+      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 lg:pt-36 ">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Main Message */}
@@ -121,9 +121,9 @@ const HeroSection = () => {
                     Digital Excellence
                   </span>
                   <motion.span
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ delay: 1, duration: 0.8 }}
+                    // initial={{ width: 0 }}
+                    // animate={{ width: "100%" }}
+                    // transition={{ delay: 1, duration: 0.8 }}
                     className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-lime-400 to-transparent rounded-full"
                   />
                 </span>
@@ -145,9 +145,9 @@ const HeroSection = () => {
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + idx * 0.1 }}
+                    // initial={{ opacity: 0, y: 10 }}
+                    // animate={{ opacity: 1, y: 0 }}
+                    // transition={{ delay: 0.4 + idx * 0.1 }}
                     className="flex items-center gap-2 text-sm text-gray-400"
                   >
                     <item.icon className="text-lime-400" />
@@ -158,9 +158,9 @@ const HeroSection = () => {
 
               {/* CTA Buttons */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
+                // initial={{ opacity: 0, y: 20 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // transition={{ delay: 0.7 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link
@@ -173,9 +173,9 @@ const HeroSection = () => {
                   </span>
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-lime-500 to-lime-600"
-                    initial={{ x: "100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    // initial={{ x: "100%" }}
+                    // whileHover={{ x: 0 }}
+                    // transition={{ duration: 0.3 }}
                   />
                 </Link>
 
@@ -217,9 +217,9 @@ const HeroSection = () => {
 
                   <div className="w-full bg-white/5 rounded-full h-2 mb-4">
                     <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "85%" }}
-                      transition={{ delay: 1.2, duration: 1 }}
+                      // initial={{ width: 0 }}
+                      // animate={{ width: "85%" }}
+                      // transition={{ delay: 1.2, duration: 1 }}
                       className="h-full bg-gradient-to-r from-lime-400 to-blue-400 rounded-full"
                     />
                   </div>
@@ -254,9 +254,9 @@ const HeroSection = () => {
                   ].map((tech, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1 + idx * 0.1 }}
+                      // initial={{ opacity: 0, y: 20 }}
+                      // animate={{ opacity: 1, y: 0 }}
+                      // transition={{ delay: 1 + idx * 0.1 }}
                       whileHover={{ y: -5, scale: 1.02 }}
                       className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-lime-500/20 transition-all duration-300"
                     >
@@ -325,9 +325,7 @@ const HeroSection = () => {
             />
           </div>
         </motion.div>
-      </motion.div>
-
-      <TwinklingStar />
+      </motion.div>      
     </section>
   );
 };

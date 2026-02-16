@@ -173,6 +173,7 @@ const EducationCertificationsSection = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="ml-2 text-gray-400 hover:text-cyan-400 transition-colors"
+                            aria-label={`View ${course.name} credential`}
                           >
                             <FiExternalLink />
                           </a>

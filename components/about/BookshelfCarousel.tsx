@@ -141,7 +141,7 @@ const BookshelfCarousel = () => {
                 onClick={() => setSelectedBook(book.id)}
               >
                 {/* Book cover with dark mode border */}
-                <div className="relative h-64 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 group-hover:border-amber-400 transition-all">                  
+                <div className="relative h-80 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 group-hover:border-amber-400 transition-all">                  
                   <Image
                     src={book.cover}
                     alt={book.title}
@@ -208,7 +208,7 @@ const BookshelfCarousel = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2">
                       {/* Book cover */}
                       <div className="bg-gray-900 p-8 flex items-center justify-center">
-                        <div className="relative h-80 w-full max-w-xs">                          
+                        <div className="relative h-80 w-full max-w-xs">
                           <Image
                             src={book.cover}
                             alt={book.title}
@@ -256,9 +256,11 @@ const BookshelfCarousel = () => {
                           <span>{book.category}</span>
                           <span>•</span>
                           <span>{book.year}</span>
-                        </div>
+                        </div>                        
 
-                        <div className="flex gap-1 mt-2">
+                        <p className="mt-6 text-gray-300">{book.description}</p>
+
+                        <div className="flex gap-1 mt-8">
                           {[...Array(5)].map((_, i) => (
                             <div
                               key={i}
@@ -267,17 +269,6 @@ const BookshelfCarousel = () => {
                               }`}
                             />
                           ))}
-                        </div>
-
-                        <p className="mt-6 text-gray-300">{book.description}</p>
-
-                        <div className="mt-8 flex gap-4">
-                          <button className="px-6 py-2 rounded-full bg-gradient-to-r from-amber-500 to-purple-600 text-white hover:shadow-lg hover:shadow-amber-500/20 transition flex items-center gap-2">
-                            <FiBookmark /> Save
-                          </button>
-                          <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white transition">
-                            Find Online
-                          </button>
                         </div>
                       </div>
                     </div>
