@@ -7,10 +7,7 @@ import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <section
-      id="my-story"
-      className="py-24 relative"
-    >
+    <section id="my-story" className="py-24 relative">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-10">
         {[...Array(20)].map((_, i) => (
@@ -88,7 +85,7 @@ const AboutSection = () => {
             </motion.div>
 
             {/* My Philosophy Card - The "No Spoon" Philosophy */}
-            <motion.div
+            {/* <motion.div
               whileHover={{ y: -5 }}
               className="bg-black-200 backdrop-blur-sm rounded-xl p-8 border border-gray-700 hover:border-blue-400/50 transition-all duration-300 shadow-lg"
             >
@@ -110,7 +107,7 @@ const AboutSection = () => {
                 within your reach, needing only the right engineering
                 perspective to bring it to life.
               </p>
-            </motion.div>
+            </motion.div> */}
 
             {/* My Mission Card */}
             <motion.div
@@ -147,12 +144,16 @@ const AboutSection = () => {
             <div className="absolute -inset-4 bg-gradient-to-br from-lime-400 to-emerald-400 rounded-3xl opacity-20 blur-xl"></div>
             <div className="relative bg-gray-800 rounded-3xl overflow-hidden border border-gray-700 shadow-2xl">
               <Image
-                src="/gallery/alex-desk.jpg"
                 alt="Merveille Alexandre - Senior Software Engineer and Instructor"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
+                width={592}
+                height={811}
+                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+                src="/gallery/alex-desk.jpg"
+                quality={75}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 592px"
                 priority
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..." // Add blur placeholder
               />
 
               {/* Experience Badge */}
@@ -179,27 +180,6 @@ const AboutSection = () => {
                   </span>
                 </motion.div>
               </div>
-
-              {/* Tech stack badges - repositioned */}
-              <div className="absolute bottom-6 left-6 flex flex-wrap gap-2 max-w-[200px]">
-                {[
-                  "React",
-                  "Node.js",
-                  "TypeScript",
-                  "AWS",
-                  "System Architecture",
-                ].map((tech, i) => (
-                  <motion.span
-                    key={tech}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9 + i * 0.1 }}
-                    className="px-3 py-1 bg-gray-900/80 backdrop-blur-sm rounded-full text-xs text-white border border-gray-700"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
             </div>
           </motion.div>
         </div>
@@ -213,8 +193,8 @@ const AboutSection = () => {
         >
           <p className="text-gray-400 text-sm max-w-3xl mx-auto border-t border-gray-800 pt-8">
             <span className="text-lime-400 font-semibold">✦</span> Every system
-            I build begins with a simple question: &quots;What would this look
-            like if the perceived limitations didn&apos;t exist?&quots; The
+            I build begins with a simple question: &quot;What would this look
+            like if the perceived limitations didn&apos;t exist?&quot; The
             answer reveals the architecture that was always possible — I just
             help you see it.
           </p>

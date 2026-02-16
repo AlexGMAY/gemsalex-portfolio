@@ -5,7 +5,6 @@ import AboutSection from "@/components/about/AboutSection";
 import EducationCertificationsSection from "@/components/about/EducationCertificationsSection";
 import { UltimateTimeline } from "@/components/Experience";
 import StatsSection from "@/components/about/StatsSection";
-import ClientsSection from "@/components/about/ClientsSection";
 import FunFacts from "@/components/about/FunFacts";
 import CertificationsCarousel from "@/components/about/CertificationsCarousel";
 import BookshelfCarousel from "@/components/about/BookshelfCarousel";
@@ -191,8 +190,7 @@ const Page = () => {
             <UltimateTimeline />
             <FunFacts />
             <BookshelfCarousel />
-            <Clients />
-            <ClientsSection />
+            <Clients />            
           </div>
         </div>
       </main>

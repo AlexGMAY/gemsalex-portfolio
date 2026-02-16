@@ -48,24 +48,24 @@ const CertificationsCarousel = () => {
       image: "/certs/UC-python-bootcamp.jpg",
       downloadUrl: "/certs/UC-python-bootcamp.pdf",
     },
-    {
-      id: 5,
-      title: "Advanced React Patterns",
-      issuer: "Udemy",
-      date: "November 2021",
-      credentialId: "REACT5678",
-      image: "/certs/UC-react.jpg",
-      downloadUrl: "/certs/UC-react.pdf",
-    },
-    {
-      id: 6,
-      title: "Cloud Architecture",
-      issuer: "AWS",
-      date: "March 2022",
-      credentialId: "AWS7890",
-      image: "/certs/UC-cloud.jpg",
-      downloadUrl: "/certs/UC-cloud.pdf",
-    },
+    // {
+    //   id: 5,
+    //   title: "Advanced React Patterns",
+    //   issuer: "Udemy",
+    //   date: "November 2021",
+    //   credentialId: "REACT5678",
+    //   image: "/certs/UC-react.jpg",
+    //   downloadUrl: "/certs/UC-react.pdf",
+    // },
+    // {
+    //   id: 6,
+    //   title: "Cloud Architecture",
+    //   issuer: "AWS",
+    //   date: "March 2022",
+    //   credentialId: "AWS7890",
+    //   image: "/certs/UC-cloud.jpg",
+    //   downloadUrl: "/certs/UC-cloud.pdf",
+    // },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -188,8 +188,8 @@ const CertificationsCarousel = () => {
                 visibleCards === 3
                   ? "grid-cols-3"
                   : visibleCards === 2
-                  ? "grid-cols-2"
-                  : "grid-cols-1"
+                    ? "grid-cols-2"
+                    : "grid-cols-1"
               }`}
             >
               <AnimatePresence
@@ -207,14 +207,9 @@ const CertificationsCarousel = () => {
                     exit="exit"
                     className="h-full"
                   >
-                    <div className="h-full bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-2xl flex flex-col">
+                    <div className="h-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg flex flex-col">
                       {/* Certificate image */}
                       <div className="h-2/3 relative overflow-hidden bg-black-100 flex items-center justify-center">
-                        {/* <img
-                          src={cert.image}
-                          alt={cert.title}
-                          className="max-w-full max-h-full object-contain p-3"
-                        /> */}
                         <Image
                           src={cert.image}
                           alt={cert.title}
@@ -237,7 +232,7 @@ const CertificationsCarousel = () => {
                             </span>
                             <span>{cert.date}</span>
                           </div>
-                          <p className="text-xs text-gray-500">
+                          <p className="text-xs text-gray-300">
                             Credential ID: {cert.credentialId}
                           </p>
                         </div>
@@ -267,12 +262,12 @@ const CertificationsCarousel = () => {
               <button
                 key={index}
                 onClick={() => goToCert(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`w-10 h-10 rounded-full transition-all ${
                   currentIndex === index ? "bg-emerald-400 w-6" : "bg-white/30"
                 }`}
                 aria-label={`Go to certification set ${index + 1}`}
               />
-            )
+            ),
           )}
         </div>
       </div>

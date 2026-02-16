@@ -4,9 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   FiBookOpen,
-  FiBookmark,
-  FiChevronLeft,
-  FiChevronRight,
+  FiBookmark,  
   FiX,
 } from "react-icons/fi";
 import { useState } from "react";
@@ -19,76 +17,76 @@ const BookshelfCarousel = () => {
     "All",
     "Fiction",
     "Non-Fiction",
+    "Metaphysics",
     "Self-Help",
-    "Biographies",
   ];
 
   const books = [
     {
       id: 1,
-      title: "Atomic Habits",
-      author: "James Clear",
+      title: "Awakened Imagination",
+      author: "Neville Goddard",
       category: "Self-Help",
-      cover: "/books/atomic-habits.jpg",
-      year: 2022,
+      cover: "/books/awakened-imagination.jpg",
+      year: 1970,
       rating: 5,
       description:
-        "Tiny changes, remarkable results. This book reveals practical strategies for building good habits and breaking bad ones.",
+        "God or the Christ in us is our imagination and that we can evolve or accomplish anything we want by imagining that we are, or have accomplished, it.",
     },
     {
       id: 2,
-      title: "Dune",
-      author: "Frank Herbert",
-      category: "Fiction",
-      cover: "/books/dune.jpg",
-      year: 2021,
+      title: "Three Magic Words",
+      author: "U.S. Andersen",
+      category: "Metaphysics",
+      cover: "/books/three-magic-words.jpg",
+      year: 1909,
       rating: 5,
       description:
-        "A stunning blend of adventure and mysticism, environmentalism and politics in a sci-fi masterpiece.",
+        "A ground-breaking book about the greatest idea in the world-a secret revealed in just three words-an idea so simple, so startling, so wonderful that it can start you on an adventure that will forever change the way you see yourself, others, and life.",
     },
     {
       id: 3,
-      title: "Sapiens",
-      author: "Yuval Noah Harari",
-      category: "Non-Fiction",
-      cover: "/books/sapiens.jpg",
-      year: 2020,
+      title: "Feeling is the secret",
+      author: "Neville Goddard",
+      category: "Metaphysics",
+      cover: "/books/feeling-is-the-secret.jpg",
+      year: 1970,
       rating: 4,
       description:
-        "A brief history of humankind, exploring how biology and history have defined us.",
+        "Your thoughts shape your life, create your reality, and ultimately limit or expand your true potential.",
     },
     {
       id: 4,
-      title: "The Psychology of Money",
-      author: "Morgan Housel",
-      category: "Non-Fiction",
-      cover: "/books/psychology-money.jpg",
-      year: 2023,
+      title: "The Power of the Spoken Word",
+      author: "Scovel Shinn",
+      category: "Self-Help",
+      cover: "/books/the-power-of-the-spoken-word.jpg",
+      year: 1945,
       rating: 5,
       description:
-        "Timeless lessons on wealth, greed, and happiness through 19 short stories.",
+        "By paying more attention to how we speak, and hence how we think, we can change our circumstances for the better.",
     },
     {
       id: 5,
-      title: "Project Hail Mary",
-      author: "Andy Weir",
-      category: "Fiction",
-      cover: "/books/hail-mary.jpg",
+      title: "The Master Key System",
+      author: "Charles F. Haanel",
+      category: "Self-Help",
+      cover: "/books/the-master-key-system.jpg",
       year: 2021,
       rating: 5,
       description:
-        "A lone astronaut must save the earth from disaster in this science-based adventure.",
+        "The system combines principles of mental discipline, visualization, and the law of attraction, providing a structured approach to personal transformation and mastery.",
     },
     {
       id: 6,
-      title: "Can't Hurt Me",
-      author: "David Goggins",
+      title: "The Game of Life",
+      author: "Scovel Shinn",
       category: "Biographies",
-      cover: "/books/cant-hurt-me.jpg",
-      year: 2022,
+      cover: "/books/the-game-of-life.jpg",
+      year: 1948,
       rating: 4,
       description:
-        "A raw, inspiring story of transforming pain into power through mental toughness.",
+        "We receive back what we put into the world through our actions, energy, and attitudes.",
     },
   ];
 
@@ -134,7 +132,7 @@ const BookshelfCarousel = () => {
 
         {/* Bookshelf - Dark Mode Version */}
         <div className="relative">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBooks.map((book) => (
               <motion.div
                 key={book.id}
@@ -143,12 +141,7 @@ const BookshelfCarousel = () => {
                 onClick={() => setSelectedBook(book.id)}
               >
                 {/* Book cover with dark mode border */}
-                <div className="relative h-64 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 group-hover:border-amber-400 transition-all">
-                  {/* <img
-                    src={book.cover}
-                    alt={book.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  /> */}
+                <div className="relative h-64 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 group-hover:border-amber-400 transition-all">                  
                   <Image
                     src={book.cover}
                     alt={book.title}
@@ -215,12 +208,7 @@ const BookshelfCarousel = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2">
                       {/* Book cover */}
                       <div className="bg-gray-900 p-8 flex items-center justify-center">
-                        <div className="relative h-80 w-full max-w-xs">
-                          {/* <img
-                            src={book.cover}
-                            alt={book.title}
-                            className="w-full h-full object-contain shadow-lg"
-                          /> */}
+                        <div className="relative h-80 w-full max-w-xs">                          
                           <Image
                             src={book.cover}
                             alt={book.title}
@@ -303,7 +291,7 @@ const BookshelfCarousel = () => {
         {/* Yearly reading stats - Dark Mode Version */}
         <div className="mt-16 bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 border border-gray-700 shadow-lg">
           <h3 className="text-xl font-bold text-white mb-4">
-            2023 Reading Stats
+            2025 Reading Stats
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-gray-700/50 rounded-lg p-4 text-center border border-gray-600">
@@ -320,7 +308,7 @@ const BookshelfCarousel = () => {
             </div>
             <div className="bg-gray-700/50 rounded-lg p-4 text-center border border-gray-600">
               <p className="text-3xl font-bold text-amber-400">12</p>
-              <p className="text-gray-400">Fiction/Non-Fiction</p>
+              <p className="text-gray-400">Metaphysics</p>
             </div>
           </div>
         </div>

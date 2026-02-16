@@ -11,6 +11,23 @@ import { FiArrowRight, FiCheck, FiCode, FiUsers, FiZap } from "react-icons/fi";
 const HeroSection = () => {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const [videoSrc, setVideoSrc] = useState(
+    "/videos/web-design-vid-optimized.mp4",
+  );
+
+  useEffect(() => {
+    const updateVideoSrc = () => {
+      if (window.innerWidth < 768) {
+        setVideoSrc("/videos/web-design-vid-mobile.mp4");
+      } else {
+        setVideoSrc("/videos/web-design-vid-optimized.mp4");
+      }
+    };
+
+    updateVideoSrc();
+    window.addEventListener("resize", updateVideoSrc);
+    return () => window.removeEventListener("resize", updateVideoSrc);
+  }, []);
 
   // Parallax effect for video
   const videoY = useTransform(scrollY, [0, 500], [0, 100]);
@@ -49,7 +66,8 @@ const HeroSection = () => {
           playsInline
           className="w-full h-full object-cover scale-105"
         >
-          <source src="/videos/web-design-vid.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
+          <source src="/videos/web-design-vid.webm" type="video/webm" />
         </video>
 
         {/* Animated overlay grid */}
@@ -66,25 +84,24 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Floating elements */}
-      <TwinklingStar />
       <FloatingElements />
 
       {/* Main Content */}
-      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 md:pt-10">
+      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-20 lg:pt-80 ">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Main Message */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              // initial={{ opacity: 0, x: -50 }}
+              // animate={{ opacity: 1, x: 0 }}
+              // transition={{ duration: 0.8 }}
               className="text-left"
             >
               {/* Status badge */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                // initial={{ opacity: 0, y: 20 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-lime-500/20"
               >
                 <span className="relative flex h-2 w-2">
@@ -163,7 +180,7 @@ const HeroSection = () => {
                 </Link>
 
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   Schedule a Call
@@ -174,9 +191,9 @@ const HeroSection = () => {
 
             {/* Right Column - Visual Stats */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              // initial={{ opacity: 0, x: 50 }}
+              // animate={{ opacity: 1, x: 0 }}
+              // transition={{ duration: 0.8, delay: 0.3 }}
               className="relative hidden lg:block"
             >
               {/* Stats cards */}
@@ -216,22 +233,22 @@ const HeroSection = () => {
                   {[
                     {
                       name: "React/Next.js",
-                      value: "50+",
+                      value: "80+",
                       color: "from-blue-400 to-blue-500",
                     },
                     {
-                      name: "Node.js",
-                      value: "40+",
+                      name: "Node.js/Express",
+                      value: "80+",
                       color: "from-green-400 to-green-500",
                     },
                     {
                       name: "TypeScript",
-                      value: "45+",
+                      value: "88+",
                       color: "from-blue-500 to-blue-600",
                     },
                     {
-                      name: "AWS/Cloud",
-                      value: "30+",
+                      name: "Postgres Sql/MongoDB",
+                      value: "70+",
                       color: "from-orange-400 to-orange-500",
                     },
                   ].map((tech, idx) => (

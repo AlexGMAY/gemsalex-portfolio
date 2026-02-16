@@ -92,11 +92,6 @@ const EducationCertificationsSection = () => {
                     <div className="flex-shrink-0">
                       <div className="h-12 w-12 rounded-lg bg-gray-700 flex items-center justify-center overflow-hidden">
                         {certification.icon ? (
-                          // <img
-                          //   src={certification.icon}
-                          //   alt={certification.name}
-                          //   className="h-8 w-8 object-contain"
-                          // />
                           <Image
                             src={certification.icon}
                             alt={certification.name}
@@ -126,6 +121,7 @@ const EducationCertificationsSection = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="ml-2 text-gray-400 hover:text-emerald-400 transition-colors"
+                            aria-label={`View ${certification.name} credential`}
                           >
                             <FiExternalLink />
                           </a>
