@@ -62,9 +62,36 @@ const CertificationsCarousel = () => {
       title: "Art of Sell",
       issuer: "Udemy",
       date: "October 2020",
-      credentialId: "AOS7890",
+      credentialId: "UC-39e722f1-f88f-45b7-bf5d-fc6ef895413a",
       image: "/certs/UC-art-of-sell.jpg",
       downloadUrl: "/certs/UC-art-of-sell.pdf",
+    },
+    {
+      id: 7,
+      title: "Social Media Marketing",
+      issuer: "Udemy",
+      date: "September 2020",
+      credentialId: "UC-c023d828-1e7f-4f4a-8718-4c31b18730da",
+      image: "/certs/UC-social-media-marketing.jpg",
+      downloadUrl: "/certs/UC-social-media-marketing.pdf",
+    },
+    {
+      id: 8,
+      title: "Presentation Skills",
+      issuer: "Udemy",
+      date: "September 2020",
+      credentialId: "UC-b6b0ccc2-8af1-4eff-9d2c-d5b6c68a0a8c",
+      image: "/certs/UC-presentation-skills.jpg",
+      downloadUrl: "/certs/UC-presentation-skills.pdf",
+    },
+    {
+      id: 9,
+      title: "Business Fundamentals for Startups",
+      issuer: "Udemy",
+      date: "October 2020",
+      credentialId: "UC-8264234b-27be-4155-98d4-4f47c6a017dd",
+      image: "/certs/UC-business-fundamentals.jpg",
+      downloadUrl: "/certs/UC-business-fundamentals.pdf",
     },
   ];
 
@@ -207,7 +234,7 @@ const CertificationsCarousel = () => {
                     exit="exit"
                     className="h-full"
                   >
-                    <div className="h-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg flex flex-col">
+                    <div className="h-full bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg flex flex-col pb-6">
                       {/* Certificate image */}
                       <div className="h-2/3 relative overflow-hidden bg-black-100 flex items-center justify-center">
                         <Image
@@ -262,7 +289,7 @@ const CertificationsCarousel = () => {
               <button
                 key={index}
                 onClick={() => goToCert(index)}
-                className={`w-10 h-10 rounded-full transition-all ${
+                className={`w-6 h-6 rounded-full transition-all ${
                   currentIndex === index ? "bg-emerald-400 w-6" : "bg-white/30"
                 }`}
                 aria-label={`Go to certification set ${index + 1}`}

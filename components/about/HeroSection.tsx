@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Spotlight } from "../ui/Spotlight";
-import { TwinklingStar } from "../ui/TwinklingStar";
 import { FloatingElements } from "../projects/Hero";
 import Link from "next/link";
 import { FiArrowRight, FiCheck, FiCode, FiUsers, FiZap } from "react-icons/fi";
@@ -91,17 +90,11 @@ const HeroSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Main Message */}
-            <motion.div
-              // initial={{ opacity: 0, x: -50 }}
-              // animate={{ opacity: 1, x: 0 }}
-              // transition={{ duration: 0.8 }}
+            <div              
               className="text-left"
             >
               {/* Status badge */}
-              <motion.div
-                // initial={{ opacity: 0, y: 20 }}
-                // animate={{ opacity: 1, y: 0 }}
-                // transition={{ delay: 0.2 }}
+              <div                
                 className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-lime-500/20"
               >
                 <span className="relative flex h-2 w-2">
@@ -111,7 +104,7 @@ const HeroSection = () => {
                 <span className="text-sm font-medium text-lime-400">
                   Available for work
                 </span>
-              </motion.div>
+              </div>
 
               {/* Main headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
@@ -120,10 +113,7 @@ const HeroSection = () => {
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-400 via-lime-400 to-blue-400">
                     Digital Excellence
                   </span>
-                  <motion.span
-                    // initial={{ width: 0 }}
-                    // animate={{ width: "100%" }}
-                    // transition={{ delay: 1, duration: 0.8 }}
+                  <span                    
                     className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-lime-400 to-transparent rounded-full"
                   />
                 </span>
@@ -143,24 +133,18 @@ const HeroSection = () => {
                   { icon: FiUsers, text: "30+ Happy Clients" },
                   { icon: FiCode, text: "8+ Years Experience" },
                 ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    // initial={{ opacity: 0, y: 10 }}
-                    // animate={{ opacity: 1, y: 0 }}
-                    // transition={{ delay: 0.4 + idx * 0.1 }}
+                  <div
+                    key={idx}                    
                     className="flex items-center gap-2 text-sm text-gray-400"
                   >
                     <item.icon className="text-lime-400" />
                     <span>{item.text}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
               {/* CTA Buttons */}
-              <motion.div
-                // initial={{ opacity: 0, y: 20 }}
-                // animate={{ opacity: 1, y: 0 }}
-                // transition={{ delay: 0.7 }}
+              <div                
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link
@@ -171,11 +155,8 @@ const HeroSection = () => {
                     View My Work
                     <FiArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-lime-500 to-lime-600"
-                    // initial={{ x: "100%" }}
-                    // whileHover={{ x: 0 }}
-                    // transition={{ duration: 0.3 }}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-lime-500 to-lime-600"                    
                   />
                 </Link>
 
@@ -186,21 +167,17 @@ const HeroSection = () => {
                   Schedule a Call
                   <FiZap className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Right Column - Visual Stats */}
-            <motion.div
-              // initial={{ opacity: 0, x: 50 }}
-              // animate={{ opacity: 1, x: 0 }}
-              // transition={{ duration: 0.8, delay: 0.3 }}
+            <div              
               className="relative hidden lg:block"
             >
               {/* Stats cards */}
               <div className="relative">
                 {/* Main stat card */}
-                <motion.div
-                  whileHover={{ y: -5 }}
+                <div                  
                   className="relative bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8 mb-6"
                 >
                   <div className="absolute -top-3 -right-3">
@@ -216,17 +193,14 @@ const HeroSection = () => {
                   </p>
 
                   <div className="w-full bg-white/5 rounded-full h-2 mb-4">
-                    <motion.div
-                      // initial={{ width: 0 }}
-                      // animate={{ width: "85%" }}
-                      // transition={{ delay: 1.2, duration: 1 }}
+                    <div                      
                       className="h-full bg-gradient-to-r from-lime-400 to-blue-400 rounded-full"
                     />
                   </div>
                   <p className="text-sm text-gray-500">
                     85% repeat client rate
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Tech stack grid */}
                 <div className="grid grid-cols-2 gap-4">
@@ -252,12 +226,8 @@ const HeroSection = () => {
                       color: "from-orange-400 to-orange-500",
                     },
                   ].map((tech, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
-                      // initial={{ opacity: 0, y: 20 }}
-                      // animate={{ opacity: 1, y: 0 }}
-                      // transition={{ delay: 1 + idx * 0.1 }}
-                      whileHover={{ y: -5, scale: 1.02 }}
                       className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-lime-500/20 transition-all duration-300"
                     >
                       <div
@@ -266,7 +236,7 @@ const HeroSection = () => {
                         {tech.value}
                       </div>
                       <p className="text-xs text-gray-400">{tech.name}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -285,47 +255,10 @@ const HeroSection = () => {
                   <FiCode className="h-6 w-6 text-white" />
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs text-gray-500 uppercase tracking-wider">
-            Scroll
-          </span>
-          <div className="w-5 h-9 border-2 border-white/20 rounded-full flex justify-center">
-            <motion.div
-              animate={{
-                y: [0, 12, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="w-1 h-2 bg-lime-400 rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
-      </motion.div>      
+      </div>      
     </section>
   );
 };

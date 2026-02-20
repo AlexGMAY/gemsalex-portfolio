@@ -1,21 +1,7 @@
 {
-  "name": "Alexander portfolio",
+  "name": "Alexander-portfolio",
   "version": "0.1.0",
   "private": true,
-  "browserslist": {
-    "production": [
-      "defaults",
-      "not IE 11",
-      "not dead",
-      ">0.2%",
-      "last 2 versions"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -23,18 +9,28 @@
     "lint": "next lint",
     "deploy": "vercel --prod"
   },
+  "browserslist": {
+    "production": [
+      "defaults and supports es6-module",
+      "not IE 11",
+      "not dead",
+      ">0.2%",
+      "last 2 versions",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions"
+    ]
+  },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
     "@sentry/nextjs": "^10.19.0",
-    "@shadcn/ui": "^0.0.4",
-    "@tabler/icons-react": "^3.1.0",
     "@types/three": "^0.163.0",
-    "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.7.0",
     "clsx": "^2.1.0",
-    "critters": "^0.0.23",
     "framer-motion": "^10.16.0",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
@@ -49,22 +45,16 @@
     "react-icons": "^5.0.1",
     "react-intersection-observer": "^9.16.0",
     "react-lite-youtube-embed": "^2.4.0",
-    "react-lottie": "^1.2.4",
     "react-markdown": "^10.1.0",
     "react-simple-typewriter": "^5.0.1",
     "react-syntax-highlighter": "^16.1.0",
     "react-tilt": "^1.0.2",
     "rehype-highlight": "^7.0.2",
-    "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-html": "^16.0.1",
     "resend": "^6.1.2",
-    "sharp": "^0.34.5",
-    "swiper": "^11.2.5",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.163.0",
-    "three-globe": "^2.45.0",
     "vercel": "^34.0.0"
   },
   "devDependencies": {

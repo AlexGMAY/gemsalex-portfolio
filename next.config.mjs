@@ -46,6 +46,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'], // Keep errors and warnings
     } : false,
+    styledComponents: true,
   },
 
   async headers() {
