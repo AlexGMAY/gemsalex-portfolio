@@ -10,7 +10,7 @@ const experiences = [
     role: "Remote Consultant",
     company: "ATON PROXY",
     logo: "/avatars/logo-aton.jpg",
-    period: "September 2024 - January 2025",
+    period: "March 2016 - January 2026",
     description:
       "As a remote consultant based in Tunisia, I manage international relations, conduct IT training sessions with our partners in telecommunications networks, obtain certifications in IT domains, and participate in important conferences and meetings on behalf of the company with Innovaphone.",
     achievements: [
@@ -31,7 +31,7 @@ const experiences = [
     role: "Freelance Senior Fullstack Developer",
     company: "Cyberperformance",
     logo: "/avatars/cyberperformance.png",
-    period: "2017 - 2018",
+    period: "September 2024 - January 2025",
     description:
       "Worked full time as a senior Full Stack Developer on websites redesigns and on a reiew management project for the company.",
     achievements: [
@@ -45,7 +45,7 @@ const experiences = [
     id: 3,
     role: "Freelance Frontend Developer",
     company: "KOUKA",
-    logo: "/avatars/logo-kouka.png", 
+    logo: "/avatars/logo-kouka.png",
     period: "July 2018 - March 2020 ",
     description:
       "Responsible for converting Photoshop mockups into frontend code and integrating them into Angular to create Single Page Applications (SPAs) for our clients.",
@@ -60,7 +60,7 @@ const experiences = [
     id: 4,
     role: "Prestashop/WordPress Developer",
     company: "NETMARKETING",
-    logo: "/avatars/logo-netmarketing.png", 
+    logo: "/avatars/logo-netmarketing.png",
     period: "January 2020 - October 2020",
     description:
       "Responsible for developing e-commerce and showcase websites using Prestashop and WordPress.",
@@ -95,7 +95,7 @@ const experiences = [
     id: 6,
     role: "Lead Developer & Project Manager",
     company: "JMK&ASSOCIES",
-    logo: "/avatars/logo-jmk.jpg", 
+    logo: "/avatars/logo-jmk.jpg",
     period: "January 2021 - November 2021",
     description:
       "Served as lead developer managing web projects, overseeing both design and development phases.",
@@ -116,7 +116,7 @@ const experiences = [
     id: 7,
     role: "Freelance E-commerce Developer",
     company: "ECOPOWER ECEAULO",
-    logo: "/avatars/logo-ecopower.webp", 
+    logo: "/avatars/logo-ecopower.webp",
     period: "September 2021 - November 2022 & September 2023",
     description:
       "Began developing an e-commerce website for Ecopower Eceaulo in September 2021. The project was relaunched in September 2023 with a new design and expanded functionality.",
@@ -153,7 +153,7 @@ const experiences = [
     id: 9,
     role: "Freelance Fullstack Developer",
     company: "HELLODATI",
-    logo: "/avatars/hello_dati_logo.jfif", 
+    logo: "/avatars/hello_dati_logo.jfif",
     period: "January 2023 - June 2023",
     description:
       "Collaborated with the Hello Dati team on developing a BUSINESS HOTEL web application. Completed a 6-month mission using ANGULAR, NESTJS, JavaScript, and PHP. Version 1 (PHP/JS/JQuery) is live, and Version 2 (ANGULAR/NESTJS) was completed for 2024.",
