@@ -40,7 +40,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen py-20 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Background with subtle animation */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -138,7 +138,7 @@ export function Hero() {
           {/* Value proposition grid */}
           <div
             ref={statsScope}            
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
+            className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10"
           >
             {[              
               { icon: FaRocket, label: "Avg. Performance Gain", value: "85%" },

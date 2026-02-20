@@ -161,7 +161,7 @@ const Page = () => {
       <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden">
         <div className="w-full">          
           <Hero />
-          <div className="max-w-7xl w-full">
+          <div className="max-w-7xl w-full mx-auto">
             <Realisations />
             <Skills />
             <Clients />
