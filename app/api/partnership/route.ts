@@ -8,10 +8,13 @@ import {
   PartnershipApiResponse,
   PartnershipFormData,
 } from "@/types/partnership";
-import { sendPartnershipUserEmail, sendPartnershipAdminEmail } from "@/lib/utils/partnership-email";
+import {
+  sendPartnershipUserEmail,
+  sendPartnershipAdminEmail,
+} from "@/lib/utils/partnership-email";
 
 export async function POST(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<NextResponse<PartnershipApiResponse>> {
   try {
     const body = await request.json();
@@ -29,7 +32,7 @@ export async function POST(
           message:
             "Too many partnership requests. Please try again in 15 minutes.",
         },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -41,17 +44,18 @@ export async function POST(
     if (!validateCsrfToken(submittedCsrfToken, csrfTokenCookie?.value)) {
       return NextResponse.json(
         { success: false, message: "Invalid CSRF token" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
     // Validate form data
-    const validationResult = partnershipSchema.safeParse(body);
+    const validationResult = await partnershipSchema.safeParseAsync(body);
 
     if (!validationResult.success) {
-      const errors = validationResult.error.errors.map((err) => ({
-        field: err.path[0] as string,
-        message: err.message,
+      // FIXED: Use 'issues' instead of 'errors'
+      const errors = validationResult.error.issues.map((issue) => ({
+        field: issue.path[0] as string,
+        message: issue.message,
       }));
 
       return NextResponse.json(
@@ -60,7 +64,7 @@ export async function POST(
           message: "Validation failed",
           errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -69,7 +73,7 @@ export async function POST(
     // Generate partnership ID
     const partnershipId = `PART-${Date.now()}-${Math.random()
       .toString(36)
-      .substr(2, 6)
+      .substring(2, 8) // Use substring instead of substr (deprecated)
       .toUpperCase()}`;
 
     // Determine next steps based on partnership type
@@ -83,7 +87,7 @@ export async function POST(
 
     // Log successful submission
     console.log(
-      `Partnership form submitted: ${formData.email} | Company: ${formData.company} | Type: ${formData.partnershipType}`
+      `Partnership form submitted: ${formData.email} | Company: ${formData.company} | Type: ${formData.partnershipType}`,
     );
 
     return NextResponse.json({
@@ -111,13 +115,13 @@ export async function POST(
         success: false,
         message: errorMessage,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 function getNextSteps(partnershipType: string): string[] {
-  const steps = {
+  const steps: Record<string, string[]> = {
     strategic: [
       "Strategy alignment session",
       "Market opportunity analysis",
@@ -144,5 +148,5 @@ function getNextSteps(partnershipType: string): string[] {
     ],
   };
 
-  return steps[partnershipType as keyof typeof steps] || steps.other;
+  return steps[partnershipType] || steps.other;
 }

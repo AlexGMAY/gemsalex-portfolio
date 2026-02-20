@@ -1,3 +1,4 @@
+// app/api/contact/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { contactSchema, ContactFormInput } from "@/lib/validations/schemas";
 import { validateCsrfToken, checkRateLimit } from "@/lib/utils/security";
@@ -8,7 +9,7 @@ import {
 import { ApiResponse, ContactFormData } from "@/types/contact";
 
 export async function POST(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<NextResponse<ApiResponse>> {
   try {
     const body = await request.json();
@@ -25,7 +26,7 @@ export async function POST(
           success: false,
           message: "Too many contact attempts. Please try again in 15 minutes.",
         },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -37,17 +38,18 @@ export async function POST(
     if (!validateCsrfToken(submittedCsrfToken, csrfTokenCookie?.value)) {
       return NextResponse.json(
         { success: false, message: "Invalid CSRF token" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
     // Validate form data
-    const validationResult = contactSchema.safeParse(body);
+    const validationResult = await contactSchema.safeParseAsync(body);
 
     if (!validationResult.success) {
-      const errors = validationResult.error.errors.map((err) => ({
-        field: err.path[0] as string,
-        message: err.message,
+      // FIXED: Access error formatting properly
+      const errors = validationResult.error.issues.map((issue) => ({
+        field: issue.path[0] as string,
+        message: issue.message,
       }));
 
       return NextResponse.json(
@@ -56,7 +58,7 @@ export async function POST(
           message: "Validation failed",
           errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -70,7 +72,7 @@ export async function POST(
 
     // Log successful submission
     console.log(
-      `Contact form submitted: ${formData.email} from IP: ${clientIP}`
+      `Contact form submitted: ${formData.email} from IP: ${clientIP}`,
     );
 
     return NextResponse.json({
@@ -81,7 +83,7 @@ export async function POST(
   } catch (error) {
     console.error("Contact form error:", error);
 
-    // Provide more specific error messages for Resend errors
+    // Provide more specific error messages
     let errorMessage =
       "An error occurred while sending your message. Please try again later.";
 
@@ -97,7 +99,7 @@ export async function POST(
         success: false,
         message: errorMessage,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
