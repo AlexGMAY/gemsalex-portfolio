@@ -42,14 +42,14 @@ const HeroCourse = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div className="container w-full px-6 lg:mx-auto lg:max-w-7xl relative z-10">
         <div className="grid gap-16 mt-8 md:mt-16 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col justify-center">
             {/* Fixed: Removed w-80, added inline-flex only */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/20 to-lime-500/20 px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium text-blue-300 backdrop-blur-sm border border-blue-500/30 w-auto">
+            {/* <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/20 to-lime-500/20 px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium text-blue-300 backdrop-blur-sm border border-blue-500/30 w-auto">
               <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
               <span>Professional Personalized Training</span>
-            </div>
+            </div> */}
 
             <h1 className="mb-6 sm:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-lime-300 bg-clip-text text-transparent">

@@ -308,7 +308,7 @@ const CalendlyScheduler = () => {
               </div>
 
               <div className="pt-6 border-t border-gray-700">
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col md:flex-row items-start gap-4">
                   <div className="p-3 rounded-lg bg-purple-400/10 text-purple-400 flex-shrink-0">
                     <FiVideo className="text-xl" />
                   </div>
@@ -317,11 +317,11 @@ const CalendlyScheduler = () => {
                       Video Conferencing
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
-                      All meetings are held via Google Meet or Zoom. The video
+                      All meetings are held via Google Meet, Zoom or Ms Teams . The video
                       conference link will be automatically provided in your
                       confirmation email after booking.
                     </p>
-                    <div className="mt-3 flex gap-4 text-sm text-gray-400">
+                    <div className="mt-3 flex flex-col md:flex-row gap-4 text-sm text-gray-400">
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                         HD Video Quality

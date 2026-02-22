@@ -434,7 +434,7 @@ const SmartContactSystem = () => {
                   >
                     Urgency Level
                   </label>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {[
                       { value: "low", label: "Low" },
                       { value: "standard", label: "Standard" },

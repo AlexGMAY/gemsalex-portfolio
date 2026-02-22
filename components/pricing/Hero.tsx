@@ -17,9 +17,7 @@ export default function HeroSection() {
           quality={85}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-gray-900/95 to-gray-950/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/95 to-gray-950/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-gray-900/95 to-gray-950/90" />        
       </div>
 
       {/* Static background elements (no animations to improve LCP/FCP) */}

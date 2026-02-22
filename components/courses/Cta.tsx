@@ -36,7 +36,7 @@ const Cta = () => {
             </p>
 
             {/* Buttons - Stacked on mobile */}
-            <div className="flex flex-col justify-center gap-3 md:gap-6">
+            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-6">
               <Link
                 href="#courses"
                 className="group inline-flex items-center justify-center w-full sm:w-auto min-h-[44px] px-6 md:px-10 py-3 md:py-4 rounded-xl bg-gradient-to-r from-blue-600 to-lime-600 font-semibold text-white transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/30 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"

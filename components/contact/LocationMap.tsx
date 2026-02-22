@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import {
   FiMapPin,
-  FiPhone,
-  FiMail,
+  FiPhone,  
   FiClock,
   FiNavigation,
   FiMessageCircle,
@@ -30,8 +29,8 @@ const LocationMap = () => {
   const location = {
     coordinates: { lat: 36.8065, lng: 10.1815 }, // Tunis, Tunisia coordinates
     address: "Tunis, Tunisia",
-    phone: "+216 12 345 678", // Replace with your actual phone
-    email: "contact@marvelbiz.com", // Replace with your actual email
+    phone: "+216 20037749", // Replace with your actual phone
+    email: "consultus@gemsalex.com", // Replace with your actual email
     hours: "Mon-Fri: 9AM - 5PM (CET)",
     timezone: "Central European Time (CET)",
   };
@@ -257,10 +256,7 @@ const LocationMap = () => {
   };
 
   return (
-    <section
-      id="location"
-      className="py-20"
-    >
+    <section id="location" className="py-20">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -346,7 +342,7 @@ const LocationMap = () => {
           >
             <div className="space-y-8">
               {/* Location Section */}
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col md:flex-row items-start gap-4">
                 <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400 flex-shrink-0">
                   <FiMapPin className="text-xl" />
                 </div>
@@ -371,7 +367,7 @@ const LocationMap = () => {
               </div>
 
               {/* Contact Section */}
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col md:flex-row items-start gap-4">
                 <div className="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 flex-shrink-0">
                   <FiPhone className="text-xl" />
                 </div>
@@ -403,7 +399,7 @@ const LocationMap = () => {
               </div>
 
               {/* Availability Section */}
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col md:flex-row items-start gap-4">
                 <div className="p-3 rounded-lg bg-purple-500/10 text-purple-400 flex-shrink-0">
                   <FiClock className="text-xl" />
                 </div>
