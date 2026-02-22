@@ -4,11 +4,7 @@ import ResourcesBlogSection from "@/components/resources/ResourcesBlogSection";
 import ResourcesHero from "@/components/resources/ResourcesHero";
 import ResourcesLinksSection from "@/components/resources/ResourcesLinksSection";
 import ResourcesTutorialsSection from "@/components/resources/ResourcesTutorialsSection";
-import {
-  getFeaturedResources,
-  getResourcesByType,
-  getLatestResources,
-} from "@/lib/resources-utils";
+import { getResourcesByType } from "@/lib/resources-utils";
 import { Resource } from "@/lib/resources";
 import type { Metadata } from "next";
 import { useState, useEffect } from "react";
@@ -107,12 +103,10 @@ export default function ResourcesPage() {
   const allResources: Resource[] = resources.sort(
     (a, b) => b.date.getTime() - a.date.getTime()
   );
-
-  const featuredResources = getFeaturedResources(allResources);
+ 
   const blogResources = getResourcesByType(allResources, "blog");
   const tutorialResources = getResourcesByType(allResources, "tutorials");
-  const linkResources = getResourcesByType(allResources, "links");
-  const latestResources = getLatestResources(allResources, 6);
+  const linkResources = getResourcesByType(allResources, "links"); 
 
   return (
     <main className="relative w-full">

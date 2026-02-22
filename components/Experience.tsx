@@ -262,7 +262,10 @@ export function UltimateTimeline() {
               transition={{ duration: 0.6 }}
               className="text-[40px] md:text-5xl lg:text-6xl font-bold mb-4"
             >
-              Professional <span className="text-lime-400">Experience</span>
+              Professional{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-400 via-lime-400 to-blue-400">
+                Experience
+              </span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

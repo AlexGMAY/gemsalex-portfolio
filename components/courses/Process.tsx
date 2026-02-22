@@ -10,7 +10,7 @@ const Process = () => {
               <div className="container mx-auto max-w-6xl">
                 <div className="mb-16 text-center">
                   <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/20 to-lime-500/20 px-6 py-2">
-                    <Rocket className="h-4 w-4 text-lime-400" />
+                    <Rocket className="hidden md:block h-4 w-4 text-lime-400" />
                     <span className="text-sm font-medium text-lime-300">
                       Professional Training Methodology
                     </span>

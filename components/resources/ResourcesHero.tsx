@@ -293,17 +293,14 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
           </div>
 
           {/* Animated topics */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+          <div            
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
             {topics.map((topic, index) => (
               <motion.span
                 key={topic}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
                 transition={{
                   type: "spring",
                   stiffness: 300,
@@ -316,7 +313,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
                 {topic}
               </motion.span>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 

@@ -61,7 +61,10 @@ export default function FunFacts() {
   return (
     <div className="py-24 max-w-4xl mx-auto">
       <h2 className="heading mb-14">
-        Fun Facts & <span className="text-lime-400">Personal Touch</span>
+        Fun Facts &{" "}
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-400 via-lime-400 to-blue-400">
+          Personal Touch
+        </span>
       </h2>
       <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {funFacts.map((fact, index) => (

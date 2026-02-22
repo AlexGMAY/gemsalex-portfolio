@@ -60,10 +60,10 @@ const Platforms = () => {
           <div>
             <div className="inline-flex border border-lime-400 gap-2 text-lime-500 px-3 py-1 rounded-full items-center text-sm uppercase font-semibold">
               <span>&#10038;</span>
-              <span>Enterprise-Grade Technology Stack</span>
+              <span>Industry Technology Stack</span>
             </div>
             <div className="">
-              <h2 className="text-5xl font-bold lg:text-left mt-4">
+              <h2 className="text-3xl md:text-5xl font-bold lg:text-left mt-4">
                 Built With{" "}
                 <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
                   Industry-Leading Technology

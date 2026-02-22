@@ -71,7 +71,10 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="heading bg-clip-text text-transparent bg-gradient-to-r from-white to-white mb-4">
-            Website <span className="text-lime-400">Pricing FAQs</span>
+            Website{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-lime-400 to-lime-500">
+              Pricing FAQs
+            </span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
             Clear answers about my website development costs and process

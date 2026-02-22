@@ -18,6 +18,8 @@ export default function HeroSection() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-gray-900/95 to-gray-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/95 to-gray-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent" />
       </div>
 
       {/* Static background elements (no animations to improve LCP/FCP) */}
@@ -27,7 +29,7 @@ export default function HeroSection() {
         <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-yellow-500 rounded-full opacity-15"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 py-12 md:py-20 min-h-screen flex items-center">
+      <div className="container mx-auto px-6 relative z-10 py-24 md:py-20 min-h-screen flex items-center">
         <div className="flex flex-col lg:flex-row items-center gap-12 w-full">
           {/* Left content */}
           <div className="lg:w-1/2">
@@ -96,7 +98,7 @@ export default function HeroSection() {
                 <GiGlobe className="text-xl md:text-2xl" />
               </div>
               <h2 className="text-lg md:text-xl font-bold mb-1 md:mb-2">
-                Global Quality, Local Value
+                Global Quality
               </h2>
               <p className="text-sm md:text-base text-gray-300">
                 Enterprise-grade solutions at competitive rates—bridging

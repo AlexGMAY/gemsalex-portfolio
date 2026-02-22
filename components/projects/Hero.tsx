@@ -3,7 +3,6 @@ import { motion, useAnimate } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Spotlight } from "../ui/Spotlight";
-import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import {
   FaArrowRight,
   FaCode,
@@ -99,15 +98,10 @@ export function Hero() {
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
-      {/* Floating Elements */}
-      <FloatingElements />
-
       <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Trust badges */}
-          <div            
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-lime-500/10 px-4 py-1 mb-6 border border-blue-500/20 backdrop-blur-sm"
-          >
+          <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-lime-500/10 px-4 py-1 mb-6 border border-blue-500/20 backdrop-blur-sm">
             <FaStar className="text-yellow-400 text-xs" />
             <span className="text-xs font-medium text-blue-300">
               8+ Years of Excellence
@@ -116,19 +110,15 @@ export function Hero() {
           </div>
 
           {/* Animated headline */}
-          <h1            
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-          >
-            <TextGenerateEffect
-              words="Transform Your Vision Into Digital Excellence"
-              className="text-center text-[40px] md:text-5xl lg:text-6xl font-bold mb-4"
-            />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Transform Your Vision Into{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-lime-500">
+              Sustainable Digital Growth
+            </span>
           </h1>
 
           {/* Animated subtitle */}
-          <p            
-            className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-          >
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             I transform complex business challenges into powerful digital
             solutions. With 8+ years of experience, I deliver high-performance
             applications that drive growth, automate operations, and create
@@ -137,16 +127,16 @@ export function Hero() {
 
           {/* Value proposition grid */}
           <div
-            ref={statsScope}            
+            ref={statsScope}
             className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10"
           >
-            {[              
+            {[
               { icon: FaRocket, label: "Avg. Performance Gain", value: "85%" },
               { icon: FaShieldAlt, label: "Client Satisfaction", value: "98%" },
               { icon: FaChartLine, label: "Revenue Growth", value: "3.2x" },
             ].map((stat, index) => (
               <div
-                key={index}                
+                key={index}
                 className="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700"
               >
                 <stat.icon className="mx-auto mb-2 text-lime-400" />
@@ -157,33 +147,40 @@ export function Hero() {
           </div>
 
           {/* Button group with staggered animation */}
-          <div            
-            className="flex flex-col sm:flex-row justify-center gap-4"
-          >
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
               <Link
                 href="#projects"
-                className="group inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+                className="group inline-flex items-center justify-center w-full sm:w-auto min-h-[44px] px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                 aria-label="View my projects"
               >
-                Explore My Portfolio
-                <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <span>Explore My Portfolio</span>
+                <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
               <Link
                 href="/courses"
-                className="group inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg hover:from-lime-700 hover:to-lime-800 transition-all duration-300 shadow-lg shadow-lime-500/25 hover:shadow-lime-500/40"
+                className="group inline-flex items-center justify-center w-full sm:w-auto min-h-[44px] px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-lime-600 to-lime-700 rounded-lg hover:from-lime-700 hover:to-lime-800 transition-all duration-300 shadow-lg shadow-lime-500/25 hover:shadow-lime-500/40 focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                 aria-label="View my courses"
               >
-                Browse Professional Training
+                <span>Browse Professional Training</span>
                 <svg
-                  className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -195,10 +192,14 @@ export function Hero() {
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-gray-200 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-500/30 backdrop-blur-sm"
+                className="group inline-flex items-center justify-center w-full sm:w-auto min-h-[44px] px-6 py-3 text-base font-semibold text-gray-200 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-500/30 backdrop-blur-sm focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                 aria-label="Contact me"
               >
                 Discuss Your Project
@@ -207,9 +208,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Floating decorative elements */}
-      <FloatingElements />
     </section>
   );
 }
