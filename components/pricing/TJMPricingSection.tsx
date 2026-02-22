@@ -153,7 +153,7 @@ const TJMPricingSection = () => {
             </div>
 
             <p className="text-gray-300 mb-6">
-              As an experienced senior software engineer with 8+ years in full-stack
+              As a senior software engineer with 8+ years in full-stack
               development, I provide expert-level solutions with transparent
               daily billing.
             </p>
@@ -188,7 +188,7 @@ const TJMPricingSection = () => {
                     <span className="text-gray-400 ml-2">/day</span>
                   </div>
                   <p className="text-sm text-gray-500 mt-1">
-                    Experienced software engineer rate
+                    Senior software engineer rate
                   </p>
                 </div>
 
@@ -205,6 +205,7 @@ const TJMPricingSection = () => {
                       onChange={(e) =>
                         setEstimatedDays(parseInt(e.target.value))
                       }
+                      aria-label="Select project duration"
                       className="flex-1"
                     />
                     <div className="text-center">
@@ -370,7 +371,7 @@ const TJMPricingSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg flex items-center gap-2"
+              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-lime-600 text-white font-bold rounded-lg flex items-center gap-2"
               onClick={() => (window.location.href = "/contact")}
             >
               <FaEuroSign /> Request Daily Rate Quote

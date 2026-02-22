@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
-import Link from "next/link";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 
 const projects = [
@@ -94,7 +93,7 @@ const projects = [
 
 export default function RecentProjects() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="products" className="py-24 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black-100 to-black-100"></div>
@@ -178,6 +177,7 @@ export default function RecentProjects() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                      aria-label="Github Link"
                     >
                       <FiGithub size={16} />
                       <span>Code</span>
@@ -189,6 +189,7 @@ export default function RecentProjects() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-200 to-blue-300 text-white text-sm font-medium transition-all hover:from-blue-500 hover:to-lime-500"
+                      aria-label="Lie production link"
                     >
                       <FiExternalLink size={16} />
                       <span>Live Demo</span>

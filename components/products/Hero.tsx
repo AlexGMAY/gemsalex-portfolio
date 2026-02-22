@@ -3,24 +3,19 @@
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Spotlight } from "../ui/Spotlight";
-import { useRouter } from "next/navigation";
 import PartnershipForm from "./PartnershipForm";
 import { useState } from "react";
 
-export default function Hero() {
-    const router = useRouter();
+export default function Hero() {   
     const [isFormOpen, setIsFormOpen] = useState(false);
 
     // Scroll to products section
-    const scrollToProducts = () => {
-      const productsSection = document.getElementById("products");
-      productsSection?.scrollIntoView({ behavior: "smooth" });
-    };
+    // const scrollToProducts = () => {
+    //   const productsSection = document.getElementById("products");
+    //   productsSection?.scrollIntoView({ behavior: "smooth" });
+    // };
 
-    // Navigate to partnership page
-    const handlePartnerClick = () => {
-      router.push("/contact?form=partnership"); // Or your partnership route
-    };
+    
   return (
     <section className="w-full relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black-100 to-black-100">
       <div>
@@ -31,8 +26,7 @@ export default function Hero() {
         <Spotlight
           className="h-[80vh] w-[50vw] top-10 left-full"
           fill="purple"
-        />
-        {/* <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" /> */}
+        />        
       </div>
 
       {/* Enhanced Animated Background */}
@@ -82,10 +76,8 @@ export default function Hero() {
       </motion.div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <h1
+          
           className="text-5xl md:text-6xl font-bold text-white mb-6"
         >
           Pioneering{" "}
@@ -93,44 +85,34 @@ export default function Hero() {
             Tomorrow&apos;s
           </span>{" "}
           Tech
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <p          
           className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
         >
           Explore my revolutionary products and sofwares in development. Join on
           the journey from concept to reality.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <div          
           className="flex gap-4 justify-center"
         >
           {/* View Products Button - Scrolls down */}
-          <motion.button
-            onClick={scrollToProducts}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-200 px-8 py-3 rounded-full font-semibold flex items-center gap-2"
+          <a
+            href="#products"            
+            className="bg-white text-blue-500 px-8 py-3 rounded-full font-semibold flex items-center gap-2"
           >
             View Products <ArrowRightIcon className="w-5 h-5" />
-          </motion.button>
+          </a>
 
           {/* Partner With Us Button - Navigates to contact */}
-          <motion.button
-            onClick={() => setIsFormOpen(true)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+          <button
+            onClick={() => setIsFormOpen(true)}            
             className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors"
           >
             Partner With Us
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       </div>
       {/* Partnership Form Modal */}
       <PartnershipForm
@@ -139,8 +121,7 @@ export default function Hero() {
       />
 
       {/* Animated scroll indicator */}
-      <motion.div
-        animate={{ y: [0, -15, 0] }}
+      <motion.div        
         transition={{
           duration: 4,
           repeat: Infinity,

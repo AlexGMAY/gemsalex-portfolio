@@ -297,7 +297,7 @@ const Audience = () => {
     
                 {/* CTA for Target Audience */}
                 <div className="mt-12 text-center">
-                  <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-lime-500/10 border border-gray-800 p-6 max-w-3xl mx-auto">
+                  <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-lime-500/10 border border-gray-800 p-6 max-w-4xl mx-auto">
                     <div className="text-left">
                       <h4 className="font-semibold text-white mb-1">
                         Ready to Advance Your Career?

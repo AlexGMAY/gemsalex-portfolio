@@ -7,8 +7,7 @@ import { motion } from "framer-motion";
 const TechLogos = () => {
   return (
     <section className="py-20 overflow-x-clip">
-      <div className="container">
-        <h3 className="text-center text-white/50 text-xl"></h3>
+      <div className="container">        
         <div className="flex overflow-hidden mt-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <motion.div
             animate={{

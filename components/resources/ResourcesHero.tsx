@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiArrowDown, FiSearch, FiX } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 import { Typewriter } from "react-simple-typewriter";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -88,7 +88,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
   }, []);
 
   return (
-    <section className="relative pt-36 h-[85vh] min-h-[650px] flex items-center justify-center bg-gradient-to-b from-black-100 to-black-100 border-b border-gray-800">
+    <section className="relative pt-36 min-h-screen flex items-center justify-center bg-gradient-to-b from-black-100 to-black-100 border-b border-gray-800">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
         <motion.div
@@ -124,10 +124,8 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center">
           {/* Animated greeting */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
+            
             className="text-cyan-400 font-mono mb-4"
           >
             <Typewriter
@@ -144,37 +142,28 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
               deleteSpeed={50}
               delaySpeed={2000}
             />
-          </motion.div>
+          </div>
 
           {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          <h1            
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight"
           >
             <span className="text-white">Comprehensive </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-lime-500">
               Software Resources
             </span>
-          </motion.h1>
+          </h1>
 
           {/* Subheading */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+          <p            
             className="text-xl text-gray-400 max-w-2xl mx-auto mb-8"
           >
             Tutorials, guides, blog posts, and curated resources for modern web
             development
-          </motion.p>
+          </p>
 
           {/* Search Bar with Results */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+          <div            
             className="max-w-xl mx-auto mb-10 relative"
             ref={searchRef}
           >
@@ -220,9 +209,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
 
             {/* Live Search Results */}
             {searchResults.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div                
                 className="absolute top-full left-0 right-0 mt-2 bg-gray-800/90 backdrop-blur-lg rounded-xl border border-gray-700 shadow-2xl z-50 overflow-hidden"
               >
                 <div className="max-h-[60vh] overflow-y-auto">
@@ -279,7 +266,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
                 <div className="p-3 bg-gray-900/50 text-center text-sm text-gray-400 border-t border-gray-700">
                   {searchResults.length} resources found
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Searching indicator */}
@@ -303,7 +290,7 @@ const ResourcesHero = ({ allResources }: { allResources: Resource[] }) => {
                 No resources found for &quot;{searchQuery}&quot;
               </motion.div>
             )}
-          </motion.div>
+          </div>
 
           {/* Animated topics */}
           <motion.div

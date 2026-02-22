@@ -134,7 +134,7 @@ const Page = () => {
 
       <main className="relative w-full bg-black-100 flex justify-center items-center flex-col overflow-hidden">
         <Hero />
-        <div className="w-full sm:px-10 px-5">
+        <div className="maw-w-7xl w-full mx-auto sm:px-10 px-5">
           <TechLogos />
           <RecentProjects />
           {/* <Products productsByCategory={productsByCategory} /> */}

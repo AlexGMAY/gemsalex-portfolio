@@ -270,6 +270,7 @@ const ResourcesBlogSection = ({
                   setSortBy(e.target.value as "newest" | "oldest")
                 }
                 className="px-4 py-2 rounded-lg bg-gray-800/50 border border-gray-700 text-white outline-none focus:border-blue-400/50 transition-colors"
+                aria-label="Sort by new or old posts"
               >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>

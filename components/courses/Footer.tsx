@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <div className="border-t border-gray-800 px-4 py-8 text-center">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-300">
                   <span className="text-blue-400">All online training</span> conducted
                   via{" "}
                   <span className="text-lime-400">

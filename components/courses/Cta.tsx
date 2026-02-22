@@ -36,7 +36,7 @@ const Cta = () => {
 
               <div className="flex flex-col justify-center gap-6 sm:flex-row">
                 <Link
-                  href="https://courses.gemsalex.com"
+                  href="#courses"
                   className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-lime-600 px-10 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30"
                   aria-label="Explore elite training programs and exclusive courses"
                 >
