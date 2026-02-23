@@ -47,7 +47,7 @@ const ContactHero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="pt-20 max-w-4xl mx-auto text-center">
           {/* Headline - No animation, static for better LCP */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-lime-400">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-lime-400 opacity-100 visible">
             Let&apos;s Build Something{" "}
             <span className="text-lime-400">Remarkable</span>
           </h1>
@@ -77,7 +77,7 @@ const ContactHero = () => {
                 icon: <FiMessageSquare className="mr-2" />,
                 label: "Live Chat",
                 color: "bg-cyan-600/10 text-cyan-400 hover:bg-cyan-600/20",
-                href: "#chat",
+                href: "https://discord.gg/KXfxMWT4G",
               },
             ].map((channel, i) => (
               <a
@@ -103,52 +103,6 @@ const ContactHero = () => {
 
       {/* Floating gradient blob - Optimized with CSS */}
       <div className="absolute -bottom-1/3 -left-1/4 w-[500px] md:w-[800px] h-[500px] md:h-[800px] rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 filter blur-3xl opacity-20 animate-rotate-slow" />
-
-      {/* Add CSS animations to global styles or component */}
-      <style jsx>{`
-        @keyframes float-slow {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(10px, -10px);
-          }
-        }
-
-        @keyframes float-particle {
-          0%,
-          100% {
-            transform: translate(0, 0);
-            opacity: 0.2;
-          }
-          50% {
-            transform: translate(15px, -15px);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes rotate-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .animate-float-slow {
-          animation: float-slow infinite alternate;
-        }
-
-        .animate-float-particle {
-          animation: float-particle infinite alternate;
-        }
-
-        .animate-rotate-slow {
-          animation: rotate-slow 30s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };

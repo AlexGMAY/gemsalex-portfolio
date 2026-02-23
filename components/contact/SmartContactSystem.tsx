@@ -199,7 +199,7 @@ const SmartContactSystem = () => {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-4">
+      <div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Status Dashboard */}
           <motion.div

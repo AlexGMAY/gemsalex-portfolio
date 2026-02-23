@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import {
   FiMail,
   FiCalendar,
-  FiMessageSquare,
-  FiGlobe,
+  FiMessageSquare,  
   FiShield,
 } from "react-icons/fi";
 import { FaLinkedin, FaGithub, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const ContactMethodMatrix = () => {
   const channels = [
@@ -18,7 +18,7 @@ const ContactMethodMatrix = () => {
       type: "Asynchronous",
       response: "≤24 hours",
       bestFor: "Project inquiries, detailed questions",
-      action: "contact@example.com",
+      action: "consultus@gemsalex.com",
       color: "bg-blue-600/10",
       border: "border-blue-500/30",
       actionColor: "text-blue-400 hover:text-blue-300",
@@ -31,48 +31,49 @@ const ContactMethodMatrix = () => {
       type: "Synchronous",
       response: "Instant booking",
       bestFor: "Complex discussions, consultations",
-      action: "Schedule meeting",
+      action: "Book An Appointment",
       color: "bg-lime-600/10",
       border: "border-lime-500/30",
       actionColor: "text-lime-400 hover:text-lime-300",
       actionIcon: <FiCalendar className="ml-1" />,
       actionRedirect: "#scheduler",
     },
-    {
-      icon: <FaDiscord className="text-2xl text-indigo-400" />,
-      name: "Discord",
-      type: "Real-time",
-      response: "1-4 hours",
-      bestFor: "Quick questions, Web Development Service",
-      action: "@gemsalex",
-      color: "bg-indigo-600/10",
-      border: "border-indigo-500/30",
-      actionColor: "text-indigo-400 hover:text-indigo-300",
-      actionIcon: <FaDiscord className="ml-1" />,
-      actionRedirect: "https://discord.gg/KXfxMWT4G",
-    },
-    {
-      icon: <FiMessageSquare className="text-2xl text-green-400" />,
-      name: "Support Portal",
-      type: "Ticketed",
-      response: "≤2 hours",
-      bestFor: "Existing clients, urgent issues",
-      action: "Open ticket",
-      color: "bg-green-600/10",
-      border: "border-green-500/30",
-      actionColor: "text-green-400 hover:text-green-300",
-      actionIcon: <FiMessageSquare className="ml-1" />,
-      actionRedirect: "#support-system-modal",
-    },
+    // {
+    //   icon: <FaDiscord className="text-2xl text-indigo-400" />,
+    //   name: "Discord",
+    //   type: "Real-time",
+    //   response: "1-4 hours",
+    //   bestFor: "Quick questions, Web Development Service",
+    //   action: "@gemsalex",
+    //   color: "bg-indigo-600/10",
+    //   border: "border-indigo-500/30",
+    //   actionColor: "text-indigo-400 hover:text-indigo-300",
+    //   actionIcon: <FaDiscord className="ml-1" />,
+    //   actionRedirect: "https://discord.gg/KXfxMWT4G",
+    // },
+    // {
+    //   icon: <FiMessageSquare className="text-2xl text-green-400" />,
+    //   name: "Support Portal",
+    //   type: "Ticketed",
+    //   response: "≤2 hours",
+    //   bestFor: "Existing clients, urgent issues",
+    //   action: "Open ticket",
+    //   color: "bg-green-600/10",
+    //   border: "border-green-500/30",
+    //   actionColor: "text-green-400 hover:text-green-300",
+    //   actionIcon: <FiMessageSquare className="ml-1" />,
+    //   actionRedirect: "#support-system-modal",
+    // },
   ];
 
   const socials = [
     {
       icon: <FaLinkedin className="text-xl text-[#0A66C2]" />,
       name: "LinkedIn",
-      handle: "/in/merveille-alexandre",
+      handle: "/in/alexandre-merveille-may",
       color: "bg-[#0A66C2]/10",
       border: "border-[#0A66C2]/30",
+      link: "https://www.linkedin.com/in/alexandre-merveille-may/",
     },
     {
       icon: <FaGithub className="text-xl text-gray-300" />,
@@ -80,12 +81,30 @@ const ContactMethodMatrix = () => {
       handle: "@AlexGMAY",
       color: "bg-gray-700/50",
       border: "border-gray-600/30",
+      link: "https://github.com/AlexGMAY/",
+    },
+    {
+      icon: <FaXTwitter className="text-xl text-white" />,
+      name: "X",
+      handle: "@themarvelbiz",
+      color: "bg-black/50",
+      border: "border-gray-700/50",
+      link: "https://x.com/@themarvelbiz/",
+    },
+    {
+      icon: <FaDiscord className="text-xl text-[#5865F2]" />,
+      name: "Discord",
+      handle: "@gemsalex",
+      color: "bg-[#5865F2]/10",
+      border: "border-[#5865F2]/30",
+      //  https://discord.com/users/youruserid
+      link: "https://discord.gg/KXfxMWT4G",
     },
   ];
 
   return (
     <section className="py-20 bg-gradient-to-br from-black-100 to-black-100">
-      <div className="container mx-auto px-4">
+      <div>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -148,7 +167,7 @@ const ContactMethodMatrix = () => {
 
                   <motion.a
                     whileHover={{ x: 3 }}
-                    href={channel.actionRedirect}
+                    href={channel.actionRedirect}                    
                     className={`inline-flex items-center font-medium ${channel.actionColor} transition-colors`}
                   >
                     {channel.action} {channel.actionIcon}
@@ -182,7 +201,8 @@ const ContactMethodMatrix = () => {
                   key={index}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  href="#"
+                  href={social.link}
+                  target="blank"
                   className={`flex items-center gap-2 px-4 py-3 rounded-lg border ${social.border} ${social.color} transition-all`}
                 >
                   {social.icon}

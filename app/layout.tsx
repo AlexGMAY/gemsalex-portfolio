@@ -6,19 +6,22 @@ import { FloatingNav } from "@/components/Navbar";
 import { navItems } from "@/data";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import FooterGrid from "@/components/Footer";
-
+import { Providers } from "@/components/Providers";
+import { ScriptOptimizer } from "@/components/ScriptOptimizer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Merveille Alexander - Strategic Software Engineer & Business Solution Developer",
-    template: "%s | Merveille Alexander"
+    default:
+      "Merveille Alexander - Strategic Software Engineer & Business Solution Developer",
+    template: "%s | Merveille Alexander",
   },
-  description: "Transform your business with custom software solutions. Full-stack developer specializing in SaaS platforms, web applications, and digital growth strategies. Drive ROI with proven technology.",
+  description:
+    "Transform your business with custom software solutions. Full-stack developer specializing in SaaS platforms, web applications, and digital growth strategies. Drive ROI with proven technology.",
   keywords: [
     "software engineer",
-    "full-stack developer", 
+    "full-stack developer",
     "SaaS development",
     "custom software solutions",
     "business automation",
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
     "Php developer",
     "frontend developer",
     "backend developer",
-    "devops developer"
+    "devops developer",
   ].join(", "),
   authors: [{ name: "Merveille Alexander" }],
   creator: "Merveille Alexander",
@@ -39,7 +42,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://gemsalex.com",
     title: "Merveille Alexander - Strategic Software Engineer",
-    description: "Transform your business with custom software solutions that drive growth and deliver ROI",
+    description:
+      "Transform your business with custom software solutions that drive growth and deliver ROI",
     siteName: "Merveille Alexander Portfolio",
   },
   twitter: {
@@ -54,12 +58,12 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-}
+};
 
 export default function RootLayout({
   children,
@@ -84,26 +88,69 @@ export default function RootLayout({
       "Cloud Infrastructure",
     ],
   };
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Viewport for mobile optimization */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
+        />
+
+        {/* Theme color for mobile browsers */}
+        <meta name="theme-color" content="#030712" />
+
         {/* Structured data script */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+
+        {/* Favicon */}
         <link rel="icon" href="/logo-MA.png" sizes="any" />
+
+        {/* Font preloading */}
+        <link
+          rel="preload"
+          href="/fonts/inter.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* Preconnects and DNS prefetches */}
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+
+        {/* Content Security Policy */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; 
+            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://calendly.com; 
+            frame-src https://calendly.com; 
+            connect-src 'self' https://calendly.com;
+            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+            font-src 'self' https://fonts.gstatic.com;"
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider>
-          <div className="relative bg-black-100 overflow-hidden mx-auto">
-            <FloatingNav navItems={navItems} />
-            {children}
-            <ScrollToTop />
-            <div>
+          <Providers>
+            <div className="relative bg-black-100 overflow-hidden mx-auto">
+              <FloatingNav navItems={navItems} />
+              {children}
+              <ScrollToTop />
               <FooterGrid />
+              <ScriptOptimizer />
             </div>
-          </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

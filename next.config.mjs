@@ -73,6 +73,29 @@ const nextConfig = {
         ],
       },
       {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'interest-cohort=()', // Blocks FLoC
+          },
+        ],
+      },
+      // API routes - no cache
+      {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, max-age=0',
+          },
+        ],
+      },
+      {
         source: '/_next/static/(.*)',
         headers: [
           {
@@ -98,6 +121,15 @@ const nextConfig = {
             value: 'public, max-age=31536000, immutable',
           },
         ],
+      },
+    ];
+  },
+  // Optimize third-party scripts
+  async rewrites() {
+    return [
+      {
+        source: '/js/stripe.js',
+        destination: 'https://js.stripe.com/v3',
       },
     ];
   },
