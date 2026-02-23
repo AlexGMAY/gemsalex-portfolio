@@ -1,20 +1,14 @@
 import { PricingFormData } from "@/types/pricing";
 
 export function createPricingUserEmailTemplate(
-  formData: PricingFormData
+  formData: PricingFormData,
 ): string {
   const projectValue =
     formData.totalAmount > 5000
       ? "premium"
       : formData.totalAmount > 2000
-      ? "standard"
-      : "starter";
-
-  const valueColor = {
-    premium: "#8B5CF6",
-    standard: "#3B82F6",
-    starter: "#10B981",
-  }[projectValue];
+        ? "standard"
+        : "starter";
 
   return `
 <!DOCTYPE html>
@@ -24,7 +18,7 @@ export function createPricingUserEmailTemplate(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Quote - ${formData.serviceTitle}</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         * {
             margin: 0;
@@ -36,7 +30,7 @@ export function createPricingUserEmailTemplate(
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #1F2937;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -45,14 +39,34 @@ export function createPricingUserEmailTemplate(
             max-width: 650px;
             margin: 0 auto;
             background: #FFFFFF;
-            border-radius: 24px;
+            border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 60px -15px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Logo Area */
+        .logo-area {
+            background: #FFFFFF;
+            padding: 30px 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #F3F4F6;
+        }
+        
+        .logo-placeholder {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            border-radius: 50px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
         
         .header {
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
-            padding: 60px 40px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            padding: 50px 40px;
             text-align: center;
             color: white;
             position: relative;
@@ -66,9 +80,20 @@ export function createPricingUserEmailTemplate(
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
             background-size: 25px 25px;
-            animation: float 20s linear infinite;
+            animation: float 30s linear infinite;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
         
         @keyframes float {
@@ -91,7 +116,8 @@ export function createPricingUserEmailTemplate(
             justify-content: center;
             margin: 0 auto 25px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
         }
         
         .icon-wrapper svg {
@@ -104,30 +130,28 @@ export function createPricingUserEmailTemplate(
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 12px 28px;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
         }
         
         .header h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #F3F4F6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .header p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 300;
+            opacity: 0.95;
+            font-weight: 400;
         }
         
         .content {
@@ -135,17 +159,17 @@ export function createPricingUserEmailTemplate(
         }
         
         .greeting {
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: #1F2937;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .greeting span {
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
+            font-weight: 800;
         }
         
         .message {
@@ -156,13 +180,14 @@ export function createPricingUserEmailTemplate(
         }
         
         .quote-card {
-            background: #F8FAFC;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+            border-radius: 24px;
             padding: 40px;
             margin-bottom: 40px;
-            border: 1px solid #E5E7EB;
+            border: 2px solid #E5E7EB;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.15);
         }
         
         .quote-card::before {
@@ -172,8 +197,7 @@ export function createPricingUserEmailTemplate(
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
-            border-radius: 20px 20px 0 0;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
         }
         
         .quote-header {
@@ -186,7 +210,7 @@ export function createPricingUserEmailTemplate(
         }
         
         .service-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #1F2937;
             margin-bottom: 8px;
@@ -195,6 +219,18 @@ export function createPricingUserEmailTemplate(
         .service-info p {
             color: #6B7280;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .service-info p span {
+            background: #3B82F6;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
         
         .total-amount {
@@ -205,14 +241,14 @@ export function createPricingUserEmailTemplate(
             font-size: 0.9rem;
             color: #6B7280;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-bottom: 5px;
         }
         
         .total-value {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1;
@@ -259,16 +295,24 @@ export function createPricingUserEmailTemplate(
             gap: 8px;
         }
         
+        .features-title span {
+            background: #3B82F6;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
         .features-list {
             list-style: none;
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 20px;
-            border: 1px solid #E5E7EB;
+            border: 2px solid #E5E7EB;
         }
         
         .features-list li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #F3F4F6;
             display: flex;
             justify-content: space-between;
@@ -282,18 +326,32 @@ export function createPricingUserEmailTemplate(
         .feature-name {
             color: #1F2937;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature-name::before {
+            content: '•';
+            color: #84CC16;
+            font-size: 1.5rem;
+            line-height: 0;
         }
         
         .feature-price {
-            color: #84cc16;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
             font-weight: 600;
+            font-size: 0.9rem;
         }
         
         .next-steps {
-            background: linear-gradient(135deg, #84cc1615 0%, #eab30815 100%);
-            border: 2px solid #84cc1630;
-            border-radius: 20px;
-            padding: 35px;
+            background: linear-gradient(135deg, #F0F9FF 0%, #F7FEE7 100%);
+            border: 2px solid #3B82F6;
+            border-radius: 24px;
+            padding: 40px;
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
@@ -302,17 +360,18 @@ export function createPricingUserEmailTemplate(
         .next-steps::before {
             content: '🚀';
             position: absolute;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
-            font-size: 3rem;
+            font-size: 5rem;
             opacity: 0.1;
+            transform: rotate(15deg);
         }
         
         .next-steps h3 {
             color: #1F2937;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -329,9 +388,9 @@ export function createPricingUserEmailTemplate(
             left: 15px;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
-            border-radius: 2px;
+            width: 3px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            border-radius: 3px;
         }
         
         .timeline li {
@@ -343,21 +402,21 @@ export function createPricingUserEmailTemplate(
         .timeline li::before {
             content: '';
             position: absolute;
-            left: 8px;
+            left: 6px;
             top: 25px;
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #84cc16;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #3B82F6;
         }
         
         .timeline-content h4 {
             color: #1F2937;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 5px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
         
         .timeline-content p {
@@ -367,12 +426,24 @@ export function createPricingUserEmailTemplate(
         }
         
         .response-time {
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             color: white;
-            padding: 25px;
-            border-radius: 16px;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
             margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .response-time::after {
+            content: '⚡';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            opacity: 0.2;
         }
         
         .response-time h3 {
@@ -380,17 +451,18 @@ export function createPricingUserEmailTemplate(
             font-weight: 600;
             margin-bottom: 8px;
             opacity: 0.9;
+            letter-spacing: 1px;
         }
         
         .response-time p {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
         }
         
         .signature {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid #E5E7EB;
+            border-top: 2px solid #F3F4F6;
         }
         
         .signature p {
@@ -400,17 +472,21 @@ export function createPricingUserEmailTemplate(
         }
         
         .signature .name {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: #1F2937;
-            background: linear-gradient(135deg, #84cc16 0%, #eab308 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
         }
         
+        .signature .title {
+            color: #9CA3AF;
+            font-size: 1rem;
+        }
+        
         .footer {
-            background: #1F2937;
+            background: #111827;
             color: #9CA3AF;
             text-align: center;
             padding: 40px;
@@ -418,13 +494,14 @@ export function createPricingUserEmailTemplate(
         }
         
         .footer a {
-            color: #84cc16;
+            color: #84CC16;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
         
         .footer a:hover {
-            color: #eab308;
+            color: #3B82F6;
         }
         
         .footer-links {
@@ -433,6 +510,12 @@ export function createPricingUserEmailTemplate(
             gap: 25px;
             margin-bottom: 20px;
             flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         @media (max-width: 600px) {
@@ -454,17 +537,28 @@ export function createPricingUserEmailTemplate(
             }
             
             .header h1 {
-                font-size: 2.25rem;
+                font-size: 2.2rem;
             }
             
             .total-value {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .greeting {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="email-container">
+        <!-- Logo Area -->
+        <div class="logo-area">
+            <div class="logo-placeholder">
+                GEMS ALEX
+            </div>
+        </div>
+        
         <div class="header">
             <div class="header-content">
                 <div class="icon-wrapper">
@@ -477,13 +571,15 @@ export function createPricingUserEmailTemplate(
                       projectValue === "premium"
                         ? "💎"
                         : projectValue === "standard"
-                        ? "⭐"
-                        : "🚀"
-                    } ${
-    projectValue.charAt(0).toUpperCase() + projectValue.slice(1)
-  } Project
+                          ? "⭐"
+                          : "🚀"
+                    } 
+                    ${
+                      projectValue.charAt(0).toUpperCase() +
+                      projectValue.slice(1)
+                    } Project
                 </div>
-                <h1>Project Quote Confirmed!</h1>
+                <h1>Quote Confirmed! 🎯</h1>
                 <p>Your ${formData.serviceTitle} project is being prepared</p>
             </div>
         </div>
@@ -503,7 +599,10 @@ export function createPricingUserEmailTemplate(
                 <div class="quote-header">
                     <div class="service-info">
                         <h3>${formData.serviceTitle}</h3>
-                        <p>Customized project solution</p>
+                        <p>
+                            <span>Customized Solution</span>
+                            ${formData.selectedFeatures.length > 0 ? `+${formData.selectedFeatures.length} add-ons` : ""}
+                        </p>
                     </div>
                     <div class="total-amount">
                         <div class="total-label">Total Investment</div>
@@ -511,8 +610,8 @@ export function createPricingUserEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.totalAmount.toLocaleString()}${
-    formData.currency === "TND" ? " TND" : ""
-  }
+                              formData.currency === "TND" ? " TND" : ""
+                            }
                         </div>
                     </div>
                 </div>
@@ -524,8 +623,8 @@ export function createPricingUserEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.basePrice.toLocaleString()}${
-    formData.currency === "TND" ? " TND" : ""
-  }
+                              formData.currency === "TND" ? " TND" : ""
+                            }
                         </span>
                     </div>
                     
@@ -534,9 +633,8 @@ export function createPricingUserEmailTemplate(
                         ? `
                     <div class="features-section">
                         <div class="features-title">
-                            <span>✨</span> Premium Add-ons (${
-                              formData.selectedFeatures.length
-                            })
+                            <span>✨ Premium Features</span>
+                            <span>${formData.selectedFeatures.length} selected</span>
                         </div>
                         <ul class="features-list">
                             ${formData.selectedFeatures
@@ -550,11 +648,11 @@ export function createPricingUserEmailTemplate(
                                     +${
                                       formData.currency === "USD" ? "$" : ""
                                     }${feature.price.toLocaleString()}${
-                                  formData.currency === "TND" ? " TND" : ""
-                                }
+                                      formData.currency === "TND" ? " TND" : ""
+                                    }
                                 </span>
                             </li>
-                            `
+                            `,
                               )
                               .join("")}
                         </ul>
@@ -602,17 +700,17 @@ export function createPricingUserEmailTemplate(
             
             <div class="signature">
                 <p>Ready to bring your vision to life,</p>
-                <p class="name">[Your Name]</p>
-                <p>Senior Full-Stack Developer</p>
+                <p class="name">Merveille Alexandre</p>
+                <p class="title">Senior Software Engineer</p>
             </div>
         </div>
         
         <div class="footer">
             <div class="footer-links">
-                <a href="https://gemsalex.com" target="blank">Check out My Website</a>
-                <a href="https://www.linkedin.com/in/alexandre-merveille-may/" target="blank">LinkedIn Profile</a>
-                <a href="https://github.com/AlexGMAY/" target="blank">GitHub Profile</a>
-                <a href="[Your Calendly URL]">Schedule Call</a>
+                <a href="https://gemsalex.com" target="_blank">🌐 Website</a>
+                <a href="https://www.linkedin.com/in/alexandre-merveille-may/" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/AlexGMAY/" target="_blank">🐙 GitHub</a>
+                <a href="https://calendly.com/contact-marvelbiz/30min">📅 Schedule Call</a>
             </div>
             <p>This is an automated response. Please do not reply to this email.</p>
             <p>© ${new Date().getFullYear()} Gems Alexander. All rights reserved.</p>
@@ -623,30 +721,29 @@ export function createPricingUserEmailTemplate(
   `;
 }
 
-
 export function createPricingAdminEmailTemplate(
   formData: PricingFormData,
-  ip: string
+  ip: string,
 ): string {
   const projectValue =
     formData.totalAmount > 5000
       ? "premium"
       : formData.totalAmount > 2000
-      ? "standard"
-      : "starter";
+        ? "standard"
+        : "starter";
 
   const valueColor = {
-    premium: "#8B5CF6",
-    standard: "#3B82F6",
-    starter: "#10B981",
+    premium: "#3B82F6",
+    standard: "#84CC16",
+    starter: "#84CC16",
   }[projectValue];
 
   const priorityLevel =
     formData.totalAmount > 5000
       ? "HIGH PRIORITY"
       : formData.totalAmount > 2000
-      ? "MEDIUM PRIORITY"
-      : "STANDARD";
+        ? "MEDIUM PRIORITY"
+        : "STANDARD";
 
   return `
 <!DOCTYPE html>
@@ -656,7 +753,7 @@ export function createPricingAdminEmailTemplate(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💰 New Project - ${formData.serviceTitle}</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         * {
             margin: 0;
@@ -668,7 +765,7 @@ export function createPricingAdminEmailTemplate(
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #1F2937;
-            background: #F3F4F6;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -677,13 +774,33 @@ export function createPricingAdminEmailTemplate(
             max-width: 750px;
             margin: 0 auto;
             background: #FFFFFF;
-            border-radius: 24px;
+            border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 60px -15px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Logo Area */
+        .logo-area {
+            background: #FFFFFF;
+            padding: 30px 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #F3F4F6;
+        }
+        
+        .logo-placeholder {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            border-radius: 50px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
         
         .header {
-            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
             padding: 50px 40px;
             color: white;
             position: relative;
@@ -697,7 +814,7 @@ export function createPricingAdminEmailTemplate(
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M 12 0 L 0 0 0 12" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M 15 0 L 0 0 0 15" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
         }
         
         .header-content {
@@ -709,27 +826,29 @@ export function createPricingAdminEmailTemplate(
         .priority-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: rgba(255, 255, 255, 0.2);
-            padding: 15px 25px;
+            padding: 16px 28px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
         }
         
         .header h1 {
-            font-size: 2.75rem;
+            font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .header p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 300;
+            opacity: 0.95;
+            font-weight: 400;
         }
         
         .content {
@@ -737,13 +856,14 @@ export function createPricingAdminEmailTemplate(
         }
         
         .value-banner {
-            background: linear-gradient(135deg, ${valueColor}15 0%, ${valueColor}05 100%);
+            background: linear-gradient(135deg, ${valueColor}08 0%, ${valueColor}15 100%);
             border: 3px solid ${valueColor}30;
             border-radius: 20px;
-            padding: 35px;
+            padding: 40px;
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 25px -10px ${valueColor}40;
         }
         
         .value-banner::before {
@@ -753,7 +873,19 @@ export function createPricingAdminEmailTemplate(
             top: 0;
             bottom: 0;
             width: 8px;
-            background: ${valueColor};
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+        }
+        
+        .value-banner::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            border-radius: 50%;
+            opacity: 0.1;
         }
         
         .banner-content {
@@ -764,8 +896,8 @@ export function createPricingAdminEmailTemplate(
         }
         
         .banner-text h3 {
-            color: ${valueColor};
-            font-size: 1.5rem;
+            color: #1F2937;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 8px;
         }
@@ -780,24 +912,28 @@ export function createPricingAdminEmailTemplate(
             text-align: center;
             background: white;
             padding: 25px;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 2px solid ${valueColor}30;
-            min-width: 200px;
+            min-width: 220px;
+            box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.1);
         }
         
         .amount-label {
             color: #6B7280;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-bottom: 8px;
         }
         
         .amount-value {
-            color: ${valueColor};
-            font-size: 2.25rem;
+            color: #1F2937;
+            font-size: 2.5rem;
             font-weight: 800;
             line-height: 1;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .client-dashboard {
@@ -808,11 +944,12 @@ export function createPricingAdminEmailTemplate(
         }
         
         .dashboard-card {
-            background: #F8FAFC;
-            border-radius: 16px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+            border-radius: 20px;
             padding: 35px;
-            border: 1px solid #E5E7EB;
+            border: 2px solid #E5E7EB;
             position: relative;
+            box-shadow: 0 15px 25px -10px rgba(59, 130, 246, 0.15);
         }
         
         .dashboard-card::before {
@@ -822,8 +959,8 @@ export function createPricingAdminEmailTemplate(
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
-            border-radius: 16px 16px 0 0;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            border-radius: 20px 20px 0 0;
         }
         
         .card-header {
@@ -834,7 +971,7 @@ export function createPricingAdminEmailTemplate(
         }
         
         .card-header h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #1F2937;
         }
@@ -870,14 +1007,16 @@ export function createPricingAdminEmailTemplate(
         }
         
         .highlight {
-            color: ${valueColor} !important;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700 !important;
         }
         
         .features-section {
-            background: #FEF3C7;
-            border: 2px solid #F59E0B;
-            border-radius: 16px;
+            background: linear-gradient(135deg, #F0F9FF 0%, #F7FEE7 100%);
+            border: 2px solid #3B82F6;
+            border-radius: 20px;
             padding: 35px;
             margin-bottom: 35px;
         }
@@ -885,14 +1024,26 @@ export function createPricingAdminEmailTemplate(
         .features-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            margin-bottom: 25px;
         }
         
         .features-header h3 {
-            color: #92400E;
+            color: #1F2937;
             font-size: 1.4rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-header span {
+            background: #3B82F6;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
         
         .features-grid {
@@ -903,32 +1054,33 @@ export function createPricingAdminEmailTemplate(
         
         .feature-item {
             background: white;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
-            border: 1px solid #F59E0B30;
+            border: 1px solid #3B82F630;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 5px 15px -5px rgba(59, 130, 246, 0.2);
         }
         
         .feature-name {
-            color: #92400E;
+            color: #1F2937;
             font-weight: 600;
         }
         
         .feature-price {
-            color: #D97706;
-            font-weight: 700;
-            background: #FEF3C7;
-            padding: 6px 12px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #3B82F6 0%, #84CC16 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
             font-size: 0.9rem;
         }
         
         .project-requirements {
             background: white;
             border: 2px solid #E5E7EB;
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 35px;
             margin-bottom: 40px;
             position: relative;
@@ -948,14 +1100,15 @@ export function createPricingAdminEmailTemplate(
         }
         
         .requirements-content {
-            background: #F8FAFC;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+            border-radius: 16px;
             padding: 25px;
             font-size: 1.05rem;
             line-height: 1.7;
             color: #4B5563;
             white-space: pre-wrap;
-            border: 1px solid #E5E7EB;
+            border: 2px solid #E5E7EB;
+            font-family: 'Inter', monospace;
         }
         
         .action-panel {
@@ -971,36 +1124,41 @@ export function createPricingAdminEmailTemplate(
             justify-content: center;
             gap: 10px;
             padding: 18px 25px;
-            border-radius: 12px;
+            border-radius: 14px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s ease;
             text-align: center;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
+            box-shadow: 0 10px 20px -5px #3B82F6;
         }
         
         .btn-secondary {
-            background: #374151;
+            background: linear-gradient(135deg, #84CC16 0%, #65A30D 100%);
             color: white;
+            box-shadow: 0 10px 20px -5px #84CC16;
         }
         
         .btn-success {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            background: #111827;
             color: white;
+            box-shadow: 0 10px 20px -5px #111827;
         }
         
         .action-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 30px -5px rgba(59, 130, 246, 0.5);
         }
         
         .footer {
-            background: #1F2937;
+            background: #111827;
             color: #9CA3AF;
             padding: 40px;
             text-align: center;
@@ -1016,13 +1174,14 @@ export function createPricingAdminEmailTemplate(
         }
         
         .footer a {
-            color: #60A5FA;
+            color: #84CC16;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
         
         .footer a:hover {
-            color: #84cc16;
+            color: #3B82F6;
         }
         
         @media (max-width: 600px) {
@@ -1052,13 +1211,24 @@ export function createPricingAdminEmailTemplate(
             }
             
             .header h1 {
-                font-size: 2.25rem;
+                font-size: 2.2rem;
+            }
+            
+            .amount-value {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="email-container">
+        <!-- Logo Area -->
+        <div class="logo-area">
+            <div class="logo-placeholder">
+                <img src="../../logo-MA.png" width=64 height=64 alt="Merveille Alexandre" />
+            </div>
+        </div>
+        
         <div class="header">
             <div class="header-content">
                 <div class="priority-badge">
@@ -1066,8 +1236,8 @@ export function createPricingAdminEmailTemplate(
                 </div>
                 <h1>💰 New Project Inquiry</h1>
                 <p>${formData.serviceTitle} • ${
-    formData.currency
-  } ${formData.totalAmount.toLocaleString()}</p>
+                  formData.currency
+                } ${formData.totalAmount.toLocaleString()}</p>
             </div>
         </div>
         
@@ -1082,8 +1252,8 @@ export function createPricingAdminEmailTemplate(
                         <p>Client submitted a detailed ${
                           formData.serviceTitle
                         } inquiry with ${
-    formData.selectedFeatures.length
-  } premium add-ons</p>
+                          formData.selectedFeatures.length
+                        } premium add-ons</p>
                     </div>
                     <div class="amount-display">
                         <div class="amount-label">Total Value</div>
@@ -1091,8 +1261,8 @@ export function createPricingAdminEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.totalAmount.toLocaleString()}${
-    formData.currency === "TND" ? " TND" : ""
-  }
+                              formData.currency === "TND" ? " TND" : ""
+                            }
                         </div>
                     </div>
                 </div>
@@ -1101,7 +1271,7 @@ export function createPricingAdminEmailTemplate(
             <div class="client-dashboard">
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <span>👤</span>
+                        <span style="font-size: 1.8rem;">👤</span>
                         <h3>Client Information</h3>
                     </div>
                     <div class="info-grid">
@@ -1132,13 +1302,13 @@ export function createPricingAdminEmailTemplate(
                 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <span>📊</span>
+                        <span style="font-size: 1.8rem;">📊</span>
                         <h3>Project Details</h3>
                     </div>
                     <div class="info-grid">
                         <div class="info-row">
                             <span class="info-label">Currency</span>
-                            <span class="info-value">${formData.currency}</span>
+                            <span class="info-value highlight">${formData.currency}</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">Base Price</span>
@@ -1146,8 +1316,8 @@ export function createPricingAdminEmailTemplate(
                                 ${
                                   formData.currency === "USD" ? "$" : ""
                                 }${formData.basePrice.toLocaleString()}${
-    formData.currency === "TND" ? " TND" : ""
-  }
+                                  formData.currency === "TND" ? " TND" : ""
+                                }
                             </span>
                         </div>
                         <div class="info-row">
@@ -1169,8 +1339,10 @@ export function createPricingAdminEmailTemplate(
                 ? `
             <div class="features-section">
                 <div class="features-header">
-                    <span>✨</span>
-                    <h3>Selected Premium Features</h3>
+                    <h3>
+                        <span>✨</span> Selected Premium Features
+                    </h3>
+                    <span>${formData.selectedFeatures.length} items</span>
                 </div>
                 <div class="features-grid">
                     ${formData.selectedFeatures
@@ -1180,11 +1352,11 @@ export function createPricingAdminEmailTemplate(
                         <span class="feature-name">${feature.name}</span>
                         <span class="feature-price">
                             +${formData.currency === "USD" ? "$" : ""}${
-                          feature.price
-                        }${formData.currency === "TND" ? " TND" : ""}
+                              feature.price
+                            }${formData.currency === "TND" ? " TND" : ""}
                         </span>
                     </div>
-                    `
+                    `,
                       )
                       .join("")}
                 </div>
@@ -1195,7 +1367,7 @@ export function createPricingAdminEmailTemplate(
             
             <div class="project-requirements">
                 <div class="requirements-header">
-                    <span>💬</span>
+                    <span style="font-size: 1.8rem;">💬</span>
                     <h3>Project Requirements</h3>
                 </div>
                 <div class="requirements-content">
@@ -1205,37 +1377,30 @@ export function createPricingAdminEmailTemplate(
             
             <div class="action-panel">
                 <a href="mailto:${formData.email}?subject=Re: Your ${
-    formData.serviceTitle
-  } Project&body=Hi ${
-    formData.name.split(" ")[0]
-  }," class="action-btn btn-primary">
+                  formData.serviceTitle
+                } Project&body=Hi ${
+                  formData.name.split(" ")[0]
+                }," class="action-btn btn-primary">
                     ✉️ Reply to Client
                 </a>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Project+Call+with+${
                   formData.name
                 }&details=Discussing+${formData.serviceTitle}+project+worth+${
-    formData.currency
-  }+${formData.totalAmount}" class="action-btn btn-secondary" target="_blank">
+                  formData.currency
+                }+${formData.totalAmount}" class="action-btn btn-secondary" target="_blank">
                     📅 Schedule Meeting
-                </a>
-                <a href="[Your CRM URL]/leads/new?name=${encodeURIComponent(
-                  formData.name
-                )}&email=${formData.email}&project=${encodeURIComponent(
-    formData.serviceTitle
-  )}&value=${formData.totalAmount}" class="action-btn btn-success">
-                    📊 Add to CRM
-                </a>
+                </a>                
             </div>
         </div>
         
-        <div class="footer">
+        <div class="footer">            
             <div class="footer-links">
-                <a href="[Your Admin URL]">View Dashboard</a>
-                <a href="[Your Analytics URL]">Analytics</a>
-                <a href="[Your Leads URL]">All Leads</a>
+                <a href="https://gemsalex.com">Website</a>
+                <a href="https://www.linkedin.com/in/alexandre-merveille-may/">LinkedIn</a>
+                <a href="https://github.com/AlexGMAY/">GitHub</a>
             </div>
             <p>This high-value lead was automatically generated from your pricing form</p>
-            <p>© ${new Date().getFullYear()} Gems Alexander. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Merveille Alexander. All rights reserved.</p>
         </div>
     </div>
 </body>
@@ -1244,7 +1409,7 @@ export function createPricingAdminEmailTemplate(
 }
 
 export async function sendPricingUserEmail(
-  formData: PricingFormData
+  formData: PricingFormData,
 ): Promise<void> {
   const { resend } = await import("./email");
 
@@ -1260,7 +1425,7 @@ export async function sendPricingUserEmail(
 
 export async function sendPricingAdminEmail(
   formData: PricingFormData,
-  ip: string
+  ip: string,
 ): Promise<void> {
   const { resend } = await import("./email");
 

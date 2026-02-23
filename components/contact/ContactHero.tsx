@@ -45,7 +45,7 @@ const ContactHero = () => {
       ))}
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="pt-20 max-w-4xl mx-auto text-center">
+        <div className="pt-20 max-w-4xl mx-auto text-center lg:pt-40">
           {/* Headline - No animation, static for better LCP */}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-lime-400 opacity-100 visible">
             Let&apos;s Build Something{" "}

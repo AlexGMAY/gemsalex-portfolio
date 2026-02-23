@@ -17,7 +17,7 @@ export const pricingSchema = z.object({
   serviceId: z.string().min(1, "Service selection is required"),
   serviceTitle: z.string().min(1, "Service title is required"),
   basePrice: z.number().min(0, "Base price must be positive"),
-  currency: z.enum(["USD", "TND"]),
+  currency: z.enum(["USD", "TND", "EUR"]),
   totalAmount: z.number().min(0, "Total amount must be positive"),
 
   selectedFeatures: z.array(
@@ -26,7 +26,7 @@ export const pricingSchema = z.object({
       name: z.string(),
       price: z.number(),
       category: z.string(),
-    })
+    }),
   ),
 
   // Honeypot field
