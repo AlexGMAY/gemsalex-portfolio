@@ -10,7 +10,7 @@ import {
   FiCalendar,
 } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
-import { googleMapsLoader } from "@/lib/googleMapsLoader"; // Import the loader
+import { googleMapsLoader } from "@/lib/googleMapsLoader";
 
 // Extend Window interface for Google Maps
 declare global {
@@ -24,6 +24,7 @@ const LocationMap = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
   const [mapLoading, setMapLoading] = useState(false);
+  const [mapInitialized, setMapInitialized] = useState(false);
 
   // Your location data
   const location = {
@@ -98,6 +99,17 @@ const LocationMap = () => {
       return;
     }
 
+    // Ensure container has dimensions
+    const containerHeight = mapRef.current.clientHeight;
+    const containerWidth = mapRef.current.clientWidth;
+
+    if (containerHeight === 0 || containerWidth === 0) {
+      console.error("Map container has zero dimensions");
+      // Retry after a short delay
+      setTimeout(() => initMap(google), 100);
+      return;
+    }
+
     try {
       const map = new google.maps.Map(mapRef.current, {
         center: location.coordinates,
@@ -113,8 +125,8 @@ const LocationMap = () => {
         backgroundColor: "#1e293b",
       });
 
-      // Use AdvancedMarkerElement if available
-      if (google.maps.marker?.AdvancedMarkerElement) {
+      // Use AdvancedMarkerElement if available (newer API)
+      if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
         const markerElement = document.createElement("div");
         markerElement.innerHTML = `
           <div style="
@@ -145,31 +157,24 @@ const LocationMap = () => {
         });
       } else {
         // Fallback to traditional Marker
-        const markerIcon = {
-          url:
-            "data:image/svg+xml;charset=UTF-8," +
-            encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="20" fill="#3b82f6" fill-opacity="0.2"/>
-              <circle cx="20" cy="20" r="8" fill="#3b82f6"/>
-              <circle cx="20" cy="20" r="4" fill="#ffffff"/>
-              <circle cx="20" cy="20" r="20" fill="none" stroke="#3b82f6" stroke-width="2"/>
-            </svg>
-          `),
-          scaledSize: new google.maps.Size(40, 40),
-          anchor: new google.maps.Point(20, 20),
-        };
-
         new google.maps.Marker({
           position: location.coordinates,
           map: map,
-          icon: markerIcon,
           title: "My Location",
           animation: google.maps.Animation.DROP,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: "#3b82f6",
+            fillOpacity: 1,
+            strokeColor: "#ffffff",
+            strokeWeight: 2,
+          },
         });
       }
 
       setMapLoaded(true);
+      setMapInitialized(true);
       setMapLoading(false);
     } catch (error) {
       console.error("Error loading map:", error);
@@ -188,6 +193,9 @@ const LocationMap = () => {
       return;
     }
 
+    // Don't reload if already initialized
+    if (mapInitialized) return;
+
     setMapLoading(true);
     setMapError(false);
 
@@ -195,7 +203,8 @@ const LocationMap = () => {
     googleMapsLoader
       .load(apiKey)
       .then((google) => {
-        initMap(google);
+        // Small delay to ensure container is ready
+        setTimeout(() => initMap(google), 100);
       })
       .catch((error) => {
         console.error("Failed to load Google Maps:", error);
@@ -203,8 +212,24 @@ const LocationMap = () => {
         setMapLoading(false);
       });
 
-    // No cleanup needed - the loader handles script management
-  }, []); // Empty dependency array is fine since loader is a singleton
+    // Cleanup
+    return () => {
+      setMapInitialized(false);
+    };
+  }, [mapInitialized]);
+
+  // Handle resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (mapInitialized && window.google?.maps && mapRef.current) {
+        // Trigger map resize event
+        window.google.maps.event.trigger(mapRef.current, "resize");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mapInitialized]);
 
   const handleGetDirections = () => {
     window.open(
@@ -230,14 +255,14 @@ const LocationMap = () => {
 
   return (
     <section id="location" className="py-20">
-      <div className="container mx-auto px-4">
+      <div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-lime-400">
             My Location & Contact
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -251,7 +276,8 @@ const LocationMap = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="h-96 lg:h-full rounded-xl overflow-hidden shadow-2xl border border-gray-700 relative min-h-[500px]"
+            className="rounded-xl overflow-hidden shadow-2xl border border-gray-700 relative"
+            style={{ minHeight: "500px" }}
           >
             {mapLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-800 z-10">
@@ -266,9 +292,9 @@ const LocationMap = () => {
               <div className="absolute inset-0 flex items-center justify-center bg-gray-800 z-10">
                 <div className="text-center max-w-md p-6">
                   <FiMapPin className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-                  <h4 className="text-white font-semibold text-lg mb-2">
+                  <h3 className="text-white font-semibold text-lg mb-2">
                     Map Unavailable
-                  </h4>
+                  </h3>
                   <p className="text-gray-400 mb-4">
                     There was an issue loading the map. You can still get
                     directions using the button below.
@@ -286,7 +312,7 @@ const LocationMap = () => {
 
             <div
               ref={mapRef}
-              className={`w-full h-full bg-gray-700 transition-opacity duration-500 ${
+              className={`w-full h-full absolute inset-0 transition-opacity duration-500 ${
                 mapLoaded ? "opacity-100" : "opacity-0"
               }`}
               style={{ minHeight: "500px" }}

@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "analyze": "ANALYZE=true next build",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint",    
+    "postbuild": "purgecss --css .next/static/css/*.css --content .next/static/chunks/*.js --output .next/static/css",
     "deploy": "vercel --prod"
   },
   "browserslist": {
@@ -75,6 +77,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",
+    "purgecss": "^8.0.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
