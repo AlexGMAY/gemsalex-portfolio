@@ -58,5 +58,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.6,
     },
+    // ✅ Legal pages - include with lower priority
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly", // Rarely changes
+      priority: 0.3, // Lower priority than main content
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    // Optional: Add courses subdomain if it's a separate site
+    // {
+    //   url: "https://courses.gemsalex.com",
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly",
+    //   priority: 0.8,
+    // },
   ];
 }

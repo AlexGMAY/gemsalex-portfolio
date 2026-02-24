@@ -141,7 +141,7 @@ export default withSentryConfig(
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
-    silent: true, // Suppresses all logs
+    silent: false, // Suppresses all logs
     org: "marvelbiz-solutions",
     project: "portfolio-nextjs",
     
@@ -178,6 +178,9 @@ export default withSentryConfig(
       'Non-Error promise rejection',
       '429',
       'Too Many Requests',
+      'Request aborted', 
+      'Cancelled',       
+      'User cancelled',  
     ],
     
     // Filter before sending

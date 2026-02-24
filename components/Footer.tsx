@@ -8,6 +8,7 @@ import {
   FiMapPin,
   FiClock,  
   FiZap,
+  FiCpu,
 } from "react-icons/fi";
 import {
   FaReact,
@@ -25,11 +26,12 @@ import {
   SiPostgresql,
   SiWordpress,
   SiTypescript,  
-  SiDocker,
-  SiKubernetes,
+  SiDocker,  
   SiGraphql,
   SiPrisma,
   SiVercel,
+  SiGit,
+  SiMysql,
 } from "react-icons/si";
 import MagicButton from "./MagicButton";
 import Link from "next/link";
@@ -70,6 +72,12 @@ const FooterGrid = () => {
       color: "from-blue-400 to-lime-500",
     },
     {
+      href: "/courses",
+      label: "Courses",
+      icon: "📚",
+      color: "from-lime-400 to-lime-500",
+    },
+    {
       href: "/products",
       label: "Products",
       icon: "📦",
@@ -85,7 +93,7 @@ const FooterGrid = () => {
       href: "/resources",
       label: "Resources",
       icon: "📚",
-      color: "from-lime-400 to-lime-500",
+      color: "from-lime-400 to-blue-500",
     },
     {
       href: "/contact",
@@ -112,11 +120,13 @@ const FooterGrid = () => {
     database: [
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "WordPress", icon: SiWordpress, color: "#21759B" },
     ],
     devops: [
       { name: "Docker", icon: SiDocker, color: "#2496ED" },
-      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "CI/CD", icon: FiCpu, color: "#84CC16" },
       { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
     ],
   };
