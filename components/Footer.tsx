@@ -1,398 +1,558 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FiHeart } from "react-icons/fi";
-import { FaReact, FaNodeJs, FaLocationArrow } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiWordpress } from "react-icons/si";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  FiHeart,
+  FiArrowUpRight,
+  FiMail,
+  FiMapPin,
+  FiClock,  
+  FiZap,
+} from "react-icons/fi";
+import {
+  FaReact,
+  FaNodeJs,  
+  FaGithub,
+  FaLinkedin,
+  FaXTwitter,
+  FaDiscord,  
+} from "react-icons/fa6";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiWordpress,
+  SiTypescript,  
+  SiDocker,
+  SiKubernetes,
+  SiGraphql,
+  SiPrisma,
+  SiVercel,
+} from "react-icons/si";
 import MagicButton from "./MagicButton";
-import { socialMedia } from "@/data";
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
 
 const FooterGrid = () => {
   const currentYear = new Date().getFullYear();
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  // Parallax scroll effects
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.8]);
+
+  // Quick links data
+  const quickLinks = [
+    {
+      href: "/about",
+      label: "About Me",
+      icon: "👤",
+      color: "from-blue-400 to-blue-500",
+    },
+    {
+      href: "/projects",
+      label: "Projects",
+      icon: "🚀",
+      color: "from-lime-400 to-lime-500",
+    },
+    {
+      href: "/solutions",
+      label: "Solutions & Pricing",
+      icon: "💼",
+      color: "from-blue-400 to-lime-500",
+    },
+    {
+      href: "/products",
+      label: "Products",
+      icon: "📦",
+      color: "from-lime-400 to-blue-500",
+    },
+    {
+      href: "/gallery",
+      label: "Gallery",
+      icon: "🎨",
+      color: "from-blue-400 to-blue-500",
+    },
+    {
+      href: "/resources",
+      label: "Resources",
+      icon: "📚",
+      color: "from-lime-400 to-lime-500",
+    },
+    {
+      href: "/contact",
+      label: "Contact",
+      icon: "📞",
+      color: "from-blue-400 to-lime-500",
+    },
+  ];
+
+  // Tech stack data with categories
+  const techStacks = {
+    frontend: [
+      { name: "React", icon: FaReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+    ],
+    backend: [
+      { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+      { name: "Express", icon: SiExpress, color: "#FFFFFF" },
+      { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+      { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+    ],
+    database: [
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "WordPress", icon: SiWordpress, color: "#21759B" },
+    ],
+    devops: [
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
+    ],
+  };
+
+  // Social links with proper icons
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      href: "https://github.com/AlexGMAY",
+      label: "GitHub",
+      color: "#333",
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/alexandre-merveille-may/",
+      label: "LinkedIn",
+      color: "#0A66C2",
+    },
+    {
+      icon: FaXTwitter,
+      href: "https://twitter.com/themarvelbiz",
+      label: "X (Twitter)",
+      color: "#1DA1F2",
+    },
+    {
+      icon: FaDiscord,
+      href: "https://discord.gg/KXfxMWT4G",
+      label: "Discord",
+      color: "#5865F2",
+    },    
+  ];
 
   return (
-    <footer className="relative z-0 bg-gradient-to-b from-black-100 to-black-200 border-t border-gray-800 overflow-hidden">
-      {/* Background elements */}
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <Image
-          src="/footer-grid.svg"
-          alt="grid"
-          fill
-          className="w-full h-full opacity-20 object-cover"
-        />
+    <footer
+      ref={footerRef}
+      className="relative bg-gradient-to-b from-gray-950 via-gray-900 to-black overflow-hidden"
+    >
+      {/* Animated background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+
+      {/* Gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[128px] opacity-30 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-lime-500/20 rounded-full blur-[128px] opacity-30 animate-pulse" />
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(40)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+            initial={{
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%",
+              scale: 0,
+            }}
+            animate={{
+              y: [null, "-30%"],
+              scale: [0, 1, 0],
+              opacity: [0, 0.8, 0],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 20,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-lime-400 to-yellow-500 opacity-20"></div>
-      <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-cyan-500/10 blur-3xl"></div>
-      <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-pink-500/10 blur-3xl"></div>
-
-      <div className="container mx-auto px-6 py-16 relative z-10">
-        {/* Contact CTA */}
-        <div className="flex flex-col items-center mb-16 border-b border-gray-800 pb-16">
-          <motion.h2
-            className="heading lg:max-w-[45vw] text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Ready to take <span className="text-lime-400">your</span> digital
-            presence to the next level?
-          </motion.h2>
-
-          <motion.p
-            className="text-gray-400 md:mt-10 my-5 text-center max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Reach out to me today and let&apos;s discuss how I can help you
-            achieve your goals.
-          </motion.p>
-
-          <div className="flex flex-col gap-2 md:flex md:flex-row md:gap-4 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Contact CTA - Enterprise Grade */}
+        <motion.div
+          style={{ y, opacity }}
+          className="relative py-16 md:py-24 border-b border-white/10"
+        >
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-lime-500/10 border border-blue-500/20 mb-8"
             >
-              <a href="mailto:consultus@gemsalex.com">
+              <FiZap className="text-lime-400" />
+              <span className="text-sm font-medium text-blue-300">
+                Let&apos;s Build Something Great
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            >
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-lime-400 bg-clip-text text-transparent">
+                Ready to transform
+              </span>
+              <br />
+              <span className="text-white">
+                your digital vision into reality?
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto"
+            >
+              Whether you&apos;re starting a new project, need technical
+              consultation, or want to discuss potential opportunities — I&apos;m
+              here to help.
+            </motion.p>
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <a href="mailto:consultus@gemsalex.com" className="group">
                 <MagicButton
-                  title="Email Me Now "
-                  icon={<FaLocationArrow />}
+                  title="Start a Conversation"
+                  icon={<FiMail />}
                   position="left"
+                  otherClasses="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/35 transition-all"
                 />
               </a>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Link href="/contact">
+              <Link href="/contact" className="group">
                 <MagicButton
-                  title="Let's get in touch"
-                  icon={<FaLocationArrow />}
+                  title="View Contact Options"
+                  icon={<FiArrowUpRight />}
                   position="right"
+                  otherClasses="bg-gradient-to-r from-lime-600 to-lime-700 hover:from-lime-700 hover:to-lime-800 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-lime-600/25 hover:shadow-xl hover:shadow-lime-600/35 transition-all"
                 />
               </Link>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          {/* About section */}
+        {/* Main Footer Grid */}
+        <div className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Brand Column - 4 cols */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-2"
+            className="lg:col-span-4"
           >
-            <Link href="/" className="transition flex items-center">
-              <Image
-                src="/logo-MA.png"
-                alt="Strategic Software Developer and Business Problem Solver - Merveille Alexandre"
-                width={80}
-                height={80}
-                className="w-20 h-20"
-              />
-            </Link>
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                Merveille Alexander
-              </span>
-            </h3>
-            <p className="text-gray-400 mb-6">
-              Passionate developer and designer creating beautiful digital
-              experiences. I believe in the power of code to bring ideas to
-              life.
-            </p>
-            <div className="flex items-center gap-4">
-              {socialMedia.map((info) => {
-                const linkProps = {
-                  whileHover: { y: -3 },
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  className:
-                    "w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 hover:bg-white/10 transition",
-                  children: (
-                    <Image
-                      src={info.img}
-                      alt={info.alt || ""}
-                      width={20}
-                      height={20}
-                    />
-                  ),
-                };
+            <div className="flex items-center gap-3 mb-6">
+              <div className="relative w-16 h-16">
+                <Image
+                  src="/logo-MA.png"
+                  alt="Merveille Alexander - Strategic Software Engineer"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
+                  Merveille Alexander
+                </h3>
+                <p className="text-sm text-gray-500">
+                  Strategic Software Engineer
+                </p>
+              </div>
+            </div>
 
-                return info.link ? (
-                  <Link key={info.id} href={info.link} passHref legacyBehavior>
-                    <motion.a {...linkProps} />
-                  </Link>
-                ) : (
-                  <motion.div
-                    key={info.id}
-                    {...linkProps}
-                    className={`${linkProps.className} opacity-50 cursor-not-allowed`}
-                  />
-                );
-              })}
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              Engineering high-performance digital solutions with 8+ years of
+              enterprise experience. Specializing in scalable architectures,
+              performance optimization, and transformative user experiences.
+            </p>
+
+            {/* Contact Info */}
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 transition-all">
+                  <FiMail className="text-blue-400 text-sm" />
+                </div>
+                <a
+                  href="mailto:consultus@gemsalex.com"
+                  className="text-sm hover:text-blue-400 transition"
+                >
+                  consultus@gemsalex.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-gray-400">
+                <div className="w-8 h-8 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center">
+                  <FiMapPin className="text-lime-400 text-sm" />
+                </div>
+                <span className="text-sm">
+                  Tunis, Tunisia · Remote Worldwide
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-400">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <FiClock className="text-blue-400 text-sm" />
+                </div>
+                <span className="text-sm">Available for new opportunities</span>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
+                  aria-label={social.label}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-lime-500 rounded-lg opacity-0 group-hover:opacity-100 blur transition-opacity" />
+                  <div className="relative w-10 h-10 rounded-lg bg-gray-800/50 border border-gray-700 flex items-center justify-center hover:border-transparent transition-all">
+                    <social.icon
+                      className="text-gray-400 group-hover:text-white transition-colors"
+                      size={18}
+                    />
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
-          {/* Quick links */}
+          {/* Quick Links - 2 cols */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-2"
           >
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-400">
-                Quick Links
-              </span>
-            </h3>
-            <ul className="space-y-3">              
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/about"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <span className="w-1 h-5 bg-gradient-to-b from-blue-400 to-lime-400 rounded-full" />
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
                 >
-                  <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
-                  About Me
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/projects"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-pink-400"></span>
-                  Projects
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/solutions"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-teal-400"></span>
-                  Solutions & Pricing
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/products"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
-                  Products
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/gallery"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-yellow-400"></span>
-                  Gallery
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/resources "
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-lime-400"></span>
-                  Resources
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link
-                  href="/contact"
-                  className="text-gray-400 hover:text-white transition flex items-center gap-2"
-                >
-                  <span className="w-1 h-1 rounded-full bg-blue-400"></span>
-                  Contact
-                </Link>
-              </motion.li>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <span
+                      className={`w-6 h-6 rounded-lg bg-gradient-to-r ${link.color} bg-opacity-10 flex items-center justify-center text-xs group-hover:scale-110 transition-transform`}
+                    >
+                      {link.icon}
+                    </span>
+                    <span className="text-sm group-hover:translate-x-1 transition-transform">
+                      {link.label}
+                    </span>
+                    <FiArrowUpRight className="opacity-0 group-hover:opacity-100 transition-all text-xs ml-auto" />
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
           </motion.div>
 
-          {/* Tech stack */}
+          {/* Tech Stack - 6 cols */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-6"
           >
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
-                Tech Stack
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <span className="w-1 h-5 bg-gradient-to-b from-lime-400 to-blue-400 rounded-full" />
+              Enterprise Technology Stack
+            </h4>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {/* Frontend */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  Frontend
+                </p>
+                {techStacks.frontend.map((tech, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ x: 5 }}
+                    className="group flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <tech.icon
+                      className="text-lg"
+                      style={{ color: tech.color }}
+                    />
+                    <span className="text-sm text-gray-400 group-hover:text-white transition">
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Backend */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  Backend
+                </p>
+                {techStacks.backend.map((tech, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ x: 5 }}
+                    className="group flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <tech.icon
+                      className="text-lg"
+                      style={{ color: tech.color }}
+                    />
+                    <span className="text-sm text-gray-400 group-hover:text-white transition">
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Database */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  Database
+                </p>
+                {techStacks.database.map((tech, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ x: 5 }}
+                    className="group flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <tech.icon
+                      className="text-lg"
+                      style={{ color: tech.color }}
+                    />
+                    <span className="text-sm text-gray-400 group-hover:text-white transition">
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* DevOps */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  DevOps
+                </p>
+                {techStacks.devops.map((tech, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ x: 5 }}
+                    className="group flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <tech.icon
+                      className="text-lg"
+                      style={{ color: tech.color }}
+                    />
+                    <span className="text-sm text-gray-400 group-hover:text-white transition">
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Enterprise Badges */}
+            <div className="mt-6 flex flex-wrap gap-3 pt-4 border-t border-white/5">
+              <span className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">
+                Scalable Architecture
               </span>
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <FaReact className="text-cyan-400" size={20} />
-                <span className="text-gray-300">React</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiNextdotjs className="text-white" size={20} />
-                <span className="text-gray-300">Next.js</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiTailwindcss className="text-cyan-300" size={20} />
-                <span className="text-gray-300">Tailwind</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <FaNodeJs className="text-green-500" size={20} />
-                <span className="text-gray-300">Node.js</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiExpress className="text-green-500" size={20} />
-                <span className="text-gray-300">Express.js</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiMongodb className="text-green-500" size={20} />
-                <span className="text-gray-300">MongoDB</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiPostgresql className="text-green-500" size={20} />
-                <span className="text-gray-300">PostgreSQL</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10"
-              >
-                <SiWordpress className="text-green-500" size={20} />
-                <span className="text-gray-300">WordPress</span>
-              </motion.div>
+              <span className="px-3 py-1 text-xs font-medium bg-lime-500/10 text-lime-400 rounded-full border border-lime-500/20">
+                Performance Optimized
+              </span>
+              <span className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">
+                Security First
+              </span>
+              <span className="px-3 py-1 text-xs font-medium bg-lime-500/10 text-lime-400 rounded-full border border-lime-500/20">
+                Cloud Native
+              </span>
             </div>
           </motion.div>
         </div>
 
-        {/* Bottom footer */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-gray-500 mb-4 md:mb-0 flex items-center"
-          >
-            Powered with <FiHeart className="mx-1 text-pink-500" /> ©{" "}
-            {currentYear} by Merveille Alexandre
-          </motion.p>
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p className="text-sm text-gray-500 order-2 md:order-1">
+            © {currentYear} Merveille Alexander. All rights reserved.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex gap-6"
-          >
+          <div className="flex items-center gap-6 order-1 md:order-2">
             <Link
               href="/privacy"
-              className="text-gray-500 hover:text-white transition text-sm"
+              className="text-xs text-gray-500 hover:text-white transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
+            <span className="text-gray-600">•</span>
             <Link
               href="/terms"
-              className="text-gray-500 hover:text-white transition text-sm"
+              className="text-xs text-gray-500 hover:text-white transition-colors"
             >
-              Terms of Service
+              Terms
             </Link>
-          </motion.div>
-        </div>
+            <span className="text-gray-600">•</span>
+            {/* <Link
+              href="/sitemap"
+              className="text-xs text-gray-500 hover:text-white transition-colors"
+            >
+              Sitemap
+            </Link> */}
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-gray-600 order-3">
+            <span>Built with</span>
+            <FiHeart className="text-red-400 animate-pulse" />
+            <span>using</span>
+            <FaReact className="text-cyan-400" />
+            <SiNextdotjs className="text-white" />
+          </div>
+        </motion.div>
       </div>
 
-      {/* Floating particles */}
-      {/* Milky Way Starfield */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(60)].map((_, i) => {
-          // Random star properties
-          const size = Math.random() * 4 + 1;
-          const opacity = Math.random() * 0.7 + 0.3;
-          const delay = Math.random() * 5;
-          const duration = 5 + Math.random() * 15;
-          const twinkleIntensity = Math.random() * 0.5 + 0.5;
-
-          return (
-            <motion.div
-              key={`star-${i}`}
-              initial={{
-                opacity: 0,
-                scale: 0.5,
-              }}
-              animate={{
-                opacity: [opacity * 0.3, opacity, opacity * 0.3],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: duration,
-                delay: delay,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-              className="absolute rounded-full bg-white"
-              style={{
-                width: `${size}px`,
-                height: `${size}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                boxShadow: `0 0 ${size * 3}px ${
-                  size * 0.5
-                }px rgba(255, 255, 255, ${twinkleIntensity})`,
-                filter: "blur(0.5px)",
-              }}
-            />
-          );
-        })}
-
-        {/* Milky Way cloud effect */}
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0.05 }}
-          animate={{ opacity: [0.05, 0.08, 0.05] }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          style={{
-            background: `radial-gradient(ellipse at center, 
-        rgba(101, 110, 255, 0.1) 0%, 
-        rgba(101, 110, 255, 0) 70%)`,
-            maskImage: `linear-gradient(to right, 
-        rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 20%, 
-        rgba(0,0,0,1) 80%, 
-        rgba(0,0,0,0) 100%)`,
-          }}
-        />
-      </div>
+      {/* Scroll Progress Indicator */}
+      <motion.div
+        className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-lime-500 to-blue-500 origin-left z-50"
+        style={{ scaleX: scrollYProgress }}
+      />
     </footer>
   );
 };

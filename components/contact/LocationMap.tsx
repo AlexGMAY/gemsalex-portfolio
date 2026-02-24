@@ -30,7 +30,7 @@ const LocationMap = () => {
   const location = {
     coordinates: { lat: 36.8065, lng: 10.1815 },
     address: "Tunis, Tunisia",
-    phone: "+216 20037749",
+    phone: "+216 53369451",
     email: "consultus@gemsalex.com",
     hours: "Mon-Fri: 9AM - 5PM (CET)",
     timezone: "Central European Time (CET)",

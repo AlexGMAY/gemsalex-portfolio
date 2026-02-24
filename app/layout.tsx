@@ -100,6 +100,11 @@ export default function RootLayout({
 
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#030712" />
+        {/* Google Console Verification */}
+        <meta
+          name="google-site-verification"
+          content="73KvIhL75ilE2h8cyhVGvb3mkEDB2mD5VB2emOtH2VU"
+        />
 
         {/* Structured data script */}
         <script
