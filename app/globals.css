@@ -126,7 +126,7 @@ img {
   transition: transform 0.5s ease;
 }
 
-/* Markdown prose styles */
+/* Markdown prose styles
 .prose {
   color: #374151;
   max-width: none;
@@ -169,4 +169,25 @@ img {
 
 .prose img {
   border-radius: 0.5rem;
+} */
+
+.hljs {
+  counter-reset: line;
+}
+
+.hljs>code {
+  display: block;
+}
+
+.hljs code span {
+  display: block;
+  counter-increment: line;
+}
+
+.hljs code span::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  color: #6b7280;
 }
