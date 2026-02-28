@@ -389,7 +389,7 @@ export default function ResourcePage() {
       </section>
 
       {/* Table of Contents */}
-      <aside className="hidden lg:block sticky top-32 h-fit w-64">
+      {/* <aside className="hidden lg:block sticky top-32 h-fit w-64">
         <h2 className="text-sm font-semibold text-gray-400 mb-4">
           Table of Contents
         </h2>
@@ -406,7 +406,7 @@ export default function ResourcePage() {
             </li>
           ))}
         </ul>
-      </aside>
+      </aside> */}
 
       {/* Content Section */}
       <section className="py-20">

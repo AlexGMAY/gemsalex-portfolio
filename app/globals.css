@@ -126,50 +126,72 @@ img {
   transition: transform 0.5s ease;
 }
 
-/* Markdown prose styles
+/* ✅ Modern Markdown System (Dark-first, no conflicts) */
+
 .prose {
-  color: #374151;
+  @apply text-gray-300 leading-relaxed;
   max-width: none;
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
+/* Headings */
+.prose h1 {
+  @apply text-4xl font-bold text-white mt-12 mb-6;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold text-white mt-10 mb-4;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold text-white mt-8 mb-3;
+}
+
 .prose h4 {
-  color: #111827;
-  font-weight: 700;
+  @apply text-xl font-semibold text-white mt-6 mb-2;
 }
 
+/* Paragraphs */
+.prose p {
+  @apply mb-6 text-lg text-gray-300;
+}
+
+/* Inline code */
 .prose code {
-  background-color: #f3f4f6;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
+  @apply bg-gray-800 text-cyan-300 px-2 py-1 rounded text-sm;
 }
 
+/* Code block container */
 .prose pre {
-  background-color: #1f2937;
-  color: #f9fafb;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
+  @apply bg-transparent p-0 m-0 border-0;
 }
 
+/* Blockquote */
 .prose blockquote {
-  border-left: 4px solid #3b82f6;
-  padding-left: 1rem;
-  font-style: italic;
-  color: #6b7280;
+  @apply border-l-4 border-blue-500 pl-6 py-2 my-6 italic text-gray-400 bg-blue-500/5 rounded-r-lg;
 }
 
-.prose ul,
+/* Lists */
+.prose ul {
+  @apply list-disc pl-6 mb-6 space-y-2;
+}
+
 .prose ol {
-  padding-left: 1.5rem;
+  @apply list-decimal pl-6 mb-6 space-y-2;
 }
 
+.prose li {
+  @apply text-lg;
+}
+
+/* Links */
+.prose a {
+  @apply text-blue-400 hover:text-blue-300 underline transition-colors;
+}
+
+/* Images */
 .prose img {
-  border-radius: 0.5rem;
-} */
+  @apply rounded-xl my-8 border border-gray-700;
+}
 
 .hljs {
   counter-reset: line;
