@@ -63,19 +63,14 @@ This repository serves as:
 
 ### Backend
 
-* Node.js
-* Express.js
-
-### Database
-
-* MongoDB
-* Mongoose
+* Next.js
+* App Router
 
 ### Infrastructure
 
 * REST APIs
 * Authentication (JWT)
-* Third-party integrations (Stripe, Twilio, Google APIs)
+* Third-party integrations (cloudinary, Resend, Google APIs, Calendly)
 
 ---
 
@@ -124,16 +119,6 @@ This is a **high-value freelance practice**, not a low-cost dev shop.
 
 ---
 
-## 🧪 Example Capabilities
-
-* Review automation platforms (SMS + Email workflows)
-* Admin dashboards with analytics
-* Multi-role authentication systems
-* API integrations (Google, Stripe, Twilio)
-* Scheduled systems (cron jobs, background tasks)
-
----
-
 ## 🔐 Code Standards
 
 * Modular architecture
@@ -144,24 +129,7 @@ This is a **high-value freelance practice**, not a low-cost dev shop.
 
 ---
 
-## 📂 Project Structure (Example)
 
-```
-/backend
-  /controllers
-  /models
-  /routes
-  /services
-  /middleware
-
-/frontend
-  /components
-  /pages
-  /services
-  /hooks
-```
-
----
 
 ## 🧭 Philosophy on Freelancing
 
@@ -181,7 +149,7 @@ I operate as:
 For serious inquiries:
 
 * Website: https://www.gemsalex.com
-* Email: (add your professional email here)
+* Email: consultus@gemsalex.com
 
 ---
 
