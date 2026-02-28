@@ -137,95 +137,112 @@ export default function ResourcePage() {
   const TypeIcon = typeConfig.icon;
 
   // Custom components for ReactMarkdown
-  const MarkdownComponents: any = {
-    h1: ({ children, ...props }: any) => (
-      <h1 className="text-4xl font-bold mt-12 mb-6 text-white" {...props}>
-        {children}
-      </h1>
-    ),
-    h2: ({ children, ...props }: any) => (
-      <h2 className="text-3xl font-bold mt-10 mb-4 text-white" {...props}>
-        {children}
-      </h2>
-    ),
-    h3: ({ children, ...props }: any) => (
-      <h3 className="text-2xl font-bold mt-8 mb-3 text-white" {...props}>
-        {children}
-      </h3>
-    ),
-    p: ({ children, ...props }: any) => (
-      <p className="text-lg leading-relaxed mb-6 text-gray-300" {...props}>
-        {children}
-      </p>
-    ),
-    code: ({ node, inline, className, children, ...props }: any) => {
-      if (inline) {
-        return (
-          <code
-            className="bg-gray-800 px-2 py-1 rounded text-sm text-cyan-300"
-            {...props}
-          >
-            {children}
-          </code>
-        );
-      }
-      return (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      );
-    },
-    pre: ({ children, ...props }: any) => (
-      <pre
-        className="bg-gray-900 rounded-xl p-6 overflow-x-auto my-6 border border-gray-700"
-        {...props}
-      >
-        {children}
-      </pre>
-    ),
-    blockquote: ({ children, ...props }: any) => (
-      <blockquote
-        className="border-l-4 border-blue-500 pl-6 py-2 my-6 bg-blue-500/5 italic text-gray-300"
-        {...props}
-      >
-        {children}
-      </blockquote>
-    ),
-    ul: ({ children, ...props }: any) => (
-      <ul
-        className="list-disc list-inside space-y-2 mb-6 text-gray-300"
-        {...props}
-      >
-        {children}
-      </ul>
-    ),
-    ol: ({ children, ...props }: any) => (
-      <ol
-        className="list-decimal list-inside space-y-2 mb-6 text-gray-300"
-        {...props}
-      >
-        {children}
-      </ol>
-    ),
-    li: ({ children, ...props }: any) => (
-      <li className="text-lg leading-relaxed" {...props}>
-        {children}
-      </li>
-    ),
-    a: ({ children, ...props }: any) => (
-      <a
-        className="text-blue-400 hover:text-blue-300 underline transition-colors"
-        {...props}
-      >
-        {children}
-      </a>
-    ),
-    strong: ({ children, ...props }: any) => (
-      <strong className="font-bold text-white" {...props}>
-        {children}
-      </strong>
-    ),
-  };
+  // const MarkdownComponents: any = {
+  //   h1: ({ children, ...props }: any) => (
+  //     <h1 className="text-4xl font-bold mt-12 mb-6 text-white" {...props}>
+  //       {children}
+  //     </h1>
+  //   ),
+  //   h2: ({ children, ...props }: any) => (
+  //     <h2 className="text-3xl font-bold mt-10 mb-4 text-white" {...props}>
+  //       {children}
+  //     </h2>
+  //   ),
+  //   h3: ({ children, ...props }: any) => (
+  //     <h3 className="text-2xl font-bold mt-8 mb-3 text-white" {...props}>
+  //       {children}
+  //     </h3>
+  //   ),
+  //   p: ({ children, ...props }: any) => (
+  //     <p className="text-lg leading-relaxed mb-6 text-gray-300" {...props}>
+  //       {children}
+  //     </p>
+  //   ),
+  //   code: ({ node, inline, className, children, ...props }: any) => {
+  //     if (inline) {
+  //       return (
+  //         <code
+  //           className="bg-gray-800 px-2 py-1 rounded text-sm text-cyan-300"
+  //           {...props}
+  //         >
+  //           {children}
+  //         </code>
+  //       );
+  //     }
+  //     return (
+  //       <code className={className} {...props}>
+  //         {children}
+  //       </code>
+  //     );
+  //   },
+  //   pre: ({ children, ...props }: any) => (
+  //     <pre
+  //       className="bg-gray-900 rounded-xl p-6 overflow-x-auto my-6 border border-gray-700"
+  //       {...props}
+  //     >
+  //       {children}
+  //     </pre>
+  //   ),
+  //   blockquote: ({ children, ...props }: any) => (
+  //     <blockquote
+  //       className="border-l-4 border-blue-500 pl-6 py-2 my-6 bg-blue-500/5 italic text-gray-300"
+  //       {...props}
+  //     >
+  //       {children}
+  //     </blockquote>
+  //   ),
+  //   ul: ({ children, ...props }: any) => (
+  //     <ul
+  //       className="list-disc list-inside space-y-2 mb-6 text-gray-300"
+  //       {...props}
+  //     >
+  //       {children}
+  //     </ul>
+  //   ),
+  //   ol: ({ children, ...props }: any) => (
+  //     <ol
+  //       className="list-decimal list-inside space-y-2 mb-6 text-gray-300"
+  //       {...props}
+  //     >
+  //       {children}
+  //     </ol>
+  //   ),
+  //   li: ({ children, ...props }: any) => (
+  //     <li className="text-lg leading-relaxed" {...props}>
+  //       {children}
+  //     </li>
+  //   ),
+  //   a: ({ children, ...props }: any) => (
+  //     <a
+  //       className="text-blue-400 hover:text-blue-300 underline transition-colors"
+  //       {...props}
+  //     >
+  //       {children}
+  //     </a>
+  //   ),
+  //   strong: ({ children, ...props }: any) => (
+  //     <strong className="font-bold text-white" {...props}>
+  //       {children}
+  //     </strong>
+  //   ),
+  // };
+
+  // const MarkdownComponents = {
+  //   code({ inline, children, className, ...props }: any) {
+  //     if (inline) {
+  //       return (
+  //         <code className="px-1 py-0.5 rounded bg-gray-800 text-cyan-300">
+  //           {children}
+  //         </code>
+  //       );
+  //     }
+  //     return (
+  //       <code className={className} {...props}>
+  //         {children}
+  //       </code>
+  //     );
+  //   },
+  // };
 
   if (loading) {
     return (
@@ -321,8 +338,8 @@ export default function ResourcePage() {
                     resource.level === "beginner"
                       ? "bg-green-400/10 text-green-400"
                       : resource.level === "intermediate"
-                      ? "bg-blue-400/10 text-blue-400"
-                      : "bg-lime-400/10 text-lime-400"
+                        ? "bg-blue-400/10 text-blue-400"
+                        : "bg-lime-400/10 text-lime-400"
                   }`}
                 >
                   {resource.level}
@@ -481,8 +498,7 @@ export default function ResourcePage() {
             >
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeHighlight]}
-                components={MarkdownComponents}
+                rehypePlugins={[rehypeHighlight]}                
               >
                 {resource.content}
               </ReactMarkdown>
@@ -504,31 +520,31 @@ export default function ResourcePage() {
                       Written by {resource.author}
                     </h3>
                     <p className="text-gray-400 mt-1">
-                      Software Engineer, Instructor and technical writer sharing knowledge and
-                      experiences.
+                      Software Engineer, Instructor and technical writer sharing
+                      knowledge and experiences.
                     </p>
                     <div className="flex space-x-4 mt-2">
-                                <Link
-                                  href="https://github.com/yourusername"
-                                  aria-label="GitHub"
-                                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                                >
-                                  <FaGithub size={20} />
-                                </Link>
-                                <Link
-                                  href="https://twitter.com/yourusername"
-                                  aria-label="Twitter"
-                                  className="text-gray-500 hover:text-blue-500"
-                                >
-                                  <FaTwitter size={20} />
-                                </Link>
-                                <Link
-                                  href="https://linkedin.com/in/yourusername"
-                                  aria-label="LinkedIn"
-                                  className="text-gray-500 hover:text-blue-700"
-                                >
-                                  <FaLinkedin size={20} />
-                                </Link>
+                      <Link
+                        href="https://github.com/AlexGMAY"
+                        aria-label="GitHub"
+                        className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                      >
+                        <FaGithub size={20} />
+                      </Link>
+                      <Link
+                        href="https://twitter.com/themarvelbiz"
+                        aria-label="Twitter"
+                        className="text-gray-500 hover:text-blue-500"
+                      >
+                        <FaTwitter size={20} />
+                      </Link>
+                      <Link
+                        href="https://www.linkedin.com/in/alexandre-merveille-may/"
+                        aria-label="LinkedIn"
+                        className="text-gray-500 hover:text-blue-700"
+                      >
+                        <FaLinkedin size={20} />
+                      </Link>
                     </div>
                   </div>
                 </div>
