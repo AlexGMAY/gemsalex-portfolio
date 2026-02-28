@@ -1,38 +1,10 @@
-"use client";
+import CodeBlock from "./ui/CodeBlock";
 
-import { useState } from "react";
-
-export function MarkdownComponents() {
-  return {
-    pre({ children }: any) {
-      const [copied, setCopied] = useState(false);
-
-      const code = children?.props?.children ?? "";
-
-      const handleCopy = async () => {
-        await navigator.clipboard.writeText(code);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      };
-
-      return (
-        <div className="relative group">
-          <button
-            onClick={handleCopy}
-            className="absolute top-3 right-3 text-xs px-3 py-1 rounded bg-gray-800 text-gray-300 opacity-0 group-hover:opacity-100 transition"
-          >
-            {copied ? "Copied" : "Copy"}
-          </button>
-
-          <pre className="bg-gray-900 rounded-xl p-6 overflow-x-auto border border-gray-700">
-            {children}
-          </pre>
-        </div>
-      );
-    },
-  };
-}
-
+export const MarkdownComponents = {
+  pre: ({ children }: any) => {
+    return <CodeBlock>{children}</CodeBlock>;
+  },
+};
 
 //   const MarkdownComponents: any = {
 //     h1: ({ children, ...props }: any) => (

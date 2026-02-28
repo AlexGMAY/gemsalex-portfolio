@@ -425,7 +425,7 @@ export default function ResourcePage() {
                   rehypeAutolinkHeadings,
                   rehypeHighlight,
                 ]}
-                components={MarkdownComponents()}
+                components={MarkdownComponents}
               >
                 {resource.content}
               </ReactMarkdown>
