@@ -32,7 +32,7 @@ export const MarkdownComponents: any = {
     if (inline) {
       return (
         <code
-          className="bg-gray-800 p-6 rounded text-sm text-cyan-300"
+          className="bg-gray-800 py-1 px-2 rounded text-sm text-cyan-300"
           {...props}
         >
           {children}

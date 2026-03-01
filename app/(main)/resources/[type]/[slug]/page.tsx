@@ -106,7 +106,7 @@ export default function Page({ params }: Props) {
           {/* Animated gradient orbs */}
           <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-20 right-1/4 w-[600px] h-[600px] bg-lime-500/20 rounded-full blur-3xl animate-pulse animation-delay-2000" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse animation-delay-4000" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl animate-pulse animation-delay-4000" />
 
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
@@ -127,31 +127,7 @@ export default function Page({ params }: Props) {
           ))}
         </div>
 
-        <div className="container mx-auto px-4 max-w-4xl relative z-10">
-          {/* Breadcrumb with glass morphism */}
-          <nav className="flex items-center gap-2 text-sm mb-8 bg-gray-800/30 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700/50 w-fit">
-            <Link
-              href="/resources"
-              className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 group"
-            >
-              <span className="group-hover:translate-x-[-2px] transition-transform">
-                ←
-              </span>
-              Resources
-            </Link>
-            <FiArrowRight size={14} className="text-gray-600" />
-            <Link
-              href={`/resources/${type}`}
-              className="text-gray-400 hover:text-white transition-colors capitalize"
-            >
-              {type}
-            </Link>
-            <FiArrowRight size={14} className="text-gray-600" />
-            <span className="text-white font-medium truncate max-w-[200px]">
-              {resource.title}
-            </span>
-          </nav>
-
+        <div className="container mx-auto pt-24 px-4 max-w-4xl relative z-10">
           {/* TYPE BADGE - Enhanced with glass effect */}
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 hover:border-gray-600 transition-colors">
             <div
@@ -237,41 +213,36 @@ export default function Page({ params }: Props) {
             </div>
           )}
 
-          {/* Action Buttons - Share/Save */}
-          <div className="flex items-center gap-4 mt-12 pt-8 border-t border-gray-800">
-            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-300 hover:text-white hover:border-lime-500/30 hover:bg-gray-800 transition-all group">
-              <FiShare2
-                size={18}
-                className="group-hover:rotate-12 transition-transform"
-              />
-              <span className="text-sm font-medium">Share</span>
-            </button>
-            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-300 hover:text-white hover:border-blue-500/30 hover:bg-gray-800 transition-all group">
-              <FiBookmark
-                size={18}
-                className="group-hover:scale-110 transition-transform"
-              />
-              <span className="text-sm font-medium">Save</span>
-            </button>
-            <div className="flex-1" />
-            <Link
-              href={`/resources/${type}/${resource.slug}/edit`}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-lime-500 to-blue-500 text-white font-medium hover:shadow-lg hover:shadow-lime-500/20 transition-all group"
-            >
-              <span>Edit Resource</span>
-              <FiArrowRight
-                size={18}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </Link>
+          {/* Breadcrumb with glass morphism */}
+          <div className="mt-12 pt-8 border-t border-gray-800 ">
+            <nav className="flex items-center gap-2 text-sm mb-8 bg-gray-800/30 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700/50 w-fit">
+              <Link
+                href="/resources"
+                className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 group"
+              >
+                <span className="group-hover:translate-x-[-2px] transition-transform">
+                  ←
+                </span>
+                Resources
+              </Link>
+              <FiArrowRight size={14} className="text-gray-600" />
+              <Link
+                href={`/resources/${type}`}
+                className="text-gray-400 hover:text-white transition-colors capitalize"
+              >
+                {type}
+              </Link>
+              <FiArrowRight size={14} className="text-gray-600" />
+              <span className="text-white font-medium truncate max-w-[200px]">
+                {resource.title}
+              </span>
+            </nav>
           </div>
         </div>
 
         {/* Decorative bottom gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
       </section>
-
-      
 
       {/* CONTENT */}
       <section className="py-20">

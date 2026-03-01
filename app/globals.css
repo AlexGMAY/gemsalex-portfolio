@@ -157,7 +157,7 @@ img {
 
 /* Inline code */
 .prose code {
-  @apply bg-gray-800 text-cyan-300 p-6 rounded text-sm;
+  @apply bg-gray-800 text-cyan-300 py-1 px-2 rounded text-sm;
 }
 
 /* Code block container */
