@@ -1,17 +1,7 @@
 import React from "react";
 import { PreBlock } from "./ui/PreBlock";
 
-// IMPORTANT: Capitalized component for pre (fixes your error)
-// function PreBlock({ children, ...props }: any) {
-//   return (
-//     <pre
-//       className="bg-gray-900 rounded-xl p-6 overflow-x-auto my-6 border border-gray-700"
-//       {...props}
-//     >
-//       {children}
-//     </pre>
-//   );
-// }
+
 
 export const MarkdownComponents: any = {
   h1: ({ children, ...props }: any) => (
@@ -42,7 +32,7 @@ export const MarkdownComponents: any = {
     if (inline) {
       return (
         <code
-          className="bg-gray-800 px-2 py-1 rounded text-sm text-cyan-300"
+          className="bg-gray-800 p-6 rounded text-sm text-cyan-300"
           {...props}
         >
           {children}
