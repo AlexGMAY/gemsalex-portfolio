@@ -127,7 +127,7 @@ export default function Page({ params }: Props) {
           ))}
         </div>
 
-        <div className="container mx-auto pt-24 px-4 max-w-4xl relative z-10">
+        <div className="container mx-auto pt-12 px-4 max-w-4xl relative z-10">
           {/* TYPE BADGE - Enhanced with glass effect */}
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 hover:border-gray-600 transition-colors">
             <div
