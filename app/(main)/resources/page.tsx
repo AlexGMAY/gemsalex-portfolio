@@ -125,7 +125,7 @@ import ResourcesHero from "@/components/resources/ResourcesHero";
 import ResourcesLinksSection from "@/components/resources/ResourcesLinksSection";
 import ResourcesTutorialsSection from "@/components/resources/ResourcesTutorialsSection";
 
-import { getAllResources, getResourcesByType } from "@/lib/resources";
+import { getAllResources, getResourcesByType, Resource } from "@/lib/resources";
 import { Metadata } from "next";
 
 // For now, we'll set it up for when we convert back to server components
@@ -156,21 +156,36 @@ export const metadata: Metadata = {
   },
 };
 
+type SerializedResource = Omit<Resource, "date"> & {
+  date: string; // Override date to be string
+};
+
 export default function ResourcesPage() {
   const allResources = getAllResources();
 
-  const blogResources = getResourcesByType("blog");
-  const tutorialResources = getResourcesByType("tutorials");
-  const linkResources = getResourcesByType("links");
+  // Type assertion to tell TypeScript this is intentional
+  const serializedResources: SerializedResource[] = allResources.map(
+    (resource) => ({
+      ...resource,
+      date: resource.date.toISOString(),
+    }),
+  );
+
+  // Filter resources by type
+   const blogResources = serializedResources.filter((r) => r.type === "blog");
+   const tutorialResources = serializedResources.filter(
+     (r) => r.type === "tutorials",
+   );
+   const linkResources = serializedResources.filter((r) => r.type === "links");
 
   return (
     <main className="relative w-full">
-      <ResourcesHero allResources={allResources} />
+      <ResourcesHero allResources={serializedResources as any} />
 
       <div className="w-full flex justify-center items-center flex-col sm:px-10 px-5">
-        <ResourcesBlogSection resources={blogResources} />
-        <ResourcesTutorialsSection resources={tutorialResources} />
-        <ResourcesLinksSection resources={linkResources} />
+        <ResourcesBlogSection resources={blogResources as any} />
+        <ResourcesTutorialsSection resources={tutorialResources as any} />
+        <ResourcesLinksSection resources={linkResources as any} />
       </div>
     </main>
   );

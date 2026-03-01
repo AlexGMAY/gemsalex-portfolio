@@ -546,31 +546,111 @@
 //   );
 // }
 
-import { getResource } from "@/lib/resources";
+// import { getResource } from "@/lib/resources";
+// import type { ResourceType } from "@/lib/resources";
+// import { notFound } from "next/navigation";
+// import ReactMarkdown from "react-markdown";
+// import remarkGfm from "remark-gfm";
+// import rehypeHighlight from "rehype-highlight";
+// import rehypeSlug from "rehype-slug";
+// import rehypeAutolinkHeadings from "rehype-autolink-headings";
+// import { MarkdownComponents } from "@/components/MarkdownComponents";
+
+// interface Props {
+//   params: { type: string; slug: string };
+// }
+
+// /* -------------------------------- */
+// /* SEO (VERY important)             */
+// /* -------------------------------- */
+// export async function generateMetadata({ params }: Props) {
+//   const resource = getResource(params.type as ResourceType, params.slug);
+
+//   if (!resource) {
+//     return {
+//       title: "Not found",
+//     };
+//   }
+
+//   return {
+//     title: resource.title,
+//     description: resource.excerpt,
+//   };
+// }
+
+// /* -------------------------------- */
+// /* Page (Server Component)          */
+// /* -------------------------------- */
+// export default function Page({ params }: Props) {
+//   const resource = getResource(params.type as ResourceType, params.slug);
+
+//   if (!resource) return notFound();
+
+//   return (
+//     <main className="min-h-screen bg-black">
+//       <div className="max-w-4xl mx-auto py-20 px-6">
+//         {/* Title */}
+//         <h1 className="text-5xl font-bold text-white mb-6">{resource.title}</h1>
+
+//         {/* Meta */}
+//         <div className="flex gap-4 text-sm text-gray-400 mb-10">
+//           <span>{new Date(resource.date).toDateString()}</span>
+//           {resource.readTime && <span>{resource.readTime}</span>}
+//           {resource.author && <span>By {resource.author}</span>}
+//         </div>
+
+//         {/* Content */}
+//         <article className="prose prose-invert max-w-none">
+//           <ReactMarkdown
+//             remarkPlugins={[remarkGfm]}
+//             rehypePlugins={[
+//               rehypeSlug,
+//               rehypeAutolinkHeadings,
+//               rehypeHighlight,
+//             ]}
+//             components={MarkdownComponents}
+//           >
+//             {resource.content}
+//           </ReactMarkdown>
+//         </article>
+//       </div>
+//     </main>
+//   );
+// }
+
+import { getResource, getResourcesByType } from "@/lib/resources";
 import type { ResourceType } from "@/lib/resources";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { MarkdownComponents } from "@/components/MarkdownComponents";
+import {
+  FiArrowLeft,
+  FiClock,
+  FiCalendar,
+  FiTag,
+  FiUser,
+  FiArrowRight,
+  FiBook,
+  FiCode,
+  FiLink,
+} from "react-icons/fi";
 
 interface Props {
   params: { type: string; slug: string };
 }
 
 /* -------------------------------- */
-/* SEO (VERY important)             */
+/* SEO                              */
 /* -------------------------------- */
 export async function generateMetadata({ params }: Props) {
   const resource = getResource(params.type as ResourceType, params.slug);
 
-  if (!resource) {
-    return {
-      title: "Not found",
-    };
-  }
+  if (!resource) return { title: "Not found" };
 
   return {
     title: resource.title,
@@ -579,41 +659,203 @@ export async function generateMetadata({ params }: Props) {
 }
 
 /* -------------------------------- */
-/* Page (Server Component)          */
+/* Helpers                          */
 /* -------------------------------- */
-export default function Page({ params }: Props) {
-  const resource = getResource(params.type as ResourceType, params.slug);
-
-  if (!resource) return notFound();
+function getTypeConfig(type: string) {
+  const config = {
+    blog: {
+      icon: FiBook,
+      gradient: "from-blue-400 to-lime-500",
+      bgGradient: "from-blue-400/10 to-lime-500/10",
+    },
+    tutorials: {
+      icon: FiCode,
+      gradient: "from-blue-400 to-cyan-500",
+      bgGradient: "from-blue-400/10 to-cyan-500/10",
+    },
+    links: {
+      icon: FiLink,
+      gradient: "from-amber-400 to-orange-500",
+      bgGradient: "from-amber-400/10 to-orange-500/10",
+    },
+  };
 
   return (
-    <main className="min-h-screen bg-black">
-      <div className="max-w-4xl mx-auto py-20 px-6">
-        {/* Title */}
-        <h1 className="text-5xl font-bold text-white mb-6">{resource.title}</h1>
+    config[type as keyof typeof config] || {
+      icon: FiBook,
+      gradient: "from-gray-400 to-gray-500",
+      bgGradient: "from-gray-400/10 to-gray-500/10",
+    }
+  );
+}
 
-        {/* Meta */}
-        <div className="flex gap-4 text-sm text-gray-400 mb-10">
-          <span>{new Date(resource.date).toDateString()}</span>
-          {resource.readTime && <span>{resource.readTime}</span>}
-          {resource.author && <span>By {resource.author}</span>}
+/* -------------------------------- */
+/* Page                             */
+/* -------------------------------- */
+export default function Page({ params }: Props) {
+  const { type, slug } = params;
+
+  const resource = getResource(type as ResourceType, slug);
+  if (!resource) return notFound();
+
+  const typeConfig = getTypeConfig(type);
+  const TypeIcon = typeConfig.icon;
+
+  /* ------------------------------- */
+  /* Related (SERVER SIDE)           */
+  /* ------------------------------- */
+  const relatedResources = getResourcesByType(type as ResourceType)
+    .filter(
+      (r) =>
+        r.slug !== slug && r.tags.some((tag) => resource.tags.includes(tag)),
+    )
+    .slice(0, 3);
+
+  return (
+    <main className="min-h-screen bg-black text-white">
+      {/* HERO */}
+      <section className="relative pt-32 pb-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          {/* TYPE BADGE */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 mb-6">
+            <div
+              className={`p-2 rounded-full bg-gradient-to-r ${typeConfig.bgGradient}`}
+            >
+              <TypeIcon className="text-white" />
+            </div>
+
+            <span className="text-sm capitalize">{type}</span>
+
+            {resource.level && (
+              <span className="text-xs px-2 py-1 rounded-full bg-gray-700 capitalize">
+                {resource.level}
+              </span>
+            )}
+          </div>
+
+          {/* TITLE */}
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            {resource.title}
+          </h1>
+
+          {/* EXCERPT */}
+          <p className="text-xl text-gray-400 mb-8">{resource.excerpt}</p>
+
+          {/* META */}
+          <div className="flex flex-wrap gap-6 text-sm text-gray-400">
+            <div className="flex items-center gap-2">
+              <FiCalendar />
+              {new Date(resource.date).toDateString()}
+            </div>
+
+            {resource.readTime && (
+              <div className="flex items-center gap-2">
+                <FiClock />
+                {resource.readTime}
+              </div>
+            )}
+
+            {resource.author && (
+              <div className="flex items-center gap-2">
+                <FiUser />
+                {resource.author}
+              </div>
+            )}
+          </div>
+
+          {/* TAGS */}
+          {resource.tags?.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-6">
+              <FiTag />
+              {resource.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-gray-800 border border-gray-700 rounded-full text-sm"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* BREADCRUMB */}
+          <div className="flex items-center gap-2 text-sm text-gray-500 mt-8">
+            <Link href="/resources">Resources</Link>
+            <FiArrowRight size={14} />
+            <Link href={`/resources/${type}`} className="capitalize">
+              {type}
+            </Link>
+            <FiArrowRight size={14} />
+            <span className="text-white">{resource.title}</span>
+          </div>
         </div>
+      </section>
 
-        {/* Content */}
-        <article className="prose prose-invert max-w-none">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[
-              rehypeSlug,
-              rehypeAutolinkHeadings,
-              rehypeHighlight,
-            ]}
-            components={MarkdownComponents}
-          >
-            {resource.content}
-          </ReactMarkdown>
-        </article>
-      </div>
+      {/* CONTENT */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <article className="prose prose-invert max-w-none">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[
+                rehypeSlug,
+                rehypeAutolinkHeadings,
+                rehypeHighlight,
+              ]}
+              components={MarkdownComponents}
+            >
+              {resource.content}
+            </ReactMarkdown>
+          </article>
+
+          {/* AUTHOR */}
+          {resource.author && (
+            <div className="mt-16 p-6 rounded-2xl bg-gray-800 border border-gray-700">
+              <h3 className="text-lg font-semibold">
+                Written by {resource.author}
+              </h3>
+              <p className="text-gray-400 mt-2">
+                Software Engineer sharing knowledge and experience.
+              </p>
+            </div>
+          )}
+
+          {/* NAV */}
+          <div className="mt-16 flex justify-between items-center border-t border-gray-700 pt-8">
+            <Link
+              href={`/resources/${type}`}
+              className="flex items-center gap-2"
+            >
+              <FiArrowLeft /> Back to {type}
+            </Link>
+
+            <Link href="/resources" className="text-blue-400">
+              Explore all
+            </Link>
+          </div>
+
+          {/* RELATED */}
+          {relatedResources.length > 0 && (
+            <div className="mt-20">
+              <h3 className="text-2xl font-bold mb-8">Related Resources</h3>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                {relatedResources.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/resources/${r.type}/${r.slug}`}
+                    className="block p-6 bg-gray-800 border border-gray-700 rounded-xl"
+                  >
+                    <h4 className="font-semibold mb-2">{r.title}</h4>
+                    <p className="text-sm text-gray-400 mb-3">{r.excerpt}</p>
+                    <span className="text-sm text-blue-400">Read more →</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }
