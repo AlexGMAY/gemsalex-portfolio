@@ -85,7 +85,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, but more importantly, it loads instantly and converts visitors into clients seamlessly. The custom CMS he created saves us hours of work daily. Truly a partner who understands business needs.",
+      "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, and it's mobile friendly but more importantly, it loads fast and converts visitors into clients. The custom CMS he created saves us hours of work daily. We worked together in collaboration for 1 month, I was creating website contents and Merveille was building the technical infrastructure - the website. Truly a partner who understands business needs.",
     name: "Hayfa Khalil",
     title: "Marketing Director at ABC Digitale - Tunisia",
     avatar: "/avatars/logo-abcd.jpg",
@@ -114,7 +114,7 @@ export const testimonials = [
 
   {
     quote:
-      "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. Truly a partner who understands business needs. So, I recommend him for any website project, he is a partner who delivers results.",
+      "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. So, I recommend him for any website project, he is a partner who delivers results.",
     name: "Raoudha Bhira",
     title: "Director at ONE-BEAT RECORDS - England (UK)",
     avatar: "/avatars/logo-one-beat.png",
