@@ -112,13 +112,13 @@ export const testimonials = [
     avatar: "/avatars/logo-leader-forma.png",
   },
 
-  {
-    quote:
-      "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. So, I recommend him for any website project, he is a partner who delivers results.",
-    name: "Raoudha Bhira",
-    title: "Director at ONE-BEAT RECORDS - England (UK)",
-    avatar: "/avatars/logo-one-beat.png",
-  },
+  // {
+  //   quote:
+  //     "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. So, I recommend him for any website project, he is a partner who delivers results.",
+  //   name: "John Doe",
+  //   title: "Director at ONE-BEAT RECORDS - England (UK)",
+  //   avatar: "/avatars/logo-one-beat.png",
+  // },
 ];
 
 export const companies = [
