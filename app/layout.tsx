@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import { FloatingNav } from "@/components/Navbar";
@@ -147,6 +148,8 @@ export default function RootLayout({
             </div>
           </Providers>
         </ThemeProvider>
+        {/* Place the GoogleAnalytics component here, ideally after your main content */}
+        <GoogleAnalytics gaId="G-GH7NW151J5" />
       </body>
     </html>
   );

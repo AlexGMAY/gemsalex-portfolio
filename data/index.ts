@@ -80,36 +80,44 @@ export const testimonials = [
     quote:
       "Mr Alexander transformed our loan enterprise website with SEO-optimized content that actually converts. Our online applications increased by 40% within 3 months. His strategic approach to onmine visibility combined with client-centered design delivered real business results.",
     name: "John Batubenga",
-    title: "CEO at Elinsas Loans",
+    title: "CEO at Elinsas Loans and Microfinance - RD Congo",
     avatar: "/avatars/logo-elin.jpg",
   },
   {
     quote:
       "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, but more importantly, it loads instantly and converts visitors into clients seamlessly. The custom CMS he created saves us hours of work daily. Truly a partner who understands business needs.",
-    name: "Sarah Chen",
-    title: "Marketing Director at ABC Digitale",
+    name: "Hayfa Khalil",
+    title: "Marketing Director at ABC Digitale - Tunisia",
     avatar: "/avatars/logo-abcd.jpg",
   },
   {
     quote:
-      "GGTE needed a modern, professional website that reflected our construction expertise. Mr Merveille Alexander delivered a stunning platform that showcases our projects beautifully. The site performance is exceptional, and the admin panel makes content updates effortless. Our project inquiries have doubled since launch.",
-    name: "Dieu Tankwe Mulundu",
-    title: "CEO at GGTE Construction",
+      "GGTE needed a modern, professional website that reflected our construction expertise. Mr Alexander delivered a stunning platform that showcases our projects beautifully. The site performance is exceptional, and the admin panel makes content updates effortless. Our project inquiries have doubled since launch.",
+    name: "Mr Dieu Tankwe Mulundu",
+    title: "CEO at GGTE Construction - RD Congo",
     avatar: "/avatars/logo-ggte.jpg",
   },
   {
     quote:
-      "As a SaaS startup, we needed both technical excellence and business acumen. Merveille built our entire platform architecture, implemented secure payment systems, and created an intuitive user experience. His code is clean, scalable, and he delivered at schedule. One of the best technical investment we've made.",
-    name: "Alex Rivera",
-    title: "Founder at CloudFlow SaaS",
-    avatar: "/avatars/logo-abcd.jpg",
+      "As a microfinance SaaS startup, we needed both technical excellence and business acumen. Merveille built our entire microfinance platform architecture, implemented secure communication systems, and created an intuitive user experience. And he delivered an exceptional product. Now our company runs smoothly, our clients love the platform, and we've seen a 30% increase in user retention. Our company management is easier, and Merveille maintains the system with care.",
+    name: "Mr Guelor Songie",
+    title: "CEO and Founder at Vision Business Microfinance - RD Congo",
+    avatar: "./logo-MA.png",
   },
   {
     quote:
-      "Most developers just write code. Merveille solves business problems. He automated our entire client onboarding process, reducing manual work by 15 hours per week. The system he built is reliable, easy to use, and has scaled perfectly as we've grown. He's more than a developer - he's a strategic partner.",
+      "Mr Merveille Alexandre, who is also our Instructor, solved our business problems. He build our website soutien scolaire in 1 week and, he helped with SEO 100%(pagespeed result) and performance optimization 98%(pagespeed result). The Website he built is reliable, easy to use. He's our instructor and strategic partner.",
     name: "Raoudha Bhira",
-    title: "Director at centre formation Leaderforma",
+    title: "Director at centre formation Leaderforma - France",
     avatar: "/avatars/logo-leader-forma.png",
+  },
+
+  {
+    quote:
+      "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. Truly a partner who understands business needs. So, I recommend him for any website project, he is a partner who delivers results.",
+    name: "Raoudha Bhira",
+    title: "Director at ONE-BEAT RECORDS - England (UK)",
+    avatar: "/avatars/logo-one-beat.png",
   },
 ];
 
