@@ -1680,7 +1680,7 @@ export const projects = [
     title: "Unidate : University Dating Platform",
     category: "Nextjs",
     img: "/projects/unidate.png",
-    github: "#",
+    github: "https://github.com/AlexGMAY/unidate-main",
     live: "https://unidate-one.vercel.app/",
     techStack: [
       "/next.svg",
@@ -1710,7 +1710,7 @@ export const projects = [
     title: "Zando Market",
     category: "Nextjs",
     img: "/projects/zandokin.png",
-    github: "#",
+    github: "https://github.com/AlexGMAY/Zando-Central-Market",
     live: "https://zandokin.vercel.app",
     techStack: [
       "/next.svg",
@@ -1756,7 +1756,7 @@ export const projects = [
   {
     id: 8,
     title: "RDCEMPLOIS Platform",
-    category: "WordPress",
+    category: "SaaS",
     img: "/projects/rdcemplois.webp",
     github: "#",
     live: "https://rdcemplois.com",
@@ -1770,15 +1770,24 @@ export const projects = [
       "/mysql.svg",
     ],
   },
-  // {
-  //   id: 10,
-  //   title: "GGTE Sarl",
-  //   category: "Nextjs",
-  //   img: "/avatars/logo-ggte.jpg",
-  //   github: "#",
-  //   live: "https://ggtesarl.gemsalex.com",
-  //   techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
-  // },
+  {
+    id: 9,
+    title: "Suburbia Skateboard Store",
+    category: "Nextjs",
+    img: "/projects/suburbia-skateboard-store.png",
+    github: "https://github.com/AlexGMAY/skateboards-store",
+    live: "https://suburbia-store.vercel.app/",
+    techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
+  },
+  {
+    id: 10,
+    title: "SkyRise Banking Platform",
+    category: "SaaS",
+    img: "/projects/skyrise-finance-dashboard.png",
+    github: "https://github.com/AlexGMAY/skyrise",
+    live: "https://skyriseweb.vercel.app/",
+    techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg", "/app.svg", "/vercel.svg"],
+  },
 ];
 
 export const categories = [

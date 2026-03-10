@@ -123,28 +123,7 @@ export function Hero() {
             solutions. With 8+ years of experience, I deliver high-performance
             applications that drive growth, automate operations, and create
             competitive advantages.
-          </p>
-
-          {/* Value proposition grid */}
-          <div
-            ref={statsScope}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10"
-          >
-            {[
-              { icon: FaRocket, label: "Avg. Performance Gain", value: "85%" },
-              { icon: FaShieldAlt, label: "Client Satisfaction", value: "98%" },
-              { icon: FaChartLine, label: "Revenue Growth", value: "3.2x" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="p-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700"
-              >
-                <stat.icon className="mx-auto mb-2 text-lime-400" />
-                <p className="text-lg font-bold text-white">{stat.value}</p>
-                <p className="text-xs text-gray-400">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          </p>          
 
           {/* Button group with staggered animation */}
           <div className="flex flex-col sm:flex-row justify-center gap-3 w-full">
