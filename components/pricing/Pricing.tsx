@@ -20,6 +20,7 @@ import {
   PricingApiResponse,
   ToastState,
 } from "@/types/pricing";
+import CSRFNotice, { useCSRFNotice } from "../ui/CSRFNotice";
 
 // Add EUR to currency types
 type Currency = "USD" | "TND" | "EUR";
@@ -49,7 +50,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     type: "",
     message: "",
   });
-  const [csrfToken, setCsrfToken] = useState("");
+  const [csrfToken, setCsrfToken] = useState(""); 
+  const [showNotice, setShowNotice] = useState(false);
+  const { showCSRFNotice } = useCSRFNotice();
 
   // Filter services based on page type
   const displayedServices =
@@ -295,7 +298,16 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   ): Promise<void> => {
     e.preventDefault();
 
-    if (!selectedService || isSubmitting || !csrfToken) return;
+    if (!selectedService || isSubmitting) return;
+
+    // Handle missing CSRF token
+    if (!csrfToken) {
+      showToast(
+        "error",
+        "Security token missing. Please refresh the page with Ctrl+F5 (Cmd+R on Mac) and try again.",
+      );
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -330,6 +342,17 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           csrfToken,
         }),
       });
+
+      if (response.status === 403) {
+        // CSRF error
+        setShowNotice(true);
+        showCSRFNotice("pricing");
+        // Clear any existing success state
+        sessionStorage.removeItem("pricing_form_success");
+
+        // Don't proceed further
+        return;        
+      }
 
       const data: PricingApiResponse = await response.json();
 
@@ -772,6 +795,17 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           )}
         </AnimatePresence>
       </div>
+
+      {/* CSRF Notice */}
+      <CSRFNotice
+        type="pricing"
+        autoShow={showNotice}
+        onDismiss={() => {
+          setShowNotice(false);
+          // Optionally refresh CSRF token
+          fetchCsrfToken();
+        }}
+      />
     </section>
   );
 }

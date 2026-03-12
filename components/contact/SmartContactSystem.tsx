@@ -15,10 +15,10 @@ import {
 } from "react-icons/fi";
 import {
   ContactFormData,
-  ApiResponse,
-  CsrfResponse,
+  ApiResponse,  
   ToastState,
 } from "@/types/contact";
+import CSRFNotice, { useCSRFNotice } from "../ui/CSRFNotice";
 
 const SmartContactSystem = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -41,6 +41,8 @@ const SmartContactSystem = () => {
     message: "",
   });
   const [csrfToken, setCsrfToken] = useState<string>("");
+   const [showNotice, setShowNotice] = useState(false);
+    const { showCSRFNotice } = useCSRFNotice();
 
   // Fetch CSRF token on component mount
   useEffect(() => {
@@ -118,7 +120,15 @@ const SmartContactSystem = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    if (isSubmitting || !csrfToken) return;
+    if (isSubmitting) return;
+
+     if (!csrfToken) {
+       showToast(
+         "error",
+         "Security token missing. Please refresh the page with Ctrl+F5 (Cmd+R on Mac) and try again.",
+       );
+       return;
+     }
 
     setIsSubmitting(true);
 
@@ -133,6 +143,17 @@ const SmartContactSystem = () => {
           csrfToken: csrfToken,
         }),
       });
+
+      if (response.status === 403) {
+        // CSRF error
+        setShowNotice(true);
+        showCSRFNotice("contact");
+        // Clear any existing success state
+        sessionStorage.removeItem("contact_form_success");
+
+        // Don't proceed further
+        return;
+      }
 
       const data: ApiResponse = await response.json();
 
@@ -172,6 +193,7 @@ const SmartContactSystem = () => {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <section
@@ -551,8 +573,22 @@ const SmartContactSystem = () => {
           </motion.div>
         </div>
       </div>
+
+      <CSRFNotice
+        type="contact"
+        autoShow={showNotice}
+        onDismiss={() => {
+          setShowNotice(false);
+          // Optionally refresh CSRF token
+          fetchCsrfToken();
+        }}
+      />
     </section>
   );
 };
 
 export default SmartContactSystem;
+
+function setShowNotice(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}

@@ -1775,7 +1775,7 @@ export const projects = [
     title: "Suburbia Skateboard Store",
     category: "Nextjs",
     img: "/projects/suburbia-skateboard-store.png",
-    github: "https://github.com/AlexGMAY/skateboards-store",
+    github: "#", // https://github.com/AlexGMAY/skateboards-store
     live: "https://suburbia-store.vercel.app/",
     techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
   },
@@ -1784,9 +1784,16 @@ export const projects = [
     title: "SkyRise Banking Platform",
     category: "SaaS",
     img: "/projects/skyrise-finance-dashboard.png",
-    github: "https://github.com/AlexGMAY/skyrise",
+    github: "#", // https://github.com/AlexGMAY/skyrise
     live: "https://skyriseweb.vercel.app/",
-    techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg", "/app.svg", "/vercel.svg"],
+    techStack: [
+      "/next.svg",
+      "/tail.svg",
+      "/re.svg",
+      "/git.svg",
+      "/app.svg",
+      "/vercel.svg",
+    ],
   },
 ];
 

@@ -18,6 +18,8 @@ import {
   PartnershipApiResponse,
   ToastState,
 } from "@/types/partnership";
+import CSRFNotice, { useCSRFNotice } from "../ui/CSRFNotice";
+
 
 
 interface PartnershipFormProps {
@@ -48,6 +50,8 @@ export default function PartnershipForm({
     type: "",
     message: "",
   });
+  const [showNotice, setShowNotice] = useState(false);
+  const { showCSRFNotice } = useCSRFNotice();
 
   // Fetch CSRF token
   useEffect(() => {
@@ -96,7 +100,15 @@ export default function PartnershipForm({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (isSubmitting || !csrfToken) return;
+    if (isSubmitting) return;
+
+    if (!csrfToken) {
+      showToast(
+        "error",
+        "Security token missing. Please refresh the page with Ctrl+F5 (Cmd+R on Mac) and try again.",
+      );
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -111,6 +123,17 @@ export default function PartnershipForm({
           csrfToken,
         }),
       });
+
+      if (response.status === 403) {
+        // CSRF error
+        setShowNotice(true);
+        showCSRFNotice("partnership");
+        // Clear any existing success state
+        sessionStorage.removeItem("partnership_form_success");
+
+        // Don't proceed further
+        return;
+      }
 
       const data: PartnershipApiResponse = await response.json();
 
@@ -434,6 +457,17 @@ export default function PartnershipForm({
           </div>
         </motion.div>
       </div>
+
+      {/* CSRF Notice */}
+      <CSRFNotice
+        type="partnership"
+        autoShow={showNotice}
+        onDismiss={() => {
+          setShowNotice(false);
+          // Optionally refresh CSRF token
+          fetchCsrfToken();
+        }}
+      />
     </>
   );
 }
