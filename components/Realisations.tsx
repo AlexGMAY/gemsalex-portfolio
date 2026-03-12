@@ -75,7 +75,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
             variants={itemVariants}
             className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed"
           >
-            Crafting digital experiences that blend innovation with functionality, 
+            Crafting digital web solutions that blend innovation with functionality, 
             delivering measurable results for real-world challenges.
           </motion.p>
         </motion.div>
@@ -146,13 +146,7 @@ const Realisations = ({ isHomePage = false }: RealisationsProps) => {
                 onHoverEnd={() => setHoveredProject(null)}
                 className="h-full"
               >
-                <Card className="h-full bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden hover:border-lime-400/30 transition-all duration-500 group relative">
-                  {/* Glow effect on hover */}
-                  <div className={`
-                    absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-lime-400 
-                    rounded-2xl opacity-0 group-hover:opacity-20 blur transition-all duration-500
-                  `} />
-                  
+                <Card className="h-full bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden hover:border-lime-400/30 transition-all duration-500 group relative">                  
                   {/* Image Container */}
                   <div className="relative h-56 overflow-hidden">
                     <Image
