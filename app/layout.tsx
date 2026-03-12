@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import { FloatingNav } from "@/components/Navbar";
@@ -9,6 +8,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 import FooterGrid from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 import { ScriptOptimizer } from "@/components/ScriptOptimizer";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -93,6 +93,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GH7NW151J5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GH7NW151J5', {
+              page_path: window.location.pathname,
+              send_page_view: true
+            });
+          `}
+        </Script>
+
         {/* Viewport for mobile optimization */}
         <meta
           name="viewport"
@@ -147,9 +164,7 @@ export default function RootLayout({
               <ScriptOptimizer />
             </div>
           </Providers>
-        </ThemeProvider>
-        {/* Place the GoogleAnalytics component here, ideally after your main content */}
-        <GoogleAnalytics gaId="G-GH7NW151J5" />
+        </ThemeProvider>        
       </body>
     </html>
   );
