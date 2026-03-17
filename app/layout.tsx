@@ -146,11 +146,42 @@ export default function RootLayout({
         <meta
           httpEquiv="Content-Security-Policy"
           content="default-src 'self'; 
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://calendly.com; 
-            frame-src https://calendly.com; 
-            connect-src 'self' https://calendly.com;
-            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-            font-src 'self' https://fonts.gstatic.com;"
+          script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+            https://assets.calendly.com 
+            https://calendly.com
+            https://www.googletagmanager.com
+            https://www.google-analytics.com
+            https://maps.googleapis.com
+            https://*.googleapis.com
+            https://*.gstatic.com;
+          
+          frame-src 
+            https://calendly.com
+            https://www.google.com
+            https://*.google.com;
+          
+          connect-src 'self' 
+            https://calendly.com
+            https://www.google-analytics.com
+            https://region1.google-analytics.com
+            https://*.googleapis.com
+            https://*.gstatic.com;
+          
+          style-src 'self' 'unsafe-inline' 
+            https://fonts.googleapis.com
+            https://*.googleapis.com
+            https://*.gstatic.com;
+          
+          font-src 'self' 
+            https://fonts.gstatic.com;
+          
+          img-src 'self' 
+            https://www.google-analytics.com 
+            https://*.googleapis.com
+            https://*.gstatic.com
+            https://*.google.com
+            https://*.googleusercontent.com
+            data:;"
         />
       </head>
       <body className={inter.className}>
@@ -164,7 +195,7 @@ export default function RootLayout({
               <ScriptOptimizer />
             </div>
           </Providers>
-        </ThemeProvider>        
+        </ThemeProvider>
       </body>
     </html>
   );

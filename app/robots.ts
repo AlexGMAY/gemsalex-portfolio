@@ -17,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
         "/students/",
       ],
     },
-    sitemap: "https://gemsalex.com/sitemap.xml",
+    sitemap: "https://www.gemsalex.com/sitemap.xml",
   };
 }
