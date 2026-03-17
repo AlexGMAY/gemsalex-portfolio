@@ -61,22 +61,7 @@ const foundationalSkills: Skill[] = [
     name: "WordPress",
     level: 95,
     icon: <SiWordpress className="text-[#21759B]" />,
-  },
-  {
-    name: "Prestashop",
-    level: 75,
-    icon: <GiJigsawBox className="text-[#DF0067]" />,
-  },
-  {
-    name: "Dorik CMS",
-    level: 80,
-    icon: <GiJigsawBox className="text-[#3B82F6]" />,
-  },
-  {
-    name: "Lead Pages",
-    level: 82,
-    icon: <TbBrandEdge className="text-[#0FBAFF]" />,
-  },
+  },  
   { name: "SEO", level: 90, icon: <FaSearch className="text-emerald-400" /> },
 ];
 

@@ -179,7 +179,7 @@ const AboutMe = () => {
               </Link>
 
               {/* Download CV Button - Downloads PDF */}
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => {
@@ -194,7 +194,7 @@ const AboutMe = () => {
                 className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white font-medium hover:bg-gray-700 transition-all"
               >
                 <FiDownload /> Download CV
-              </motion.button>
+              </motion.button> */}
             </motion.div>
           </motion.div>
         </div>

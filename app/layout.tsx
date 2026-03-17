@@ -133,55 +133,16 @@ export default function RootLayout({
         {/* Favicon */}
         <link rel="icon" href="/logo-MA.png" sizes="any" />
 
-        {/* Font preloading */}
-        <link
-          rel="preload"
-          href="/fonts/inter.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-
         {/* Content Security Policy */}
         <meta
           httpEquiv="Content-Security-Policy"
           content="default-src 'self'; 
-          script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-            https://assets.calendly.com 
-            https://calendly.com
-            https://www.googletagmanager.com
-            https://www.google-analytics.com
-            https://maps.googleapis.com
-            https://*.googleapis.com
-            https://*.gstatic.com;
-          
-          frame-src 
-            https://calendly.com
-            https://www.google.com
-            https://*.google.com;
-          
-          connect-src 'self' 
-            https://calendly.com
-            https://www.google-analytics.com
-            https://region1.google-analytics.com
-            https://*.googleapis.com
-            https://*.gstatic.com;
-          
-          style-src 'self' 'unsafe-inline' 
-            https://fonts.googleapis.com
-            https://*.googleapis.com
-            https://*.gstatic.com;
-          
-          font-src 'self' 
-            https://fonts.gstatic.com;
-          
-          img-src 'self' 
-            https://www.google-analytics.com 
-            https://*.googleapis.com
-            https://*.gstatic.com
-            https://*.google.com
-            https://*.googleusercontent.com
-            data:;"
+          script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
+          frame-src 'self' https:;
+          connect-src 'self' https:;
+          style-src 'self' 'unsafe-inline' https:;
+          font-src 'self' https:;
+          img-src 'self' https: data:;"
         />
       </head>
       <body className={inter.className}>
