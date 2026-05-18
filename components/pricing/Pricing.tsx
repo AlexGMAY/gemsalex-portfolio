@@ -267,6 +267,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     detectLocation();
   }, []);
 
+  const getApiCurrency = (targetCurrency: Currency): PricingFormData["currency"] =>
+    targetCurrency === "GBP" ? "USD" : targetCurrency;
+
   // Handle form submission
   const handlePricingSubmit = async (
     e: FormEvent<HTMLFormElement>,
@@ -295,7 +298,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         serviceId: selectedService.id,
         serviceTitle: selectedService.title,
         basePrice: getServicePrice(selectedService, currency),
-        currency,
+        currency: getApiCurrency(currency),
         totalAmount: calculateTotal(),
         selectedFeatures: selectedFeatures.map((feature) => ({
           id: feature.id,
