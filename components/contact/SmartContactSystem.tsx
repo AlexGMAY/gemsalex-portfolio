@@ -410,6 +410,7 @@ const SmartContactSystem = () => {
                     <option value="general">General Question</option>
                     <option value="freelance">Freelance Project</option>
                     <option value="collaboration">Collaboration</option>
+                    <option value="collaboration">Online Classes</option>
                     <option value="other">Other</option>
                   </select>
                 </div>

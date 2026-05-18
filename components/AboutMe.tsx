@@ -165,7 +165,7 @@ const AboutMe = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
               viewport={{ once: true }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex justify-between align-center flex-wrap gap-4 pt-4"
             >
               {/* Learn More Button - Links to About Page */}
               <Link href="/about" passHref legacyBehavior>
@@ -179,14 +179,14 @@ const AboutMe = () => {
               </Link>
 
               {/* Download CV Button - Downloads PDF */}
-              {/* <motion.button
+              <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => {
                   // Create a temporary anchor element to trigger download
                   const link = document.createElement("a");
-                  link.href = "/placeholder-cv.pdf"; // Replace with your actual PDF path
-                  link.download = "Your-Name-CV.pdf"; // Suggested filename for download
+                  link.href = "./cv/merveille-alexander-cv-2026.pdf"; // Replace with your actual PDF path
+                  link.download = "Merveille-Alexander-CV.pdf"; // Suggested filename for download
                   document.body.appendChild(link);
                   link.click();
                   document.body.removeChild(link);
@@ -194,7 +194,7 @@ const AboutMe = () => {
                 className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white font-medium hover:bg-gray-700 transition-all"
               >
                 <FiDownload /> Download CV
-              </motion.button> */}
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>

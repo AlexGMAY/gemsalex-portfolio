@@ -8,6 +8,8 @@ import Process from "@/components/courses/Process";
 import Testimonial from "@/components/courses/Testimonial";
 import Cta from "@/components/courses/Cta";
 import Footer from "@/components/courses/Footer";
+import { courseGalleryImages } from "@/data";
+import CourseGallery from "@/components/courses/CourseGallery";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -104,22 +106,29 @@ export default function CoursesPage() {
         {/* Glowing Orbs */}
         <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10" />
         <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl -z-10" />
-        {/* Hero Section */}        
+        {/* Hero Section */}
         <HeroCourse />
-        {/* Value Proposition */}        
+        {/* Value Proposition */}
         <ValueProp />
 
-        {/* Course Categories */}        
+        {/* Course Categories */}
         <CoursesCat />
 
-        {/* Target Audience */}        
+        {/* Target Audience */}
         <Audience />
 
         {/* Process */}
         <Process />
 
         {/* Professional Testimonial */}
-        {/* <Testimonial /> */}
+        <Testimonial />
+
+        {/* Gallery */}
+        <CourseGallery
+          images={courseGalleryImages}
+          title="Training Session Gallery"
+          subtitle="Capturing moments from our personalized 1-on-1 training sessions"
+        />
 
         {/* CTA */}
         <Cta />

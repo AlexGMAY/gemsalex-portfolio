@@ -12,7 +12,7 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import { services, Feature, Service } from "@/data";
-import { GiTunisia } from "react-icons/gi";
+import { FaPoundSign } from "react-icons/fa";
 import { RiMoneyEuroCircleLine } from "react-icons/ri";
 import Link from "next/link";
 import {
@@ -22,8 +22,8 @@ import {
 } from "@/types/pricing";
 import CSRFNotice, { useCSRFNotice } from "../ui/CSRFNotice";
 
-// Add EUR to currency types
-type Currency = "USD" | "TND" | "EUR";
+// Currency types - TND replaced with GBP
+type Currency = "USD" | "GBP" | "EUR";
 type PricingPageType = "home" | "pricing";
 
 interface SuperPricingProps {
@@ -34,7 +34,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   // Enhanced state
   const [currency, setCurrency] = useState<Currency>("USD");
   const [exchangeRate] = useState({
-    TND: 3.1,
+    GBP: 0.79, // 1 USD = 0.79 GBP
     EUR: 0.92,
     USD: 1,
   });
@@ -69,7 +69,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       const data = await response.json();
 
       if (!response.ok) {
-        // Show the refresh message from the API
         showToast(
           "error",
           data.message ||
@@ -93,7 +92,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     setTimeout(() => setToast({ show: false, type: "", message: "" }), 5000);
   };
 
-  // Get service price based on currency (uses manual prices first)
+  // Get service price based on currency
   const getServicePrice = (
     service: Service,
     targetCurrency: Currency,
@@ -101,14 +100,10 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     switch (targetCurrency) {
       case "USD":
         return service.basePrice;
-      case "TND":
-        return (
-          service.localPrice || Math.round(service.basePrice * exchangeRate.TND)
-        );
+      case "GBP":
+        return service.gbpPrice || Math.round(service.basePrice * exchangeRate.GBP);
       case "EUR":
-        return (
-          service.euroPrice || Math.round(service.basePrice * exchangeRate.EUR)
-        );
+        return service.euroPrice || Math.round(service.basePrice * exchangeRate.EUR);
       default:
         return service.basePrice;
     }
@@ -123,7 +118,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     return Math.round(usdPrice * exchangeRate[targetCurrency]);
   };
 
-  // Dynamic total calculation using smart conversion
+  // Dynamic total calculation
   const calculateTotal = (): number => {
     if (!selectedService) return 0;
 
@@ -137,45 +132,22 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   };
 
   // Auto-detect location
-  // useEffect(() => {
-  //   const detect = async () => {
-  //     try {
-  //       const res = await fetch("https://ipapi.co/json/");
-  //       const data = await res.json();
-  //       setUserLocation({ country: data.country_name, city: data.city });
-
-  //       // Auto-select currency based on location
-  //       if (data.country === "TN") setCurrency("TND");
-  //       else if (data.country_code === "EU" || data.continent_code === "EU")
-  //         setCurrency("EUR");
-  //       else setCurrency("USD");
-  //     } catch {
-  //       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  //       if (timezone.includes("Tunis")) setCurrency("TND");
-  //       else if (timezone.includes("Europe")) setCurrency("EUR");
-  //     }
-  //   };
-  //   detect();
-  // }, []);
-
-  // components/SuperPricing.tsx - Replace the useEffect
   useEffect(() => {
     const detectLocation = async () => {
-      // First check if we already have cached location
+      // Check cache first
       const cachedData = localStorage.getItem("userLocationData");
       const cachedTime = localStorage.getItem("userLocationTime");
 
-      // Use cache if less than 7 days old (ipapi.co limit is daily, so 7 days is safe)
       if (cachedData && cachedTime) {
         const age = Date.now() - parseInt(cachedTime);
         if (age < 7 * 24 * 60 * 60 * 1000) {
-          // 7 days
           const location = JSON.parse(cachedData);
           setUserLocation(location);
 
           // Auto-select currency based on cached data
-          if (location.country === "Tunisia") setCurrency("TND");
-          else if (
+          if (location.country === "United Kingdom" || location.country === "UK") {
+            setCurrency("GBP");
+          } else if (
             location.country === "France" ||
             location.country === "Germany" ||
             location.country === "Spain" ||
@@ -185,13 +157,14 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
             location.country === "Switzerland"
           ) {
             setCurrency("EUR");
-          } else setCurrency("USD");
-
+          } else {
+            setCurrency("USD");
+          }
           return;
         }
       }
 
-      // Try a FREE alternative with higher limits first (ipapi.is - 1000 requests/day)
+      // Try ipapi.is first
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -210,24 +183,26 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
             city: data.location?.city || "Unknown",
           };
 
-          // Cache it
           localStorage.setItem("userLocationData", JSON.stringify(location));
           localStorage.setItem("userLocationTime", Date.now().toString());
 
           setUserLocation(location);
 
-          // Set currency
-          if (data.location?.country === "Tunisia") setCurrency("TND");
-          else if (data.location?.continent === "Europe") setCurrency("EUR");
-          else setCurrency("USD");
-
+          // Set currency based on country
+          if (data.location?.country === "United Kingdom") {
+            setCurrency("GBP");
+          } else if (data.location?.continent === "Europe") {
+            setCurrency("EUR");
+          } else {
+            setCurrency("USD");
+          }
           return;
         }
       } catch (error) {
         console.debug("ipapi.is failed, trying backup...");
       }
 
-      // Try ipapi.co as backup (but with retry logic)
+      // Try ipapi.co as backup
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -243,7 +218,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         clearTimeout(timeoutId);
 
         if (res.status === 429) {
-          // Rate limited - just use timezone
           throw new Error("Rate limited");
         }
 
@@ -251,37 +225,38 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           const data = await res.json();
           const location = { country: data.country_name, city: data.city };
 
-          // Cache it
           localStorage.setItem("userLocationData", JSON.stringify(location));
           localStorage.setItem("userLocationTime", Date.now().toString());
 
           setUserLocation(location);
 
-          if (data.country === "TN") setCurrency("TND");
-          else if (data.continent_code === "EU") setCurrency("EUR");
-          else setCurrency("USD");
-
+          if (data.country_code === "GB") {
+            setCurrency("GBP");
+          } else if (data.continent_code === "EU") {
+            setCurrency("EUR");
+          } else {
+            setCurrency("USD");
+          }
           return;
         }
       } catch (error) {
         console.debug("All location APIs failed, using timezone");
       }
 
-      // Final fallback: timezone detection (always works, no API calls)
+      // Final fallback: timezone detection
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const location = {
         country: timezone.split("/")[0] || "International",
         city: timezone.split("/")[1] || timezone,
       };
 
-      // Cache it (shorter time since it's less accurate)
       localStorage.setItem("userLocationData", JSON.stringify(location));
       localStorage.setItem("userLocationTime", Date.now().toString());
 
       setUserLocation(location);
 
-      if (timezone.includes("Tunis") || timezone.includes("Africa/Tunis")) {
-        setCurrency("TND");
+      if (timezone.includes("London") || timezone.includes("United Kingdom")) {
+        setCurrency("GBP");
       } else if (timezone.includes("Europe")) {
         setCurrency("EUR");
       } else {
@@ -300,7 +275,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 
     if (!selectedService || isSubmitting) return;
 
-    // Handle missing CSRF token
     if (!csrfToken) {
       showToast(
         "error",
@@ -320,13 +294,13 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         projectDetails: formData.get("projectDetails") as string,
         serviceId: selectedService.id,
         serviceTitle: selectedService.title,
-        basePrice: getServicePrice(selectedService, currency), // FIXED
+        basePrice: getServicePrice(selectedService, currency),
         currency,
         totalAmount: calculateTotal(),
         selectedFeatures: selectedFeatures.map((feature) => ({
           id: feature.id,
           name: feature.name,
-          price: convertFeaturePrice(feature.price, currency), // FIXED
+          price: convertFeaturePrice(feature.price, currency),
           category: feature.category,
         })),
         website: formData.get("website") as string,
@@ -344,13 +318,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       });
 
       if (response.status === 403) {
-        // CSRF error
         setShowNotice(true);
         showCSRFNotice("pricing");
-        // Clear any existing success state
         sessionStorage.removeItem("pricing_form_success");
-
-        // Don't proceed further
         return;        
       }
 
@@ -358,7 +328,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 
       if (data.success) {
         showToast("success", `${data.message} `);
-        // Reset form and close modal
         setSelectedService(null);
         setSelectedFeatures([]);
         await fetchCsrfToken();
@@ -379,7 +348,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     }
   };
 
-  // Surprise Feature 1: Dynamic price suggestions
   const getPriceHint = (service: Service) => {
     const base = getServicePrice(service, currency);
 
@@ -388,7 +356,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     return "Starter";
   };
 
-  // Surprise Feature 2: Enhanced currency toggle
+  // Enhanced currency toggle with GBP
   const CurrencyToggle = () => (
     <motion.div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-0">
       <div className="flex items-center bg-gray-800 rounded-full p-1">
@@ -416,25 +384,24 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         </button>
         <button
           type="button"
-          onClick={() => setCurrency("TND")}
+          onClick={() => setCurrency("GBP")}
           className={`flex items-center px-4 py-2 rounded-full transition-all ${
-            currency === "TND"
-              ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
+            currency === "GBP"
+              ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
               : "text-gray-300 hover:text-white"
           }`}
         >
-          <GiTunisia className="text-red-400 mr-2" /> TND
+          <FaPoundSign className="mr-2 text-purple-400" /> GBP
         </button>
       </div>
 
-      {/* Exchange rate info */}
       <motion.div
         className="text-xs text-gray-400 mt-2 sm:mt-0 sm:ml-3"
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
       >
         {currency === "EUR" && "€1 ≈ $1.09"}
-        {currency === "TND" && "1 TND ≈ $0.32"}
+        {currency === "GBP" && "£1 ≈ $1.27"}
       </motion.div>
     </motion.div>
   );
@@ -444,44 +411,27 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     switch (currency) {
       case "EUR":
         return "€";
-      case "TND":
-        return "";
+      case "GBP":
+        return "£";
       default:
         return "$";
     }
   };
 
-  // Get currency suffix
-  const getCurrencySuffix = () => {
-    switch (currency) {
-      case "TND":
-        return " TND";
-      case "EUR":
-        return "";
-      default:
-        return "";
-    }
-  };
-
-  // Format service price display (uses manual prices)
   const formatServicePrice = (service: Service): string => {
     const price = getServicePrice(service, currency);
     const symbol = getCurrencySymbol();
-    const suffix = getCurrencySuffix();
-    return `${symbol}${price.toLocaleString()}${suffix}`;
+    return `${symbol}${price.toLocaleString()}`;
   };
 
-  // Format feature price display (converts from USD)
   const formatFeaturePrice = (usdPrice: number): string => {
     const price = convertFeaturePrice(usdPrice, currency);
     const symbol = getCurrencySymbol();
-    const suffix = getCurrencySuffix();
-    return `${symbol}${price.toLocaleString()}${suffix}`;
+    return `${symbol}${price.toLocaleString()}`;
   };
 
   return (
     <section id="pricing" className="py-24 px-4">
-      {/* Toast Notification */}
       <AnimatePresence>
         {toast.show && (
           <motion.div
@@ -503,7 +453,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       </AnimatePresence>
 
       <div className="max-w-8xl mx-auto">
-        {/* Header with currency toggle */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -527,7 +476,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           </div>
         </motion.div>
 
-        {/* Pricing cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedServices.map((service) => (
             <motion.div
@@ -537,7 +485,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
               className="bg-gray-800 rounded-xl shadow-2xl overflow-hidden border border-gray-700"
             >
               <div className="p-6">
-                {/* Service header */}
                 <div className="flex justify-between items-start">
                   <h3 className="text-xl font-bold text-white">
                     {service.title}
@@ -547,7 +494,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   </span>
                 </div>
 
-                {/* Price display - FIXED! */}
                 <div className="my-4">
                   <p className="text-3xl font-bold text-white">
                     {formatServicePrice(service)}
@@ -555,7 +501,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   <p className="text-gray-400">{service.description}</p>
                 </div>
 
-                {/* Core features */}
                 <ul className="space-y-2 mb-6">
                   {service.features
                     .filter((f) => f.category === "core")
@@ -567,7 +512,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                     ))}
                 </ul>
 
-                {/* CTA */}
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
@@ -581,7 +525,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           ))}
         </div>
 
-        {/* View All Services button (only on home page) */}
         {pageType === "home" && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -617,7 +560,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                 className="bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               >
                 <div className="p-6">
-                  {/* Modal header */}
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-white">
                       Customize{" "}
@@ -636,12 +578,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       ✕
                     </button>
                   </div>
-                  {/* Currency Toggle  */}
+
                   <div className="mb-6">
                     <CurrencyToggle />
                   </div>
 
-                  {/* Add-on features */}
                   <div className="space-y-4 mb-8">
                     <h4 className="font-bold text-white">Premium Add-Ons</h4>
                     {selectedService.features
@@ -683,7 +624,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       ))}
                   </div>
 
-                  {/* Order summary - FIXED! */}
                   <div className="p-4 bg-gray-700 rounded-lg mb-6">
                     <h4 className="font-bold text-white mb-3">Order Summary</h4>
                     <div className="space-y-2">
@@ -711,13 +651,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                         <span className="text-lime-400">
                           {getCurrencySymbol()}
                           {calculateTotal().toLocaleString()}
-                          {getCurrencySuffix()}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Trust badges */}
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-2 px-3 py-1 bg-gray-700 rounded-full">
                       <FaLock className="text-green-500" />
@@ -729,7 +667,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                     </div>
                   </div>
 
-                  {/* Contact form */}
                   <form onSubmit={handlePricingSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <input
@@ -758,7 +695,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
                     ></textarea>
 
-                    {/* Honeypot Field */}
                     <div className="hidden" aria-hidden="true">
                       <label htmlFor="website">Website</label>
                       <input
@@ -796,13 +732,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         </AnimatePresence>
       </div>
 
-      {/* CSRF Notice */}
       <CSRFNotice
         type="pricing"
         autoShow={showNotice}
         onDismiss={() => {
           setShowNotice(false);
-          // Optionally refresh CSRF token
           fetchCsrfToken();
         }}
       />

@@ -205,8 +205,8 @@ export interface Service {
   title: string;
   description: string;
   basePrice: number; // USD
-  localPrice?: number; // TND price
-  euroPrice?: number; // EUR price 
+  gbpPrice?: number; // GBP price (optional - can be set manually or calculated)
+  euroPrice?: number; // EUR price
   deliveryTime: string;
   popular?: boolean;
   features: Feature[];
@@ -219,10 +219,10 @@ export const services: Service[] = [
     title: "Business Website",
     description:
       "Premium website with conversion-focused design and guaranteed performance",
-    basePrice: 2500, // USD - INCREASED from $1,750
-    localPrice: 7750, // TND - INCREASED from 5,500 (using 3.1 rate)
-    euroPrice: 2300, // EUR - INCREASED from €1,610
-    deliveryTime: "3-4 weeks", // More realistic
+    basePrice: 2500, // USD
+    gbpPrice: 1969, // GBP (2500 ÷ 1.27)
+    euroPrice: 2300, // EUR
+    deliveryTime: "3-4 weeks",
     popular: true,
     features: [
       {
@@ -347,10 +347,10 @@ export const services: Service[] = [
     id: "showcase-website",
     title: "Showcase Website",
     description: "High-end portfolio with premium presentation features",
-    basePrice: 2000, // USD - INCREASED from $1,500
-    localPrice: 6200, // TND - INCREASED from 4,700
-    euroPrice: 1840, // EUR - INCREASED from €1,380
-    deliveryTime: "3-4 weeks", // More realistic
+    basePrice: 2000, // USD
+    gbpPrice: 1575, // GBP (2000 ÷ 1.27)
+    euroPrice: 1840, // EUR
+    deliveryTime: "3-4 weeks",
     features: [
       {
         id: "sw-core-1",
@@ -452,10 +452,10 @@ export const services: Service[] = [
     id: "ecommerce-store",
     title: "E-Commerce Store",
     description: "Enterprise-grade online store with premium integrations",
-    basePrice: 8500, // USD - INCREASED from $6,000
-    localPrice: 26350, // TND - INCREASED from 12,500
-    euroPrice: 7820, // EUR - INCREASED from €5,520
-    deliveryTime: "6-8 weeks", // More realistic
+    basePrice: 8500, // USD
+    gbpPrice: 6693, // GBP (8500 ÷ 1.27)
+    euroPrice: 7820, // EUR
+    deliveryTime: "6-8 weeks",
     popular: true,
     features: [
       {
@@ -580,10 +580,10 @@ export const services: Service[] = [
     id: "elearning-platform",
     title: "E-Learning Platform",
     description: "Complete LMS with advanced course management",
-    basePrice: 12000, // USD - INCREASED from $8,000
-    localPrice: 37200, // TND - INCREASED from 20,000
-    euroPrice: 11040, // EUR - INCREASED from €7,360
-    deliveryTime: "8-12 weeks", // More realistic
+    basePrice: 12000, // USD
+    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
+    euroPrice: 11040, // EUR
+    deliveryTime: "8-12 weeks",
     features: [
       {
         id: "el-core-1",
@@ -693,10 +693,10 @@ export const services: Service[] = [
     id: "saas-platform",
     title: "SaaS Platform",
     description: "Custom cloud solution with microservices architecture",
-    basePrice: 18000, // USD - INCREASED from $10,000
-    localPrice: 55800, // TND - INCREASED from 31,000
-    euroPrice: 16560, // EUR - INCREASED from €9,200
-    deliveryTime: "12-16 weeks", // More realistic
+    basePrice: 18000, // USD
+    gbpPrice: 14173, // GBP (18000 ÷ 1.27)
+    euroPrice: 16560, // EUR
+    deliveryTime: "12-16 weeks",
     features: [
       {
         id: "saas-core-1",
@@ -798,10 +798,10 @@ export const services: Service[] = [
     id: "plugin-development",
     title: "Plugin Development",
     description: "High-quality plugins with premium support",
-    basePrice: 1800, // USD - INCREASED from $1,000
-    localPrice: 5580, // TND - INCREASED from 3,100
-    euroPrice: 1656, // EUR - INCREASED from €920
-    deliveryTime: "4-6 weeks", // More realistic
+    basePrice: 1800, // USD
+    gbpPrice: 1417, // GBP (1800 ÷ 1.27)
+    euroPrice: 1656, // EUR
+    deliveryTime: "4-6 weeks",
     features: [
       {
         id: "pd-core-1",
@@ -888,10 +888,10 @@ export const services: Service[] = [
     id: "seo-optimization",
     title: "SEO Optimization",
     description: "Comprehensive technical and content SEO",
-    basePrice: 2000, // USD - INCREASED from $1,500
-    localPrice: 6200, // TND - INCREASED from 4,900
-    euroPrice: 1840, // EUR - INCREASED from €1,380
-    deliveryTime: "3-4 weeks", // More realistic
+    basePrice: 2000, // USD
+    gbpPrice: 1575, // GBP (2000 ÷ 1.27)
+    euroPrice: 1840, // EUR
+    deliveryTime: "3-4 weeks",
     features: [
       {
         id: "seo-core-1",
@@ -978,10 +978,10 @@ export const services: Service[] = [
     id: "custom-crm",
     title: "Custom CRM",
     description: "Tailored sales pipeline management system",
-    basePrice: 14000, // USD - INCREASED from $8,500
-    localPrice: 43400, // TND - INCREASED from 23,500
-    euroPrice: 12880, // EUR - INCREASED from €7,820
-    deliveryTime: "12-16 weeks", // More realistic
+    basePrice: 14000, // USD
+    gbpPrice: 11024, // GBP (14000 ÷ 1.27)
+    euroPrice: 12880, // EUR
+    deliveryTime: "12-16 weeks",
     features: [
       {
         id: "crm-core-1",
@@ -1075,10 +1075,10 @@ export const services: Service[] = [
     id: "ai-integration",
     title: "AI Integration",
     description: "Add cutting-edge AI capabilities to your systems",
-    basePrice: 5500, // USD - INCREASED from $3,800
-    localPrice: 17050, // TND - INCREASED from 11,500
-    euroPrice: 5060, // EUR - INCREASED from €3,496
-    deliveryTime: "5-7 weeks", // More realistic
+    basePrice: 5500, // USD
+    gbpPrice: 4331, // GBP (5500 ÷ 1.27)
+    euroPrice: 5060, // EUR
+    deliveryTime: "5-7 weeks",
     features: [
       {
         id: "ai-core-1",
@@ -1157,10 +1157,10 @@ export const services: Service[] = [
     id: "web3-development",
     title: "Web3 Development",
     description: "Blockchain and smart contract solutions",
-    basePrice: 12000, // USD - INCREASED from $8,000
-    localPrice: 37200, // TND - INCREASED from 24,800
-    euroPrice: 11040, // EUR - INCREASED from €7,360
-    deliveryTime: "8-16 weeks", // More realistic
+    basePrice: 12000, // USD
+    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
+    euroPrice: 11040, // EUR
+    deliveryTime: "8-16 weeks",
     features: [
       {
         id: "web3-core-1",
@@ -1235,15 +1235,14 @@ export const services: Service[] = [
       },
     ],
   },
-  // NEW: Booking & Appointment System
   {
     id: "booking-system",
     title: "Booking & Appointment Platform",
     description:
       "Complete scheduling system with calendar integration and automated reminders",
     basePrice: 6500, // USD
-    localPrice: 20150, // TND (6500 × 3.1)
-    euroPrice: 5980, // EUR (6500 × 0.92)
+    gbpPrice: 5118, // GBP (6500 ÷ 1.27)
+    euroPrice: 5980, // EUR
     deliveryTime: "5-7 weeks",
     popular: true,
     features: [
@@ -1320,7 +1319,7 @@ export const services: Service[] = [
     title: "Real Estate Platform",
     description: "Property listings with virtual tours and agent management",
     basePrice: 9500, // USD
-    localPrice: 29450, // TND
+    gbpPrice: 7480, // GBP (9500 ÷ 1.27)
     euroPrice: 8740, // EUR
     deliveryTime: "8-10 weeks",
     popular: true,
@@ -1398,7 +1397,7 @@ export const services: Service[] = [
     title: "Event Management Platform",
     description: "Complete event planning, ticketing, and management solution",
     basePrice: 7500, // USD
-    localPrice: 23250, // TND
+    gbpPrice: 5906, // GBP (7500 ÷ 1.27)
     euroPrice: 6900, // EUR
     deliveryTime: "6-8 weeks",
     features: [
@@ -1475,7 +1474,7 @@ export const services: Service[] = [
     title: "Membership & Subscription Platform",
     description: "Gated content with recurring payments and member management",
     basePrice: 7000, // USD
-    localPrice: 21700, // TND
+    gbpPrice: 5512, // GBP (7000 ÷ 1.27)
     euroPrice: 6440, // EUR
     deliveryTime: "6-8 weeks",
     popular: true,
@@ -1553,8 +1552,8 @@ export const services: Service[] = [
     title: "Logistics & Delivery Platform",
     description:
       "Complete order management, route optimization, and fleet tracking system",
-    basePrice: 12000, // USD - High complexity
-    localPrice: 37200, // TND
+    basePrice: 12000, // USD
+    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
     euroPrice: 11040, // EUR
     deliveryTime: "12-16 weeks",
     features: [
@@ -1677,11 +1676,11 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Unidate : University Dating Platform",
+    title: "Believe Patisserie",
     category: "Nextjs",
-    img: "/projects/unidate.png",
-    github: "https://github.com/AlexGMAY/unidate-main",
-    live: "https://unidate-one.vercel.app/",
+    img: "/projects/believe_patisserie.png",
+    github: "#",
+    live: "https://chezbelieve.com/",
     techStack: [
       "/next.svg",
       "/tail.svg",
@@ -1692,7 +1691,7 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Leaderforma Soutien Scolaire",
+    title: "Leader Soutien Scolaire",
     category: "Nextjs",
     img: "/projects/leaderforma.png",
     github: "#",
@@ -1707,11 +1706,11 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Zando Market",
+    title: "Leaderforma Institute",
     category: "Nextjs",
-    img: "/projects/zandokin.png",
-    github: "https://github.com/AlexGMAY/Zando-Central-Market",
-    live: "https://zandokin.vercel.app",
+    img: "/projects/leaderformaweb.png",
+    github: "#",
+    live: "https://leaderforma.com",
     techStack: [
       "/next.svg",
       "/tail.svg",
@@ -1772,6 +1771,21 @@ export const projects = [
   },
   {
     id: 9,
+    title: "Zando Market",
+    category: "Nextjs",
+    img: "/projects/zandokin.png",
+    github: "https://github.com/AlexGMAY/Zando-Central-Market",
+    live: "https://zandokin.vercel.app",
+    techStack: [
+      "/next.svg",
+      "/tail.svg",
+      "/re.svg",
+      "/git.svg",
+      "/mongodb.svg",
+    ],
+  },
+  {
+    id: 10,
     title: "Suburbia Skateboard Store",
     category: "Nextjs",
     img: "/projects/suburbia-skateboard-store.png",
@@ -1780,10 +1794,10 @@ export const projects = [
     techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
   },
   {
-    id: 10,
+    id: 11,
     title: "SkyRise Banking Platform",
     category: "SaaS",
-    img: "/projects/skyrise-finance-dashboard.png",
+    img: "/projects/skyrise-finance-dashboard-pro.png",
     github: "#", // https://github.com/AlexGMAY/skyrise
     live: "https://skyriseweb.vercel.app/",
     techStack: [
@@ -1793,6 +1807,21 @@ export const projects = [
       "/git.svg",
       "/app.svg",
       "/vercel.svg",
+    ],
+  },
+  {
+    id: 12,
+    title: "Unidate : University Dating Platform",
+    category: "Nextjs",
+    img: "/projects/unidate.png",
+    github: "https://github.com/AlexGMAY/unidate-main",
+    live: "https://unidate-one.vercel.app/",
+    techStack: [
+      "/next.svg",
+      "/tail.svg",
+      "/re.svg",
+      "/git.svg",
+      "/mongodb.svg",
     ],
   },
 ];
@@ -1942,3 +1971,210 @@ export interface ContactMethod {
     border: string;
   };
 }
+
+
+export interface GalleryImage {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  category: "english" | "excel" | "vba" | "amo";
+}
+
+// /data/index.ts - Version avec placeholders Unsplash
+export const courseGalleryImages: GalleryImage[] = [
+  // ENGLISH
+  { id: "eng-001", src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&h=600&fit=crop", alt: "English class", title: "Business English", category: "english" },
+  { id: "eng-002", src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop", alt: "English conversation", title: "Conversation Practice", category: "english" },
+  { id: "eng-003", src: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop", alt: "Writing workshop", title: "Business Writing", category: "english" },
+  { id: "eng-004", src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop", alt: "Speaking practice", title: "Public Speaking", category: "english" },
+  { id: "eng-005", src: "https://images.unsplash.com/photo-1544717305-996b815c338c?w=800&h=600&fit=crop", alt: "Grammar session", title: "Grammar Mastery", category: "english" },
+  { id: "eng-006", src: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&h=600&fit=crop", alt: "Interview prep", title: "Interview Preparation", category: "english" },
+
+  // EXCEL
+  { id: "exc-001", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Excel dashboard", title: "Excel Dashboards", category: "excel" },
+  { id: "exc-002", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Data analysis", title: "Data Analysis", category: "excel" },
+  { id: "exc-003", src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", alt: "Excel formulas", title: "Advanced Formulas", category: "excel" },
+  { id: "exc-004", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Pivot tables", title: "Pivot Tables Mastery", category: "excel" },
+  { id: "exc-005", src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", alt: "Excel charts", title: "Data Visualization", category: "excel" },
+  { id: "exc-006", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Financial modeling", title: "Financial Modeling", category: "excel" },
+
+  // VBA
+  { id: "vba-001", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "VBA coding", title: "VBA Programming", category: "vba" },
+  { id: "vba-002", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "Automation", title: "Workflow Automation", category: "vba" },
+  { id: "vba-003", src: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=600&fit=crop", alt: "Excel macros", title: "Macro Development", category: "vba" },
+  { id: "vba-004", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "UserForms", title: "Custom Interfaces", category: "vba" },
+  { id: "vba-005", src: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=600&fit=crop", alt: "Database integration", title: "Database Connectivity", category: "vba" },
+
+  // AMO
+  { id: "amo-001", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "AMO training", title: "AMO Fundamentals", category: "amo" },
+  { id: "amo-002", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "Advanced AMO", title: "Advanced Techniques", category: "amo" },
+  { id: "amo-003", src: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop", alt: "AMO workshop", title: "Practical Applications", category: "amo" },
+  { id: "amo-004", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "Optimization", title: "Performance Optimization", category: "amo" },
+  { id: "amo-005", src: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop", alt: "Integration", title: "System Integration", category: "amo" },
+];
+
+
+// export const courseGalleryImages: GalleryImage[] = [
+//   // ENGLISH COURSES (6 images)
+//   {
+//     id: "eng-001",
+//     src: "/gallery/courses/english-business-speaking.jpg",
+//     alt: "Business English speaking session",
+//     title: "Business English Communication",
+//     category: "english",
+//   },
+//   {
+//     id: "eng-002",
+//     src: "/gallery/courses/english-pronunciation.jpg",
+//     alt: "English pronunciation coaching",
+//     title: "Accent Reduction & Pronunciation",
+//     category: "english",
+//   },
+//   {
+//     id: "eng-003",
+//     src: "/gallery/courses/english-writing.jpg",
+//     alt: "English writing workshop",
+//     title: "Professional Email & Report Writing",
+//     category: "english",
+//   },
+//   {
+//     id: "eng-004",
+//     src: "/gallery/courses/english-interview.jpg",
+//     alt: "English interview preparation",
+//     title: "Job Interview Preparation",
+//     category: "english",
+//   },
+//   {
+//     id: "eng-005",
+//     src: "/gallery/courses/english-conversation.jpg",
+//     alt: "English conversation practice",
+//     title: "Fluent Conversation Practice",
+//     category: "english",
+//   },
+//   {
+//     id: "eng-006",
+//     src: "/gallery/courses/english-grammar.jpg",
+//     alt: "English grammar intensive",
+//     title: "Grammar Intensive Workshop",
+//     category: "english",
+//   },
+
+//   // EXCEL COURSES (6 images)
+//   {
+//     id: "exc-001",
+//     src: "/gallery/courses/excel-basics.jpg",
+//     alt: "Excel basics training",
+//     title: "Excel Fundamentals",
+//     category: "excel",
+//   },
+//   {
+//     id: "exc-002",
+//     src: "/gallery/courses/excel-dashboard.jpg",
+//     alt: "Excel dashboard creation",
+//     title: "Interactive Dashboards",
+//     category: "excel",
+//   },
+//   {
+//     id: "exc-003",
+//     src: "/gallery/courses/excel-pivot.jpg",
+//     alt: "Excel pivot tables training",
+//     title: "Advanced Pivot Tables",
+//     category: "excel",
+//   },
+//   {
+//     id: "exc-004",
+//     src: "/gallery/courses/excel-charts.jpg",
+//     alt: "Excel charts and graphs",
+//     title: "Data Visualization Mastery",
+//     category: "excel",
+//   },
+//   {
+//     id: "exc-005",
+//     src: "/gallery/courses/excel-power-query.jpg",
+//     alt: "Excel Power Query training",
+//     title: "Power Query & Data Transformation",
+//     category: "excel",
+//   },
+//   {
+//     id: "exc-006",
+//     src: "/gallery/courses/excel-financial.jpg",
+//     alt: "Excel financial modeling",
+//     title: "Financial Modeling",
+//     category: "excel",
+//   },
+
+//   // VBA COURSES (5 images)
+//   {
+//     id: "vba-001",
+//     src: "/gallery/courses/vba-automation.jpg",
+//     alt: "VBA automation session",
+//     title: "Excel VBA Automation",
+//     category: "vba",
+//   },
+//   {
+//     id: "vba-002",
+//     src: "/gallery/courses/vba-macro.jpg",
+//     alt: "VBA macro development",
+//     title: "Advanced Macro Development",
+//     category: "vba",
+//   },
+//   {
+//     id: "vba-003",
+//     src: "/gallery/courses/vba-userform.jpg",
+//     alt: "VBA UserForm design",
+//     title: "Custom UserForm Interfaces",
+//     category: "vba",
+//   },
+//   {
+//     id: "vba-004",
+//     src: "/gallery/courses/vba-database.jpg",
+//     alt: "VBA database integration",
+//     title: "Database Integration",
+//     category: "vba",
+//   },
+//   {
+//     id: "vba-005",
+//     src: "/gallery/courses/vba-debugging.jpg",
+//     alt: "VBA debugging session",
+//     title: "Debugging & Error Handling",
+//     category: "vba",
+//   },
+
+//   // AMO COURSES (5 images)
+//   {
+//     id: "amo-001",
+//     src: "/gallery/courses/amo-fundamentals.jpg",
+//     alt: "AMO fundamentals training",
+//     title: "AMO Fundamentals",
+//     category: "amo",
+//   },
+//   {
+//     id: "amo-002",
+//     src: "/gallery/courses/amo-advanced.jpg",
+//     alt: "AMO advanced techniques",
+//     title: "Advanced AMO Techniques",
+//     category: "amo",
+//   },
+//   {
+//     id: "amo-003",
+//     src: "/gallery/courses/amo-practical.jpg",
+//     alt: "AMO practical application",
+//     title: "Practical Applications",
+//     category: "amo",
+//   },
+//   {
+//     id: "amo-004",
+//     src: "/gallery/courses/amo-optimization.jpg",
+//     alt: "AMO optimization session",
+//     title: "Performance Optimization",
+//     category: "amo",
+//   },
+//   {
+//     id: "amo-005",
+//     src: "/gallery/courses/amo-integration.jpg",
+//     alt: "AMO integration workshop",
+//     title: "System Integration",
+//     category: "amo",
+//   },
+// ];
