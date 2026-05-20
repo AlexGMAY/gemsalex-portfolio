@@ -610,7 +610,7 @@ export function createPricingUserEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.totalAmount.toLocaleString()}${
-                              formData.currency === "TND" ? " TND" : ""
+                              formData.currency === "GBP" ? " GBP" : ""
                             }
                         </div>
                     </div>
@@ -623,7 +623,7 @@ export function createPricingUserEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.basePrice.toLocaleString()}${
-                              formData.currency === "TND" ? " TND" : ""
+                              formData.currency === "GBP" ? " GBP" : ""
                             }
                         </span>
                     </div>
@@ -648,7 +648,7 @@ export function createPricingUserEmailTemplate(
                                     +${
                                       formData.currency === "USD" ? "$" : ""
                                     }${feature.price.toLocaleString()}${
-                                      formData.currency === "TND" ? " TND" : ""
+                                      formData.currency === "GBP" ? " GBP" : ""
                                     }
                                 </span>
                             </li>
@@ -1261,7 +1261,7 @@ export function createPricingAdminEmailTemplate(
                             ${
                               formData.currency === "USD" ? "$" : ""
                             }${formData.totalAmount.toLocaleString()}${
-                              formData.currency === "TND" ? " TND" : ""
+                              formData.currency === "GBP" ? " GBP" : ""
                             }
                         </div>
                     </div>
@@ -1316,7 +1316,7 @@ export function createPricingAdminEmailTemplate(
                                 ${
                                   formData.currency === "USD" ? "$" : ""
                                 }${formData.basePrice.toLocaleString()}${
-                                  formData.currency === "TND" ? " TND" : ""
+                                  formData.currency === "GBP" ? " GBP" : ""
                                 }
                             </span>
                         </div>
@@ -1353,7 +1353,7 @@ export function createPricingAdminEmailTemplate(
                         <span class="feature-price">
                             +${formData.currency === "USD" ? "$" : ""}${
                               feature.price
-                            }${formData.currency === "TND" ? " TND" : ""}
+                            }${formData.currency === "GBP" ? " GBP" : ""}
                         </span>
                     </div>
                     `,

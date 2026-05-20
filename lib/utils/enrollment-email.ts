@@ -313,7 +313,7 @@ export function createUserEnrollmentEmailTemplate(
         
         <div class="footer">
             <p>This is an automated confirmation. We'll be in touch shortly!</p>
-            <p>© ${new Date().getFullYear()} Merveille Alexander. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Marvelbiz Solutions. All rights reserved.</p>
         </div>
     </div>
 </body>
@@ -600,7 +600,7 @@ export function createAdminEnrollmentEmailTemplate(
                 <a href="mailto:${formData.email}?subject=Your ${formData.courseTitle} Enrollment Request&body=Hi ${formData.fullName.split(" ")[0]}," class="btn btn-primary">
                     ✉️ Reply to Student
                 </a>
-                <a href="#" class="btn btn-secondary">
+                <a href="https://calendly.com/contact-marvelbiz/30min" target="_blank" class="btn btn-secondary">
                     📅 Schedule Discovery Call
                 </a>
             </div>
@@ -608,7 +608,7 @@ export function createAdminEnrollmentEmailTemplate(
         
         <div class="footer">
             <p>Lead generated from course enrollment form</p>
-            <p>© ${new Date().getFullYear()} Merveille Alexander. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} Marvelbiz Solutions. All rights reserved.</p>
         </div>
     </div>
 </body>
