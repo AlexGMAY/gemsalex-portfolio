@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiRefreshCw, FiAlertCircle, FiX } from "react-icons/fi";
 
 type CSRFNoticeProps = {
-  type?: "contact" | "pricing" | "partnership";
+  type?: "contact" | "pricing" | "partnership" | "enrollment";
   onDismiss?: () => void;
   autoShow?: boolean;
 };
@@ -47,6 +47,7 @@ const CSRFNotice = ({
     contact: "contact form",
     pricing: "pricing form",
     partnership: "partnership form",
+    enrollment: "enrollment form"
   };
 
   return (
@@ -153,7 +154,7 @@ const CSRFNotice = ({
 export const CSRFMiniNotice = ({
   type = "contact",
 }: {
-  type?: "contact" | "pricing" | "partnership";
+  type?: "contact" | "pricing" | "partnership" | "enrollment";
 }) => {
   const [isMac, setIsMac] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -170,6 +171,7 @@ export const CSRFMiniNotice = ({
     contact: "Contact form",
     pricing: "Pricing calculator",
     partnership: "Partnership form",
+    enrollment: "Enrollment form",
   };
 
   return (
@@ -211,14 +213,18 @@ export const CSRFMiniNotice = ({
 // Hook to trigger CSRF notice
 export const useCSRFNotice = () => {
   const showCSRFNotice = (
-    type: "contact" | "pricing" | "partnership" = "contact",
+    type: "contact" | "pricing" | "partnership" | "enrollment" = "contact",
   ) => {
     sessionStorage.setItem("csrf_error", "true");
     sessionStorage.setItem("csrf_form_type", type);
     window.location.reload(); // Or use router.refresh() if using Next.js App Router
   };
 
-  const getCSRFType = (): "contact" | "pricing" | "partnership" => {
+  const getCSRFType = ():
+    | "contact"
+    | "pricing"
+    | "partnership"
+    | "enrollment" => {
     return (sessionStorage.getItem("csrf_form_type") as any) || "contact";
   };
 

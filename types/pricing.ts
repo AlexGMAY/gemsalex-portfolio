@@ -5,7 +5,7 @@ export interface PricingFormData {
   serviceId: string;
   serviceTitle: string;
   basePrice: number;
-  currency: "USD" | "TND" | "EUR";
+  currency: "USD" | "GBP" | "EUR";
   totalAmount: number;
   selectedFeatures: PricingFeature[];
   website?: string; // Honeypot field

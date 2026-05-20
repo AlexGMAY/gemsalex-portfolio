@@ -103,7 +103,7 @@ const CourseGallery = ({
       case "excel":
         return "from-green-400 to-emerald-400";
       case "vba":
-        return "from-purple-400 to-pink-400";
+        return "from-cyan-400 to-green-400";
       case "amo":
         return "from-orange-400 to-red-400";
       default:
@@ -112,8 +112,8 @@ const CourseGallery = ({
   };
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-black-100 to-black-100 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className="py-20 md:py-20 bg-gradient-to-b from-black-100 to-black-100 overflow-hidden">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -129,7 +129,7 @@ const CourseGallery = ({
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-400 via-lime-400 to-emerald-400 bg-clip-text text-transparent">
               {title}
             </span>
@@ -158,7 +158,7 @@ const CourseGallery = ({
               }}
               className={`relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden group ${
                 filter === cat.id
-                  ? "text-gray-900 shadow-lg"
+                  ? "text-white shadow-lg"
                   : "text-white hover:text-gray-900"
               }`}
             >

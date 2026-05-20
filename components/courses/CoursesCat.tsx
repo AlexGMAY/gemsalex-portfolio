@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-// Vérifiez d'abord que ces icônes existent
 import {
   Code,
   Palette,
@@ -27,9 +25,11 @@ import {
   CheckCircle2,
   ExternalLink,
 } from "lucide-react";
+import EnrollmentForm from "./EnrollmentForm";
 
-// ... (garde les types et données inchangés)
-// Types
+/**
+ * Types Interface
+ */
 interface Course {
   id: string;
   title: string;
@@ -48,7 +48,9 @@ interface Course {
   icon: React.ReactNode;
 }
 
-// Données des cours
+/**
+ * Courses Data
+ */
 const coursesData: Course[] = [
   // Tech & Development Courses
   {
@@ -492,13 +494,20 @@ const coursesData: Course[] = [
   },
 ];
 
-// Modal Component - Version simplifiée sans classes dynamiques problématiques
+
+/** 
+ * Modal Component
+ * With Download Syllabus Button
+ * Enrollment Button
+ */
 const CourseModal = ({
   course,
   onClose,
+  onEnroll,
 }: {
   course: Course | null;
   onClose: () => void;
+  onEnroll: (course: { id: string; title: string; category: string }) => void;
 }) => {
   if (!course) return null;
 
@@ -692,10 +701,31 @@ const CourseModal = ({
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-800">
-            <button className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium hover:from-blue-600 hover:to-blue-700 transition-all">
+            <button
+              onClick={() => {
+                onClose();
+                onEnroll({
+                  id: course.id,
+                  title: course.title,
+                  category: course.category,
+                });
+              }}
+              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-lime-500 to-green-500 text-white font-medium hover:from-lime-600 hover:to-green-600 transition-all"
+            >
               Enroll Now
             </button>
-            <button className="flex-1 px-6 py-3 rounded-xl bg-gray-800 text-white font-medium hover:bg-gray-700 transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={() => {
+                // Télécharger le syllabus
+                const link = document.createElement("a");
+                link.href = `/syllabus/${course.id}.pdf`;
+                link.download = `${course.title}-Syllabus.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="flex-1 px-6 py-3 rounded-xl bg-gray-800 text-white font-medium hover:bg-gray-700 transition-all flex items-center justify-center gap-2"
+            >
               Download Syllabus <ExternalLink className="h-4 w-4" />
             </button>
           </div>
@@ -705,10 +735,19 @@ const CourseModal = ({
   );
 };
 
-// Composant principal - Version simplifiée
+/**
+ * Main Components CoursesCat
+ * @returns 
+ */
 const CoursesCat = () => {
   const [activeTab, setActiveTab] = useState<"tech" | "business">("tech");
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
+  const [selectedEnrollmentCourse, setSelectedEnrollmentCourse] = useState<{
+    id: string;
+    title: string;
+    category: string;
+  } | null>(null);
 
   const filteredCourses = coursesData.filter(
     (course) => course.category === activeTab,
@@ -781,6 +820,15 @@ const CoursesCat = () => {
 
   const getLearnMoreColor = () => {
     return activeTab === "tech" ? "text-blue-400" : "text-lime-400";
+  };
+
+  const handleEnroll = (course: {
+    id: string;
+    title: string;
+    category: string;
+  }) => {
+    setSelectedEnrollmentCourse(course);
+    setIsEnrollmentOpen(true);
   };
 
   return (
@@ -966,9 +1014,19 @@ const CoursesCat = () => {
           <CourseModal
             course={selectedCourse}
             onClose={() => setSelectedCourse(null)}
+            onEnroll={handleEnroll}
           />
         )}
       </AnimatePresence>
+
+      <EnrollmentForm
+        isOpen={isEnrollmentOpen}
+        onClose={() => {
+          setIsEnrollmentOpen(false);
+          setSelectedEnrollmentCourse(null);
+        }}
+        preselectedCourse={selectedEnrollmentCourse}
+      />
     </section>
   );
 };

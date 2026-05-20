@@ -279,7 +279,7 @@ const Testimonial = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
-                  className="space-y-6"
+                  className="space-y-6 md:px-12"
                 >
                   <div className="flex items-start justify-between flex-wrap gap-4">
                     <div className="flex items-center gap-4">
@@ -351,8 +351,8 @@ const Testimonial = () => {
                   }}
                   className={`transition-all duration-300 rounded-full ${
                     idx === currentIndex
-                      ? "w-8 h-2 bg-gradient-to-r from-blue-400 to-lime-400"
-                      : "w-2 h-2 bg-gray-600 hover:bg-gray-500"
+                      ? "w-10 h-4 bg-gradient-to-r from-blue-400 to-lime-400"
+                      : "w-4 h-4 bg-gray-600 hover:bg-gray-500"
                   }`}
                 />
               ))}

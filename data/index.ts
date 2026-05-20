@@ -1981,7 +1981,7 @@ export interface GalleryImage {
   category: "english" | "excel" | "vba" | "amo";
 }
 
-// /data/index.ts - Version avec placeholders Unsplash
+
 export const courseGalleryImages: GalleryImage[] = [
   // ENGLISH
   { id: "eng-001", src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&h=600&fit=crop", alt: "English class", title: "Business English", category: "english" },
@@ -2019,42 +2019,42 @@ export const courseGalleryImages: GalleryImage[] = [
 //   // ENGLISH COURSES (6 images)
 //   {
 //     id: "eng-001",
-//     src: "/gallery/courses/english-business-speaking.jpg",
+//     src: "/courses-pics/english-business-speaking.jpg",
 //     alt: "Business English speaking session",
 //     title: "Business English Communication",
 //     category: "english",
 //   },
 //   {
 //     id: "eng-002",
-//     src: "/gallery/courses/english-pronunciation.jpg",
+//     src: "/courses-pics/english-pronunciation.jpg",
 //     alt: "English pronunciation coaching",
 //     title: "Accent Reduction & Pronunciation",
 //     category: "english",
 //   },
 //   {
 //     id: "eng-003",
-//     src: "/gallery/courses/english-writing.jpg",
+//     src: "/courses-pics/english-writing.jpg",
 //     alt: "English writing workshop",
 //     title: "Professional Email & Report Writing",
 //     category: "english",
 //   },
 //   {
 //     id: "eng-004",
-//     src: "/gallery/courses/english-interview.jpg",
+//     src: "/courses-pics/english-interview.jpg",
 //     alt: "English interview preparation",
 //     title: "Job Interview Preparation",
 //     category: "english",
 //   },
 //   {
 //     id: "eng-005",
-//     src: "/gallery/courses/english-conversation.jpg",
+//     src: "/courses-pics/english-conversation.jpg",
 //     alt: "English conversation practice",
 //     title: "Fluent Conversation Practice",
 //     category: "english",
 //   },
 //   {
 //     id: "eng-006",
-//     src: "/gallery/courses/english-grammar.jpg",
+//     src: "/courses-pics/english-grammar.jpg",
 //     alt: "English grammar intensive",
 //     title: "Grammar Intensive Workshop",
 //     category: "english",
@@ -2063,42 +2063,42 @@ export const courseGalleryImages: GalleryImage[] = [
 //   // EXCEL COURSES (6 images)
 //   {
 //     id: "exc-001",
-//     src: "/gallery/courses/excel-basics.jpg",
+//     src: "/courses-pics/excel-basics.jpg",
 //     alt: "Excel basics training",
 //     title: "Excel Fundamentals",
 //     category: "excel",
 //   },
 //   {
 //     id: "exc-002",
-//     src: "/gallery/courses/excel-dashboard.jpg",
+//     src: "/courses-pics/excel-dashboard.jpg",
 //     alt: "Excel dashboard creation",
 //     title: "Interactive Dashboards",
 //     category: "excel",
 //   },
 //   {
 //     id: "exc-003",
-//     src: "/gallery/courses/excel-pivot.jpg",
+//     src: "/courses-pics/excel-pivot.jpg",
 //     alt: "Excel pivot tables training",
 //     title: "Advanced Pivot Tables",
 //     category: "excel",
 //   },
 //   {
 //     id: "exc-004",
-//     src: "/gallery/courses/excel-charts.jpg",
+//     src: "/courses-pics/excel-charts.jpg",
 //     alt: "Excel charts and graphs",
 //     title: "Data Visualization Mastery",
 //     category: "excel",
 //   },
 //   {
 //     id: "exc-005",
-//     src: "/gallery/courses/excel-power-query.jpg",
+//     src: "/courses-pics/excel-power-query.jpg",
 //     alt: "Excel Power Query training",
 //     title: "Power Query & Data Transformation",
 //     category: "excel",
 //   },
 //   {
 //     id: "exc-006",
-//     src: "/gallery/courses/excel-financial.jpg",
+//     src: "/courses-pics/excel-financial.jpg",
 //     alt: "Excel financial modeling",
 //     title: "Financial Modeling",
 //     category: "excel",
@@ -2107,35 +2107,35 @@ export const courseGalleryImages: GalleryImage[] = [
 //   // VBA COURSES (5 images)
 //   {
 //     id: "vba-001",
-//     src: "/gallery/courses/vba-automation.jpg",
+//     src: "/courses-pics/vba-automation.jpg",
 //     alt: "VBA automation session",
 //     title: "Excel VBA Automation",
 //     category: "vba",
 //   },
 //   {
 //     id: "vba-002",
-//     src: "/gallery/courses/vba-macro.jpg",
+//     src: "/courses-pics/vba-macro.jpg",
 //     alt: "VBA macro development",
 //     title: "Advanced Macro Development",
 //     category: "vba",
 //   },
 //   {
 //     id: "vba-003",
-//     src: "/gallery/courses/vba-userform.jpg",
+//     src: "/courses-pics/vba-userform.jpg",
 //     alt: "VBA UserForm design",
 //     title: "Custom UserForm Interfaces",
 //     category: "vba",
 //   },
 //   {
 //     id: "vba-004",
-//     src: "/gallery/courses/vba-database.jpg",
+//     src: "/courses-pics/vba-database.jpg",
 //     alt: "VBA database integration",
 //     title: "Database Integration",
 //     category: "vba",
 //   },
 //   {
 //     id: "vba-005",
-//     src: "/gallery/courses/vba-debugging.jpg",
+//     src: "/courses-pics/vba-debugging.jpg",
 //     alt: "VBA debugging session",
 //     title: "Debugging & Error Handling",
 //     category: "vba",
@@ -2144,37 +2144,123 @@ export const courseGalleryImages: GalleryImage[] = [
 //   // AMO COURSES (5 images)
 //   {
 //     id: "amo-001",
-//     src: "/gallery/courses/amo-fundamentals.jpg",
+//     src: "/courses-pics/amo-fundamentals.jpg",
 //     alt: "AMO fundamentals training",
 //     title: "AMO Fundamentals",
 //     category: "amo",
 //   },
 //   {
 //     id: "amo-002",
-//     src: "/gallery/courses/amo-advanced.jpg",
+//     src: "/courses-pics/amo-advanced.jpg",
 //     alt: "AMO advanced techniques",
 //     title: "Advanced AMO Techniques",
 //     category: "amo",
 //   },
 //   {
 //     id: "amo-003",
-//     src: "/gallery/courses/amo-practical.jpg",
+//     src: "/courses-pics/amo-practical.jpg",
 //     alt: "AMO practical application",
 //     title: "Practical Applications",
 //     category: "amo",
 //   },
 //   {
 //     id: "amo-004",
-//     src: "/gallery/courses/amo-optimization.jpg",
+//     src: "/courses-pics/amo-optimization.jpg",
 //     alt: "AMO optimization session",
 //     title: "Performance Optimization",
 //     category: "amo",
 //   },
 //   {
 //     id: "amo-005",
-//     src: "/gallery/courses/amo-integration.jpg",
+//     src: "/courses-pics/amo-integration.jpg",
 //     alt: "AMO integration workshop",
 //     title: "System Integration",
 //     category: "amo",
 //   },
 // ];
+
+
+export interface Course {
+  id: string;
+  title: string;
+  category: "english" | "excel" | "vba" | "amo";
+  duration: string;
+  level: string;
+  price: number;
+  description: string;
+}
+
+export const enrollmentCourses: Course[] = [
+  {
+    id: "english-business",
+    title: "Business English",
+    category: "english",
+    duration: "8 weeks",
+    level: "Intermediate",
+    price: 1200,
+    description: "Master professional communication for international business environments.",
+  },
+  {
+    id: "english-conversation",
+    title: "Conversational English",
+    category: "english",
+    duration: "6 weeks",
+    level: "Beginner/Intermediate",
+    price: 900,
+    description: "Improve your daily English speaking and listening skills.",
+  },
+  {
+    id: "excel-fundamentals",
+    title: "Excel Fundamentals",
+    category: "excel",
+    duration: "4 weeks",
+    level: "Beginner",
+    price: 800,
+    description: "Learn the basics of Excel for data entry and simple analysis.",
+  },
+  {
+    id: "excel-advanced",
+    title: "Advanced Excel",
+    category: "excel",
+    duration: "6 weeks",
+    level: "Advanced",
+    price: 1200,
+    description: "Master PivotTables, Power Query, and complex formulas.",
+  },
+  {
+    id: "vba-automation",
+    title: "VBA Automation",
+    category: "vba",
+    duration: "5 weeks",
+    level: "Intermediate",
+    price: 1500,
+    description: "Automate repetitive tasks and create custom Excel macros.",
+  },
+  {
+    id: "vba-expert",
+    title: "VBA Expert",
+    category: "vba",
+    duration: "8 weeks",
+    level: "Advanced",
+    price: 2000,
+    description: "Build complex applications and integrate with databases.",
+  },
+  {
+    id: "amo-fundamentals",
+    title: "AMO Fundamentals",
+    category: "amo",
+    duration: "6 weeks",
+    level: "Beginner",
+    price: 1300,
+    description: "Introduction to AMO concepts and basic automation.",
+  },
+  {
+    id: "amo-advanced",
+    title: "Advanced AMO",
+    category: "amo",
+    duration: "8 weeks",
+    level: "Advanced",
+    price: 1800,
+    description: "Master AMO for enterprise-level process optimization.",
+  },
+];

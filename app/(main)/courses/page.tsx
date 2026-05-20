@@ -10,6 +10,7 @@ import Cta from "@/components/courses/Cta";
 import Footer from "@/components/courses/Footer";
 import { courseGalleryImages } from "@/data";
 import CourseGallery from "@/components/courses/CourseGallery";
+import EnrollmentForm from "@/components/courses/EnrollmentForm";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -121,7 +122,7 @@ export default function CoursesPage() {
         <Process />
 
         {/* Professional Testimonial */}
-        <Testimonial />
+        <Testimonial />        
 
         {/* Gallery */}
         <CourseGallery
