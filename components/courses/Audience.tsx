@@ -28,7 +28,7 @@ const Audience = () => {
           {[
             {
               image:
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+                "/gallery/corporate-team.jpg",
               title: "Corporate Professionals",
               description:
                 "Executives & managers seeking digital transformation and leadership advancement",
@@ -45,8 +45,7 @@ const Audience = () => {
               ],
             },
             {
-              image:
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+              image:"/gallery/tech-career-changers.jpg",
               title: "Tech Career Changers",
               description:
                 "Professionals transitioning into technology roles or expanding technical expertise",
@@ -64,7 +63,7 @@ const Audience = () => {
             },
             {
               image:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+                "/gallery/career-change-it.jpg",
               title: "Business Entrepreneurs",
               description:
                 "Founders and business owners optimizing operations and scaling digitally",
@@ -82,7 +81,7 @@ const Audience = () => {
             },
             {
               image:
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+                "/gallery/prod-experts.jpg",
               title: "Productivity Experts",
               description:
                 "Professionals optimizing workflows and mastering productivity tools",

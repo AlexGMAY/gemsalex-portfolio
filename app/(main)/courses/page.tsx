@@ -11,6 +11,7 @@ import Footer from "@/components/courses/Footer";
 import { courseGalleryImages } from "@/data";
 import CourseGallery from "@/components/courses/CourseGallery";
 import EnrollmentForm from "@/components/courses/EnrollmentForm";
+import PricingTable from "@/components/courses/PricingTable";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -114,6 +115,9 @@ export default function CoursesPage() {
 
         {/* Course Categories */}
         <CoursesCat />
+
+        {/* Pricing Table */}
+        <PricingTable />
 
         {/* Target Audience */}
         <Audience />

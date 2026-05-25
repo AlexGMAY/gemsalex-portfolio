@@ -1983,284 +1983,974 @@ export interface GalleryImage {
 
 
 export const courseGalleryImages: GalleryImage[] = [
-  // ENGLISH
-  { id: "eng-001", src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&h=600&fit=crop", alt: "English class", title: "Business English", category: "english" },
-  { id: "eng-002", src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop", alt: "English conversation", title: "Conversation Practice", category: "english" },
-  { id: "eng-003", src: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop", alt: "Writing workshop", title: "Business Writing", category: "english" },
-  { id: "eng-004", src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop", alt: "Speaking practice", title: "Public Speaking", category: "english" },
-  { id: "eng-005", src: "https://images.unsplash.com/photo-1544717305-996b815c338c?w=800&h=600&fit=crop", alt: "Grammar session", title: "Grammar Mastery", category: "english" },
-  { id: "eng-006", src: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&h=600&fit=crop", alt: "Interview prep", title: "Interview Preparation", category: "english" },
-
-  // EXCEL
-  { id: "exc-001", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Excel dashboard", title: "Excel Dashboards", category: "excel" },
-  { id: "exc-002", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Data analysis", title: "Data Analysis", category: "excel" },
-  { id: "exc-003", src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", alt: "Excel formulas", title: "Advanced Formulas", category: "excel" },
-  { id: "exc-004", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Pivot tables", title: "Pivot Tables Mastery", category: "excel" },
-  { id: "exc-005", src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", alt: "Excel charts", title: "Data Visualization", category: "excel" },
-  { id: "exc-006", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", alt: "Financial modeling", title: "Financial Modeling", category: "excel" },
-
-  // VBA
-  { id: "vba-001", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "VBA coding", title: "VBA Programming", category: "vba" },
-  { id: "vba-002", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "Automation", title: "Workflow Automation", category: "vba" },
-  { id: "vba-003", src: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=600&fit=crop", alt: "Excel macros", title: "Macro Development", category: "vba" },
-  { id: "vba-004", src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop", alt: "UserForms", title: "Custom Interfaces", category: "vba" },
-  { id: "vba-005", src: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=600&fit=crop", alt: "Database integration", title: "Database Connectivity", category: "vba" },
-
-  // AMO
-  { id: "amo-001", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "AMO training", title: "AMO Fundamentals", category: "amo" },
-  { id: "amo-002", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "Advanced AMO", title: "Advanced Techniques", category: "amo" },
-  { id: "amo-003", src: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop", alt: "AMO workshop", title: "Practical Applications", category: "amo" },
-  { id: "amo-004", src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop", alt: "Optimization", title: "Performance Optimization", category: "amo" },
-  { id: "amo-005", src: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop", alt: "Integration", title: "System Integration", category: "amo" },
-];
-
-
-// export const courseGalleryImages: GalleryImage[] = [
-//   // ENGLISH COURSES (6 images)
-//   {
-//     id: "eng-001",
-//     src: "/courses-pics/english-business-speaking.jpg",
-//     alt: "Business English speaking session",
-//     title: "Business English Communication",
-//     category: "english",
-//   },
-//   {
-//     id: "eng-002",
-//     src: "/courses-pics/english-pronunciation.jpg",
-//     alt: "English pronunciation coaching",
-//     title: "Accent Reduction & Pronunciation",
-//     category: "english",
-//   },
-//   {
-//     id: "eng-003",
-//     src: "/courses-pics/english-writing.jpg",
-//     alt: "English writing workshop",
-//     title: "Professional Email & Report Writing",
-//     category: "english",
-//   },
-//   {
-//     id: "eng-004",
-//     src: "/courses-pics/english-interview.jpg",
-//     alt: "English interview preparation",
-//     title: "Job Interview Preparation",
-//     category: "english",
-//   },
-//   {
-//     id: "eng-005",
-//     src: "/courses-pics/english-conversation.jpg",
-//     alt: "English conversation practice",
-//     title: "Fluent Conversation Practice",
-//     category: "english",
-//   },
-//   {
-//     id: "eng-006",
-//     src: "/courses-pics/english-grammar.jpg",
-//     alt: "English grammar intensive",
-//     title: "Grammar Intensive Workshop",
-//     category: "english",
-//   },
-
-//   // EXCEL COURSES (6 images)
-//   {
-//     id: "exc-001",
-//     src: "/courses-pics/excel-basics.jpg",
-//     alt: "Excel basics training",
-//     title: "Excel Fundamentals",
-//     category: "excel",
-//   },
-//   {
-//     id: "exc-002",
-//     src: "/courses-pics/excel-dashboard.jpg",
-//     alt: "Excel dashboard creation",
-//     title: "Interactive Dashboards",
-//     category: "excel",
-//   },
-//   {
-//     id: "exc-003",
-//     src: "/courses-pics/excel-pivot.jpg",
-//     alt: "Excel pivot tables training",
-//     title: "Advanced Pivot Tables",
-//     category: "excel",
-//   },
-//   {
-//     id: "exc-004",
-//     src: "/courses-pics/excel-charts.jpg",
-//     alt: "Excel charts and graphs",
-//     title: "Data Visualization Mastery",
-//     category: "excel",
-//   },
-//   {
-//     id: "exc-005",
-//     src: "/courses-pics/excel-power-query.jpg",
-//     alt: "Excel Power Query training",
-//     title: "Power Query & Data Transformation",
-//     category: "excel",
-//   },
-//   {
-//     id: "exc-006",
-//     src: "/courses-pics/excel-financial.jpg",
-//     alt: "Excel financial modeling",
-//     title: "Financial Modeling",
-//     category: "excel",
-//   },
-
-//   // VBA COURSES (5 images)
-//   {
-//     id: "vba-001",
-//     src: "/courses-pics/vba-automation.jpg",
-//     alt: "VBA automation session",
-//     title: "Excel VBA Automation",
-//     category: "vba",
-//   },
-//   {
-//     id: "vba-002",
-//     src: "/courses-pics/vba-macro.jpg",
-//     alt: "VBA macro development",
-//     title: "Advanced Macro Development",
-//     category: "vba",
-//   },
-//   {
-//     id: "vba-003",
-//     src: "/courses-pics/vba-userform.jpg",
-//     alt: "VBA UserForm design",
-//     title: "Custom UserForm Interfaces",
-//     category: "vba",
-//   },
-//   {
-//     id: "vba-004",
-//     src: "/courses-pics/vba-database.jpg",
-//     alt: "VBA database integration",
-//     title: "Database Integration",
-//     category: "vba",
-//   },
-//   {
-//     id: "vba-005",
-//     src: "/courses-pics/vba-debugging.jpg",
-//     alt: "VBA debugging session",
-//     title: "Debugging & Error Handling",
-//     category: "vba",
-//   },
-
-//   // AMO COURSES (5 images)
-//   {
-//     id: "amo-001",
-//     src: "/courses-pics/amo-fundamentals.jpg",
-//     alt: "AMO fundamentals training",
-//     title: "AMO Fundamentals",
-//     category: "amo",
-//   },
-//   {
-//     id: "amo-002",
-//     src: "/courses-pics/amo-advanced.jpg",
-//     alt: "AMO advanced techniques",
-//     title: "Advanced AMO Techniques",
-//     category: "amo",
-//   },
-//   {
-//     id: "amo-003",
-//     src: "/courses-pics/amo-practical.jpg",
-//     alt: "AMO practical application",
-//     title: "Practical Applications",
-//     category: "amo",
-//   },
-//   {
-//     id: "amo-004",
-//     src: "/courses-pics/amo-optimization.jpg",
-//     alt: "AMO optimization session",
-//     title: "Performance Optimization",
-//     category: "amo",
-//   },
-//   {
-//     id: "amo-005",
-//     src: "/courses-pics/amo-integration.jpg",
-//     alt: "AMO integration workshop",
-//     title: "System Integration",
-//     category: "amo",
-//   },
-// ];
-
-
-export interface Course {
-  id: string;
-  title: string;
-  category: "english" | "excel" | "vba" | "amo";
-  duration: string;
-  level: string;
-  price: number;
-  description: string;
-}
-
-export const enrollmentCourses: Course[] = [
+  // ENGLISH COURSES
   {
-    id: "english-business",
-    title: "Business English",
+    id: "eng-001",
+    src: "/courses-pics/anglais-abdou-ali.png",
+    alt: "Beginner English Learner Abdou Ali",
+    title: "Beginner English Learner Abdou Ali",
     category: "english",
-    duration: "8 weeks",
-    level: "Intermediate",
-    price: 1200,
-    description: "Master professional communication for international business environments.",
   },
   {
-    id: "english-conversation",
-    title: "Conversational English",
+    id: "eng-002",
+    src: "/courses-pics/anglais-alexandra-hansart.png",
+    alt: "Intermediate English coaching",
+    title: "Intermediate English coaching",
     category: "english",
-    duration: "6 weeks",
-    level: "Beginner/Intermediate",
-    price: 900,
-    description: "Improve your daily English speaking and listening skills.",
   },
   {
-    id: "excel-fundamentals",
+    id: "eng-003",
+    src: "/courses-pics/anglais-camus-eddy.png",
+    alt: "Beginner English coaching Camus Eddy",
+    title: "Beginner English coaching Camus Eddy",
+    category: "english",
+  },
+  {
+    id: "eng-004",
+    src: "/courses-pics/anglais-celine-herve.png",
+    alt: "English for sports professionals",
+    title: "English for sports professionals",
+    category: "english",
+  },
+  {
+    id: "eng-005",
+    src: "/courses-pics/anglais-Daouda-faye.png",
+    alt: "Beginner English lessons with Daouda Faye",
+    title: "Beginner English lessons with Daouda Faye",
+    category: "english",
+  },
+  {
+    id: "eng-006",
+    src: "/courses-pics/anglais-dominique-eon.png",
+    alt: "Beginner English lessons with Dominique Eon",
+    title: "Beginner English lessons with Dominique Eon",
+    category: "english",
+  },
+ {
+    id: "eng-007",
+    src: "/courses-pics/anglais-estaban-martinez.png",
+    alt: "Advanced English Conversations with Estaban Martinez",
+    title: "Advanced English Conversations with Estaban Martinez",
+    category: "english",
+  },
+  {
+    id: "eng-008",
+    src: "/courses-pics/anglais-julien-philippe.png",
+    alt: "Beginner English Conversations with Julien Philippe",
+    title: "Beginner English Conversations with Julien Philippe",
+    category: "english",
+  },
+ {
+    id: "eng-009",
+    src: "/courses-pics/anglais-estelle-moreau-v1.png",
+    alt: "Beginner English Conversations with Estelle Moreau",
+    title: "Beginner English Conversations with Estelle Moreau",
+    category: "english",
+  },
+ {
+    id: "eng-010",
+    src: "/courses-pics/anglais-estelle-moreau-v2.png",
+    alt: "Beginner English Conversations with Estelle Moreau",
+    title: "Beginner English Conversations with Estelle Moreau",
+    category: "english",
+  },
+ {
+    id: "eng-011",
+    src: "/courses-pics/anglais-gambaro-valentin.png",
+    alt: "Intermediate English Lessons with Valentin Gambaro",
+    title: "Intermediate English Lessons with Valentin Gambaro",
+    category: "english",
+  },
+ {
+    id: "eng-012",
+    src: "/courses-pics/anglais-herve-meubry.png",
+    alt: "Beginner English Conversations with Herve Meubry",
+    title: "Beginner English Conversations with Herve Meubry",
+    category: "english",
+  },
+ {
+    id: "eng-013",
+    src: "/courses-pics/anglais-todde-jeremyy.png",
+    alt: "Beginner English Lessons with Todde Jeremy",
+    title: "Beginner English Lessons with Todde Jeremy",
+    category: "english",
+  },
+ {
+    id: "eng-014",
+    src: "/courses-pics/benoit-anglais-cours.png",
+    alt: "Beginner English Lessons with Benoit",
+    title: "Beginner English Lessons with Benoit",
+    category: "english",
+  },
+ {
+    id: "eng-015",
+    src: "/courses-pics/brice-lof-english-course.png",
+    alt: "Advanced English Lessons with Brice Lof",
+    title: "Advanced English Lessons with Brice Lof",
+    category: "english",
+  },
+ {
+    id: "eng-016",
+    src: "/courses-pics/irastorza-christine-english.png",
+    alt: "Beginner English Lessons with Christine",
+    title: "Beginner English Lessons with Christine",
+    category: "english",
+  },
+ {
+    id: "eng-017",
+    src: "/courses-pics/massimo-usai-english.png",
+    alt: "Beginner English Lessons with Usai Massimo",
+    title: "Beginner English Lessons with Usai Massimo",
+    category: "english",
+  },
+ {
+    id: "eng-018",
+    src: "/courses-pics/thomas-pascal-english.png",
+    alt: "Beginner English Lessons with Thomas Pascal",
+    title: "Beginner English Lessons with Thomas Pascal",
+    category: "english",
+  },
+ {
+    id: "eng-019",
+    src: "/courses-pics/mathias-albaladejo-anglais.png",
+    alt: "Beginner English Lessons with Mathias Albaladejo",
+    title: "Beginner English Lessons with Mathias Albaladejo",
+    category: "english",
+  },
+
+
+  // EXCEL COURSES (6 images)
+  {
+    id: "exc-001",
+    src: "/courses-pics/excel-avec-lakhlifi.png",
+    alt: "Excel basics training with Lakhlifi",
     title: "Excel Fundamentals",
     category: "excel",
-    duration: "4 weeks",
-    level: "Beginner",
-    price: 800,
-    description: "Learn the basics of Excel for data entry and simple analysis.",
   },
   {
-    id: "excel-advanced",
-    title: "Advanced Excel",
+    id: "exc-002",
+    src: "/courses-pics/excel-hamel-antoine-2.png",
+    alt: "Intermediate Excel lessons with Hamel Antoine",
+    title: "Intermediate Excel lessons with Hamel Antoine",
     category: "excel",
-    duration: "6 weeks",
-    level: "Advanced",
-    price: 1200,
-    description: "Master PivotTables, Power Query, and complex formulas.",
+  }
+];
+
+export interface PricingPack {
+  hours: number;
+  price: number;
+  discount: number;
+  contents: string[];
+}
+
+export interface PricingCourse {
+  id: string;
+  name: string;
+  hourlyRate: number;
+  packs: PricingPack[];
+  icon: React.ReactNode;
+  color: string;
+  colorName: string;
+  category: string;
+}
+
+// Données de prix pour chaque cours et pack
+export const pricingCourses: PricingCourse[] = [
+  // LANGUAGES & COMMUNICATION
+  {
+    id: "english",
+    name: "English",
+    hourlyRate: 35,
+    category: "languages",
+    packs: [
+      {
+        hours: 5,
+        price: 165,
+        discount: 6,
+        contents: [
+          "Needs assessment & goal setting",
+          "Basic conversation skills",
+          "Business vocabulary fundamentals",
+          "Email writing basics",
+          "Progress review & next steps",
+        ],
+      },
+      {
+        hours: 10,
+        price: 310,
+        discount: 11,
+        contents: [
+          "Professional email & report writing",
+          "Presentation skills training",
+          "Meeting facilitation",
+          "Negotiation vocabulary",
+          "Cultural business etiquette",
+          "Final assessment & certification",
+        ],
+      },
+      {
+        hours: 20,
+        price: 580,
+        discount: 17,
+        contents: [
+          "All 10h pack contents",
+          "Advanced business negotiations",
+          "Executive presentation coaching",
+          "Cross-cultural communication",
+          "Crisis communication strategies",
+          "Personal branding",
+          "Final project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-blue-500 to-cyan-500",
+    colorName: "blue",
   },
   {
-    id: "vba-automation",
-    title: "VBA Automation",
-    category: "vba",
-    duration: "5 weeks",
-    level: "Intermediate",
-    price: 1500,
-    description: "Automate repetitive tasks and create custom Excel macros.",
+   id: "French",
+    name: "French",
+    hourlyRate: 35,
+    category: "languages",
+    packs: [
+      {
+        hours: 5,
+        price: 165,
+        discount: 6,
+        contents: [
+          "Needs assessment & goal setting",
+          "Basic conversation skills",
+          "Business vocabulary fundamentals",
+          "French writing basics",
+          "Progress review & next steps",
+        ],
+      },
+      {
+        hours: 10,
+        price: 310,
+        discount: 11,
+        contents: [
+          "Professional French & report writing",
+          "Presentation skills training",
+          "Meeting facilitation",
+          "Negotiation vocabulary",
+          "Cultural business etiquette",
+          "Final assessment & certification",
+        ],
+      },
+      {
+        hours: 20,
+        price: 580,
+        discount: 17,
+        contents: [
+          "All 10h pack contents",
+          "Advanced business negotiations",
+          "Executive presentation coaching",
+          "Cross-cultural communication",
+          "Crisis communication strategies",
+          "Personal branding",
+          "Final project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-cyan-500 to-green-500",
+    colorName: "cyan",
+  },  
+
+  // OFFICE & PRODUCTIVITY
+  {
+    id: "excel",
+    name: "Excel",
+    hourlyRate: 40,
+    category: "office",
+    packs: [
+      {
+        hours: 5,
+        price: 190,
+        discount: 5,
+        contents: [
+          "Interface & basic navigation",
+          "Essential formulas & functions",
+          "Data entry & formatting",
+          "Basic charts & graphs",
+          "Printing & sharing",
+        ],
+      },
+      {
+        hours: 10,
+        price: 360,
+        discount: 10,
+        contents: [
+          "Advanced formulas (VLOOKUP, IF, SUMIFS)",
+          "PivotTables & PivotCharts",
+          "Data validation & protection",
+          "Conditional formatting",
+          "Basic macros introduction",
+          "Dashboard creation",
+        ],
+      },
+      {
+        hours: 20,
+        price: 680,
+        discount: 15,
+        contents: [
+          "All 10h pack contents",
+          "Power Query & data transformation",
+          "Advanced macro development",
+          "Power Pivot & data modeling",
+          "Automation with VBA",
+          "Integration with other Office apps",
+          "Complete business dashboard project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-green-500 to-emerald-500",
+    colorName: "green",
   },
   {
-    id: "vba-expert",
-    title: "VBA Expert",
-    category: "vba",
-    duration: "8 weeks",
-    level: "Advanced",
-    price: 2000,
-    description: "Build complex applications and integrate with databases.",
+    id: "data-analysis",
+    name: "Data Analysis",
+    hourlyRate: 50,
+    category: "office",
+    packs: [
+      {
+        hours: 5,
+        price: 240,
+        discount: 5,
+        contents: [
+          "Data analysis fundamentals",
+          "Excel for data analysis",
+          "Basic statistical concepts",
+          "Data visualization basics",
+          "Reporting & presentation skills",
+        ],
+      },
+      {
+        hours: 10,
+        price: 460,
+        discount: 10,
+        contents: [
+          "Advanced data analysis techniques",
+          "Statistical modeling",
+          "Predictive analytics",
+          "Machine learning introduction",
+          "Data storytelling",
+          "Advanced visualization tools",
+        ],
+      },
+      {
+        hours: 20,
+        price: 880,
+        discount: 15,
+        contents: [
+          "All 10h pack contents",
+          "Complete data analysis projects",
+          "Capstone project & portfolio development",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-green-500 to-cyan-500",
+    colorName: "green",
   },
   {
-    id: "amo-fundamentals",
-    title: "AMO Fundamentals",
-    category: "amo",
-    duration: "6 weeks",
-    level: "Beginner",
-    price: 1300,
-    description: "Introduction to AMO concepts and basic automation.",
+    id: "ms-office",
+    name: "MS Office Suite",
+    hourlyRate: 45,
+    category: "office",
+    packs: [
+      {
+        hours: 5,
+        price: 215,
+        discount: 4,
+        contents: [
+          "Word document formatting",
+          "PowerPoint presentation basics",
+          "Outlook email management",
+          "Teams collaboration intro",
+          "Office integration fundamentals",
+        ],
+      },
+      {
+        hours: 10,
+        price: 410,
+        discount: 9,
+        contents: [
+          "Advanced Word templates & mail merge",
+          "Professional PowerPoint design",
+          "Outlook calendar & task management",
+          "Teams advanced features",
+          "OneDrive & SharePoint basics",
+          "Office automation with Power Automate",
+        ],
+      },
+      {
+        hours: 20,
+        price: 780,
+        discount: 13,
+        contents: [
+          "All 10h pack contents",
+          "Complete Office ecosystem mastery",
+          "Advanced Power Automate flows",
+          "Power Apps basics",
+          "Document management systems",
+          "Enterprise collaboration strategies",
+          "Office productivity certification",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-teal-500 to-green-500",
+    colorName: "teal",
+  },
+
+  // WEB & DIGITAL MARKETING
+  {
+    id: "wordpress",
+    name: "WordPress",
+    hourlyRate: 50,
+    category: "web",
+    packs: [
+      {
+        hours: 5,
+        price: 240,
+        discount: 4,
+        contents: [
+          "WordPress installation & setup",
+          "Theme selection & customization",
+          "Essential plugins installation",
+          "Basic page & post creation",
+          "SEO fundamentals",
+        ],
+      },
+      {
+        hours: 10,
+        price: 460,
+        discount: 8,
+        contents: [
+          "Custom theme development",
+          "Advanced plugin configuration",
+          "E-commerce with WooCommerce",
+          "Performance optimization",
+          "Security best practices",
+          "Google Analytics & SEO tools",
+        ],
+      },
+      {
+        hours: 20,
+        price: 880,
+        discount: 12,
+        contents: [
+          "All 10h pack contents",
+          "Custom plugin development",
+          "API integrations",
+          "Headless WordPress setup",
+          "Advanced SEO strategies",
+          "Marketing automation",
+          "Complete website launch",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-blue-600 to-cyan-600",
+    colorName: "blue",
   },
   {
-    id: "amo-advanced",
-    title: "Advanced AMO",
-    category: "amo",
-    duration: "8 weeks",
-    level: "Advanced",
-    price: 1800,
-    description: "Master AMO for enterprise-level process optimization.",
+    id: "seo",
+    name: "SEO & Google Ads",
+    hourlyRate: 50,
+    category: "web",
+    packs: [
+      {
+        hours: 5,
+        price: 240,
+        discount: 4,
+        contents: [
+          "SEO fundamentals",
+          "Keyword research basics",
+          "On-page optimization",
+          "Google Search Console setup",
+          "Competitor analysis intro",
+        ],
+      },
+      {
+        hours: 10,
+        price: 460,
+        discount: 8,
+        contents: [
+          "Advanced keyword strategy",
+          "Technical SEO audit",
+          "Link building strategies",
+          "Google Ads campaign setup",
+          "PPC optimization",
+          "Analytics & reporting",
+        ],
+      },
+      {
+        hours: 20,
+        price: 880,
+        discount: 12,
+        contents: [
+          "All 10h pack contents",
+          "Enterprise SEO strategy",
+          "International SEO",
+          "Advanced Google Ads tactics",
+          "Conversion rate optimization",
+          "Full marketing funnel strategy",
+          "SEO certification prep",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-yellow-500 to-orange-500",
+    colorName: "yellow",
+  },
+  {
+    id: "digital-marketing",
+    name: "Digital Marketing",
+    hourlyRate: 55,
+    category: "web",
+    packs: [
+      {
+        hours: 5,
+        price: 265,
+        discount: 4,
+        contents: [
+          "Digital marketing overview",
+          "Social media strategy basics",
+          "Content marketing fundamentals",
+          "Email marketing setup",
+          "Analytics introduction",
+        ],
+      },
+      {
+        hours: 10,
+        price: 500,
+        discount: 9,
+        contents: [
+          "Full social media strategy",
+          "Content calendar creation",
+          "Email automation campaigns",
+          "Google Analytics mastery",
+          "Marketing funnel optimization",
+          "ROI measurement",
+        ],
+      },
+      {
+        hours: 20,
+        price: 960,
+        discount: 13,
+        contents: [
+          "All 10h pack contents",
+          "Omnichannel marketing strategy",
+          "Marketing automation platforms",
+          "Advanced analytics & attribution",
+          "Budget allocation strategy",
+          "Team leadership in marketing",
+          "Digital marketing certification",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-pink-500 to-rose-500",
+    colorName: "pink",
+  },
+
+  // DEVELOPMENT & AUTOMATION
+  {
+    id: "web-dev",
+    name: "Web Development",
+    hourlyRate: 60,
+    category: "development",
+    packs: [
+      {
+        hours: 5,
+        price: 290,
+        discount: 3,
+        contents: [
+          "HTML/CSS fundamentals",
+          "JavaScript basics",
+          "Responsive design principles",
+          "Introduction to React",
+          "Version control with Git",
+        ],
+      },
+      {
+        hours: 10,
+        price: 560,
+        discount: 7,
+        contents: [
+          "Advanced JavaScript (ES6+)",
+          "React.js components & hooks",
+          "API integration",
+          "State management",
+          "Building full-stack applications",
+          "Project: Portfolio website",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1080,
+        discount: 10,
+        contents: [
+          "All 10h pack contents",
+          "Next.js framework mastery",
+          "Database design & management",
+          "Authentication & security",
+          "Deployment & CI/CD",
+          "Performance optimization",
+          "Complete SaaS project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-purple-500 to-pink-500",
+    colorName: "purple",
+  },
+  {
+    id: "vba",
+    name: "VBA Automation",
+    hourlyRate: 60,
+    category: "development",
+    packs: [
+      {
+        hours: 5,
+        price: 290,
+        discount: 3,
+        contents: [
+          "VBA editor & basics",
+          "Variable declaration & data types",
+          "Procedures & functions",
+          "Basic loops & conditions",
+          "Simple macro recording",
+        ],
+      },
+      {
+        hours: 10,
+        price: 560,
+        discount: 7,
+        contents: [
+          "Advanced programming concepts",
+          "UserForm creation",
+          "Error handling",
+          "File system automation",
+          "Email automation via Outlook",
+          "Database connections",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1080,
+        discount: 10,
+        contents: [
+          "All 10h pack contents",
+          "Complete application development",
+          "Class modules & OOP",
+          "API integrations",
+          "Add-in development",
+          "Performance optimization",
+          "Professional automation project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-indigo-500 to-purple-500",
+    colorName: "indigo",
+  },
+  {
+    id: "ms-access",
+    name: "MS Access Database",
+    hourlyRate: 55,
+    category: "development",
+    packs: [
+      {
+        hours: 5,
+        price: 265,
+        discount: 4,
+        contents: [
+          "Database design principles",
+          "Table creation & relationships",
+          "Basic queries (Select, Update)",
+          "Form design basics",
+          "Report generation",
+        ],
+      },
+      {
+        hours: 10,
+        price: 500,
+        discount: 9,
+        contents: [
+          "Advanced query design",
+          "Complex form development",
+          "Subforms & navigation forms",
+          "Advanced reporting",
+          "Macro programming",
+          "Data import/export automation",
+        ],
+      },
+      {
+        hours: 20,
+        price: 960,
+        discount: 13,
+        contents: [
+          "All 10h pack contents",
+          "Full application development",
+          "SQL mastery",
+          "Integration with Excel & SharePoint",
+          "Security & user management",
+          "Database maintenance",
+          "Complete business solution",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-blue-800 to-indigo-800",
+    colorName: "blue",
+  },
+
+  // MANAGEMENT & CERTIFICATION
+  {
+    id: "amo",
+    name: "AMO (French PM)",
+    hourlyRate: 70,
+    category: "management",
+    packs: [
+      {
+        hours: 5,
+        price: 340,
+        discount: 3,
+        contents: [
+          "AMO methodology fundamentals",
+          "French project management standards",
+          "Client requirements analysis",
+          "Documentation basics",
+          "Stakeholder identification",
+        ],
+      },
+      {
+        hours: 10,
+        price: 660,
+        discount: 6,
+        contents: [
+          "Complete AMO framework mastery",
+          "Risk management strategies",
+          "Quality assurance processes",
+          "Budget & timeline management",
+          "Regulatory compliance",
+          "Real case studies",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1280,
+        discount: 9,
+        contents: [
+          "All 10h pack contents",
+          "Advanced stakeholder management",
+          "Crisis & conflict resolution",
+          "Audit preparation",
+          "Certification exam prep",
+          "Complete project simulation",
+          "Professional certification",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-indigo-500 to-purple-500",
+    colorName: "indigo",
+  },
+  {
+    id: "pmp",
+    name: "PMP Certification",
+    hourlyRate: 75,
+    category: "management",
+    packs: [
+      {
+        hours: 5,
+        price: 365,
+        discount: 3,
+        contents: [
+          "PMP exam overview",
+          "Process groups introduction",
+          "Basic terminology",
+          "Study strategy development",
+          "Sample questions",
+        ],
+      },
+      {
+        hours: 10,
+        price: 710,
+        discount: 5,
+        contents: [
+          "All 10 knowledge areas",
+          "Process groups deep dive",
+          "ITTOs mastery",
+          "Practice exams",
+          "Weakness analysis",
+          "Exam-taking strategies",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1380,
+        discount: 8,
+        contents: [
+          "All 10h pack contents",
+          "Full exam simulation",
+          "Complex scenario analysis",
+          "Formulas & calculations mastery",
+          "Agile practice guide",
+          "Application assistance",
+          "Exam readiness certification",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-red-500 to-orange-500",
+    colorName: "red",
+  },
+
+  // ADVANCED TECH & DEVOPS
+  {
+    id: "devops",
+    name: "DevOps Engineering",
+    hourlyRate: 85,
+    category: "advanced",
+    packs: [
+      {
+        hours: 5,
+        price: 410,
+        discount: 3,
+        contents: [
+          "DevOps culture & principles",
+          "Version control advanced",
+          "CI/CD pipeline basics",
+          "Containerization with Docker",
+          "Infrastructure as Code intro",
+        ],
+      },
+      {
+        hours: 10,
+        price: 800,
+        discount: 6,
+        contents: [
+          "Advanced CI/CD pipelines",
+          "Kubernetes orchestration",
+          "Cloud platforms (AWS/Azure/GCP)",
+          "Monitoring & logging",
+          "Security in DevOps",
+          "Automation scripts",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1560,
+        discount: 8,
+        contents: [
+          "All 10h pack contents",
+          "Microservices architecture",
+          "Infrastructure as Code advanced",
+          "Disaster recovery planning",
+          "Team collaboration strategies",
+          "Complete DevOps implementation",
+          "Enterprise-level project",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-cyan-500 to-blue-500",
+    colorName: "cyan",
+  },
+  {
+    id: "custom-software",
+    name: "Custom Software",
+    hourlyRate: 85,
+    category: "advanced",
+    packs: [
+      {
+        hours: 5,
+        price: 410,
+        discount: 3,
+        contents: [
+          "Requirements analysis",
+          "Architecture design",
+          "Technology stack selection",
+          "MVP planning",
+          "Development environment setup",
+        ],
+      },
+      {
+        hours: 10,
+        price: 800,
+        discount: 6,
+        contents: [
+          "Full-stack development",
+          "API design & implementation",
+          "Database architecture",
+          "Authentication & authorization",
+          "Testing strategies",
+          "Deployment setup",
+        ],
+      },
+      {
+        hours: 20,
+        price: 1560,
+        discount: 8,
+        contents: [
+          "All 10h pack contents",
+          "Advanced features development",
+          "Performance optimization",
+          "Security hardening",
+          "Scalability planning",
+          "Maintenance strategy",
+          "Production-ready solution",
+        ],
+      },
+    ],
+    icon: null,
+    color: "from-gray-500 to-gray-700",
+    colorName: "gray",
+  },
+];
+
+// Grouper les cours par catégorie pour l'affichage
+export const pricingCategories = [
+  {
+    id: "languages",
+    name: "Languages & Communication",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "languages"),
+  },
+  {
+    id: "office",
+    name: "Office & Productivity",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "office"),
+  },
+  {
+    id: "web",
+    name: "Web & Digital Marketing",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "web"),
+  },
+  {
+    id: "development",
+    name: "Development & Automation",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "development"),
+  },
+  {
+    id: "management",
+    name: "Management & Certification",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "management"),
+  },
+  {
+    id: "advanced",
+    name: "Advanced Tech & DevOps",
+    icon: null,
+    courses: pricingCourses.filter(c => c.category === "advanced"),
   },
 ];

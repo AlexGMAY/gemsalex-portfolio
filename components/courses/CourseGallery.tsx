@@ -202,7 +202,7 @@ const CourseGallery = ({
               >
                 <div className="relative rounded-2xl overflow-hidden bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-lime-400/30 transition-all duration-500 group">
                   {/* Image Container */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[18/9] overflow-hidden">
                     <Image
                       src={image.src}
                       alt={image.alt}
@@ -328,16 +328,17 @@ const CourseGallery = ({
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="relative max-w-5xl w-full max-h-[85vh]"
+                className="relative max-w-[90vw] max-h-[85vh] w-full h-full"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
                   <Image
                     src={selectedImage.src}
                     alt={selectedImage.alt}
                     fill
-                    className="object-contain"
+                    className="object-cover"
                     sizes="90vw"
+                    priority
                   />
                 </div>
 
