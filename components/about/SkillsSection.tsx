@@ -3,23 +3,28 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { skills } from "@/data";
-
-const categories = [
-  "All",
-  ...Array.from(new Set(skills.map((skill) => skill.category))),
-];
+import { getSkills } from "@/data";
+import { useLanguage } from "@/context/LanguageContext";
 
 const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const { isFrench } = useLanguage();
+  const skills = getSkills(isFrench);
+  const [activeCategory, setActiveCategory] = useState(
+    isFrench ? "Tous" : "All",
+  );
+
+  const categories = [
+    isFrench ? "Tous" : "All",
+    ...Array.from(new Set(skills.map((skill) => skill.category))),
+  ];
 
   const filteredSkills =
-    activeCategory === "All"
+    activeCategory === (isFrench ? "Tous" : "All")
       ? skills
       : skills.filter((skill) => skill.category === activeCategory);
 
   return (
-    <section id="skills" className="py-24 ">
+    <section id="skills" className="py-24">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
@@ -27,7 +32,10 @@ const SkillsSection = () => {
           transition={{ duration: 0.5 }}
           className="heading mb-12"
         >
-          Skills & <span className="text-lime-400">Expertise</span>
+          {isFrench ? "Compétences &" : "Skills &"}{" "}
+          <span className="text-lime-400">
+            {isFrench ? "Expertise" : "Expertise"}
+          </span>
         </motion.h2>
 
         {/* Category Filter */}
@@ -91,7 +99,9 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <h3 className="text-2xl font-semibold mb-6">My Tech Stack</h3>
+          <h3 className="text-2xl font-semibold mb-6">
+            {isFrench ? "Ma Stack Technique" : "My Tech Stack"}
+          </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {skills.map((skill) => (
               <motion.div
