@@ -1,11 +1,11 @@
-
-"use client"; 
+"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaShoppingCart } from "react-icons/fa";
-import { useRouter } from "next/navigation"; // Import useRouter
-import { services } from "@/data";
+import { useRouter } from "next/navigation";
+import { getServices } from "@/data";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Feature = {
   name: string;
@@ -21,20 +21,23 @@ type Service = {
 };
 
 type ServicesProps = {
-  isHomePage?: boolean; // Prop to determine if the component is on the Home page
+  isHomePage?: boolean;
 };
 
 export default function Services({ isHomePage = false }: ServicesProps) {
+  const { isFrench } = useLanguage();
+  const services = getServices(isFrench);
+
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<Feature[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   const toggleFeature = (feature: Feature) => {
     setSelectedFeatures((prev) =>
       prev.includes(feature)
         ? prev.filter((f) => f !== feature)
-        : [...prev, feature]
+        : [...prev, feature],
     );
   };
 
@@ -43,20 +46,25 @@ export default function Services({ isHomePage = false }: ServicesProps) {
     selectedFeatures.reduce((acc, feature) => acc + feature.price, 0);
 
   const handleSeeMore = () => {
-    router.push("/pricing"); // Redirect to the pricing page
+    router.push("/solutions");
   };
 
   return (
     <div className="py-20 px-6 min-h-screen" id="pricing">
       <h2 className="heading mb-10">
-        Choose a <span className="text-lime-400">Freelance Service</span>
+        {isFrench ? "Choisissez un" : "Choose a"}{" "}
+        <span className="text-lime-400">
+          {isFrench ? "Service Freelance" : "Freelance Service"}
+        </span>
       </h2>
       <p className="text-lg text-center text-neutral-400 mb-10">
-        Browse through my Freelance Services across different categories.
+        {isFrench
+          ? "Parcourez mes services Freelance dans différentes catégories."
+          : "Browse through my Freelance Services across different categories."}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services
-          .slice(0, isHomePage ? 3 : services.length) // Show 3 cards on Home, all on Pricing
+          .slice(0, isHomePage ? 3 : services.length)
           .map((service, index) => (
             <motion.div key={index} whileHover={{ scale: 1.05 }}>
               <div className="p-6 shadow-lg rounded-2xl bg-gray-800 text-white">
@@ -66,10 +74,9 @@ export default function Services({ isHomePage = false }: ServicesProps) {
                     {service.description}
                   </p>
                   <p className="text-yellow-500 font-bold text-lg">
-                    From ${service.basePrice}
+                    {isFrench ? "À partir de" : "From"} ${service.basePrice}
                   </p>
 
-                  {/* Display Pre-Checked Features on the Card */}
                   <div className="mt-4 space-y-2">
                     {service.features
                       .filter((feature) => feature.checked)
@@ -86,8 +93,12 @@ export default function Services({ isHomePage = false }: ServicesProps) {
 
                   <p className="text-sm text-left text-neutral-400 my-10 border-b border-gray-700 py-2">
                     <i className="text-yellow-500 font-bold">
-                      NOTE:{" "}
-                      <b>CLICK THE ORDER BUTTON BELOW FOR MORE FEATURES :</b>
+                      {isFrench ? "NOTE : " : "NOTE: "}
+                      <b>
+                        {isFrench
+                          ? "CLIQUEZ SUR LE BOUTON COMMANDER CI-DESSOUS POUR PLUS D'OPTIONS :"
+                          : "CLICK THE ORDER BUTTON BELOW FOR MORE FEATURES :"}
+                      </b>
                     </i>
                   </p>
 
@@ -99,7 +110,8 @@ export default function Services({ isHomePage = false }: ServicesProps) {
                       setIsDialogOpen(true);
                     }}
                   >
-                    Order Now <FaShoppingCart className="text-lg" />
+                    {isFrench ? "Commander" : "Order Now"}{" "}
+                    <FaShoppingCart className="text-lg" />
                   </button>
                 </div>
               </div>
@@ -107,25 +119,23 @@ export default function Services({ isHomePage = false }: ServicesProps) {
           ))}
       </div>
 
-      {/* "See More Services" Button (Only on Home Page) */}
       {isHomePage && (
         <div className="flex justify-center mt-20">
           <button
             onClick={handleSeeMore}
             className="bg-gradient-to-r from-lime-500 to-yellow-600 text-white px-8 py-3 rounded-lg hover:from-lime-600 hover:to-yellow-700 transition-all transform hover:scale-105"
           >
-            See More Services
+            {isFrench ? "Voir plus de services" : "See More Services"}
           </button>
         </div>
       )}
 
-      {/* Dialog */}
       {isDialogOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-gray-800 p-6 rounded-lg w-full max-w-2xl text-white max-h-[90vh] overflow-y-auto scrollbar-custom">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">
-                Customize Your{" "}
+                {isFrench ? "Personnalisez votre" : "Customize Your"}{" "}
                 <span className="text-lime-400">{selectedService?.title}</span>
               </h2>
               <button
@@ -156,31 +166,37 @@ export default function Services({ isHomePage = false }: ServicesProps) {
                 ))}
             </div>
             <div className="mt-4">
-              <p className="font-bold">Total Price: ${totalPrice}</p>
+              <p className="font-bold">
+                {isFrench ? "Prix total" : "Total Price"}: ${totalPrice}
+              </p>
             </div>
             <form className="space-y-4 mt-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
-                  placeholder="Your First Name"
+                  placeholder={isFrench ? "Votre prénom" : "Your First Name"}
                   required
                   className="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
                 <input
                   type="text"
-                  placeholder="Your Last Name"
+                  placeholder={isFrench ? "Votre nom" : "Your Last Name"}
                   required
                   className="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
                 <input
                   type="email"
-                  placeholder="Your Email Address"
+                  placeholder={
+                    isFrench ? "Votre adresse email" : "Your Email Address"
+                  }
                   required
                   className="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
                 <input
                   type="text"
-                  placeholder="Your Phone Number"
+                  placeholder={
+                    isFrench ? "Votre numéro de téléphone" : "Your Phone Number"
+                  }
                   required
                   className="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
@@ -189,7 +205,7 @@ export default function Services({ isHomePage = false }: ServicesProps) {
                 type="submit"
                 className="w-full bg-gradient-to-r from-lime-500 to-yellow-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:scale-105"
               >
-                Submit Order
+                {isFrench ? "Envoyer la commande" : "Submit Order"}
               </button>
             </form>
           </div>
@@ -198,3 +214,4 @@ export default function Services({ isHomePage = false }: ServicesProps) {
     </div>
   );
 }
+
