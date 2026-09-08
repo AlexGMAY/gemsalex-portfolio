@@ -96,16 +96,25 @@
 
 // export default Platforms
 
+
 "use client";
 
 import React from "react";
 import PlatformsColumn from "./ui/PlatformsColumn";
 import { useLanguage } from "@/context/LanguageContext";
 
+export type PlatformsType = {
+  id: number;
+  name: string;
+  img: string;
+  nameImg: string;
+  description: string;
+}[];
+
 const Platforms = () => {
   const { isFrench } = useLanguage();
 
-  const platforms = [
+  const platforms: PlatformsType = [
     {
       id: 1,
       name: "Cloudinary",
