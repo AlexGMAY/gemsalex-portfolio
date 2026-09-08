@@ -9,17 +9,13 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { getNavItems } from "@/data";
 
 export const FloatingNav = ({
-  navItems,
   className,
-  appointmentLink = "/contact", 
+  appointmentLink = "/contact",
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
   className?: string;
   appointmentLink?: string;
 }) => {
@@ -27,6 +23,10 @@ export const FloatingNav = ({
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { isFrench, toggleLanguage } = useLanguage();
+
+  // Get translated nav items from data
+  const navItems = getNavItems(isFrench);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -77,6 +77,7 @@ export const FloatingNav = ({
               />
             </Link>
           </div>
+
           <div className="relative items-center flex gap-6 space-x-1">
             {navItems.map((navItem, idx) => (
               <Link
@@ -90,7 +91,6 @@ export const FloatingNav = ({
                 <span className="md:uppercase lg:uppercase font-semibold text-sm !cursor-pointer">
                   {navItem.name}
                 </span>
-                {/* Active link indicator */}
                 <span
                   className={cn(
                     "absolute left-0 right-0 -bottom-1 h-0.5 bg-blue-300 transform scale-x-0 transition-transform duration-300",
@@ -102,21 +102,39 @@ export const FloatingNav = ({
               </Link>
             ))}
           </div>
-          <Link href={appointmentLink}>
-            <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white">
-              <span className="relative z-10">Get an appointment</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-              <span className="absolute inset-0.5 rounded-full bg-black/10 backdrop-blur-sm" />
+
+          <div className="flex items-center gap-3">
+            {/* Language Toggle with Flags */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:border-blue-300/50 hover:bg-blue-300/10 transition-all duration-200"
+              aria-label={isFrench ? "Switch to English" : "Passer au français"}
+              title={isFrench ? "Switch to English" : "Passer au français"}
+            >
+              <span className="text-lg leading-none">
+                {isFrench ? "🇬🇧" : "🇫🇷"}
+              </span>
+              <span className="text-sm font-semibold text-white">
+                {isFrench ? "EN" : "FR"}
+              </span>
             </button>
-          </Link>
+
+            <Link href={appointmentLink}>
+              <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white">
+                <span className="relative z-10">
+                  {isFrench ? "Prendre rendez-vous" : "Get an appointment"}
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                <span className="absolute inset-0.5 rounded-full bg-black/10 backdrop-blur-sm" />
+              </button>
+            </Link>
+          </div>
         </motion.div>
       </AnimatePresence>
 
-      
-      {/* Tablet/Mobile Navigation Button - shown on md and sm screens */}
+      {/* Tablet/Mobile Navigation */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-[5000] bg-black-100/90 backdrop-blur-md border-b border-gray-800/50">
         <div className="flex items-center justify-between px-4 h-16 max-w-7xl mx-auto">
-          {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               alt="Strategic Software Engineer and Business Problem Solver - Merveille Alexandre"
@@ -129,35 +147,49 @@ export const FloatingNav = ({
             />
           </Link>
 
-          {/* Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-            className="p-2 rounded-lg backdrop-blur-md bg-gray-800/80 border border-gray-700 hover:bg-gray-700/80 transition-colors"
-          >
-            <div className="w-6 h-6 flex flex-col justify-between">
-              <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? "rotate-45 translate-y-2.5" : ""
-                }`}
-              ></span>
-              <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? "opacity-0" : ""
-                }`}
-              ></span>
-              <span
-                className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                  mobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
-                }`}
-              ></span>
-            </div>
-          </button>
+          <div className="flex items-center gap-3">
+            {/* Mobile Language Toggle with Flags */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 hover:border-blue-300/50 hover:bg-blue-300/10 transition-all duration-200"
+              aria-label={isFrench ? "Switch to English" : "Passer au français"}
+            >
+              <span className="text-base leading-none">
+                {isFrench ? "🇬🇧" : "🇫🇷"}
+              </span>
+              <span className="text-xs font-semibold text-white">
+                {isFrench ? "EN" : "FR"}
+              </span>
+            </button>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              className="p-2 rounded-lg backdrop-blur-md bg-gray-800/80 border border-gray-700 hover:bg-gray-700/80 transition-colors"
+            >
+              <div className="w-6 h-6 flex flex-col justify-between">
+                <span
+                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "rotate-45 translate-y-2.5" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "opacity-0" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
+                    mobileMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
+                  }`}
+                ></span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Your existing dropdown component remains here */}
-
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -181,10 +213,7 @@ export const FloatingNav = ({
                     pathname === navItem.link && "text-blue-300 font-medium",
                   )}
                 >
-                  <div className="flex items-center">
-                    {navItem.icon && (
-                      <span className="mr-2">{navItem.icon}</span>
-                    )}
+                  <div className="flex items-center">                    
                     <span className="uppercase font-semibold text-sm">
                       {navItem.name}
                     </span>
@@ -200,8 +229,10 @@ export const FloatingNav = ({
                 </Link>
               ))}
               <Link href={appointmentLink}>
-                <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white">
-                  <span className="relative z-10">Book An Appointment</span>
+                <button className="relative px-6 py-2.5 text-sm font-medium rounded-full group overflow-hidden bg-gradient-to-r from-blue-200 to-blue-300 text-white w-full">
+                  <span className="relative z-10">
+                    {isFrench ? "Prendre rendez-vous" : "Book An Appointment"}
+                  </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-lime-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                   <span className="absolute inset-0.5 rounded-full bg-black/10 backdrop-blur-sm" />
                 </button>
@@ -214,7 +245,6 @@ export const FloatingNav = ({
   );
 };
 
-// Utility function
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }

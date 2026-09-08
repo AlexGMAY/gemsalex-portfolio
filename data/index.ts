@@ -1,19 +1,24 @@
 import { ReactNode } from "react";
 
-export const navItems = [
-  { name: "About Me", link: "/about" },
-  { name: "Projects", link: "/projects" },
-  { name: "Solutions & Pricing", link: "/solutions" },
-  { name: "Courses", link: "/courses" },
-  { name: "Products", link: "/products" },  
-  { name: "Resources", link: "/resources" },
-  { name: "Contact", link: "/contact" },
+export const getNavItems = (isFrench: boolean) => [
+  { name: isFrench ? "À Propos" : "About Me", link: "/about" },
+  { name: isFrench ? "Projets" : "Projects", link: "/projects" },
+  {
+    name: isFrench ? "Solutions & Tarifs" : "Solutions & Pricing",
+    link: "/solutions",
+  },
+  { name: isFrench ? "Cours" : "Courses", link: "/courses" },
+  { name: isFrench ? "Produits" : "Products", link: "/products" },
+  { name: isFrench ? "Ressources" : "Resources", link: "/resources" },
+  { name: isFrench ? "Contact" : "Contact", link: "/contact" },
 ];
 
-export const gridItems = [
+export const getGridItems = (isFrench: boolean) => [
   {
     id: 1,
-    title: "Your vision, delivered with precision",
+    title: isFrench
+      ? "Votre vision, livrée avec précision"
+      : "Your vision, delivered with precision",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -23,7 +28,9 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Available in your timezone",
+    title: isFrench
+      ? "Disponible dans votre fuseau horaire"
+      : "Available in your timezone",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -33,8 +40,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "Proven tech stack",
-    description: "Built for results",
+    title: isFrench ? "Stack technique éprouvée" : "Proven tech stack",
+    description: isFrench ? "Conçu pour les résultats" : "Built for results",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -43,7 +50,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Driven by your success",
+    title: isFrench ? "Guidé par votre succès" : "Driven by your success",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -53,8 +60,12 @@ export const gridItems = [
   },
   {
     id: 5,
-    title: "Building revenue-driving SaaS platforms",
-    description: "Client success stories",
+    title: isFrench
+      ? "Création de plateformes SaaS génératrices de revenus"
+      : "Building revenue-driving SaaS platforms",
+    description: isFrench
+      ? "Témoignages de réussite clients"
+      : "Client success stories",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -63,7 +74,9 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Ready to grow your business?",
+    title: isFrench
+      ? "Prêt à développer votre entreprise ?"
+      : "Ready to grow your business?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -73,52 +86,47 @@ export const gridItems = [
   },
 ];
 
-
-
-export const testimonials = [
+export const getTestimonials = (isFrench: boolean) => [
   {
-    quote:
-      "Mr Alexander transformed our loan enterprise website with SEO-optimized content that actually converts. Our online applications increased by 40% within 3 months. His strategic approach to onmine visibility combined with client-centered design delivered real business results.",
+    quote: isFrench
+      ? "M. Alexander a transformé notre site d'entreprise de prêt avec un contenu optimisé SEO qui convertit réellement. Nos demandes en ligne ont augmenté de 40% en 3 mois. Son approche stratégique de la visibilité en ligne combinée à un design centré sur le client a produit de vrais résultats commerciaux."
+      : "Mr Alexander transformed our loan enterprise website with SEO-optimized content that actually converts. Our online applications increased by 40% within 3 months. His strategic approach to onmine visibility combined with client-centered design delivered real business results.",
     name: "John Batubenga",
     title: "CEO at Elinsas Loans and Microfinance - RD Congo",
     avatar: "/avatars/logo-elin.jpg",
   },
   {
-    quote:
-      "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, and it's mobile friendly but more importantly, it loads fast and converts visitors into clients. The custom CMS he created saves us hours of work daily. We worked together in collaboration for 1 month, I was creating website contents and Merveille was building the technical infrastructure - the website. Truly a partner who understands business needs.",
+    quote: isFrench
+      ? "Travailler avec Alexander a changé la donne pour notre agence de marketing. Il a construit notre site web entier de zéro - le design est magnifique, et il est mobile friendly mais plus important encore, il se charge rapidement et convertit les visiteurs en clients. Le CMS personnalisé qu'il a créé nous fait gagner des heures de travail chaque jour. Nous avons collaboré pendant 1 mois, je créais le contenu du site et Merveille construisait l'infrastructure technique - le site web. Vraiment un partenaire qui comprend les besoins business."
+      : "Working with Alexander was a game-changer for our marketing agency. He built our entire website from scratch - the design is stunning, and it's mobile friendly but more importantly, it loads fast and converts visitors into clients. The custom CMS he created saves us hours of work daily. We worked together in collaboration for 1 month, I was creating website contents and Merveille was building the technical infrastructure - the website. Truly a partner who understands business needs.",
     name: "Hayfa Khalil",
     title: "Marketing Director at ABC Digitale - Tunisia",
     avatar: "/avatars/logo-abcd.jpg",
   },
   {
-    quote:
-      "GGTE needed a modern, professional website that reflected our construction expertise. Mr Alexander delivered a stunning platform that showcases our projects beautifully. The site performance is exceptional, and the admin panel makes content updates effortless. Our project inquiries have doubled since launch.",
+    quote: isFrench
+      ? "GGTE avait besoin d'un site web moderne et professionnel qui reflète notre expertise en construction. M. Alexander a livré une plateforme magnifique qui présente nos projets de manière superbe. La performance du site est exceptionnelle, et le panneau d'administration rend les mises à jour de contenu faciles. Nos demandes de projets ont doublé depuis le lancement."
+      : "GGTE needed a modern, professional website that reflected our construction expertise. Mr Alexander delivered a stunning platform that showcases our projects beautifully. The site performance is exceptional, and the admin panel makes content updates effortless. Our project inquiries have doubled since launch.",
     name: "Mr Dieu Tankwe Mulundu",
     title: "CEO at GGTE Construction - RD Congo",
     avatar: "/avatars/logo-ggte.jpg",
   },
   {
-    quote:
-      "As a microfinance SaaS startup, we needed both technical excellence and business acumen. Merveille built our entire microfinance platform architecture, implemented secure communication systems, and created an intuitive user experience. And he delivered an exceptional product. Now our company runs smoothly, our clients love the platform, and we've seen a 30% increase in user retention. Our company management is easier, and Merveille maintains the system with care.",
+    quote: isFrench
+      ? "En tant que startup SaaS de microfinance, nous avions besoin à la fois d'excellence technique et de sens des affaires. Merveille a construit toute l'architecture de notre plateforme de microfinance, implémenté des systèmes de communication sécurisés et créé une expérience utilisateur intuitive. Et il a livré un produit exceptionnel. Maintenant notre entreprise fonctionne bien, nos clients adorent la plateforme, et nous avons vu une augmentation de 30% de la rétention des utilisateurs. La gestion de notre entreprise est plus facile, et Merveille maintient le système avec soin."
+      : "As a microfinance SaaS startup, we needed both technical excellence and business acumen. Merveille built our entire microfinance platform architecture, implemented secure communication systems, and created an intuitive user experience. And he delivered an exceptional product. Now our company runs smoothly, our clients love the platform, and we've seen a 30% increase in user retention. Our company management is easier, and Merveille maintains the system with care.",
     name: "Mr Guelor Songie",
     title: "CEO and Founder at Vision Business Microfinance - RD Congo",
     avatar: "./logo-MA.png",
   },
   {
-    quote:
-      "Mr Merveille Alexandre, who is also our Instructor, solved our business problems. He build our website soutien scolaire in 1 week and, he helped with SEO 100%(pagespeed result) and performance optimization 98%(pagespeed result). The Website he built is reliable, easy to use. He's our instructor and strategic partner.",
+    quote: isFrench
+      ? "M. Merveille Alexandre, qui est aussi notre instructeur, a résolu nos problèmes commerciaux. Il a construit notre site web de soutien scolaire en 1 semaine et il a aidé avec le SEO à 100% (résultat pagespeed) et l'optimisation des performances à 98% (résultat pagespeed). Le site web qu'il a construit est fiable, facile à utiliser. C'est notre instructeur et partenaire stratégique."
+      : "Mr Merveille Alexandre, who is also our Instructor, solved our business problems. He build our website soutien scolaire in 1 week and, he helped with SEO 100%(pagespeed result) and performance optimization 98%(pagespeed result). The Website he built is reliable, easy to use. He's our instructor and strategic partner.",
     name: "Raoudha Bhira",
     title: "Director at centre formation Leaderforma - France",
     avatar: "/avatars/logo-leader-forma.png",
   },
-
-  // {
-  //   quote:
-  //     "I met Mr Alexandre in a cafe to buy an iphone from him and his brother and it didn't work but we discovered our mutual profession. We ended up working together on our showcase website ONE-BEAT RECORDS which was ugly and unprofessional. We discussed the redesign and more freelacnce works. He redesigned our website with little contents using of course our old ones. And I loved the result. The design is stunning, minimal, but more importantly, it loads fast and converts visitors into clients seamlessly which is great for Records since we work with many artists. So, I recommend him for any website project, he is a partner who delivers results.",
-  //   name: "John Doe",
-  //   title: "Director at ONE-BEAT RECORDS - England (UK)",
-  //   avatar: "/avatars/logo-one-beat.png",
-  // },
 ];
 
 export const companies = [
@@ -160,8 +168,6 @@ export const companies = [
   },
 ];
 
-
-
 interface SocialMediaItem {
   id: number;
   img: string;
@@ -169,175 +175,234 @@ interface SocialMediaItem {
   link?: string;
 }
 
-export const socialMedia: SocialMediaItem[] = [
+export const getSocialMedia = (isFrench: boolean): SocialMediaItem[] => [
   {
     id: 1,
     img: "/git.svg",
-    alt: "GitHub Profile - Merveille Alexander - Fullstack Software Engineer",
+    alt: isFrench
+      ? "Profil GitHub - Merveille Alexander - Ingénieur Logiciel Fullstack"
+      : "GitHub Profile - Merveille Alexander - Fullstack Software Engineer",
     link: "https://github.com/AlexGMAY/",
   },
   {
     id: 2,
     img: "/twit.svg",
-    alt: "X Profile - Merveille Alexander - Fullstack Software Engineer",
+    alt: isFrench
+      ? "Profil X - Merveille Alexander - Ingénieur Logiciel Fullstack"
+      : "X Profile - Merveille Alexander - Fullstack Software Engineer",
     link: "https://x.com/@themarvelbiz/",
   },
   {
     id: 3,
     img: "/link.svg",
-    alt: "LinkedIn Profile - Merveille Alexander - Fullstack Software Engineer",
+    alt: isFrench
+      ? "Profil LinkedIn - Merveille Alexander - Ingénieur Logiciel Fullstack"
+      : "LinkedIn Profile - Merveille Alexander - Fullstack Software Engineer",
     link: "https://www.linkedin.com/in/alexandre-merveille-may/",
   },
 ];
-
 
 export interface Feature {
   id: string;
   name: string;
   description?: string;
-  price: number; // USD
+  price: number;
   checked?: boolean;
-  category: 'core' | 'addon';
+  category: "core" | "addon";
 }
 
 export interface Service {
   id: string;
   title: string;
   description: string;
-  basePrice: number; // USD
-  gbpPrice?: number; // GBP price (optional - can be set manually or calculated)
-  euroPrice?: number; // EUR price
+  basePrice: number;
+  gbpPrice?: number;
+  euroPrice?: number;
   deliveryTime: string;
   popular?: boolean;
   features: Feature[];
 }
 
-
-export const services: Service[] = [
+export const getServices = (isFrench: boolean): Service[] => [
   {
     id: "business-website",
-    title: "Business Website",
-    description:
-      "Premium website with conversion-focused design and guaranteed performance",
-    basePrice: 2500, // USD
-    gbpPrice: 1969, // GBP (2500 ÷ 1.27)
-    euroPrice: 2300, // EUR
-    deliveryTime: "3-4 weeks",
+    title: isFrench ? "Site Web Business" : "Business Website",
+    description: isFrench
+      ? "Site web premium avec design orienté conversion et performance garantie"
+      : "Premium website with conversion-focused design and guaranteed performance",
+    basePrice: 2500,
+    gbpPrice: 1969,
+    euroPrice: 2300,
+    deliveryTime: isFrench ? "3-4 semaines" : "3-4 weeks",
     popular: true,
     features: [
       {
         id: "bw-core-1",
-        name: "Custom High-End Design",
-        description: "Figma-designed UI with 3 revision rounds",
+        name: isFrench
+          ? "Design Haut de Gamme Personnalisé"
+          : "Custom High-End Design",
+        description: isFrench
+          ? "UI conçue sur Figma avec 3 séries de révisions"
+          : "Figma-designed UI with 3 revision rounds",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bw-core-2",
-        name: "Advanced SEO Setup",
-        description: "Technical SEO audit + on-page optimization",
+        name: isFrench ? "Configuration SEO Avancée" : "Advanced SEO Setup",
+        description: isFrench
+          ? "Audit SEO technique + optimisation on-page"
+          : "Technical SEO audit + on-page optimization",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bw-core-3",
-        name: "Mobile-Optimized & Responsive",
-        description: "Perfect scores on all devices & screen sizes",
+        name: isFrench
+          ? "Optimisé Mobile & Responsive"
+          : "Mobile-Optimized & Responsive",
+        description: isFrench
+          ? "Scores parfaits sur tous les appareils"
+          : "Perfect scores on all devices & screen sizes",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bw-core-4",
-        name: "Contact & Lead Capture System",
-        description: "Advanced forms with CRM integration",
+        name: isFrench
+          ? "Système de Contact & Capture de Leads"
+          : "Contact & Lead Capture System",
+        description: isFrench
+          ? "Formulaires avancés avec intégration CRM"
+          : "Advanced forms with CRM integration",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bw-addon-1",
-        name: "Fast Loading (95+ Lighthouse Score)",
-        description: "Advanced performance optimization",
+        name: isFrench
+          ? "Chargement Rapide (Score Lighthouse 95+)"
+          : "Fast Loading (95+ Lighthouse Score)",
+        description: isFrench
+          ? "Optimisation avancée des performances"
+          : "Advanced performance optimization",
         price: 400,
         category: "addon",
       },
       {
         id: "bw-addon-2",
-        name: "Blog/CMS Integration",
-        description: "WordPress or headless CMS setup",
+        name: isFrench ? "Intégration Blog/CMS" : "Blog/CMS Integration",
+        description: isFrench
+          ? "Configuration WordPress ou CMS headless"
+          : "WordPress or headless CMS setup",
         price: 750,
         category: "addon",
       },
       {
         id: "bw-addon-3",
-        name: "Newsletter & Email Marketing",
-        description: "Mailchimp/Klaviyo integration + automation",
+        name: isFrench
+          ? "Newsletter & Email Marketing"
+          : "Newsletter & Email Marketing",
+        description: isFrench
+          ? "Intégration Mailchimp/Klaviyo + automatisation"
+          : "Mailchimp/Klaviyo integration + automation",
         price: 500,
         category: "addon",
       },
       {
         id: "bw-addon-4",
-        name: "Google Maps & Location Services",
-        description: "Interactive maps + store locator",
+        name: isFrench
+          ? "Google Maps & Services de Localisation"
+          : "Google Maps & Location Services",
+        description: isFrench
+          ? "Cartes interactives + localisateur de magasin"
+          : "Interactive maps + store locator",
         price: 300,
         category: "addon",
       },
       {
         id: "bw-addon-5",
-        name: "Social Media Integration",
-        description: "Auto-posting + social feeds + sharing",
+        name: isFrench
+          ? "Intégration Réseaux Sociaux"
+          : "Social Media Integration",
+        description: isFrench
+          ? "Publication auto + fils sociaux + partage"
+          : "Auto-posting + social feeds + sharing",
         price: 400,
         category: "addon",
       },
       {
         id: "bw-addon-6",
-        name: "Google Analytics 4 + Tag Manager",
-        description: "Complete tracking setup with dashboards",
+        name: isFrench
+          ? "Google Analytics 4 + Tag Manager"
+          : "Google Analytics 4 + Tag Manager",
+        description: isFrench
+          ? "Configuration complète avec tableaux de bord"
+          : "Complete tracking setup with dashboards",
         price: 350,
         category: "addon",
       },
       {
         id: "bw-addon-7",
-        name: "AI Chatbot Integration",
-        description: "Custom-trained chatbot with 24/7 support",
+        name: isFrench ? "Intégration Chatbot IA" : "AI Chatbot Integration",
+        description: isFrench
+          ? "Chatbot personnalisé avec support 24/7"
+          : "Custom-trained chatbot with 24/7 support",
         price: 1200,
         category: "addon",
       },
       {
         id: "bw-addon-8",
-        name: "Premium Security Suite",
-        description: "SSL, firewall, malware protection, backups",
+        name: isFrench ? "Suite de Sécurité Premium" : "Premium Security Suite",
+        description: isFrench
+          ? "SSL, pare-feu, protection malware, sauvegardes"
+          : "SSL, firewall, malware protection, backups",
         price: 600,
         category: "addon",
       },
       {
         id: "bw-addon-9",
-        name: "Multilingual Support",
-        description: "2 additional languages (i18n setup)",
+        name: isFrench ? "Support Multilingue" : "Multilingual Support",
+        description: isFrench
+          ? "2 langues supplémentaires (configuration i18n)"
+          : "2 additional languages (i18n setup)",
         price: 900,
         category: "addon",
       },
       {
         id: "bw-addon-10",
-        name: "Accessibility Compliance (WCAG 2.1)",
-        description: "ADA compliant for all users",
+        name: isFrench
+          ? "Conformité Accessibilité (WCAG 2.1)"
+          : "Accessibility Compliance (WCAG 2.1)",
+        description: isFrench
+          ? "Conforme ADA pour tous les utilisateurs"
+          : "ADA compliant for all users",
         price: 800,
         category: "addon",
       },
       {
         id: "bw-addon-11",
-        name: "Website Maintenance (3 months)",
-        description: "Updates, security patches, backups",
+        name: isFrench
+          ? "Maintenance du Site (3 mois)"
+          : "Website Maintenance (3 months)",
+        description: isFrench
+          ? "Mises à jour, correctifs sécurité, sauvegardes"
+          : "Updates, security patches, backups",
         price: 600,
         category: "addon",
       },
       {
         id: "bw-addon-12",
-        name: "E-commerce Lite Features",
-        description: "Simple product listing + payment",
+        name: isFrench
+          ? "Fonctionnalités E-commerce Lite"
+          : "E-commerce Lite Features",
+        description: isFrench
+          ? "Liste de produits simple + paiement"
+          : "Simple product listing + payment",
         price: 1500,
         category: "addon",
       },
@@ -345,104 +410,150 @@ export const services: Service[] = [
   },
   {
     id: "showcase-website",
-    title: "Showcase Website",
-    description: "High-end portfolio with premium presentation features",
-    basePrice: 2000, // USD
-    gbpPrice: 1575, // GBP (2000 ÷ 1.27)
-    euroPrice: 1840, // EUR
-    deliveryTime: "3-4 weeks",
+    title: isFrench ? "Site Vitrine" : "Showcase Website",
+    description: isFrench
+      ? "Portfolio haut de gamme avec fonctionnalités de présentation premium"
+      : "High-end portfolio with premium presentation features",
+    basePrice: 2000,
+    gbpPrice: 1575,
+    euroPrice: 1840,
+    deliveryTime: isFrench ? "3-4 semaines" : "3-4 weeks",
     features: [
       {
         id: "sw-core-1",
-        name: "Premium Minimalist UI Design",
-        description: "Award-winning design aesthetics",
+        name: isFrench
+          ? "Design UI Minimaliste Premium"
+          : "Premium Minimalist UI Design",
+        description: isFrench
+          ? "Esthétique de design primée"
+          : "Award-winning design aesthetics",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "sw-core-2",
-        name: "Performance Optimized",
-        description: "95+ PageSpeed scores guaranteed",
+        name: isFrench ? "Performance Optimisée" : "Performance Optimized",
+        description: isFrench
+          ? "Scores PageSpeed 95+ garantis"
+          : "95+ PageSpeed scores guaranteed",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "sw-core-3",
-        name: "Contact & Lead Capture System",
-        description: "Advanced forms with CRM integration",
+        name: isFrench
+          ? "Système de Contact & Capture de Leads"
+          : "Contact & Lead Capture System",
+        description: isFrench
+          ? "Formulaires avancés avec intégration CRM"
+          : "Advanced forms with CRM integration",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "sw-addon-1",
-        name: "Interactive Gallery & Portfolio",
-        description: "Lightbox, filtering, categories",
+        name: isFrench
+          ? "Galerie Interactive & Portfolio"
+          : "Interactive Gallery & Portfolio",
+        description: isFrench
+          ? "Lightbox, filtrage, catégories"
+          : "Lightbox, filtering, categories",
         price: 800,
         category: "addon",
       },
       {
         id: "sw-addon-2",
-        name: "Video Backgrounds & Animations",
-        description: "Custom animations & video integration",
+        name: isFrench
+          ? "Arrière-plans Vidéo & Animations"
+          : "Video Backgrounds & Animations",
+        description: isFrench
+          ? "Animations personnalisées & intégration vidéo"
+          : "Custom animations & video integration",
         price: 600,
         category: "addon",
       },
       {
         id: "sw-addon-3",
-        name: "Parallax & Scroll Effects",
-        description: "Advanced scroll-triggered animations",
+        name: isFrench
+          ? "Effets Parallax & Scroll"
+          : "Parallax & Scroll Effects",
+        description: isFrench
+          ? "Animations avancées déclenchées au défilement"
+          : "Advanced scroll-triggered animations",
         price: 350,
         category: "addon",
       },
       {
         id: "sw-addon-4",
-        name: "3D Model & AR Integration",
-        description: "Three.js models with AR viewing",
+        name: isFrench ? "Intégration 3D & AR" : "3D Model & AR Integration",
+        description: isFrench
+          ? "Modèles Three.js avec visualisation AR"
+          : "Three.js models with AR viewing",
         price: 1200,
         category: "addon",
       },
       {
         id: "sw-addon-5",
-        name: "Client Testimonial System",
-        description: "Ratings, reviews, and trust badges",
+        name: isFrench
+          ? "Système de Témoignages Clients"
+          : "Client Testimonial System",
+        description: isFrench
+          ? "Notes, avis et badges de confiance"
+          : "Ratings, reviews, and trust badges",
         price: 450,
         category: "addon",
       },
       {
         id: "sw-addon-6",
-        name: "Case Study Presentation",
-        description: "Interactive case studies with metrics",
+        name: isFrench
+          ? "Présentation d'Études de Cas"
+          : "Case Study Presentation",
+        description: isFrench
+          ? "Études de cas interactives avec métriques"
+          : "Interactive case studies with metrics",
         price: 700,
         category: "addon",
       },
       {
         id: "sw-addon-7",
-        name: "Dark/Light Mode Toggle",
-        description: "Custom theme switching",
+        name: isFrench ? "Bascule Mode Sombre/Clair" : "Dark/Light Mode Toggle",
+        description: isFrench
+          ? "Commutation de thème personnalisée"
+          : "Custom theme switching",
         price: 500,
         category: "addon",
       },
       {
         id: "sw-addon-8",
-        name: "PDF Portfolio Generator",
-        description: "Automated PDF export of portfolio",
+        name: isFrench
+          ? "Générateur de Portfolio PDF"
+          : "PDF Portfolio Generator",
+        description: isFrench
+          ? "Export PDF automatisé du portfolio"
+          : "Automated PDF export of portfolio",
         price: 650,
         category: "addon",
       },
       {
         id: "sw-addon-9",
-        name: "Video Introductions",
-        description: "Embedded video presentations",
+        name: isFrench ? "Présentations Vidéo" : "Video Introductions",
+        description: isFrench
+          ? "Présentations vidéo intégrées"
+          : "Embedded video presentations",
         price: 400,
         category: "addon",
       },
       {
         id: "sw-addon-10",
-        name: "Social Proof Integration",
-        description: "Live visitor counts, trust signals",
+        name: isFrench
+          ? "Intégration Preuve Sociale"
+          : "Social Proof Integration",
+        description: isFrench
+          ? "Compteurs de visiteurs en direct, signaux de confiance"
+          : "Live visitor counts, trust signals",
         price: 300,
         category: "addon",
       },
@@ -450,127 +561,187 @@ export const services: Service[] = [
   },
   {
     id: "ecommerce-store",
-    title: "E-Commerce Store",
-    description: "Enterprise-grade online store with premium integrations",
-    basePrice: 8500, // USD
-    gbpPrice: 6693, // GBP (8500 ÷ 1.27)
-    euroPrice: 7820, // EUR
-    deliveryTime: "6-8 weeks",
+    title: isFrench ? "Boutique E-Commerce" : "E-Commerce Store",
+    description: isFrench
+      ? "Boutique en ligne de niveau entreprise avec intégrations premium"
+      : "Enterprise-grade online store with premium integrations",
+    basePrice: 8500,
+    gbpPrice: 6693,
+    euroPrice: 7820,
+    deliveryTime: isFrench ? "6-8 semaines" : "6-8 weeks",
     popular: true,
     features: [
       {
         id: "ec-core-1",
-        name: "Product Management (Up to 200 SKUs)",
-        description: "Categories, variants, inventory",
+        name: isFrench
+          ? "Gestion de Produits (Jusqu'à 200 SKU)"
+          : "Product Management (Up to 200 SKUs)",
+        description: isFrench
+          ? "Catégories, variantes, inventaire"
+          : "Categories, variants, inventory",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ec-core-2",
-        name: "Payment Gateway Integration",
-        description: "Stripe, PayPal, Apple/Google Pay",
+        name: isFrench
+          ? "Intégration Passerelle de Paiement"
+          : "Payment Gateway Integration",
+        description: isFrench
+          ? "Stripe, PayPal, Apple/Google Pay"
+          : "Stripe, PayPal, Apple/Google Pay",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ec-core-3",
-        name: "Cart & Checkout System",
-        description: "One-page checkout, guest checkout",
+        name: isFrench ? "Système Panier & Paiement" : "Cart & Checkout System",
+        description: isFrench
+          ? "Paiement en une page, paiement invité"
+          : "One-page checkout, guest checkout",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ec-core-4",
-        name: "Responsive & Mobile-Optimized",
-        description: "Perfect mobile shopping experience",
+        name: isFrench
+          ? "Responsive & Optimisé Mobile"
+          : "Responsive & Mobile-Optimized",
+        description: isFrench
+          ? "Expérience d'achat mobile parfaite"
+          : "Perfect mobile shopping experience",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ec-addon-1",
-        name: "Advanced Inventory Management",
-        description: "Low stock alerts, bulk imports",
+        name: isFrench
+          ? "Gestion d'Inventaire Avancée"
+          : "Advanced Inventory Management",
+        description: isFrench
+          ? "Alertes de stock bas, imports en masse"
+          : "Low stock alerts, bulk imports",
         price: 2200,
         category: "addon",
       },
       {
         id: "ec-addon-2",
-        name: "Smart Product Search & Filters",
-        description: "AI-powered search with faceted filtering",
+        name: isFrench
+          ? "Recherche de Produits Intelligente & Filtres"
+          : "Smart Product Search & Filters",
+        description: isFrench
+          ? "Recherche IA avec filtrage à facettes"
+          : "AI-powered search with faceted filtering",
         price: 900,
         category: "addon",
       },
       {
         id: "ec-addon-3",
-        name: "Abandoned Cart Recovery System",
-        description: "Email/SMS sequences + automation",
+        name: isFrench
+          ? "Système de Récupération de Panier Abandonné"
+          : "Abandoned Cart Recovery System",
+        description: isFrench
+          ? "Séquences Email/SMS + automatisation"
+          : "Email/SMS sequences + automation",
         price: 800,
         category: "addon",
       },
       {
         id: "ec-addon-4",
-        name: "AI Product Recommendations",
-        description: "Personalized recommendations engine",
+        name: isFrench
+          ? "Recommandations de Produits IA"
+          : "AI Product Recommendations",
+        description: isFrench
+          ? "Moteur de recommandations personnalisées"
+          : "Personalized recommendations engine",
         price: 2800,
         category: "addon",
       },
       {
         id: "ec-addon-5",
-        name: "AR/VR Product Previews",
-        description: "3D product viewing + virtual try-on",
+        name: isFrench ? "Aperçus Produits AR/VR" : "AR/VR Product Previews",
+        description: isFrench
+          ? "Visualisation 3D + essayage virtuel"
+          : "3D product viewing + virtual try-on",
         price: 3500,
         category: "addon",
       },
       {
         id: "ec-addon-6",
-        name: "Marketplace Multi-seller System",
-        description: "Vendor dashboards + commission system",
+        name: isFrench
+          ? "Système Multi-vendeurs Marketplace"
+          : "Marketplace Multi-seller System",
+        description: isFrench
+          ? "Tableaux de bord vendeurs + système de commission"
+          : "Vendor dashboards + commission system",
         price: 7500,
         category: "addon",
       },
       {
         id: "ec-addon-7",
-        name: "Subscription & Recurring Payments",
-        description: "Membership boxes, SaaS billing",
+        name: isFrench
+          ? "Abonnement & Paiements Récurrents"
+          : "Subscription & Recurring Payments",
+        description: isFrench
+          ? "Box d'abonnement, facturation SaaS"
+          : "Membership boxes, SaaS billing",
         price: 1500,
         category: "addon",
       },
       {
         id: "ec-addon-8",
-        name: "POS System Integration",
-        description: "Connect online & physical store",
+        name: isFrench ? "Intégration Système POS" : "POS System Integration",
+        description: isFrench
+          ? "Connecter boutique en ligne & physique"
+          : "Connect online & physical store",
         price: 2000,
         category: "addon",
       },
       {
         id: "ec-addon-9",
-        name: "Advanced Shipping Solutions",
-        description: "Real-time rates, label printing",
+        name: isFrench
+          ? "Solutions d'Expédition Avancées"
+          : "Advanced Shipping Solutions",
+        description: isFrench
+          ? "Tarifs en temps réel, impression d'étiquettes"
+          : "Real-time rates, label printing",
         price: 1000,
         category: "addon",
       },
       {
         id: "ec-addon-10",
-        name: "Customer Loyalty Program",
-        description: "Points, rewards, referral system",
+        name: isFrench
+          ? "Programme de Fidélité Client"
+          : "Customer Loyalty Program",
+        description: isFrench
+          ? "Points, récompenses, système de parrainage"
+          : "Points, rewards, referral system",
         price: 1600,
         category: "addon",
       },
       {
         id: "ec-addon-11",
-        name: "B2B Wholesale Features",
-        description: "Price lists, minimum orders, quotes",
+        name: isFrench
+          ? "Fonctionnalités B2B Grossiste"
+          : "B2B Wholesale Features",
+        description: isFrench
+          ? "Listes de prix, commandes minimum, devis"
+          : "Price lists, minimum orders, quotes",
         price: 3200,
         category: "addon",
       },
       {
         id: "ec-addon-12",
-        name: "Multi-currency & Tax Support",
-        description: "Automatic currency + tax calculations",
+        name: isFrench
+          ? "Support Multi-devises & Taxes"
+          : "Multi-currency & Tax Support",
+        description: isFrench
+          ? "Calculs automatiques de devises et taxes"
+          : "Automatic currency + tax calculations",
         price: 1200,
         category: "addon",
       },
@@ -578,112 +749,168 @@ export const services: Service[] = [
   },
   {
     id: "elearning-platform",
-    title: "E-Learning Platform",
-    description: "Complete LMS with advanced course management",
-    basePrice: 12000, // USD
-    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
-    euroPrice: 11040, // EUR
-    deliveryTime: "8-12 weeks",
+    title: isFrench ? "Plateforme E-Learning" : "E-Learning Platform",
+    description: isFrench
+      ? "LMS complet avec gestion avancée des cours"
+      : "Complete LMS with advanced course management",
+    basePrice: 12000,
+    gbpPrice: 9449,
+    euroPrice: 11040,
+    deliveryTime: isFrench ? "8-12 semaines" : "8-12 weeks",
     features: [
       {
         id: "el-core-1",
-        name: "Student & Instructor Dashboards",
-        description: "Progress tracking, analytics",
+        name: isFrench
+          ? "Tableaux de Bord Étudiants & Instructeurs"
+          : "Student & Instructor Dashboards",
+        description: isFrench
+          ? "Suivi de progression, analytique"
+          : "Progress tracking, analytics",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "el-core-2",
-        name: "Payment & Enrollment System",
-        description: "One-time, subscriptions, bundles",
+        name: isFrench
+          ? "Système de Paiement & Inscription"
+          : "Payment & Enrollment System",
+        description: isFrench
+          ? "Paiement unique, abonnements, packs"
+          : "One-time, subscriptions, bundles",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "el-core-3",
-        name: "Course Management System",
-        description: "Modules, lessons, quizzes",
+        name: isFrench
+          ? "Système de Gestion de Cours"
+          : "Course Management System",
+        description: isFrench
+          ? "Modules, leçons, quiz"
+          : "Modules, lessons, quizzes",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "el-core-4",
-        name: "Video Hosting & Streaming",
-        description: "Secure video delivery",
+        name: isFrench
+          ? "Hébergement Vidéo & Streaming"
+          : "Video Hosting & Streaming",
+        description: isFrench
+          ? "Diffusion vidéo sécurisée"
+          : "Secure video delivery",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "el-addon-1",
-        name: "Advanced Video Streaming & DRM",
-        description: "Secure video hosting with protection",
+        name: isFrench
+          ? "Streaming Vidéo Avancé & DRM"
+          : "Advanced Video Streaming & DRM",
+        description: isFrench
+          ? "Hébergement vidéo sécurisé avec protection"
+          : "Secure video hosting with protection",
         price: 2200,
         category: "addon",
       },
       {
         id: "el-addon-2",
-        name: "Gamification & Engagement",
-        description: "Badges, leaderboards, points",
+        name: isFrench
+          ? "Gamification & Engagement"
+          : "Gamification & Engagement",
+        description: isFrench
+          ? "Badges, classements, points"
+          : "Badges, leaderboards, points",
         price: 1800,
         category: "addon",
       },
       {
         id: "el-addon-3",
-        name: "AI Tutor & Personalization",
-        description: "Adaptive learning paths",
+        name: isFrench
+          ? "Tuteur IA & Personnalisation"
+          : "AI Tutor & Personalization",
+        description: isFrench
+          ? "Parcours d'apprentissage adaptatifs"
+          : "Adaptive learning paths",
         price: 3200,
         category: "addon",
       },
       {
         id: "el-addon-4",
-        name: "SCORM/xAPI Compliance",
-        description: "Enterprise LMS compatibility",
+        name: isFrench ? "Conformité SCORM/xAPI" : "SCORM/xAPI Compliance",
+        description: isFrench
+          ? "Compatibilité LMS entreprise"
+          : "Enterprise LMS compatibility",
         price: 1500,
         category: "addon",
       },
       {
         id: "el-addon-5",
-        name: "Certification & Badge Automation",
-        description: "Digital certificates with verification",
+        name: isFrench
+          ? "Automatisation Certification & Badges"
+          : "Certification & Badge Automation",
+        description: isFrench
+          ? "Certificats numériques avec vérification"
+          : "Digital certificates with verification",
         price: 1200,
         category: "addon",
       },
       {
         id: "el-addon-6",
-        name: "Live Class Integration",
-        description: "Zoom, Teams, interactive whiteboard",
+        name: isFrench
+          ? "Intégration Classes en Direct"
+          : "Live Class Integration",
+        description: isFrench
+          ? "Zoom, Teams, tableau blanc interactif"
+          : "Zoom, Teams, interactive whiteboard",
         price: 1600,
         category: "addon",
       },
       {
         id: "el-addon-7",
-        name: "Assignment & Grading System",
-        description: "Auto-grading, peer reviews",
+        name: isFrench
+          ? "Système de Devoirs & Notation"
+          : "Assignment & Grading System",
+        description: isFrench
+          ? "Correction auto, évaluations par les pairs"
+          : "Auto-grading, peer reviews",
         price: 1400,
         category: "addon",
       },
       {
         id: "el-addon-8",
-        name: "Discussion Forums & Community",
-        description: "Q&A, groups, social learning",
+        name: isFrench
+          ? "Forums de Discussion & Communauté"
+          : "Discussion Forums & Community",
+        description: isFrench
+          ? "Q&R, groupes, apprentissage social"
+          : "Q&A, groups, social learning",
         price: 1100,
         category: "addon",
       },
       {
         id: "el-addon-9",
-        name: "Mobile App Development",
-        description: "iOS & Android companion apps",
+        name: isFrench
+          ? "Développement d'Application Mobile"
+          : "Mobile App Development",
+        description: isFrench
+          ? "Applications compagnon iOS & Android"
+          : "iOS & Android companion apps",
         price: 5000,
         category: "addon",
       },
       {
         id: "el-addon-10",
-        name: "Corporate Training Features",
-        description: "Team management, reporting",
+        name: isFrench
+          ? "Fonctionnalités de Formation Corporate"
+          : "Corporate Training Features",
+        description: isFrench
+          ? "Gestion d'équipe, reporting"
+          : "Team management, reporting",
         price: 2500,
         category: "addon",
       },
@@ -691,104 +918,156 @@ export const services: Service[] = [
   },
   {
     id: "saas-platform",
-    title: "SaaS Platform",
-    description: "Custom cloud solution with microservices architecture",
-    basePrice: 18000, // USD
-    gbpPrice: 14173, // GBP (18000 ÷ 1.27)
-    euroPrice: 16560, // EUR
-    deliveryTime: "12-16 weeks",
+    title: isFrench ? "Plateforme SaaS" : "SaaS Platform",
+    description: isFrench
+      ? "Solution cloud personnalisée avec architecture microservices"
+      : "Custom cloud solution with microservices architecture",
+    basePrice: 18000,
+    gbpPrice: 14173,
+    euroPrice: 16560,
+    deliveryTime: isFrench ? "12-16 semaines" : "12-16 weeks",
     features: [
       {
         id: "saas-core-1",
-        name: "Cloud Infrastructure Setup",
-        description: "AWS/Azure/GCP with CI/CD",
+        name: isFrench
+          ? "Configuration Infrastructure Cloud"
+          : "Cloud Infrastructure Setup",
+        description: isFrench
+          ? "AWS/Azure/GCP avec CI/CD"
+          : "AWS/Azure/GCP with CI/CD",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "saas-core-2",
-        name: "User Authentication & Roles",
-        description: "OAuth, JWT, RBAC, SSO ready",
+        name: isFrench
+          ? "Authentification Utilisateur & Rôles"
+          : "User Authentication & Roles",
+        description: isFrench
+          ? "OAuth, JWT, RBAC, prêt pour SSO"
+          : "OAuth, JWT, RBAC, SSO ready",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "saas-core-3",
-        name: "API Development & Integration",
-        description: "REST/GraphQL with documentation",
+        name: isFrench
+          ? "Développement API & Intégration"
+          : "API Development & Integration",
+        description: isFrench
+          ? "REST/GraphQL avec documentation"
+          : "REST/GraphQL with documentation",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "saas-addon-1",
-        name: "Advanced Admin Dashboard",
-        description: "Analytics, user management, logs",
+        name: isFrench
+          ? "Tableau de Bord Admin Avancé"
+          : "Advanced Admin Dashboard",
+        description: isFrench
+          ? "Analytique, gestion utilisateurs, logs"
+          : "Analytics, user management, logs",
         price: 3500,
         category: "addon",
       },
       {
         id: "saas-addon-2",
-        name: "Custom Analytics & Reporting",
-        description: "Real-time dashboards, exports",
+        name: isFrench
+          ? "Analytique & Reporting Personnalisés"
+          : "Custom Analytics & Reporting",
+        description: isFrench
+          ? "Tableaux de bord temps réel, exports"
+          : "Real-time dashboards, exports",
         price: 3000,
         category: "addon",
       },
       {
         id: "saas-addon-3",
-        name: "White-label & Branding",
-        description: "Custom domains, branding, themes",
+        name: isFrench ? "White-label & Branding" : "White-label & Branding",
+        description: isFrench
+          ? "Domaines personnalisés, branding, thèmes"
+          : "Custom domains, branding, themes",
         price: 4500,
         category: "addon",
       },
       {
         id: "saas-addon-4",
-        name: "AI/ML Module Integration",
-        description: "Predictive analytics, automation",
+        name: isFrench
+          ? "Intégration Module IA/ML"
+          : "AI/ML Module Integration",
+        description: isFrench
+          ? "Analytique prédictive, automatisation"
+          : "Predictive analytics, automation",
         price: 5000,
         category: "addon",
       },
       {
         id: "saas-addon-5",
-        name: "Multi-tenancy Architecture",
-        description: "Data isolation, custom instances",
+        name: isFrench
+          ? "Architecture Multi-tenant"
+          : "Multi-tenancy Architecture",
+        description: isFrench
+          ? "Isolation des données, instances personnalisées"
+          : "Data isolation, custom instances",
         price: 6500,
         category: "addon",
       },
       {
         id: "saas-addon-6",
-        name: "WebSocket & Real-time Features",
-        description: "Live notifications, chat, updates",
+        name: isFrench
+          ? "Fonctionnalités WebSocket & Temps Réel"
+          : "WebSocket & Real-time Features",
+        description: isFrench
+          ? "Notifications en direct, chat, mises à jour"
+          : "Live notifications, chat, updates",
         price: 2500,
         category: "addon",
       },
       {
         id: "saas-addon-7",
-        name: "Payment & Billing System",
-        description: "Stripe/Braintree integration",
+        name: isFrench
+          ? "Système de Paiement & Facturation"
+          : "Payment & Billing System",
+        description: isFrench
+          ? "Intégration Stripe/Braintree"
+          : "Stripe/Braintree integration",
         price: 2800,
         category: "addon",
       },
       {
         id: "saas-addon-8",
-        name: "API Rate Limiting & Monitoring",
-        description: "Usage tracking, alerts, analytics",
+        name: isFrench
+          ? "Limitation de Débit API & Monitoring"
+          : "API Rate Limiting & Monitoring",
+        description: isFrench
+          ? "Suivi d'utilisation, alertes, analytique"
+          : "Usage tracking, alerts, analytics",
         price: 1800,
         category: "addon",
       },
       {
         id: "saas-addon-9",
-        name: "Database Optimization",
-        description: "Sharding, replication, caching",
+        name: isFrench
+          ? "Optimisation de Base de Données"
+          : "Database Optimization",
+        description: isFrench
+          ? "Sharding, réplication, mise en cache"
+          : "Sharding, replication, caching",
         price: 3200,
         category: "addon",
       },
       {
         id: "saas-addon-10",
-        name: "Mobile App Integration",
-        description: "Native iOS/Android apps",
+        name: isFrench
+          ? "Intégration Application Mobile"
+          : "Mobile App Integration",
+        description: isFrench
+          ? "Applications natives iOS/Android"
+          : "Native iOS/Android apps",
         price: 7500,
         category: "addon",
       },
@@ -796,89 +1075,127 @@ export const services: Service[] = [
   },
   {
     id: "plugin-development",
-    title: "Plugin Development",
-    description: "High-quality plugins with premium support",
-    basePrice: 1800, // USD
-    gbpPrice: 1417, // GBP (1800 ÷ 1.27)
-    euroPrice: 1656, // EUR
-    deliveryTime: "4-6 weeks",
+    title: isFrench ? "Développement de Plugin" : "Plugin Development",
+    description: isFrench
+      ? "Plugins de haute qualité avec support premium"
+      : "High-quality plugins with premium support",
+    basePrice: 1800,
+    gbpPrice: 1417,
+    euroPrice: 1656,
+    deliveryTime: isFrench ? "4-6 semaines" : "4-6 weeks",
     features: [
       {
         id: "pd-core-1",
-        name: "Custom Functionality Development",
-        description: "Tailored to your specific needs",
+        name: isFrench
+          ? "Développement de Fonctionnalités Personnalisées"
+          : "Custom Functionality Development",
+        description: isFrench
+          ? "Adapté à vos besoins spécifiques"
+          : "Tailored to your specific needs",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "pd-core-2",
-        name: "Seamless Integration",
-        description: "Tested with latest versions",
+        name: isFrench ? "Intégration Transparente" : "Seamless Integration",
+        description: isFrench
+          ? "Testé avec les dernières versions"
+          : "Tested with latest versions",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "pd-addon-1",
-        name: "Enterprise Security Features",
-        description: "Vulnerability scanning, encryption",
+        name: isFrench
+          ? "Fonctionnalités de Sécurité Entreprise"
+          : "Enterprise Security Features",
+        description: isFrench
+          ? "Scan de vulnérabilités, chiffrement"
+          : "Vulnerability scanning, encryption",
         price: 1200,
         category: "addon",
       },
       {
         id: "pd-addon-2",
-        name: "Multisite & Network Compatibility",
-        description: "Tested on large installations",
+        name: isFrench
+          ? "Compatibilité Multisite & Réseau"
+          : "Multisite & Network Compatibility",
+        description: isFrench
+          ? "Testé sur de grandes installations"
+          : "Tested on large installations",
         price: 1000,
         category: "addon",
       },
       {
         id: "pd-addon-3",
-        name: "Performance Optimization",
-        description: "Caching, lazy loading, minification",
+        name: isFrench
+          ? "Optimisation des Performances"
+          : "Performance Optimization",
+        description: isFrench
+          ? "Mise en cache, lazy loading, minification"
+          : "Caching, lazy loading, minification",
         price: 1000,
         category: "addon",
       },
       {
         id: "pd-addon-4",
-        name: "Auto-update & License System",
-        description: "Secure licensing with updates",
+        name: isFrench
+          ? "Système de Licence & Mise à Jour Auto"
+          : "Auto-update & License System",
+        description: isFrench
+          ? "Licences sécurisées avec mises à jour"
+          : "Secure licensing with updates",
         price: 1400,
         category: "addon",
       },
       {
         id: "pd-addon-5",
-        name: "REST API Endpoints",
-        description: "Custom API for integration",
+        name: isFrench ? "Endpoints API REST" : "REST API Endpoints",
+        description: isFrench
+          ? "API personnalisée pour l'intégration"
+          : "Custom API for integration",
         price: 900,
         category: "addon",
       },
       {
         id: "pd-addon-6",
-        name: "Import/Export & Migration",
-        description: "Data migration tools",
+        name: isFrench
+          ? "Import/Export & Migration"
+          : "Import/Export & Migration",
+        description: isFrench
+          ? "Outils de migration de données"
+          : "Data migration tools",
         price: 800,
         category: "addon",
       },
       {
         id: "pd-addon-7",
-        name: "Documentation & User Guides",
-        description: "Comprehensive documentation",
+        name: isFrench
+          ? "Documentation & Guides Utilisateur"
+          : "Documentation & User Guides",
+        description: isFrench
+          ? "Documentation complète"
+          : "Comprehensive documentation",
         price: 600,
         category: "addon",
       },
       {
         id: "pd-addon-8",
-        name: "Multi-language Support",
-        description: "Translation-ready architecture",
+        name: isFrench ? "Support Multi-langues" : "Multi-language Support",
+        description: isFrench
+          ? "Architecture prête pour la traduction"
+          : "Translation-ready architecture",
         price: 700,
         category: "addon",
       },
       {
         id: "pd-addon-9",
-        name: "Premium Support Package",
-        description: "6 months priority support",
+        name: isFrench ? "Pack Support Premium" : "Premium Support Package",
+        description: isFrench
+          ? "Support prioritaire de 6 mois"
+          : "6 months priority support",
         price: 800,
         category: "addon",
       },
@@ -886,89 +1203,133 @@ export const services: Service[] = [
   },
   {
     id: "seo-optimization",
-    title: "SEO Optimization",
-    description: "Comprehensive technical and content SEO",
-    basePrice: 2000, // USD
-    gbpPrice: 1575, // GBP (2000 ÷ 1.27)
-    euroPrice: 1840, // EUR
-    deliveryTime: "3-4 weeks",
+    title: isFrench ? "Optimisation SEO" : "SEO Optimization",
+    description: isFrench
+      ? "SEO technique et de contenu complet"
+      : "Comprehensive technical and content SEO",
+    basePrice: 2000,
+    gbpPrice: 1575,
+    euroPrice: 1840,
+    deliveryTime: isFrench ? "3-4 semaines" : "3-4 weeks",
     features: [
       {
         id: "seo-core-1",
-        name: "Comprehensive Keyword Research",
-        description: "500+ keywords with competition analysis",
+        name: isFrench
+          ? "Recherche de Mots-clés Complète"
+          : "Comprehensive Keyword Research",
+        description: isFrench
+          ? "500+ mots-clés avec analyse de concurrence"
+          : "500+ keywords with competition analysis",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "seo-core-2",
-        name: "Technical SEO Audit & Fixes",
-        description: "Full site audit with implementation",
+        name: isFrench
+          ? "Audit SEO Technique & Corrections"
+          : "Technical SEO Audit & Fixes",
+        description: isFrench
+          ? "Audit complet du site avec implémentation"
+          : "Full site audit with implementation",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "seo-addon-1",
-        name: "Competitor Analysis Report",
-        description: "10 competitors, gap analysis",
+        name: isFrench
+          ? "Rapport d'Analyse Concurrentielle"
+          : "Competitor Analysis Report",
+        description: isFrench
+          ? "10 concurrents, analyse des écarts"
+          : "10 competitors, gap analysis",
         price: 1200,
         category: "addon",
       },
       {
         id: "seo-addon-2",
-        name: "Monthly SEO Performance Reports",
-        description: "3 months of tracking + recommendations",
+        name: isFrench
+          ? "Rapports SEO Mensuels"
+          : "Monthly SEO Performance Reports",
+        description: isFrench
+          ? "3 mois de suivi + recommandations"
+          : "3 months of tracking + recommendations",
         price: 500,
         category: "addon",
       },
       {
         id: "seo-addon-3",
-        name: "International & Local SEO",
-        description: "hreflang, geo-targeting, GMB",
+        name: isFrench
+          ? "SEO International & Local"
+          : "International & Local SEO",
+        description: isFrench
+          ? "hreflang, géo-ciblage, GMB"
+          : "hreflang, geo-targeting, GMB",
         price: 1500,
         category: "addon",
       },
       {
         id: "seo-addon-4",
-        name: "Content Strategy & Optimization",
-        description: "10 pages optimized with copywriting",
+        name: isFrench
+          ? "Stratégie de Contenu & Optimisation"
+          : "Content Strategy & Optimization",
+        description: isFrench
+          ? "10 pages optimisées avec rédaction"
+          : "10 pages optimized with copywriting",
         price: 1800,
         category: "addon",
       },
       {
         id: "seo-addon-5",
-        name: "Schema Markup Implementation",
-        description: "Rich snippets for better CTR",
+        name: isFrench
+          ? "Implémentation Schema Markup"
+          : "Schema Markup Implementation",
+        description: isFrench
+          ? "Rich snippets pour un meilleur CTR"
+          : "Rich snippets for better CTR",
         price: 900,
         category: "addon",
       },
       {
         id: "seo-addon-6",
-        name: "Core Web Vitals Optimization",
-        description: "Fix LCP, FID, CLS issues",
+        name: isFrench
+          ? "Optimisation Core Web Vitals"
+          : "Core Web Vitals Optimization",
+        description: isFrench
+          ? "Correction des problèmes LCP, FID, CLS"
+          : "Fix LCP, FID, CLS issues",
         price: 1100,
         category: "addon",
       },
       {
         id: "seo-addon-7",
-        name: "Backlink Audit & Strategy",
-        description: "Link profile analysis + outreach plan",
+        name: isFrench
+          ? "Audit Backlink & Stratégie"
+          : "Backlink Audit & Strategy",
+        description: isFrench
+          ? "Analyse du profil de liens + plan d'outreach"
+          : "Link profile analysis + outreach plan",
         price: 1600,
         category: "addon",
       },
       {
         id: "seo-addon-8",
-        name: "E-commerce SEO Specialization",
-        description: "Product page optimization",
+        name: isFrench
+          ? "Spécialisation SEO E-commerce"
+          : "E-commerce SEO Specialization",
+        description: isFrench
+          ? "Optimisation des pages produits"
+          : "Product page optimization",
         price: 1300,
         category: "addon",
       },
       {
         id: "seo-addon-9",
-        name: "SEO Training Session",
-        description: "2-hour training for your team",
+        name: isFrench ? "Session de Formation SEO" : "SEO Training Session",
+        description: isFrench
+          ? "Formation de 2 heures pour votre équipe"
+          : "2-hour training for your team",
         price: 400,
         category: "addon",
       },
@@ -976,96 +1337,146 @@ export const services: Service[] = [
   },
   {
     id: "custom-crm",
-    title: "Custom CRM",
-    description: "Tailored sales pipeline management system",
-    basePrice: 14000, // USD
-    gbpPrice: 11024, // GBP (14000 ÷ 1.27)
-    euroPrice: 12880, // EUR
-    deliveryTime: "12-16 weeks",
+    title: isFrench ? "CRM Personnalisé" : "Custom CRM",
+    description: isFrench
+      ? "Système de gestion de pipeline de vente sur mesure"
+      : "Tailored sales pipeline management system",
+    basePrice: 14000,
+    gbpPrice: 11024,
+    euroPrice: 12880,
+    deliveryTime: isFrench ? "12-16 semaines" : "12-16 weeks",
     features: [
       {
         id: "crm-core-1",
-        name: "Lead & Contact Management",
-        description: "Import, segmentation, tracking",
+        name: isFrench
+          ? "Gestion des Leads & Contacts"
+          : "Lead & Contact Management",
+        description: isFrench
+          ? "Import, segmentation, suivi"
+          : "Import, segmentation, tracking",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "crm-core-2",
-        name: "Sales Pipeline & Analytics",
-        description: "Funnel visualization, forecasting",
+        name: isFrench
+          ? "Pipeline de Vente & Analytique"
+          : "Sales Pipeline & Analytics",
+        description: isFrench
+          ? "Visualisation de l'entonnoir, prévisions"
+          : "Funnel visualization, forecasting",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "crm-addon-1",
-        name: "Email & SMS Campaign Integration",
-        description: "Automated sequences, templates",
+        name: isFrench
+          ? "Intégration Campagnes Email & SMS"
+          : "Email & SMS Campaign Integration",
+        description: isFrench
+          ? "Séquences automatisées, modèles"
+          : "Automated sequences, templates",
         price: 3500,
         category: "addon",
       },
       {
         id: "crm-addon-2",
-        name: "Custom Workflows & Automation",
-        description: "Visual workflow builder",
+        name: isFrench
+          ? "Workflows Personnalisés & Automatisation"
+          : "Custom Workflows & Automation",
+        description: isFrench
+          ? "Constructeur visuel de workflow"
+          : "Visual workflow builder",
         price: 2800,
         category: "addon",
       },
       {
         id: "crm-addon-3",
-        name: "Mobile App & Offline Sync",
-        description: "iOS/Android app with sync",
+        name: isFrench
+          ? "Application Mobile & Sync Hors Ligne"
+          : "Mobile App & Offline Sync",
+        description: isFrench
+          ? "Application iOS/Android avec sync"
+          : "iOS/Android app with sync",
         price: 4500,
         category: "addon",
       },
       {
         id: "crm-addon-4",
-        name: "AI Lead Scoring & Prioritization",
-        description: "Predictive scoring + recommendations",
+        name: isFrench
+          ? "Score de Lead IA & Priorisation"
+          : "AI Lead Scoring & Prioritization",
+        description: isFrench
+          ? "Score prédictif + recommandations"
+          : "Predictive scoring + recommendations",
         price: 3200,
         category: "addon",
       },
       {
         id: "crm-addon-5",
-        name: "Calendar & Meeting Scheduling",
-        description: "Google/Outlook sync, booking pages",
+        name: isFrench
+          ? "Calendrier & Planification de Réunions"
+          : "Calendar & Meeting Scheduling",
+        description: isFrench
+          ? "Sync Google/Outlook, pages de réservation"
+          : "Google/Outlook sync, booking pages",
         price: 1800,
         category: "addon",
       },
       {
         id: "crm-addon-6",
-        name: "Document & Contract Management",
-        description: "E-signatures, templates, storage",
+        name: isFrench
+          ? "Gestion de Documents & Contrats"
+          : "Document & Contract Management",
+        description: isFrench
+          ? "Signatures électroniques, modèles, stockage"
+          : "E-signatures, templates, storage",
         price: 2200,
         category: "addon",
       },
       {
         id: "crm-addon-7",
-        name: "Integration with 3rd Party Tools",
-        description: "API connections to your stack",
+        name: isFrench
+          ? "Intégration avec Outils Tiers"
+          : "Integration with 3rd Party Tools",
+        description: isFrench
+          ? "Connexions API à votre stack"
+          : "API connections to your stack",
         price: 2000,
         category: "addon",
       },
       {
         id: "crm-addon-8",
-        name: "Custom Reporting & Dashboards",
-        description: "Advanced analytics and visualization",
+        name: isFrench
+          ? "Reporting & Tableaux de Bord Personnalisés"
+          : "Custom Reporting & Dashboards",
+        description: isFrench
+          ? "Analytique avancée et visualisation"
+          : "Advanced analytics and visualization",
         price: 2500,
         category: "addon",
       },
       {
         id: "crm-addon-9",
-        name: "Voice & Call Integration",
-        description: "VoIP integration, call recording",
+        name: isFrench
+          ? "Intégration Voix & Appels"
+          : "Voice & Call Integration",
+        description: isFrench
+          ? "Intégration VoIP, enregistrement d'appels"
+          : "VoIP integration, call recording",
         price: 1800,
         category: "addon",
       },
       {
         id: "crm-addon-10",
-        name: "Team Collaboration Features",
-        description: "Notes, tasks, internal messaging",
+        name: isFrench
+          ? "Fonctionnalités de Collaboration d'Équipe"
+          : "Team Collaboration Features",
+        description: isFrench
+          ? "Notes, tâches, messagerie interne"
+          : "Notes, tasks, internal messaging",
         price: 1500,
         category: "addon",
       },
@@ -1073,81 +1484,119 @@ export const services: Service[] = [
   },
   {
     id: "ai-integration",
-    title: "AI Integration",
-    description: "Add cutting-edge AI capabilities to your systems",
-    basePrice: 5500, // USD
-    gbpPrice: 4331, // GBP (5500 ÷ 1.27)
-    euroPrice: 5060, // EUR
-    deliveryTime: "5-7 weeks",
+    title: isFrench ? "Intégration IA" : "AI Integration",
+    description: isFrench
+      ? "Ajoutez des capacités IA de pointe à vos systèmes"
+      : "Add cutting-edge AI capabilities to your systems",
+    basePrice: 5500,
+    gbpPrice: 4331,
+    euroPrice: 5060,
+    deliveryTime: isFrench ? "5-7 semaines" : "5-7 weeks",
     features: [
       {
         id: "ai-core-1",
-        name: "LLM Integration (GPT-4/Claude/Gemini)",
-        description: "API integration with prompt engineering",
+        name: isFrench
+          ? "Intégration LLM (GPT-4/Claude/Gemini)"
+          : "LLM Integration (GPT-4/Claude/Gemini)",
+        description: isFrench
+          ? "Intégration API avec ingénierie de prompt"
+          : "API integration with prompt engineering",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ai-addon-1",
-        name: "Custom Model Fine-Tuning & Training",
-        description: "Train on your data, private hosting",
+        name: isFrench
+          ? "Fine-Tuning & Entraînement de Modèle Personnalisé"
+          : "Custom Model Fine-Tuning & Training",
+        description: isFrench
+          ? "Entraînez sur vos données, hébergement privé"
+          : "Train on your data, private hosting",
         price: 6000,
         category: "addon",
       },
       {
         id: "ai-addon-2",
-        name: "Voice & Speech Interface",
-        description: "Speech-to-text, voice commands",
+        name: isFrench ? "Interface Voix & Parole" : "Voice & Speech Interface",
+        description: isFrench
+          ? "Speech-to-text, commandes vocales"
+          : "Speech-to-text, voice commands",
         price: 3200,
         category: "addon",
       },
       {
         id: "ai-addon-3",
-        name: "Automated Content Generation",
-        description: "Articles, social media, product descriptions",
+        name: isFrench
+          ? "Génération de Contenu Automatisée"
+          : "Automated Content Generation",
+        description: isFrench
+          ? "Articles, réseaux sociaux, descriptions produits"
+          : "Articles, social media, product descriptions",
         price: 1800,
         category: "addon",
       },
       {
         id: "ai-addon-4",
-        name: "Computer Vision & Image Analysis",
-        description: "Image recognition, OCR, analysis",
+        name: isFrench
+          ? "Vision par Ordinateur & Analyse d'Images"
+          : "Computer Vision & Image Analysis",
+        description: isFrench
+          ? "Reconnaissance d'images, OCR, analyse"
+          : "Image recognition, OCR, analysis",
         price: 4500,
         category: "addon",
       },
       {
         id: "ai-addon-5",
-        name: "Predictive Analytics Dashboard",
-        description: "Forecasting, trend analysis, insights",
+        name: isFrench
+          ? "Tableau de Bord d'Analytique Prédictive"
+          : "Predictive Analytics Dashboard",
+        description: isFrench
+          ? "Prévisions, analyse de tendances, insights"
+          : "Forecasting, trend analysis, insights",
         price: 3800,
         category: "addon",
       },
       {
         id: "ai-addon-6",
-        name: "Chatbot Training & Optimization",
-        description: "Conversation flows, NLP tuning",
+        name: isFrench
+          ? "Entraînement & Optimisation de Chatbot"
+          : "Chatbot Training & Optimization",
+        description: isFrench
+          ? "Flux de conversation, tuning NLP"
+          : "Conversation flows, NLP tuning",
         price: 2200,
         category: "addon",
       },
       {
         id: "ai-addon-7",
-        name: "AI-Powered Search",
-        description: "Semantic search, natural language queries",
+        name: isFrench ? "Recherche Propulsée par IA" : "AI-Powered Search",
+        description: isFrench
+          ? "Recherche sémantique, requêtes en langage naturel"
+          : "Semantic search, natural language queries",
         price: 2800,
         category: "addon",
       },
       {
         id: "ai-addon-8",
-        name: "Sentiment Analysis Integration",
-        description: "Customer feedback, social media monitoring",
+        name: isFrench
+          ? "Intégration Analyse de Sentiment"
+          : "Sentiment Analysis Integration",
+        description: isFrench
+          ? "Feedback clients, monitoring réseaux sociaux"
+          : "Customer feedback, social media monitoring",
         price: 1900,
         category: "addon",
       },
       {
         id: "ai-addon-9",
-        name: "Document Processing Automation",
-        description: "PDF parsing, data extraction",
+        name: isFrench
+          ? "Automatisation du Traitement de Documents"
+          : "Document Processing Automation",
+        description: isFrench
+          ? "Parsing PDF, extraction de données"
+          : "PDF parsing, data extraction",
         price: 2500,
         category: "addon",
       },
@@ -1155,81 +1604,123 @@ export const services: Service[] = [
   },
   {
     id: "web3-development",
-    title: "Web3 Development",
-    description: "Blockchain and smart contract solutions",
-    basePrice: 12000, // USD
-    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
-    euroPrice: 11040, // EUR
-    deliveryTime: "8-16 weeks",
+    title: isFrench ? "Développement Web3" : "Web3 Development",
+    description: isFrench
+      ? "Solutions blockchain et smart contracts"
+      : "Blockchain and smart contract solutions",
+    basePrice: 12000,
+    gbpPrice: 9449,
+    euroPrice: 11040,
+    deliveryTime: isFrench ? "8-16 semaines" : "8-16 weeks",
     features: [
       {
         id: "web3-core-1",
-        name: "Smart Contract Development & Audit",
-        description: "Security-focused, gas-optimized",
+        name: isFrench
+          ? "Développement & Audit de Smart Contract"
+          : "Smart Contract Development & Audit",
+        description: isFrench
+          ? "Orienté sécurité, optimisé gas"
+          : "Security-focused, gas-optimized",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "web3-addon-1",
-        name: "Tokenomics Design & Implementation",
-        description: "ERC-20/721/1155, staking, rewards",
+        name: isFrench
+          ? "Conception & Implémentation Tokenomics"
+          : "Tokenomics Design & Implementation",
+        description: isFrench
+          ? "ERC-20/721/1155, staking, récompenses"
+          : "ERC-20/721/1155, staking, rewards",
         price: 7500,
         category: "addon",
       },
       {
         id: "web3-addon-2",
-        name: "NFT Marketplace Development",
-        description: "Minting, trading, royalties",
+        name: isFrench
+          ? "Développement Marketplace NFT"
+          : "NFT Marketplace Development",
+        description: isFrench
+          ? "Minting, trading, royalties"
+          : "Minting, trading, royalties",
         price: 10000,
         category: "addon",
       },
       {
         id: "web3-addon-3",
-        name: "DAO Integration & Governance",
-        description: "Voting, proposals, treasury management",
+        name: isFrench
+          ? "Intégration DAO & Gouvernance"
+          : "DAO Integration & Governance",
+        description: isFrench
+          ? "Votes, propositions, gestion de trésorerie"
+          : "Voting, proposals, treasury management",
         price: 4000,
         category: "addon",
       },
       {
         id: "web3-addon-4",
-        name: "DeFi Protocol Integration",
-        description: "Liquidity pools, yield farming",
+        name: isFrench
+          ? "Intégration Protocole DeFi"
+          : "DeFi Protocol Integration",
+        description: isFrench
+          ? "Pools de liquidité, yield farming"
+          : "Liquidity pools, yield farming",
         price: 9000,
         category: "addon",
       },
       {
         id: "web3-addon-5",
-        name: "Cross-chain Bridge Development",
-        description: "Multi-chain compatibility",
+        name: isFrench
+          ? "Développement de Pont Cross-chain"
+          : "Cross-chain Bridge Development",
+        description: isFrench
+          ? "Compatibilité multi-chaînes"
+          : "Multi-chain compatibility",
         price: 12000,
         category: "addon",
       },
       {
         id: "web3-addon-6",
-        name: "Web3 Authentication (Wallet Connect)",
-        description: "Crypto wallet login, non-custodial",
+        name: isFrench
+          ? "Authentification Web3 (Wallet Connect)"
+          : "Web3 Authentication (Wallet Connect)",
+        description: isFrench
+          ? "Login portefeuille crypto, non-custodial"
+          : "Crypto wallet login, non-custodial",
         price: 2800,
         category: "addon",
       },
       {
         id: "web3-addon-7",
-        name: "Blockchain Analytics Dashboard",
-        description: "Transaction tracking, analytics",
+        name: isFrench
+          ? "Tableau de Bord d'Analytique Blockchain"
+          : "Blockchain Analytics Dashboard",
+        description: isFrench
+          ? "Suivi des transactions, analytique"
+          : "Transaction tracking, analytics",
         price: 3500,
         category: "addon",
       },
       {
         id: "web3-addon-8",
-        name: "Gas Optimization Service",
-        description: "Reduce transaction costs",
+        name: isFrench
+          ? "Service d'Optimisation Gas"
+          : "Gas Optimization Service",
+        description: isFrench
+          ? "Réduire les coûts de transaction"
+          : "Reduce transaction costs",
         price: 2200,
         category: "addon",
       },
       {
         id: "web3-addon-9",
-        name: "Audit & Security Review",
-        description: "Comprehensive security assessment",
+        name: isFrench
+          ? "Audit & Revue de Sécurité"
+          : "Audit & Security Review",
+        description: isFrench
+          ? "Évaluation de sécurité complète"
+          : "Comprehensive security assessment",
         price: 5000,
         category: "addon",
       },
@@ -1237,78 +1728,95 @@ export const services: Service[] = [
   },
   {
     id: "booking-system",
-    title: "Booking & Appointment Platform",
-    description:
-      "Complete scheduling system with calendar integration and automated reminders",
-    basePrice: 6500, // USD
-    gbpPrice: 5118, // GBP (6500 ÷ 1.27)
-    euroPrice: 5980, // EUR
-    deliveryTime: "5-7 weeks",
+    title: isFrench
+      ? "Plateforme de Réservation & Rendez-vous"
+      : "Booking & Appointment Platform",
+    description: isFrench
+      ? "Système complet de planification avec intégration calendrier et rappels automatisés"
+      : "Complete scheduling system with calendar integration and automated reminders",
+    basePrice: 6500,
+    gbpPrice: 5118,
+    euroPrice: 5980,
+    deliveryTime: isFrench ? "5-7 semaines" : "5-7 weeks",
     popular: true,
     features: [
       {
         id: "bs-core-1",
-        name: "Multi-calendar Integration",
-        description: "Sync with Google, Outlook, Apple calendars",
+        name: isFrench
+          ? "Intégration Multi-calendriers"
+          : "Multi-calendar Integration",
+        description: isFrench
+          ? "Sync avec Google, Outlook, calendriers Apple"
+          : "Sync with Google, Outlook, Apple calendars",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bs-core-2",
-        name: "Automated Reminders",
-        description: "Email & SMS reminders, confirmations",
+        name: isFrench ? "Rappels Automatisés" : "Automated Reminders",
+        description: isFrench
+          ? "Rappels Email & SMS, confirmations"
+          : "Email & SMS reminders, confirmations",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bs-core-3",
-        name: "Online Payment Integration",
-        description: "Stripe, PayPal, payment processing",
+        name: isFrench
+          ? "Intégration Paiement en Ligne"
+          : "Online Payment Integration",
+        description: isFrench
+          ? "Stripe, PayPal, traitement des paiements"
+          : "Stripe, PayPal, payment processing",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "bs-addon-1",
-        name: "Mobile App for Providers",
+        name: isFrench
+          ? "Application Mobile pour Prestataires"
+          : "Mobile App for Providers",
         price: 5500,
         category: "addon",
       },
       {
         id: "bs-addon-2",
-        name: "CRM Integration",
+        name: isFrench ? "Intégration CRM" : "CRM Integration",
         price: 1800,
         category: "addon",
       },
       {
         id: "bs-addon-3",
-        name: "Waitlist Management",
+        name: isFrench ? "Gestion de Liste d'Attente" : "Waitlist Management",
         price: 900,
         category: "addon",
       },
       {
         id: "bs-addon-4",
-        name: "Video Consultation Integration",
+        name: isFrench
+          ? "Intégration Consultation Vidéo"
+          : "Video Consultation Integration",
         price: 1500,
         category: "addon",
       },
       {
         id: "bs-addon-5",
-        name: "Multi-location Support",
+        name: isFrench ? "Support Multi-sites" : "Multi-location Support",
         price: 1200,
         category: "addon",
       },
       {
         id: "bs-addon-6",
-        name: "Class/Group Booking",
+        name: isFrench ? "Réservation de Classe/Groupe" : "Class/Group Booking",
         price: 1100,
         category: "addon",
       },
       {
         id: "bs-addon-7",
-        name: "Resource Management",
+        name: isFrench ? "Gestion des Ressources" : "Resource Management",
         price: 1600,
         category: "addon",
       },
@@ -1316,77 +1824,101 @@ export const services: Service[] = [
   },
   {
     id: "real-estate-portal",
-    title: "Real Estate Platform",
-    description: "Property listings with virtual tours and agent management",
-    basePrice: 9500, // USD
-    gbpPrice: 7480, // GBP (9500 ÷ 1.27)
-    euroPrice: 8740, // EUR
-    deliveryTime: "8-10 weeks",
+    title: isFrench ? "Plateforme Immobilière" : "Real Estate Platform",
+    description: isFrench
+      ? "Annonces immobilières avec visites virtuelles et gestion d'agents"
+      : "Property listings with virtual tours and agent management",
+    basePrice: 9500,
+    gbpPrice: 7480,
+    euroPrice: 8740,
+    deliveryTime: isFrench ? "8-10 semaines" : "8-10 weeks",
     popular: true,
     features: [
       {
         id: "re-core-1",
-        name: "Property Listing Management",
-        description: "Unlimited listings with advanced filters",
+        name: isFrench
+          ? "Gestion des Annonces Immobilières"
+          : "Property Listing Management",
+        description: isFrench
+          ? "Annonces illimitées avec filtres avancés"
+          : "Unlimited listings with advanced filters",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "re-core-2",
-        name: "Virtual Tour Integration",
-        description: "360° tours, video walkthroughs",
+        name: isFrench
+          ? "Intégration Visite Virtuelle"
+          : "Virtual Tour Integration",
+        description: isFrench
+          ? "Visites 360°, vidéos de présentation"
+          : "360° tours, video walkthroughs",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "re-core-3",
-        name: "Agent & Broker CRM",
-        description: "Lead management, client tracking",
+        name: isFrench ? "CRM Agent & Courtier" : "Agent & Broker CRM",
+        description: isFrench
+          ? "Gestion des leads, suivi des clients"
+          : "Lead management, client tracking",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "re-addon-1",
-        name: "Mortgage Calculator & Tools",
+        name: isFrench
+          ? "Calculateur Hypothécaire & Outils"
+          : "Mortgage Calculator & Tools",
         price: 1200,
         category: "addon",
       },
       {
         id: "re-addon-2",
-        name: "Interactive Map Integration",
+        name: isFrench
+          ? "Intégration Carte Interactive"
+          : "Interactive Map Integration",
         price: 1800,
         category: "addon",
       },
       {
         id: "re-addon-3",
-        name: "AI Property Recommendations",
+        name: isFrench
+          ? "Recommandations Immobilières IA"
+          : "AI Property Recommendations",
         price: 2500,
         category: "addon",
       },
       {
         id: "re-addon-4",
-        name: "Document Management (e-sign)",
+        name: isFrench
+          ? "Gestion de Documents (e-sign)"
+          : "Document Management (e-sign)",
         price: 1600,
         category: "addon",
       },
       {
         id: "re-addon-5",
-        name: "Mobile App for Agents",
+        name: isFrench
+          ? "Application Mobile pour Agents"
+          : "Mobile App for Agents",
         price: 5000,
         category: "addon",
       },
       {
         id: "re-addon-6",
-        name: "Neighborhood & School Data",
+        name: isFrench
+          ? "Données de Quartier & Écoles"
+          : "Neighborhood & School Data",
         price: 1400,
         category: "addon",
       },
       {
         id: "re-addon-7",
-        name: "Multi-language Support",
+        name: isFrench ? "Support Multi-langues" : "Multi-language Support",
         price: 2000,
         category: "addon",
       },
@@ -1394,76 +1926,98 @@ export const services: Service[] = [
   },
   {
     id: "event-management",
-    title: "Event Management Platform",
-    description: "Complete event planning, ticketing, and management solution",
-    basePrice: 7500, // USD
-    gbpPrice: 5906, // GBP (7500 ÷ 1.27)
-    euroPrice: 6900, // EUR
-    deliveryTime: "6-8 weeks",
+    title: isFrench
+      ? "Plateforme de Gestion d'Événements"
+      : "Event Management Platform",
+    description: isFrench
+      ? "Solution complète de planification d'événements, billetterie et gestion"
+      : "Complete event planning, ticketing, and management solution",
+    basePrice: 7500,
+    gbpPrice: 5906,
+    euroPrice: 6900,
+    deliveryTime: isFrench ? "6-8 semaines" : "6-8 weeks",
     features: [
       {
         id: "em-core-1",
-        name: "Ticketing & Registration",
-        description: "Multiple ticket types, promo codes",
+        name: isFrench
+          ? "Billetterie & Inscription"
+          : "Ticketing & Registration",
+        description: isFrench
+          ? "Types de billets multiples, codes promo"
+          : "Multiple ticket types, promo codes",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "em-core-2",
-        name: "Event Calendar & Scheduling",
-        description: "Recurring events, series management",
+        name: isFrench
+          ? "Calendrier d'Événements & Planification"
+          : "Event Calendar & Scheduling",
+        description: isFrench
+          ? "Événements récurrents, gestion de séries"
+          : "Recurring events, series management",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "em-core-3",
-        name: "Attendee Management",
-        description: "Check-in, badges, networking",
+        name: isFrench ? "Gestion des Participants" : "Attendee Management",
+        description: isFrench
+          ? "Check-in, badges, networking"
+          : "Check-in, badges, networking",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "em-addon-1",
-        name: "Virtual Event Capabilities",
+        name: isFrench
+          ? "Capacités d'Événements Virtuels"
+          : "Virtual Event Capabilities",
         price: 2800,
         category: "addon",
       },
       {
         id: "em-addon-2",
-        name: "Sponsorship Management",
+        name: isFrench ? "Gestion de Sponsoring" : "Sponsorship Management",
         price: 1500,
         category: "addon",
       },
       {
         id: "em-addon-3",
-        name: "Mobile Event App",
+        name: isFrench ? "Application Mobile d'Événement" : "Mobile Event App",
         price: 4200,
         category: "addon",
       },
       {
         id: "em-addon-4",
-        name: "Session & Speaker Management",
+        name: isFrench
+          ? "Gestion des Sessions & Intervenants"
+          : "Session & Speaker Management",
         price: 1300,
         category: "addon",
       },
       {
         id: "em-addon-5",
-        name: "Venue & Floor Plan Management",
+        name: isFrench
+          ? "Gestion de Lieu & Plan d'Étage"
+          : "Venue & Floor Plan Management",
         price: 1100,
         category: "addon",
       },
       {
         id: "em-addon-6",
-        name: "Networking & Matchmaking",
+        name: isFrench
+          ? "Networking & Matchmaking"
+          : "Networking & Matchmaking",
         price: 1900,
         category: "addon",
       },
       {
         id: "em-addon-7",
-        name: "Post-event Analytics",
+        name: isFrench ? "Analytique Post-événement" : "Post-event Analytics",
         price: 1400,
         category: "addon",
       },
@@ -1471,77 +2025,105 @@ export const services: Service[] = [
   },
   {
     id: "membership-site",
-    title: "Membership & Subscription Platform",
-    description: "Gated content with recurring payments and member management",
-    basePrice: 7000, // USD
-    gbpPrice: 5512, // GBP (7000 ÷ 1.27)
-    euroPrice: 6440, // EUR
-    deliveryTime: "6-8 weeks",
+    title: isFrench
+      ? "Plateforme d'Adhésion & Abonnement"
+      : "Membership & Subscription Platform",
+    description: isFrench
+      ? "Contenu sécurisé avec paiements récurrents et gestion des membres"
+      : "Gated content with recurring payments and member management",
+    basePrice: 7000,
+    gbpPrice: 5512,
+    euroPrice: 6440,
+    deliveryTime: isFrench ? "6-8 semaines" : "6-8 weeks",
     popular: true,
     features: [
       {
         id: "ms-core-1",
-        name: "Recurring Payment System",
-        description: "Stripe, PayPal subscriptions",
+        name: isFrench
+          ? "Système de Paiement Récurrent"
+          : "Recurring Payment System",
+        description: isFrench
+          ? "Abonnements Stripe, PayPal"
+          : "Stripe, PayPal subscriptions",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ms-core-2",
-        name: "Content Gating & Dripping",
-        description: "Schedule content release",
+        name: isFrench
+          ? "Contenu Sécurisé & Diffusion Progressive"
+          : "Content Gating & Dripping",
+        description: isFrench
+          ? "Planifier la diffusion du contenu"
+          : "Schedule content release",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ms-core-3",
-        name: "Member Directory & Profiles",
-        description: "Custom member profiles",
+        name: isFrench
+          ? "Annuaire des Membres & Profils"
+          : "Member Directory & Profiles",
+        description: isFrench
+          ? "Profils de membres personnalisés"
+          : "Custom member profiles",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "ms-addon-1",
-        name: "Multiple Membership Tiers",
+        name: isFrench
+          ? "Niveaux d'Adhésion Multiples"
+          : "Multiple Membership Tiers",
         price: 1200,
         category: "addon",
       },
       {
         id: "ms-addon-2",
-        name: "Community Forums",
+        name: isFrench ? "Forums Communautaires" : "Community Forums",
         price: 1800,
         category: "addon",
       },
       {
         id: "ms-addon-3",
-        name: "Learning Management Integration",
+        name: isFrench
+          ? "Intégration Learning Management"
+          : "Learning Management Integration",
         price: 2200,
         category: "addon",
       },
       {
         id: "ms-addon-4",
-        name: "Private Messaging System",
+        name: isFrench
+          ? "Système de Messagerie Privée"
+          : "Private Messaging System",
         price: 1500,
         category: "addon",
       },
       {
         id: "ms-addon-5",
-        name: "Member Analytics Dashboard",
+        name: isFrench
+          ? "Tableau de Bord Analytique des Membres"
+          : "Member Analytics Dashboard",
         price: 1300,
         category: "addon",
       },
       {
         id: "ms-addon-6",
-        name: "Automated Onboarding Sequences",
+        name: isFrench
+          ? "Séquences d'Onboarding Automatisées"
+          : "Automated Onboarding Sequences",
         price: 1100,
         category: "addon",
       },
       {
         id: "ms-addon-7",
-        name: "Webinar & Live Stream Integration",
+        name: isFrench
+          ? "Intégration Webinar & Live Stream"
+          : "Webinar & Live Stream Integration",
         price: 1900,
         category: "addon",
       },
@@ -1549,65 +2131,86 @@ export const services: Service[] = [
   },
   {
     id: "logistics-platform",
-    title: "Logistics & Delivery Platform",
-    description:
-      "Complete order management, route optimization, and fleet tracking system",
-    basePrice: 12000, // USD
-    gbpPrice: 9449, // GBP (12000 ÷ 1.27)
-    euroPrice: 11040, // EUR
-    deliveryTime: "12-16 weeks",
+    title: isFrench
+      ? "Plateforme Logistique & Livraison"
+      : "Logistics & Delivery Platform",
+    description: isFrench
+      ? "Système complet de gestion des commandes, optimisation d'itinéraires et suivi de flotte"
+      : "Complete order management, route optimization, and fleet tracking system",
+    basePrice: 12000,
+    gbpPrice: 9449,
+    euroPrice: 11040,
+    deliveryTime: isFrench ? "12-16 semaines" : "12-16 weeks",
     features: [
       {
         id: "log-core-1",
-        name: "Order & Shipment Management",
-        description: "Real-time tracking, status updates",
+        name: isFrench
+          ? "Gestion des Commandes & Expéditions"
+          : "Order & Shipment Management",
+        description: isFrench
+          ? "Suivi en temps réel, mises à jour de statut"
+          : "Real-time tracking, status updates",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "log-core-2",
-        name: "Route Optimization Engine",
-        description: "AI-powered delivery routes",
+        name: isFrench
+          ? "Moteur d'Optimisation d'Itinéraires"
+          : "Route Optimization Engine",
+        description: isFrench
+          ? "Itinéraires de livraison propulsés par IA"
+          : "AI-powered delivery routes",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "log-core-3",
-        name: "Fleet & Driver Management",
-        description: "Vehicle tracking, driver assignments",
+        name: isFrench
+          ? "Gestion de Flotte & Chauffeurs"
+          : "Fleet & Driver Management",
+        description: isFrench
+          ? "Suivi des véhicules, affectation des chauffeurs"
+          : "Vehicle tracking, driver assignments",
         price: 0,
         checked: true,
         category: "core",
       },
       {
         id: "log-addon-1",
-        name: "Warehouse Management",
+        name: isFrench ? "Gestion d'Entrepôt" : "Warehouse Management",
         price: 3500,
         category: "addon",
       },
       {
         id: "log-addon-2",
-        name: "Carrier API Integrations",
+        name: isFrench
+          ? "Intégrations API Transporteur"
+          : "Carrier API Integrations",
         price: 2800,
         category: "addon",
       },
       {
         id: "log-addon-3",
-        name: "Proof of Delivery System",
+        name: isFrench
+          ? "Système de Preuve de Livraison"
+          : "Proof of Delivery System",
         price: 1600,
         category: "addon",
       },
       {
         id: "log-addon-4",
-        name: "Mobile Driver App",
+        name: isFrench ? "Application Mobile Chauffeur" : "Mobile Driver App",
         price: 5000,
         category: "addon",
       },
       {
         id: "log-addon-5",
-        name: "Billing & Invoicing Automation",
+        name: isFrench
+          ? "Automatisation Facturation & Invoicing"
+          : "Billing & Invoicing Automation",
         price: 2200,
         category: "addon",
       },
@@ -1615,12 +2218,9 @@ export const services: Service[] = [
   },
 ];
 
-// Conversion utility (3.0 TND = 1 USD)
-export const convertToTnd = (usd: number) => Math.round(usd * 3.00);
+export const convertToTnd = (usd: number) => Math.round(usd * 3.0);
 
-
-// Complete list of 10 projects
-export const projects = [
+export const getProjects = (isFrench: boolean) => [
   {
     id: 1,
     title: "Collaboration Capital",
@@ -1719,22 +2319,6 @@ export const projects = [
       "/mongodb.svg",
     ],
   },
-  // {
-  //   id: 7,
-  //   title: "Cyberperformance Review Platform",
-  //   category: "Mern",
-  //   img: "/p3.svg",
-  //   github: "#",
-  //   live: "https://cyberperformance.vercel.app",
-  //   techStack: [
-  //     "/re.svg",
-  //     "/tail.svg",
-  //     "/git.svg",
-  //     "/node.png",
-  //     "/express.png",
-  //     "/mongodb.svg",
-  //   ],
-  // },
   {
     id: 7,
     title: "Big Click Digitals",
@@ -1789,7 +2373,7 @@ export const projects = [
     title: "Suburbia Skateboard Store",
     category: "Nextjs",
     img: "/projects/suburbia-skateboard-store.png",
-    github: "#", // https://github.com/AlexGMAY/skateboards-store
+    github: "#",
     live: "https://suburbia-store.vercel.app/",
     techStack: ["/next.svg", "/tail.svg", "/re.svg", "/git.svg"],
   },
@@ -1798,7 +2382,7 @@ export const projects = [
     title: "SkyRise Banking Platform",
     category: "SaaS",
     img: "/projects/skyrise-finance-dashboard-pro.png",
-    github: "#", // https://github.com/AlexGMAY/skyrise
+    github: "#",
     live: "https://skyriseweb.vercel.app/",
     techStack: [
       "/next.svg",
@@ -1826,85 +2410,82 @@ export const projects = [
   },
 ];
 
-export const categories = [
-  "All",
+export const getCategories = (isFrench: boolean) => [
+  isFrench ? "Tous" : "All",
   "WordPress",
   "React",
-  "Nextjs",  
+  "Nextjs",
   "Mern",
   "SaaS",
 ];
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
-  readTime: string;
-  tag: string;
-  category?: string;
-  featured?: boolean;
-  views?: number;
-  progress?: number;
-}
-
-
-export const educationBoard = [
+export const getEducationBoard = (isFrench: boolean) => [
   {
-    degree: "Secondary Diploma: Baccalauréat in Literature, Latin & Philosophy",
+    degree: isFrench
+      ? "Diplôme Secondaire : Baccalauréat en Littérature, Latin & Philosophie"
+      : "Secondary Diploma: Baccalauréat in Literature, Latin & Philosophy",
     institution: "Petit Séminaire de Katende, PSK CONGO RDC",
-    year: "June 2013",
+    year: isFrench ? "Juin 2013" : "June 2013",
   },
   {
-    degree: "BTS in Computer Maintenance & Networking",
+    degree: isFrench
+      ? "BTS en Maintenance Informatique & Réseaux"
+      : "BTS in Computer Maintenance & Networking",
     institution:
       "Institut National de Preparations Professionnelles, INPP CONGO RDC",
-    year: "July 2013-2014",
+    year: isFrench ? "Juillet 2013-2014" : "July 2013-2014",
   },
   {
-    degree: "BTS in Applied IT for Management",
+    degree: isFrench
+      ? "BTS en Informatique Appliquée à la Gestion"
+      : "BTS in Applied IT for Management",
     institution: "Ecole des Formations des Cadres, EFC TUNIS, TN",
     year: "2014-2016",
   },
   {
-    degree: "Bachelor in Information Systems & Software Engineering",
+    degree: isFrench
+      ? "Licence en Systèmes d'Information & Génie Logiciel"
+      : "Bachelor in Information Systems & Software Engineering",
     institution: "Université Méditerraneene Libre de Tunis, TUNIS, TN",
     year: "2016-2019",
   },
 ];
 
-export const certificationBoard = [  
+export const getCertificationBoard = (isFrench: boolean) => [
   {
-    name: "Google Analytics Certified",
+    name: isFrench ? "Certifié Google Analytics" : "Google Analytics Certified",
     issuer: "Simplilearn",
     icon: "/certs/simplilearn-logo.jpeg",
     year: "2020",
     link: "#",
   },
   {
-    name: "Certified Email Marketing",
+    name: isFrench ? "Certifié Email Marketing" : "Certified Email Marketing",
     issuer: "Simplilearn",
     icon: "/certs/simplilearn-logo.jpeg",
     year: "2020",
     link: "#",
   },
   {
-    name: "Certified Agile Scrum Master (CSM)",
+    name: isFrench
+      ? "Certifié Agile Scrum Master (CSM)"
+      : "Certified Agile Scrum Master (CSM)",
     issuer: "Simplilearn",
     icon: "/certs/simplilearn-logo.jpeg",
     year: "2020",
     link: "#",
   },
   {
-    name: "Certified Agile Practioner (ACP)",
+    name: isFrench
+      ? "Certifié Agile Practioner (ACP)"
+      : "Certified Agile Practioner (ACP)",
     issuer: "Simplilearn",
     icon: "/certs/simplilearn-logo.jpeg",
     year: "2020",
     link: "#",
   },
   {
-    name: "Pay Per Click (PPC)",
+    name: isFrench ? "Pay Per Click (PPC)" : "Pay Per Click (PPC)",
     issuer: "Simplilearn",
     icon: "/certs/simplilearn-logo.jpeg",
     year: "2020",
@@ -1912,7 +2493,53 @@ export const certificationBoard = [
   },
 ];
 
-export const courseBoard = [
+export const getSkills = (isFrench: boolean) => [
+  {
+    name: "Next.js",
+    level: 95,
+    category: isFrench ? "Frontend" : "Frontend",
+    icon: "🅱️",
+  },
+  {
+    name: "React",
+    level: 90,
+    category: isFrench ? "Frontend" : "Frontend",
+    icon: "⚛️",
+  },
+  {
+    name: "TypeScript",
+    level: 88,
+    category: isFrench ? "Langage" : "Language",
+    icon: "📘",
+  },
+  {
+    name: "Node.js",
+    level: 85,
+    category: isFrench ? "Backend" : "Backend",
+    icon: "🟢",
+  },
+  {
+    name: "Tailwind CSS",
+    level: 92,
+    category: isFrench ? "Frontend" : "Frontend",
+    icon: "🎨",
+  },
+  {
+    name: "MongoDB",
+    level: 80,
+    category: isFrench ? "Base de données" : "Database",
+    icon: "🍃",
+  },
+  { name: "GraphQL", level: 75, category: "API", icon: "📊" },
+  {
+    name: "AWS",
+    level: 70,
+    category: isFrench ? "DevOps" : "DevOps",
+    icon: "☁️",
+  },
+];
+
+export const getCourseBoard = (isFrench: boolean) => [
   {
     name: "Advanced React",
     platform: "Udemy",
@@ -1920,7 +2547,9 @@ export const courseBoard = [
     link: "#",
   },
   {
-    name: "Fullstack Web Development",
+    name: isFrench
+      ? "Développement Web Fullstack"
+      : "Fullstack Web Development",
     platform: "Coursera",
     year: "2022",
     link: "#",
@@ -1937,22 +2566,13 @@ export const courseBoard = [
     link: "#",
   },
   {
-    name: "UI/UX Design Fundamentals",
+    name: isFrench
+      ? "Fondamentaux du Design UI/UX"
+      : "UI/UX Design Fundamentals",
     platform: "Skillshare",
     year: "2019",
     link: "#",
   },
-];
-
-export const skills = [
-  { name: "Next.js", level: 95, category: "Frontend", icon: "🅱️" },
-  { name: "React", level: 90, category: "Frontend", icon: "⚛️" },
-  { name: "TypeScript", level: 88, category: "Language", icon: "📘" },
-  { name: "Node.js", level: 85, category: "Backend", icon: "🟢" },
-  { name: "Tailwind CSS", level: 92, category: "Frontend", icon: "🎨" },
-  { name: "MongoDB", level: 80, category: "Database", icon: "🍃" },
-  { name: "GraphQL", level: 75, category: "API", icon: "📊" },
-  { name: "AWS", level: 70, category: "DevOps", icon: "☁️" },
 ];
 
 export interface ContactMethod {
@@ -1972,7 +2592,6 @@ export interface ContactMethod {
   };
 }
 
-
 export interface GalleryImage {
   id: string;
   src: string;
@@ -1981,9 +2600,7 @@ export interface GalleryImage {
   category: "english" | "excel" | "vba" | "amo";
 }
 
-
 export const courseGalleryImages: GalleryImage[] = [
-  // ENGLISH COURSES
   {
     id: "eng-001",
     src: "/courses-pics/anglais-abdou-ali.png",
@@ -2026,7 +2643,7 @@ export const courseGalleryImages: GalleryImage[] = [
     title: "Beginner English lessons with Dominique Eon",
     category: "english",
   },
- {
+  {
     id: "eng-007",
     src: "/courses-pics/anglais-estaban-martinez.png",
     alt: "Advanced English Conversations with Estaban Martinez",
@@ -2040,86 +2657,83 @@ export const courseGalleryImages: GalleryImage[] = [
     title: "Beginner English Conversations with Julien Philippe",
     category: "english",
   },
- {
+  {
     id: "eng-009",
     src: "/courses-pics/anglais-estelle-moreau-v1.png",
     alt: "Beginner English Conversations with Estelle Moreau",
     title: "Beginner English Conversations with Estelle Moreau",
     category: "english",
   },
- {
+  {
     id: "eng-010",
     src: "/courses-pics/anglais-estelle-moreau-v2.png",
     alt: "Beginner English Conversations with Estelle Moreau",
     title: "Beginner English Conversations with Estelle Moreau",
     category: "english",
   },
- {
+  {
     id: "eng-011",
     src: "/courses-pics/anglais-gambaro-valentin.png",
     alt: "Intermediate English Lessons with Valentin Gambaro",
     title: "Intermediate English Lessons with Valentin Gambaro",
     category: "english",
   },
- {
+  {
     id: "eng-012",
     src: "/courses-pics/anglais-herve-meubry.png",
     alt: "Beginner English Conversations with Herve Meubry",
     title: "Beginner English Conversations with Herve Meubry",
     category: "english",
   },
- {
+  {
     id: "eng-013",
     src: "/courses-pics/anglais-todde-jeremyy.png",
     alt: "Beginner English Lessons with Todde Jeremy",
     title: "Beginner English Lessons with Todde Jeremy",
     category: "english",
   },
- {
+  {
     id: "eng-014",
     src: "/courses-pics/benoit-anglais-cours.png",
     alt: "Beginner English Lessons with Benoit",
     title: "Beginner English Lessons with Benoit",
     category: "english",
   },
- {
+  {
     id: "eng-015",
     src: "/courses-pics/brice-lof-english-course.png",
     alt: "Advanced English Lessons with Brice Lof",
     title: "Advanced English Lessons with Brice Lof",
     category: "english",
   },
- {
+  {
     id: "eng-016",
     src: "/courses-pics/irastorza-christine-english.png",
     alt: "Beginner English Lessons with Christine",
     title: "Beginner English Lessons with Christine",
     category: "english",
   },
- {
+  {
     id: "eng-017",
     src: "/courses-pics/massimo-usai-english.png",
     alt: "Beginner English Lessons with Usai Massimo",
     title: "Beginner English Lessons with Usai Massimo",
     category: "english",
   },
- {
+  {
     id: "eng-018",
     src: "/courses-pics/thomas-pascal-english.png",
     alt: "Beginner English Lessons with Thomas Pascal",
     title: "Beginner English Lessons with Thomas Pascal",
     category: "english",
   },
- {
+  {
     id: "eng-019",
     src: "/courses-pics/mathias-albaladejo-anglais.png",
     alt: "Beginner English Lessons with Mathias Albaladejo",
     title: "Beginner English Lessons with Mathias Albaladejo",
     category: "english",
   },
-
-
-  // EXCEL COURSES (6 images)
   {
     id: "exc-001",
     src: "/courses-pics/excel-avec-lakhlifi.png",
@@ -2133,7 +2747,7 @@ export const courseGalleryImages: GalleryImage[] = [
     alt: "Intermediate Excel lessons with Hamel Antoine",
     title: "Intermediate Excel lessons with Hamel Antoine",
     category: "excel",
-  }
+  },
 ];
 
 export interface PricingPack {
@@ -2154,12 +2768,10 @@ export interface PricingCourse {
   category: string;
 }
 
-// Données de prix pour chaque cours et pack
-export const pricingCourses: PricingCourse[] = [
-  // LANGUAGES & COMMUNICATION
+export const getPricingCourses = (isFrench: boolean): PricingCourse[] => [
   {
     id: "english",
-    name: "English",
+    name: isFrench ? "Anglais" : "English",
     hourlyRate: 35,
     category: "languages",
     packs: [
@@ -2167,40 +2779,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 165,
         discount: 6,
-        contents: [
-          "Needs assessment & goal setting",
-          "Basic conversation skills",
-          "Business vocabulary fundamentals",
-          "Email writing basics",
-          "Progress review & next steps",
-        ],
+        contents: isFrench
+          ? [
+              "Évaluation des besoins & définition d'objectifs",
+              "Compétences de conversation de base",
+              "Vocabulaire business fondamental",
+              "Bases de la rédaction d'emails",
+              "Revue de progression & prochaines étapes",
+            ]
+          : [
+              "Needs assessment & goal setting",
+              "Basic conversation skills",
+              "Business vocabulary fundamentals",
+              "Email writing basics",
+              "Progress review & next steps",
+            ],
       },
       {
         hours: 10,
         price: 310,
         discount: 11,
-        contents: [
-          "Professional email & report writing",
-          "Presentation skills training",
-          "Meeting facilitation",
-          "Negotiation vocabulary",
-          "Cultural business etiquette",
-          "Final assessment & certification",
-        ],
+        contents: isFrench
+          ? [
+              "Rédaction professionnelle d'emails & rapports",
+              "Formation aux compétences de présentation",
+              "Animation de réunions",
+              "Vocabulaire de négociation",
+              "Étiquette business culturelle",
+              "Évaluation finale & certification",
+            ]
+          : [
+              "Professional email & report writing",
+              "Presentation skills training",
+              "Meeting facilitation",
+              "Negotiation vocabulary",
+              "Cultural business etiquette",
+              "Final assessment & certification",
+            ],
       },
       {
         hours: 20,
         price: 580,
         discount: 17,
-        contents: [
-          "All 10h pack contents",
-          "Advanced business negotiations",
-          "Executive presentation coaching",
-          "Cross-cultural communication",
-          "Crisis communication strategies",
-          "Personal branding",
-          "Final project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Négociations business avancées",
+              "Coaching de présentation exécutive",
+              "Communication interculturelle",
+              "Stratégies de communication de crise",
+              "Personal branding",
+              "Projet final",
+            ]
+          : [
+              "All 10h pack contents",
+              "Advanced business negotiations",
+              "Executive presentation coaching",
+              "Cross-cultural communication",
+              "Crisis communication strategies",
+              "Personal branding",
+              "Final project",
+            ],
       },
     ],
     icon: null,
@@ -2208,8 +2847,8 @@ export const pricingCourses: PricingCourse[] = [
     colorName: "blue",
   },
   {
-   id: "French",
-    name: "French",
+    id: "French",
+    name: isFrench ? "Français" : "French",
     hourlyRate: 35,
     category: "languages",
     packs: [
@@ -2217,48 +2856,73 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 165,
         discount: 6,
-        contents: [
-          "Needs assessment & goal setting",
-          "Basic conversation skills",
-          "Business vocabulary fundamentals",
-          "French writing basics",
-          "Progress review & next steps",
-        ],
+        contents: isFrench
+          ? [
+              "Évaluation des besoins & définition d'objectifs",
+              "Compétences de conversation de base",
+              "Vocabulaire business fondamental",
+              "Bases de la rédaction en français",
+              "Revue de progression & prochaines étapes",
+            ]
+          : [
+              "Needs assessment & goal setting",
+              "Basic conversation skills",
+              "Business vocabulary fundamentals",
+              "French writing basics",
+              "Progress review & next steps",
+            ],
       },
       {
         hours: 10,
         price: 310,
         discount: 11,
-        contents: [
-          "Professional French & report writing",
-          "Presentation skills training",
-          "Meeting facilitation",
-          "Negotiation vocabulary",
-          "Cultural business etiquette",
-          "Final assessment & certification",
-        ],
+        contents: isFrench
+          ? [
+              "Rédaction professionnelle en français & rapports",
+              "Formation aux compétences de présentation",
+              "Animation de réunions",
+              "Vocabulaire de négociation",
+              "Étiquette business culturelle",
+              "Évaluation finale & certification",
+            ]
+          : [
+              "Professional French & report writing",
+              "Presentation skills training",
+              "Meeting facilitation",
+              "Negotiation vocabulary",
+              "Cultural business etiquette",
+              "Final assessment & certification",
+            ],
       },
       {
         hours: 20,
         price: 580,
         discount: 17,
-        contents: [
-          "All 10h pack contents",
-          "Advanced business negotiations",
-          "Executive presentation coaching",
-          "Cross-cultural communication",
-          "Crisis communication strategies",
-          "Personal branding",
-          "Final project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Négociations business avancées",
+              "Coaching de présentation exécutive",
+              "Communication interculturelle",
+              "Stratégies de communication de crise",
+              "Personal branding",
+              "Projet final",
+            ]
+          : [
+              "All 10h pack contents",
+              "Advanced business negotiations",
+              "Executive presentation coaching",
+              "Cross-cultural communication",
+              "Crisis communication strategies",
+              "Personal branding",
+              "Final project",
+            ],
       },
     ],
     icon: null,
     color: "from-cyan-500 to-green-500",
     colorName: "cyan",
-  },  
-
-  // OFFICE & PRODUCTIVITY
+  },
   {
     id: "excel",
     name: "Excel",
@@ -2269,40 +2933,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 190,
         discount: 5,
-        contents: [
-          "Interface & basic navigation",
-          "Essential formulas & functions",
-          "Data entry & formatting",
-          "Basic charts & graphs",
-          "Printing & sharing",
-        ],
+        contents: isFrench
+          ? [
+              "Interface & navigation de base",
+              "Formules & fonctions essentielles",
+              "Saisie & formatage de données",
+              "Graphiques de base",
+              "Impression & partage",
+            ]
+          : [
+              "Interface & basic navigation",
+              "Essential formulas & functions",
+              "Data entry & formatting",
+              "Basic charts & graphs",
+              "Printing & sharing",
+            ],
       },
       {
         hours: 10,
         price: 360,
         discount: 10,
-        contents: [
-          "Advanced formulas (VLOOKUP, IF, SUMIFS)",
-          "PivotTables & PivotCharts",
-          "Data validation & protection",
-          "Conditional formatting",
-          "Basic macros introduction",
-          "Dashboard creation",
-        ],
+        contents: isFrench
+          ? [
+              "Formules avancées (RECHERCHEV, SI, SOMME.SI.ENS)",
+              "Tableaux croisés dynamiques",
+              "Validation & protection des données",
+              "Mise en forme conditionnelle",
+              "Introduction aux macros",
+              "Création de tableaux de bord",
+            ]
+          : [
+              "Advanced formulas (VLOOKUP, IF, SUMIFS)",
+              "PivotTables & PivotCharts",
+              "Data validation & protection",
+              "Conditional formatting",
+              "Basic macros introduction",
+              "Dashboard creation",
+            ],
       },
       {
         hours: 20,
         price: 680,
         discount: 15,
-        contents: [
-          "All 10h pack contents",
-          "Power Query & data transformation",
-          "Advanced macro development",
-          "Power Pivot & data modeling",
-          "Automation with VBA",
-          "Integration with other Office apps",
-          "Complete business dashboard project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Power Query & transformation de données",
+              "Développement avancé de macros",
+              "Power Pivot & modélisation de données",
+              "Automatisation avec VBA",
+              "Intégration avec d'autres applications Office",
+              "Projet complet de tableau de bord business",
+            ]
+          : [
+              "All 10h pack contents",
+              "Power Query & data transformation",
+              "Advanced macro development",
+              "Power Pivot & data modeling",
+              "Automation with VBA",
+              "Integration with other Office apps",
+              "Complete business dashboard project",
+            ],
       },
     ],
     icon: null,
@@ -2311,7 +3002,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "data-analysis",
-    name: "Data Analysis",
+    name: isFrench ? "Analyse de Données" : "Data Analysis",
     hourlyRate: 50,
     category: "office",
     packs: [
@@ -2319,36 +3010,59 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 240,
         discount: 5,
-        contents: [
-          "Data analysis fundamentals",
-          "Excel for data analysis",
-          "Basic statistical concepts",
-          "Data visualization basics",
-          "Reporting & presentation skills",
-        ],
+        contents: isFrench
+          ? [
+              "Fondamentaux de l'analyse de données",
+              "Excel pour l'analyse de données",
+              "Concepts statistiques de base",
+              "Bases de la visualisation de données",
+              "Compétences de reporting & présentation",
+            ]
+          : [
+              "Data analysis fundamentals",
+              "Excel for data analysis",
+              "Basic statistical concepts",
+              "Data visualization basics",
+              "Reporting & presentation skills",
+            ],
       },
       {
         hours: 10,
         price: 460,
         discount: 10,
-        contents: [
-          "Advanced data analysis techniques",
-          "Statistical modeling",
-          "Predictive analytics",
-          "Machine learning introduction",
-          "Data storytelling",
-          "Advanced visualization tools",
-        ],
+        contents: isFrench
+          ? [
+              "Techniques avancées d'analyse de données",
+              "Modélisation statistique",
+              "Analytique prédictive",
+              "Introduction au machine learning",
+              "Data storytelling",
+              "Outils de visualisation avancés",
+            ]
+          : [
+              "Advanced data analysis techniques",
+              "Statistical modeling",
+              "Predictive analytics",
+              "Machine learning introduction",
+              "Data storytelling",
+              "Advanced visualization tools",
+            ],
       },
       {
         hours: 20,
         price: 880,
         discount: 15,
-        contents: [
-          "All 10h pack contents",
-          "Complete data analysis projects",
-          "Capstone project & portfolio development",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Projets complets d'analyse de données",
+              "Projet capstone & développement de portfolio",
+            ]
+          : [
+              "All 10h pack contents",
+              "Complete data analysis projects",
+              "Capstone project & portfolio development",
+            ],
       },
     ],
     icon: null,
@@ -2365,48 +3079,73 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 215,
         discount: 4,
-        contents: [
-          "Word document formatting",
-          "PowerPoint presentation basics",
-          "Outlook email management",
-          "Teams collaboration intro",
-          "Office integration fundamentals",
-        ],
+        contents: isFrench
+          ? [
+              "Formatage de documents Word",
+              "Bases des présentations PowerPoint",
+              "Gestion des emails Outlook",
+              "Introduction à la collaboration Teams",
+              "Fondamentaux de l'intégration Office",
+            ]
+          : [
+              "Word document formatting",
+              "PowerPoint presentation basics",
+              "Outlook email management",
+              "Teams collaboration intro",
+              "Office integration fundamentals",
+            ],
       },
       {
         hours: 10,
         price: 410,
         discount: 9,
-        contents: [
-          "Advanced Word templates & mail merge",
-          "Professional PowerPoint design",
-          "Outlook calendar & task management",
-          "Teams advanced features",
-          "OneDrive & SharePoint basics",
-          "Office automation with Power Automate",
-        ],
+        contents: isFrench
+          ? [
+              "Modèles Word avancés & publipostage",
+              "Design PowerPoint professionnel",
+              "Gestion du calendrier & des tâches Outlook",
+              "Fonctionnalités avancées de Teams",
+              "Bases de OneDrive & SharePoint",
+              "Automatisation Office avec Power Automate",
+            ]
+          : [
+              "Advanced Word templates & mail merge",
+              "Professional PowerPoint design",
+              "Outlook calendar & task management",
+              "Teams advanced features",
+              "OneDrive & SharePoint basics",
+              "Office automation with Power Automate",
+            ],
       },
       {
         hours: 20,
         price: 780,
         discount: 13,
-        contents: [
-          "All 10h pack contents",
-          "Complete Office ecosystem mastery",
-          "Advanced Power Automate flows",
-          "Power Apps basics",
-          "Document management systems",
-          "Enterprise collaboration strategies",
-          "Office productivity certification",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Maîtrise complète de l'écosystème Office",
+              "Flux Power Automate avancés",
+              "Bases de Power Apps",
+              "Systèmes de gestion documentaire",
+              "Stratégies de collaboration d'entreprise",
+              "Certification de productivité Office",
+            ]
+          : [
+              "All 10h pack contents",
+              "Complete Office ecosystem mastery",
+              "Advanced Power Automate flows",
+              "Power Apps basics",
+              "Document management systems",
+              "Enterprise collaboration strategies",
+              "Office productivity certification",
+            ],
       },
     ],
     icon: null,
     color: "from-teal-500 to-green-500",
     colorName: "teal",
   },
-
-  // WEB & DIGITAL MARKETING
   {
     id: "wordpress",
     name: "WordPress",
@@ -2417,40 +3156,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 240,
         discount: 4,
-        contents: [
-          "WordPress installation & setup",
-          "Theme selection & customization",
-          "Essential plugins installation",
-          "Basic page & post creation",
-          "SEO fundamentals",
-        ],
+        contents: isFrench
+          ? [
+              "Installation & configuration WordPress",
+              "Sélection & personnalisation de thème",
+              "Installation de plugins essentiels",
+              "Création de pages & articles de base",
+              "Fondamentaux du SEO",
+            ]
+          : [
+              "WordPress installation & setup",
+              "Theme selection & customization",
+              "Essential plugins installation",
+              "Basic page & post creation",
+              "SEO fundamentals",
+            ],
       },
       {
         hours: 10,
         price: 460,
         discount: 8,
-        contents: [
-          "Custom theme development",
-          "Advanced plugin configuration",
-          "E-commerce with WooCommerce",
-          "Performance optimization",
-          "Security best practices",
-          "Google Analytics & SEO tools",
-        ],
+        contents: isFrench
+          ? [
+              "Développement de thème personnalisé",
+              "Configuration avancée de plugins",
+              "E-commerce avec WooCommerce",
+              "Optimisation des performances",
+              "Bonnes pratiques de sécurité",
+              "Google Analytics & outils SEO",
+            ]
+          : [
+              "Custom theme development",
+              "Advanced plugin configuration",
+              "E-commerce with WooCommerce",
+              "Performance optimization",
+              "Security best practices",
+              "Google Analytics & SEO tools",
+            ],
       },
       {
         hours: 20,
         price: 880,
         discount: 12,
-        contents: [
-          "All 10h pack contents",
-          "Custom plugin development",
-          "API integrations",
-          "Headless WordPress setup",
-          "Advanced SEO strategies",
-          "Marketing automation",
-          "Complete website launch",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Développement de plugin personnalisé",
+              "Intégrations API",
+              "Configuration WordPress headless",
+              "Stratégies SEO avancées",
+              "Automatisation marketing",
+              "Lancement complet du site web",
+            ]
+          : [
+              "All 10h pack contents",
+              "Custom plugin development",
+              "API integrations",
+              "Headless WordPress setup",
+              "Advanced SEO strategies",
+              "Marketing automation",
+              "Complete website launch",
+            ],
       },
     ],
     icon: null,
@@ -2467,40 +3233,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 240,
         discount: 4,
-        contents: [
-          "SEO fundamentals",
-          "Keyword research basics",
-          "On-page optimization",
-          "Google Search Console setup",
-          "Competitor analysis intro",
-        ],
+        contents: isFrench
+          ? [
+              "Fondamentaux du SEO",
+              "Bases de la recherche de mots-clés",
+              "Optimisation on-page",
+              "Configuration Google Search Console",
+              "Introduction à l'analyse concurrentielle",
+            ]
+          : [
+              "SEO fundamentals",
+              "Keyword research basics",
+              "On-page optimization",
+              "Google Search Console setup",
+              "Competitor analysis intro",
+            ],
       },
       {
         hours: 10,
         price: 460,
         discount: 8,
-        contents: [
-          "Advanced keyword strategy",
-          "Technical SEO audit",
-          "Link building strategies",
-          "Google Ads campaign setup",
-          "PPC optimization",
-          "Analytics & reporting",
-        ],
+        contents: isFrench
+          ? [
+              "Stratégie de mots-clés avancée",
+              "Audit SEO technique",
+              "Stratégies de link building",
+              "Configuration de campagnes Google Ads",
+              "Optimisation PPC",
+              "Analytique & reporting",
+            ]
+          : [
+              "Advanced keyword strategy",
+              "Technical SEO audit",
+              "Link building strategies",
+              "Google Ads campaign setup",
+              "PPC optimization",
+              "Analytics & reporting",
+            ],
       },
       {
         hours: 20,
         price: 880,
         discount: 12,
-        contents: [
-          "All 10h pack contents",
-          "Enterprise SEO strategy",
-          "International SEO",
-          "Advanced Google Ads tactics",
-          "Conversion rate optimization",
-          "Full marketing funnel strategy",
-          "SEO certification prep",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Stratégie SEO d'entreprise",
+              "SEO international",
+              "Tactiques Google Ads avancées",
+              "Optimisation du taux de conversion",
+              "Stratégie complète d'entonnoir marketing",
+              "Préparation à la certification SEO",
+            ]
+          : [
+              "All 10h pack contents",
+              "Enterprise SEO strategy",
+              "International SEO",
+              "Advanced Google Ads tactics",
+              "Conversion rate optimization",
+              "Full marketing funnel strategy",
+              "SEO certification prep",
+            ],
       },
     ],
     icon: null,
@@ -2509,7 +3302,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "digital-marketing",
-    name: "Digital Marketing",
+    name: isFrench ? "Marketing Digital" : "Digital Marketing",
     hourlyRate: 55,
     category: "web",
     packs: [
@@ -2517,51 +3310,76 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 265,
         discount: 4,
-        contents: [
-          "Digital marketing overview",
-          "Social media strategy basics",
-          "Content marketing fundamentals",
-          "Email marketing setup",
-          "Analytics introduction",
-        ],
+        contents: isFrench
+          ? [
+              "Aperçu du marketing digital",
+              "Bases de la stratégie réseaux sociaux",
+              "Fondamentaux du marketing de contenu",
+              "Configuration email marketing",
+              "Introduction à l'analytique",
+            ]
+          : [
+              "Digital marketing overview",
+              "Social media strategy basics",
+              "Content marketing fundamentals",
+              "Email marketing setup",
+              "Analytics introduction",
+            ],
       },
       {
         hours: 10,
         price: 500,
         discount: 9,
-        contents: [
-          "Full social media strategy",
-          "Content calendar creation",
-          "Email automation campaigns",
-          "Google Analytics mastery",
-          "Marketing funnel optimization",
-          "ROI measurement",
-        ],
+        contents: isFrench
+          ? [
+              "Stratégie complète réseaux sociaux",
+              "Création de calendrier de contenu",
+              "Campagnes d'automatisation email",
+              "Maîtrise de Google Analytics",
+              "Optimisation de l'entonnoir marketing",
+              "Mesure du ROI",
+            ]
+          : [
+              "Full social media strategy",
+              "Content calendar creation",
+              "Email automation campaigns",
+              "Google Analytics mastery",
+              "Marketing funnel optimization",
+              "ROI measurement",
+            ],
       },
       {
         hours: 20,
         price: 960,
         discount: 13,
-        contents: [
-          "All 10h pack contents",
-          "Omnichannel marketing strategy",
-          "Marketing automation platforms",
-          "Advanced analytics & attribution",
-          "Budget allocation strategy",
-          "Team leadership in marketing",
-          "Digital marketing certification",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Stratégie marketing omnicanal",
+              "Plateformes d'automatisation marketing",
+              "Analytique avancée & attribution",
+              "Stratégie d'allocation budgétaire",
+              "Leadership d'équipe en marketing",
+              "Certification marketing digital",
+            ]
+          : [
+              "All 10h pack contents",
+              "Omnichannel marketing strategy",
+              "Marketing automation platforms",
+              "Advanced analytics & attribution",
+              "Budget allocation strategy",
+              "Team leadership in marketing",
+              "Digital marketing certification",
+            ],
       },
     ],
     icon: null,
     color: "from-pink-500 to-rose-500",
     colorName: "pink",
   },
-
-  // DEVELOPMENT & AUTOMATION
   {
     id: "web-dev",
-    name: "Web Development",
+    name: isFrench ? "Développement Web" : "Web Development",
     hourlyRate: 60,
     category: "development",
     packs: [
@@ -2569,40 +3387,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 290,
         discount: 3,
-        contents: [
-          "HTML/CSS fundamentals",
-          "JavaScript basics",
-          "Responsive design principles",
-          "Introduction to React",
-          "Version control with Git",
-        ],
+        contents: isFrench
+          ? [
+              "Fondamentaux HTML/CSS",
+              "Bases de JavaScript",
+              "Principes de design responsive",
+              "Introduction à React",
+              "Contrôle de version avec Git",
+            ]
+          : [
+              "HTML/CSS fundamentals",
+              "JavaScript basics",
+              "Responsive design principles",
+              "Introduction to React",
+              "Version control with Git",
+            ],
       },
       {
         hours: 10,
         price: 560,
         discount: 7,
-        contents: [
-          "Advanced JavaScript (ES6+)",
-          "React.js components & hooks",
-          "API integration",
-          "State management",
-          "Building full-stack applications",
-          "Project: Portfolio website",
-        ],
+        contents: isFrench
+          ? [
+              "JavaScript avancé (ES6+)",
+              "Composants & hooks React.js",
+              "Intégration API",
+              "Gestion d'état",
+              "Construction d'applications full-stack",
+              "Projet : Site portfolio",
+            ]
+          : [
+              "Advanced JavaScript (ES6+)",
+              "React.js components & hooks",
+              "API integration",
+              "State management",
+              "Building full-stack applications",
+              "Project: Portfolio website",
+            ],
       },
       {
         hours: 20,
         price: 1080,
         discount: 10,
-        contents: [
-          "All 10h pack contents",
-          "Next.js framework mastery",
-          "Database design & management",
-          "Authentication & security",
-          "Deployment & CI/CD",
-          "Performance optimization",
-          "Complete SaaS project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Maîtrise du framework Next.js",
+              "Conception & gestion de base de données",
+              "Authentification & sécurité",
+              "Déploiement & CI/CD",
+              "Optimisation des performances",
+              "Projet SaaS complet",
+            ]
+          : [
+              "All 10h pack contents",
+              "Next.js framework mastery",
+              "Database design & management",
+              "Authentication & security",
+              "Deployment & CI/CD",
+              "Performance optimization",
+              "Complete SaaS project",
+            ],
       },
     ],
     icon: null,
@@ -2611,7 +3456,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "vba",
-    name: "VBA Automation",
+    name: isFrench ? "Automatisation VBA" : "VBA Automation",
     hourlyRate: 60,
     category: "development",
     packs: [
@@ -2619,40 +3464,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 290,
         discount: 3,
-        contents: [
-          "VBA editor & basics",
-          "Variable declaration & data types",
-          "Procedures & functions",
-          "Basic loops & conditions",
-          "Simple macro recording",
-        ],
+        contents: isFrench
+          ? [
+              "Éditeur VBA & bases",
+              "Déclaration de variables & types de données",
+              "Procédures & fonctions",
+              "Boucles & conditions de base",
+              "Enregistrement simple de macros",
+            ]
+          : [
+              "VBA editor & basics",
+              "Variable declaration & data types",
+              "Procedures & functions",
+              "Basic loops & conditions",
+              "Simple macro recording",
+            ],
       },
       {
         hours: 10,
         price: 560,
         discount: 7,
-        contents: [
-          "Advanced programming concepts",
-          "UserForm creation",
-          "Error handling",
-          "File system automation",
-          "Email automation via Outlook",
-          "Database connections",
-        ],
+        contents: isFrench
+          ? [
+              "Concepts de programmation avancés",
+              "Création de UserForm",
+              "Gestion des erreurs",
+              "Automatisation du système de fichiers",
+              "Automatisation des emails via Outlook",
+              "Connexions aux bases de données",
+            ]
+          : [
+              "Advanced programming concepts",
+              "UserForm creation",
+              "Error handling",
+              "File system automation",
+              "Email automation via Outlook",
+              "Database connections",
+            ],
       },
       {
         hours: 20,
         price: 1080,
         discount: 10,
-        contents: [
-          "All 10h pack contents",
-          "Complete application development",
-          "Class modules & OOP",
-          "API integrations",
-          "Add-in development",
-          "Performance optimization",
-          "Professional automation project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Développement complet d'applications",
+              "Modules de classe & POO",
+              "Intégrations API",
+              "Développement d'add-ins",
+              "Optimisation des performances",
+              "Projet d'automatisation professionnel",
+            ]
+          : [
+              "All 10h pack contents",
+              "Complete application development",
+              "Class modules & OOP",
+              "API integrations",
+              "Add-in development",
+              "Performance optimization",
+              "Professional automation project",
+            ],
       },
     ],
     icon: null,
@@ -2661,7 +3533,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "ms-access",
-    name: "MS Access Database",
+    name: isFrench ? "Base de Données MS Access" : "MS Access Database",
     hourlyRate: 55,
     category: "development",
     packs: [
@@ -2669,48 +3541,73 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 265,
         discount: 4,
-        contents: [
-          "Database design principles",
-          "Table creation & relationships",
-          "Basic queries (Select, Update)",
-          "Form design basics",
-          "Report generation",
-        ],
+        contents: isFrench
+          ? [
+              "Principes de conception de base de données",
+              "Création de tables & relations",
+              "Requêtes de base (Select, Update)",
+              "Bases de conception de formulaires",
+              "Génération de rapports",
+            ]
+          : [
+              "Database design principles",
+              "Table creation & relationships",
+              "Basic queries (Select, Update)",
+              "Form design basics",
+              "Report generation",
+            ],
       },
       {
         hours: 10,
         price: 500,
         discount: 9,
-        contents: [
-          "Advanced query design",
-          "Complex form development",
-          "Subforms & navigation forms",
-          "Advanced reporting",
-          "Macro programming",
-          "Data import/export automation",
-        ],
+        contents: isFrench
+          ? [
+              "Conception de requêtes avancées",
+              "Développement de formulaires complexes",
+              "Sous-formulaires & formulaires de navigation",
+              "Reporting avancé",
+              "Programmation de macros",
+              "Automatisation d'import/export de données",
+            ]
+          : [
+              "Advanced query design",
+              "Complex form development",
+              "Subforms & navigation forms",
+              "Advanced reporting",
+              "Macro programming",
+              "Data import/export automation",
+            ],
       },
       {
         hours: 20,
         price: 960,
         discount: 13,
-        contents: [
-          "All 10h pack contents",
-          "Full application development",
-          "SQL mastery",
-          "Integration with Excel & SharePoint",
-          "Security & user management",
-          "Database maintenance",
-          "Complete business solution",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Développement complet d'applications",
+              "Maîtrise de SQL",
+              "Intégration avec Excel & SharePoint",
+              "Sécurité & gestion des utilisateurs",
+              "Maintenance de base de données",
+              "Solution business complète",
+            ]
+          : [
+              "All 10h pack contents",
+              "Full application development",
+              "SQL mastery",
+              "Integration with Excel & SharePoint",
+              "Security & user management",
+              "Database maintenance",
+              "Complete business solution",
+            ],
       },
     ],
     icon: null,
     color: "from-blue-800 to-indigo-800",
     colorName: "blue",
   },
-
-  // MANAGEMENT & CERTIFICATION
   {
     id: "amo",
     name: "AMO (French PM)",
@@ -2721,40 +3618,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 340,
         discount: 3,
-        contents: [
-          "AMO methodology fundamentals",
-          "French project management standards",
-          "Client requirements analysis",
-          "Documentation basics",
-          "Stakeholder identification",
-        ],
+        contents: isFrench
+          ? [
+              "Fondamentaux de la méthodologie AMO",
+              "Normes françaises de gestion de projet",
+              "Analyse des exigences client",
+              "Bases de la documentation",
+              "Identification des parties prenantes",
+            ]
+          : [
+              "AMO methodology fundamentals",
+              "French project management standards",
+              "Client requirements analysis",
+              "Documentation basics",
+              "Stakeholder identification",
+            ],
       },
       {
         hours: 10,
         price: 660,
         discount: 6,
-        contents: [
-          "Complete AMO framework mastery",
-          "Risk management strategies",
-          "Quality assurance processes",
-          "Budget & timeline management",
-          "Regulatory compliance",
-          "Real case studies",
-        ],
+        contents: isFrench
+          ? [
+              "Maîtrise complète du framework AMO",
+              "Stratégies de gestion des risques",
+              "Processus d'assurance qualité",
+              "Gestion du budget & des délais",
+              "Conformité réglementaire",
+              "Études de cas réels",
+            ]
+          : [
+              "Complete AMO framework mastery",
+              "Risk management strategies",
+              "Quality assurance processes",
+              "Budget & timeline management",
+              "Regulatory compliance",
+              "Real case studies",
+            ],
       },
       {
         hours: 20,
         price: 1280,
         discount: 9,
-        contents: [
-          "All 10h pack contents",
-          "Advanced stakeholder management",
-          "Crisis & conflict resolution",
-          "Audit preparation",
-          "Certification exam prep",
-          "Complete project simulation",
-          "Professional certification",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Gestion avancée des parties prenantes",
+              "Résolution de crise & conflits",
+              "Préparation à l'audit",
+              "Préparation à l'examen de certification",
+              "Simulation complète de projet",
+              "Certification professionnelle",
+            ]
+          : [
+              "All 10h pack contents",
+              "Advanced stakeholder management",
+              "Crisis & conflict resolution",
+              "Audit preparation",
+              "Certification exam prep",
+              "Complete project simulation",
+              "Professional certification",
+            ],
       },
     ],
     icon: null,
@@ -2763,7 +3687,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "pmp",
-    name: "PMP Certification",
+    name: isFrench ? "Certification PMP" : "PMP Certification",
     hourlyRate: 75,
     category: "management",
     packs: [
@@ -2771,51 +3695,76 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 365,
         discount: 3,
-        contents: [
-          "PMP exam overview",
-          "Process groups introduction",
-          "Basic terminology",
-          "Study strategy development",
-          "Sample questions",
-        ],
+        contents: isFrench
+          ? [
+              "Aperçu de l'examen PMP",
+              "Introduction aux groupes de processus",
+              "Terminologie de base",
+              "Développement de stratégie d'étude",
+              "Questions d'exemple",
+            ]
+          : [
+              "PMP exam overview",
+              "Process groups introduction",
+              "Basic terminology",
+              "Study strategy development",
+              "Sample questions",
+            ],
       },
       {
         hours: 10,
         price: 710,
         discount: 5,
-        contents: [
-          "All 10 knowledge areas",
-          "Process groups deep dive",
-          "ITTOs mastery",
-          "Practice exams",
-          "Weakness analysis",
-          "Exam-taking strategies",
-        ],
+        contents: isFrench
+          ? [
+              "Les 10 domaines de connaissance",
+              "Groupes de processus en profondeur",
+              "Maîtrise des ITTOs",
+              "Examens pratiques",
+              "Analyse des faiblesses",
+              "Stratégies de passage d'examen",
+            ]
+          : [
+              "All 10 knowledge areas",
+              "Process groups deep dive",
+              "ITTOs mastery",
+              "Practice exams",
+              "Weakness analysis",
+              "Exam-taking strategies",
+            ],
       },
       {
         hours: 20,
         price: 1380,
         discount: 8,
-        contents: [
-          "All 10h pack contents",
-          "Full exam simulation",
-          "Complex scenario analysis",
-          "Formulas & calculations mastery",
-          "Agile practice guide",
-          "Application assistance",
-          "Exam readiness certification",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Simulation complète d'examen",
+              "Analyse de scénarios complexes",
+              "Maîtrise des formules & calculs",
+              "Guide pratique Agile",
+              "Aide à la candidature",
+              "Certification de préparation à l'examen",
+            ]
+          : [
+              "All 10h pack contents",
+              "Full exam simulation",
+              "Complex scenario analysis",
+              "Formulas & calculations mastery",
+              "Agile practice guide",
+              "Application assistance",
+              "Exam readiness certification",
+            ],
       },
     ],
     icon: null,
     color: "from-red-500 to-orange-500",
     colorName: "red",
   },
-
-  // ADVANCED TECH & DEVOPS
   {
     id: "devops",
-    name: "DevOps Engineering",
+    name: isFrench ? "Ingénierie DevOps" : "DevOps Engineering",
     hourlyRate: 85,
     category: "advanced",
     packs: [
@@ -2823,40 +3772,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 410,
         discount: 3,
-        contents: [
-          "DevOps culture & principles",
-          "Version control advanced",
-          "CI/CD pipeline basics",
-          "Containerization with Docker",
-          "Infrastructure as Code intro",
-        ],
+        contents: isFrench
+          ? [
+              "Culture & principes DevOps",
+              "Contrôle de version avancé",
+              "Bases du pipeline CI/CD",
+              "Conteneurisation avec Docker",
+              "Introduction à l'Infrastructure as Code",
+            ]
+          : [
+              "DevOps culture & principles",
+              "Version control advanced",
+              "CI/CD pipeline basics",
+              "Containerization with Docker",
+              "Infrastructure as Code intro",
+            ],
       },
       {
         hours: 10,
         price: 800,
         discount: 6,
-        contents: [
-          "Advanced CI/CD pipelines",
-          "Kubernetes orchestration",
-          "Cloud platforms (AWS/Azure/GCP)",
-          "Monitoring & logging",
-          "Security in DevOps",
-          "Automation scripts",
-        ],
+        contents: isFrench
+          ? [
+              "Pipelines CI/CD avancés",
+              "Orchestration Kubernetes",
+              "Plateformes cloud (AWS/Azure/GCP)",
+              "Monitoring & logging",
+              "Sécurité en DevOps",
+              "Scripts d'automatisation",
+            ]
+          : [
+              "Advanced CI/CD pipelines",
+              "Kubernetes orchestration",
+              "Cloud platforms (AWS/Azure/GCP)",
+              "Monitoring & logging",
+              "Security in DevOps",
+              "Automation scripts",
+            ],
       },
       {
         hours: 20,
         price: 1560,
         discount: 8,
-        contents: [
-          "All 10h pack contents",
-          "Microservices architecture",
-          "Infrastructure as Code advanced",
-          "Disaster recovery planning",
-          "Team collaboration strategies",
-          "Complete DevOps implementation",
-          "Enterprise-level project",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Architecture microservices",
+              "Infrastructure as Code avancée",
+              "Planification de reprise après sinistre",
+              "Stratégies de collaboration d'équipe",
+              "Implémentation DevOps complète",
+              "Projet niveau entreprise",
+            ]
+          : [
+              "All 10h pack contents",
+              "Microservices architecture",
+              "Infrastructure as Code advanced",
+              "Disaster recovery planning",
+              "Team collaboration strategies",
+              "Complete DevOps implementation",
+              "Enterprise-level project",
+            ],
       },
     ],
     icon: null,
@@ -2865,7 +3841,7 @@ export const pricingCourses: PricingCourse[] = [
   },
   {
     id: "custom-software",
-    name: "Custom Software",
+    name: isFrench ? "Logiciel Personnalisé" : "Custom Software",
     hourlyRate: 85,
     category: "advanced",
     packs: [
@@ -2873,40 +3849,67 @@ export const pricingCourses: PricingCourse[] = [
         hours: 5,
         price: 410,
         discount: 3,
-        contents: [
-          "Requirements analysis",
-          "Architecture design",
-          "Technology stack selection",
-          "MVP planning",
-          "Development environment setup",
-        ],
+        contents: isFrench
+          ? [
+              "Analyse des exigences",
+              "Conception d'architecture",
+              "Sélection de la stack technologique",
+              "Planification MVP",
+              "Configuration de l'environnement de développement",
+            ]
+          : [
+              "Requirements analysis",
+              "Architecture design",
+              "Technology stack selection",
+              "MVP planning",
+              "Development environment setup",
+            ],
       },
       {
         hours: 10,
         price: 800,
         discount: 6,
-        contents: [
-          "Full-stack development",
-          "API design & implementation",
-          "Database architecture",
-          "Authentication & authorization",
-          "Testing strategies",
-          "Deployment setup",
-        ],
+        contents: isFrench
+          ? [
+              "Développement full-stack",
+              "Conception & implémentation d'API",
+              "Architecture de base de données",
+              "Authentification & autorisation",
+              "Stratégies de test",
+              "Configuration de déploiement",
+            ]
+          : [
+              "Full-stack development",
+              "API design & implementation",
+              "Database architecture",
+              "Authentication & authorization",
+              "Testing strategies",
+              "Deployment setup",
+            ],
       },
       {
         hours: 20,
         price: 1560,
         discount: 8,
-        contents: [
-          "All 10h pack contents",
-          "Advanced features development",
-          "Performance optimization",
-          "Security hardening",
-          "Scalability planning",
-          "Maintenance strategy",
-          "Production-ready solution",
-        ],
+        contents: isFrench
+          ? [
+              "Tout le contenu du pack 10h",
+              "Développement de fonctionnalités avancées",
+              "Optimisation des performances",
+              "Renforcement de la sécurité",
+              "Planification de la scalabilité",
+              "Stratégie de maintenance",
+              "Solution prête pour la production",
+            ]
+          : [
+              "All 10h pack contents",
+              "Advanced features development",
+              "Performance optimization",
+              "Security hardening",
+              "Scalability planning",
+              "Maintenance strategy",
+              "Production-ready solution",
+            ],
       },
     ],
     icon: null,
@@ -2915,42 +3918,48 @@ export const pricingCourses: PricingCourse[] = [
   },
 ];
 
-// Grouper les cours par catégorie pour l'affichage
-export const pricingCategories = [
-  {
-    id: "languages",
-    name: "Languages & Communication",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "languages"),
-  },
-  {
-    id: "office",
-    name: "Office & Productivity",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "office"),
-  },
-  {
-    id: "web",
-    name: "Web & Digital Marketing",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "web"),
-  },
-  {
-    id: "development",
-    name: "Development & Automation",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "development"),
-  },
-  {
-    id: "management",
-    name: "Management & Certification",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "management"),
-  },
-  {
-    id: "advanced",
-    name: "Advanced Tech & DevOps",
-    icon: null,
-    courses: pricingCourses.filter(c => c.category === "advanced"),
-  },
-];
+export const getPricingCategories = (isFrench: boolean) => {
+  const pricingCourses = getPricingCourses(isFrench);
+  return [
+    {
+      id: "languages",
+      name: isFrench ? "Langues & Communication" : "Languages & Communication",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "languages"),
+    },
+    {
+      id: "office",
+      name: isFrench ? "Bureautique & Productivité" : "Office & Productivity",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "office"),
+    },
+    {
+      id: "web",
+      name: isFrench ? "Web & Marketing Digital" : "Web & Digital Marketing",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "web"),
+    },
+    {
+      id: "development",
+      name: isFrench
+        ? "Développement & Automatisation"
+        : "Development & Automation",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "development"),
+    },
+    {
+      id: "management",
+      name: isFrench
+        ? "Management & Certification"
+        : "Management & Certification",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "management"),
+    },
+    {
+      id: "advanced",
+      name: isFrench ? "Tech Avancée & DevOps" : "Advanced Tech & DevOps",
+      icon: null,
+      courses: pricingCourses.filter((c) => c.category === "advanced"),
+    },
+  ];
+};

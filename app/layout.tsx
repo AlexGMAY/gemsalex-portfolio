@@ -3,11 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import { FloatingNav } from "@/components/Navbar";
-import { navItems } from "@/data";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import FooterGrid from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 import { ScriptOptimizer } from "@/components/ScriptOptimizer";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -147,15 +147,17 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider>
-          <Providers>
-            <div className="relative bg-black-100 overflow-hidden mx-auto">
-              <FloatingNav navItems={navItems} />
-              {children}
-              <ScrollToTop />
-              <FooterGrid />
-              <ScriptOptimizer />
-            </div>
-          </Providers>
+          <LanguageProvider>
+            <Providers>
+              <div className="relative bg-black-100 overflow-hidden mx-auto">
+                <FloatingNav />
+                {children}
+                <ScrollToTop />
+                <FooterGrid />
+                <ScriptOptimizer />
+              </div>
+            </Providers>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
