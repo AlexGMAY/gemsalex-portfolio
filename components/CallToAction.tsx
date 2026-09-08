@@ -1,9 +1,49 @@
-"use client"
+// "use client"
 
-import { motion } from 'framer-motion'
-import React from 'react'
+// import { motion } from 'framer-motion'
+// import React from 'react'
+
+// const CallToAction = () => {
+//   return (
+//     <section className="py-24">
+//       <div className="overflow-x-clip p-4 flex">
+//         <motion.div
+//           animate={{
+//             x: "-50%",
+//           }}
+//           transition={{
+//             duration: 30,
+//             ease: "linear",
+//             repeat: Infinity,
+//           }}
+//           className="flex flex-none gap-16 text-7xl md:text-8xl font-medium"
+//         >
+//           {Array.from({ length: 10 }).map((_, i) => (
+//             <div
+//               key={i}
+//               className="flex items-center gap-16 hover:text-lime-500"
+//             >
+//               <span className="text-yellow-500 text-7xl">&#10038;</span>
+//               <span className="heading">Let&apos;s Build Your Success Story !</span>
+//             </div>
+//           ))}
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// export default CallToAction
+
+"use client";
+
+import { motion } from "framer-motion";
+import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CallToAction = () => {
+  const { isFrench } = useLanguage();
+
   return (
     <section className="py-24">
       <div className="overflow-x-clip p-4 flex">
@@ -21,16 +61,20 @@ const CallToAction = () => {
           {Array.from({ length: 10 }).map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-16 hover:text-lime-500"
+              className="flex items-center gap-16 hover:text-lime-500 transition-colors duration-300"
             >
-              <span className="text-yellow-500 text-7xl">&#10038;</span>
-              <span className="heading">Let&apos;s Build Your Success Story !</span>
+              <span className="text-yellow-500 text-7xl">✦</span>
+              <span className="heading">
+                {isFrench
+                  ? "Construisons Votre Success Story !"
+                  : "Let's Build Your Success Story !"}
+              </span>
             </div>
           ))}
         </motion.div>
       </div>
     </section>
   );
-}
+};
 
-export default CallToAction
+export default CallToAction;

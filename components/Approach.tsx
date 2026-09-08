@@ -1,27 +1,236 @@
-"use client"
+// "use client"
+
+// import React from "react";
+// import { AnimatePresence, motion } from "framer-motion";
+
+// import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+
+// const Approach = () => {
+//   return (
+//     <section className="w-full py-20">
+//       <h2 className="heading">
+//         Your Success{" "}
+//         <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
+//           Built on a Proven Process
+//         </span>
+//       </h2>
+//       {/* remove bg-white dark:bg-black */}
+//       <div className="my-20 grid grid-cols md:grid-cols-2 lg:grid-cols-4 items-center justify-center w-full gap-4">
+//         {/* add des prop */}
+//         {/* Card 1 - Discovery */}
+//         <Card
+//           title="Strategic Discovery"
+//           icon={<AceternityIcon order="Phase 1" />}
+//           des="We'll uncover your unique business challenges and define clear objectives to ensure your project delivers maximum ROI."
+//         >
+//           <CanvasRevealEffect
+//             animationSpeed={5.1}
+//             containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
+//           />
+//         </Card>
+
+//         {/* Card 2 - Planning */}
+//         <Card
+//           title="Strategic Planning"
+//           icon={<AceternityIcon order="Phase 2" />}
+//           des="Clear roadmap with fixed pricing. We'll define measurable success metrics and create a timeline that aligns with your business goals."
+//         >
+//           <CanvasRevealEffect
+//             animationSpeed={3}
+//             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
+//             colors={[
+//               [255, 166, 158],
+//               [221, 255, 247],
+//             ]}
+//             dotSize={2}
+//           />
+//         </Card>
+
+//         {/* Card 3 - Execution */}
+//         <Card
+//           title="Strategic Execution"
+//           icon={<AceternityIcon order="Phase 3" />}
+//           des="Weekly progress demos ensure we're building exactly what you need. Your vision comes to life with precision and quality."
+//         >
+//           <CanvasRevealEffect
+//             animationSpeed={3}
+//             containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
+//             colors={[[125, 211, 252]]}
+//           />
+//         </Card>
+
+//         {/* Card 4 - Launch */}
+//         <Card
+//           title="Results Delivery"
+//           icon={<AceternityIcon order="Phase 4" />}
+//           des="We ensure your solution drives real business impact before launch, with ongoing support for continued success."
+//         >
+//           <CanvasRevealEffect
+//             animationSpeed={3}
+//             containerClassName="bg-lime-500 rounded-3xl overflow-hidden"
+//             colors={[[125, 211, 252]]}
+//           />
+//         </Card>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Approach;
+
+// const Card = ({
+//   title,
+//   icon,
+//   children,
+//   // add this one for the desc
+//   des,
+// }: {
+//   title: string;
+//   icon: React.ReactNode;
+//   children?: React.ReactNode;
+//   des: string;
+// }) => {
+//   const [hovered, setHovered] = React.useState(false);
+//   return (
+//     <div
+//       onMouseEnter={() => setHovered(true)}
+//       onMouseLeave={() => setHovered(false)}
+//       // change h-[30rem] to h-[35rem], add rounded-3xl
+//       className="border border-black/[0.2] group/canvas-card flex items-center justify-center
+//        dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl bg-black-200 "
+//       // style={{
+//       //   //   add these two
+//       //   //   you can generate the color from here https://cssgradient.io/
+//       //   background: "rgb(4,7,29)",
+//       //   backgroundColor:
+//       //     "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+//       // }}
+//     >
+//       {/* change to h-10 w-10 , add opacity-30  */}
+//       <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
+//       <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
+//       <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
+//       <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
+
+//       <AnimatePresence>
+//         {hovered && (
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             className="h-full w-full absolute inset-0"
+//           >
+//             {children}
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+
+//       <div className="relative z-20 px-4">
+//         <div
+//           // add this for making it center
+//           className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
+//         group-hover/canvas-card:opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center"
+//         >
+//           {icon}
+//         </div>
+//         <h3
+//           // change text-3xl, add text-center
+//           className="dark:text-white text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100
+//          relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white
+//          group-hover/canvas-card:-translate-y-2 transition duration-200"
+//         >
+//           {title}
+//         </h3>
+//         {/* add this one for the description */}
+//         <p
+//           className="text-sm opacity-0 group-hover/canvas-card:opacity-100
+//          relative z-10 mt-4 group-hover/canvas-card:text-white text-center
+//          group-hover/canvas-card:-translate-y-2 transition duration-200"
+//           style={{ color: "#E4ECFF" }}
+//         >
+//           {des}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+// // add order prop for the Phase number change
+// const AceternityIcon = ({ order }: { order: string }) => {
+//   return (
+//     <div>
+//       {/* this btn is from https://ui.aceternity.com/components/tailwindcss-buttons border magic */}
+//       {/* change rounded-lg, text-purple px-5 py-2 */}
+//       {/* remove focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cuz we don't need to focus */}
+//       {/* remove text-sm font-medium h-12 , add font-bold text-2xl */}
+//       <button className="relative inline-flex overflow-hidden rounded-full p-[1px] ">
+//         <span
+//           className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]
+//          bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
+//         />
+//         <span
+//           className="inline-flex h-full w-full cursor-pointer items-center
+//         justify-center rounded-full bg-slate-950 px-5 py-2 text-purple backdrop-blur-3xl font-bold text-2xl"
+//         >
+//           {order}
+//         </span>
+//       </button>
+//     </div>
+//   );
+// };
+
+// export const Icon = ({ className, ...rest }: any) => {
+//   return (
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       fill="none"
+//       viewBox="0 0 24 24"
+//       strokeWidth="1.5"
+//       stroke="currentColor"
+//       className={className}
+//       {...rest}
+//     >
+//       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+//     </svg>
+//   );
+// };
+
+"use client";
 
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Approach = () => {
+  const { isFrench } = useLanguage();
+
   return (
-    <section className="w-full py-20">
-      <h2 className="heading">
-        Your Success{" "}
-        <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
-          Built on a Proven Process
-        </span>
-      </h2>
-      {/* remove bg-white dark:bg-black */}
-      <div className="my-20 grid grid-cols md:grid-cols-2 lg:grid-cols-4 items-center justify-center w-full gap-4">
-        {/* add des prop */}
-        {/* Card 1 - Discovery */}
+    <section className="w-full py-24">
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-300/10 border border-blue-300/20 mb-6">
+          <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+          <span className="text-sm font-medium text-blue-200 tracking-wider uppercase">
+            {isFrench ? "Processus" : "Process"}
+          </span>
+        </div>
+        <h2 className="heading">
+          {isFrench ? "Votre Succès" : "Your Success"}{" "}
+          <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
+            {isFrench
+              ? "Construit sur un Processus Éprouvé"
+              : "Built on a Proven Process"}
+          </span>
+        </h2>
+      </div>
+
+      <div className="my-20 grid grid-cols md:grid-cols-2 lg:grid-cols-4 items-center justify-center w-full gap-6">
         <Card
-          title="Strategic Discovery"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="We'll uncover your unique business challenges and define clear objectives to ensure your project delivers maximum ROI."
+          title={isFrench ? "Découverte Stratégique" : "Strategic Discovery"}
+          icon={<AceternityIcon order={isFrench ? "Phase 1" : "Phase 1"} />}
+          des={
+            isFrench
+              ? "Nous identifierons vos défis business uniques et définirons des objectifs clairs pour garantir un ROI maximal."
+              : "We'll uncover your unique business challenges and define clear objectives to ensure your project delivers maximum ROI."
+          }
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -29,11 +238,14 @@ const Approach = () => {
           />
         </Card>
 
-        {/* Card 2 - Planning */}
         <Card
-          title="Strategic Planning"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="Clear roadmap with fixed pricing. We'll define measurable success metrics and create a timeline that aligns with your business goals."
+          title={isFrench ? "Planification Stratégique" : "Strategic Planning"}
+          icon={<AceternityIcon order={isFrench ? "Phase 2" : "Phase 2"} />}
+          des={
+            isFrench
+              ? "Feuille de route claire avec prix fixe. Nous définirons des métriques de succès mesurables et un calendrier aligné avec vos objectifs."
+              : "Clear roadmap with fixed pricing. We'll define measurable success metrics and create a timeline that aligns with your business goals."
+          }
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -46,11 +258,14 @@ const Approach = () => {
           />
         </Card>
 
-        {/* Card 3 - Execution */}
         <Card
-          title="Strategic Execution"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="Weekly progress demos ensure we're building exactly what you need. Your vision comes to life with precision and quality."
+          title={isFrench ? "Exécution Stratégique" : "Strategic Execution"}
+          icon={<AceternityIcon order={isFrench ? "Phase 3" : "Phase 3"} />}
+          des={
+            isFrench
+              ? "Des démos hebdomadaires garantissent que nous construisons exactement ce dont vous avez besoin. Votre vision prend vie avec précision et qualité."
+              : "Weekly progress demos ensure we're building exactly what you need. Your vision comes to life with precision and quality."
+          }
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -59,11 +274,14 @@ const Approach = () => {
           />
         </Card>
 
-        {/* Card 4 - Launch */}
         <Card
-          title="Results Delivery"
-          icon={<AceternityIcon order="Phase 4" />}
-          des="We ensure your solution drives real business impact before launch, with ongoing support for continued success."
+          title={isFrench ? "Livraison des Résultats" : "Results Delivery"}
+          icon={<AceternityIcon order={isFrench ? "Phase 4" : "Phase 4"} />}
+          des={
+            isFrench
+              ? "Nous garantissons que votre solution génère un impact business réel avant le lancement, avec un support continu."
+              : "We ensure your solution drives real business impact before launch, with ongoing support for continued success."
+          }
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -82,7 +300,6 @@ const Card = ({
   title,
   icon,
   children,
-  // add this one for the desc
   des,
 }: {
   title: string;
@@ -95,18 +312,9 @@ const Card = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      // change h-[30rem] to h-[35rem], add rounded-3xl
       className="border border-black/[0.2] group/canvas-card flex items-center justify-center
-       dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl bg-black-200 "
-      // style={{
-      //   //   add these two
-      //   //   you can generate the color from here https://cssgradient.io/
-      //   background: "rgb(4,7,29)",
-      //   backgroundColor:
-      //     "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      // }}
+       dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl bg-black-200"
     >
-      {/* change to h-10 w-10 , add opacity-30  */}
       <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
       <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
       <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
@@ -126,21 +334,18 @@ const Card = ({
 
       <div className="relative z-20 px-4">
         <div
-          // add this for making it center          
           className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] 
         group-hover/canvas-card:opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center"
         >
           {icon}
         </div>
         <h3
-          // change text-3xl, add text-center
           className="dark:text-white text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100
-         relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white 
+         relative z-10 text-black mt-4 font-bold group-hover/canvas-card:text-white 
          group-hover/canvas-card:-translate-y-2 transition duration-200"
         >
           {title}
         </h3>
-        {/* add this one for the description */}
         <p
           className="text-sm opacity-0 group-hover/canvas-card:opacity-100
          relative z-10 mt-4 group-hover/canvas-card:text-white text-center
@@ -153,15 +358,11 @@ const Card = ({
     </div>
   );
 };
-// add order prop for the Phase number change
+
 const AceternityIcon = ({ order }: { order: string }) => {
   return (
     <div>
-      {/* this btn is from https://ui.aceternity.com/components/tailwindcss-buttons border magic */}
-      {/* change rounded-lg, text-purple px-5 py-2 */}
-      {/* remove focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cuz we don't need to focus */}
-      {/* remove text-sm font-medium h-12 , add font-bold text-2xl */}
-      <button className="relative inline-flex overflow-hidden rounded-full p-[1px] ">
+      <button className="relative inline-flex overflow-hidden rounded-full p-[1px]">
         <span
           className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]
          bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
@@ -173,7 +374,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
           {order}
         </span>
       </button>
-    </div>    
+    </div>
   );
 };
 
