@@ -1,9 +1,13 @@
 "use client";
 
-import { gridItems } from "@/data";
+import { getGridItems } from "@/data";
 import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Grid = () => {
+  const { isFrench } = useLanguage();
+  const gridItems = getGridItems(isFrench);
+
   return (
     <section id="about">
       <BentoGrid className="w-full py-20">
@@ -13,8 +17,6 @@ const Grid = () => {
             key={i}
             title={item.title}
             description={item.description}
-            // remove icon prop
-            // remove original classname condition
             className={item.className}
             img={item.img}
             imgClassName={item.imgClassName}

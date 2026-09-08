@@ -1,12 +1,22 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
-import { educationBoard, certificationBoard, courseBoard } from "@/data";
+import {
+  getEducationBoard,
+  getCertificationBoard,
+  getCourseBoard,
+} from "@/data";
 import { FaGraduationCap, FaCertificate, FaBook } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const EducationCertificationsSection = () => {
+  const { isFrench } = useLanguage();
+  const educationBoard = getEducationBoard(isFrench);
+  const certificationBoard = getCertificationBoard(isFrench);
+  const courseBoard = getCourseBoard(isFrench);
+
   return (
     <section id="education-certifications" className="py-24">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -17,10 +27,14 @@ const EducationCertificationsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-lime-400 to-emerald-500">
-            Education & Certifications
+            {isFrench
+              ? "Formation & Certifications"
+              : "Education & Certifications"}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            My academic background and professional qualifications
+            {isFrench
+              ? "Mon parcours académique et mes qualifications professionnelles"
+              : "My academic background and professional qualifications"}
           </p>
         </motion.div>
 
@@ -36,7 +50,9 @@ const EducationCertificationsSection = () => {
               <div className="p-3 rounded-lg bg-lime-400/10 text-lime-400">
                 <FaGraduationCap className="text-2xl" />
               </div>
-              <h3 className="text-2xl font-bold">Education</h3>
+              <h3 className="text-2xl font-bold">
+                {isFrench ? "Formation" : "Education"}
+              </h3>
             </div>
             <ul className="divide-y divide-gray-700">
               {educationBoard.map((education, index) => (
@@ -79,7 +95,9 @@ const EducationCertificationsSection = () => {
               <div className="p-3 rounded-lg bg-emerald-400/10 text-emerald-400">
                 <FaCertificate className="text-2xl" />
               </div>
-              <h3 className="text-2xl font-bold">Certifications</h3>
+              <h3 className="text-2xl font-bold">
+                {isFrench ? "Certifications" : "Certifications"}
+              </h3>
             </div>
             <ul className="divide-y divide-gray-700">
               {certificationBoard.map((certification, index) => (
@@ -109,7 +127,8 @@ const EducationCertificationsSection = () => {
                         {certification.name}
                       </h4>
                       <p className="text-gray-400 mt-1">
-                        Issued by {certification.issuer}
+                        {isFrench ? "Délivré par" : "Issued by"}{" "}
+                        {certification.issuer}
                       </p>
                       <div className="flex items-center mt-3">
                         <span className="text-sm text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">
@@ -145,7 +164,9 @@ const EducationCertificationsSection = () => {
               <div className="p-3 rounded-lg bg-cyan-400/10 text-cyan-400">
                 <FaBook className="text-2xl" />
               </div>
-              <h3 className="text-2xl font-bold">Courses</h3>
+              <h3 className="text-2xl font-bold">
+                {isFrench ? "Cours" : "Courses"}
+              </h3>
             </div>
             <ul className="divide-y divide-gray-700">
               {courseBoard.map((course, index) => (

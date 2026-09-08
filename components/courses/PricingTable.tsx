@@ -13,23 +13,22 @@ import {
   FaChevronUp,
   FaWhatsapp,
 } from "react-icons/fa";
-import { pricingCourses } from "@/data";
+import { getPricingCourses } from "@/data";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Environment variables
-const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-const ADMIN_EMAIL =
-  process.env.ADMIN_EMAIL;
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
-// Custom calculator component for personalized hours
 const CustomHoursCalculator = ({
   course,
   onWhatsAppQuote,
   onEmailQuote,
+  isFrench,
 }: {
-  course: (typeof pricingCourses)[0];
+  course: ReturnType<typeof getPricingCourses>[0];
   onWhatsAppQuote: (courseName: string, hours: number, price: number) => void;
   onEmailQuote: (courseName: string, hours: number, price: number) => void;
+  isFrench: boolean;
 }) => {
   const [customHours, setCustomHours] = useState<number>(10);
   const [showCalculator, setShowCalculator] = useState(false);
@@ -55,7 +54,11 @@ const CustomHoursCalculator = ({
         className="w-full flex items-center justify-center gap-2 text-xs text-gray-400 hover:text-lime-400 transition-colors"
       >
         <FaCalculator size={12} />
-        <span>Custom hours? Calculate your price</span>
+        <span>
+          {isFrench
+            ? "Heures personnalisées ? Calculez votre prix"
+            : "Custom hours? Calculate your price"}
+        </span>
         {showCalculator ? (
           <FaChevronUp size={10} />
         ) : (
@@ -97,11 +100,15 @@ const CustomHoursCalculator = ({
 
             <div className="space-y-1 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-500">Hourly rate:</span>
+                <span className="text-gray-500">
+                  {isFrench ? "Tarif horaire" : "Hourly rate"}:
+                </span>
                 <span className="text-white">€{course.hourlyRate}/h</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-500">Regular price:</span>
+                <span className="text-gray-500">
+                  {isFrench ? "Prix normal" : "Regular price"}:
+                </span>
                 <span className="text-white line-through">
                   €{course.hourlyRate * customHours}
                 </span>
@@ -109,7 +116,7 @@ const CustomHoursCalculator = ({
               {discount > 0 && (
                 <div className="flex justify-between">
                   <span className="text-gray-500">
-                    Discount ({discount * 100}%):
+                    {isFrench ? "Remise" : "Discount"} ({discount * 100}%):
                   </span>
                   <span className="text-green-400">
                     -€{Math.round(savings)}
@@ -117,7 +124,9 @@ const CustomHoursCalculator = ({
                 </div>
               )}
               <div className="flex justify-between pt-2 border-t border-gray-700">
-                <span className="font-semibold text-white">Your price:</span>
+                <span className="font-semibold text-white">
+                  {isFrench ? "Votre prix" : "Your price"}:
+                </span>
                 <span className="text-lg font-bold text-lime-400">
                   €{totalPrice}
                 </span>
@@ -131,7 +140,7 @@ const CustomHoursCalculator = ({
                   className="flex-1 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-medium flex items-center justify-center gap-1 transition"
                 >
                   <FaWhatsapp size={10} />
-                  WhatsApp Quote
+                  WhatsApp
                 </button>
                 <button
                   onClick={() =>
@@ -140,7 +149,7 @@ const CustomHoursCalculator = ({
                   className="flex-1 py-1.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium flex items-center justify-center gap-1 transition"
                 >
                   <FaEnvelope size={10} />
-                  Email Quote
+                  Email
                 </button>
               </div>
             </div>
@@ -152,58 +161,64 @@ const CustomHoursCalculator = ({
 };
 
 const PricingTable = () => {
+  const { isFrench } = useLanguage();
+  const pricingCourses = getPricingCourses(isFrench);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
-  // WhatsApp quote handler
   const handleWhatsAppQuote = (
     courseName: string,
     hours: number,
     price: number,
   ) => {
-    const message = `Hello, I am interested in the "${courseName}" training (${hours}h - ${price}€). Could you please send me a quote with payment details? I would like to start as soon as possible. Thank you!`;
+    const message = isFrench
+      ? `Bonjour, je suis intéressé(e) par la formation "${courseName}" (${hours}h - ${price}€). Pourriez-vous m'envoyer un devis avec les modalités de paiement ? J'aimerais commencer dès que possible. Merci !`
+      : `Hello, I am interested in the "${courseName}" training (${hours}h - ${price}€). Could you please send me a quote with payment details? I would like to start as soon as possible. Thank you!`;
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
       "_blank",
     );
   };
 
-  // Email quote handler
   const handleEmailQuote = (
     courseName: string,
     hours: number,
     price: number,
   ) => {
-    const subject = `Quote: ${courseName} - ${hours}h`;
-    const body = `Hello,\n\nI am interested in the "${courseName}" training (${hours}h - ${price}€).\n\nCould you please send me a detailed quote with payment options?\n\nI would like to start as soon as possible.\n\nBest regards,`;
+    const subject = isFrench
+      ? `Devis: ${courseName} - ${hours}h`
+      : `Quote: ${courseName} - ${hours}h`;
+    const body = isFrench
+      ? `Bonjour,\n\nJe suis intéressé(e) par la formation "${courseName}" (${hours}h - ${price}€).\n\nPourriez-vous m'envoyer un devis détaillé avec les options de paiement ?\n\nJ'aimerais commencer dès que possible.\n\nCordialement,`
+      : `Hello,\n\nI am interested in the "${courseName}" training (${hours}h - ${price}€).\n\nCould you please send me a detailed quote with payment options?\n\nI would like to start as soon as possible.\n\nBest regards,`;
     window.location.href = `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-gray-950 to-black">
       <div className="container mx-auto max-w-7xl px-4">
-        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/20 to-lime-500/20 px-4 py-1.5 mb-4">
             <FaEuroSign className="text-lime-400" size={14} />
             <span className="text-xs font-medium text-lime-300">
-              Transparent Pricing
+              {isFrench ? "Tarifs Transparents" : "Transparent Pricing"}
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-400 to-lime-400 bg-clip-text text-transparent">
-              Flexible Pricing
+              {isFrench ? "Tarification Flexible" : "Flexible Pricing"}
             </span>
             <br />
-            for Every Learning Journey
+            {isFrench
+              ? "pour chaque parcours d'apprentissage"
+              : "for Every Learning Journey"}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Choose the plan that fits your goals. The more you learn, the more
-            you save. All prices are in EUR, TVA non applicable (art. 293 B du
-            CGI).
+            {isFrench
+              ? "Choisissez le plan qui correspond à vos objectifs. Plus vous apprenez, plus vous économisez. Tous les prix sont en EUR, TVA non applicable (art. 293 B du CGI)."
+              : "Choose the plan that fits your goals. The more you learn, the more you save. All prices are in EUR, TVA non applicable (art. 293 B du CGI)."}
           </p>
         </div>
 
-        {/* Pricing Cards Grid - 3 per row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pricingCourses.map((course, index) => (
             <motion.div
@@ -217,7 +232,6 @@ const PricingTable = () => {
               <div
                 className={`h-full rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-${course.colorName}-400/50 transition-all duration-300 overflow-hidden`}
               >
-                {/* Header */}
                 <div className="p-5 pb-3 border-b border-gray-800">
                   <h3 className="text-lg font-bold text-white">
                     {course.name}
@@ -227,14 +241,16 @@ const PricingTable = () => {
                     <span className="text-3xl font-bold text-lime-400">
                       {course.hourlyRate}
                     </span>
-                    <span className="text-sm text-gray-500">/hour</span>
+                    <span className="text-sm text-gray-500">
+                      {isFrench ? "/heure" : "/hour"}
+                    </span>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">
-                    Starting from {course.hourlyRate}€/h
+                    {isFrench ? "À partir de" : "Starting from"}{" "}
+                    {course.hourlyRate}€/h
                   </p>
                 </div>
 
-                {/* Packs */}
                 <div className="p-4 space-y-3">
                   {course.packs.map((pack) => (
                     <div
@@ -258,11 +274,11 @@ const PricingTable = () => {
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="font-semibold text-white">
-                              {pack.hours}h Pack
+                              {pack.hours}h {isFrench ? "Pack" : "Pack"}
                             </span>
                             {pack.hours === 10 && (
                               <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-lime-500/20 text-lime-400">
-                                Popular
+                                {isFrench ? "Populaire" : "Popular"}
                               </span>
                             )}
                           </div>
@@ -316,7 +332,6 @@ const PricingTable = () => {
                         </div>
                       </div>
 
-                      {/* Pack detailed content */}
                       <AnimatePresence>
                         {expandedCard === `${course.id}-${pack.hours}` && (
                           <motion.div
@@ -326,7 +341,7 @@ const PricingTable = () => {
                             className="mt-3 pt-3 border-t border-gray-700"
                           >
                             <p className="text-xs text-gray-400 mb-2">
-                              What&apos;s included:
+                              {isFrench ? "Inclus :" : "What's included:"}
                             </p>
                             <ul className="space-y-1.5">
                               {pack.contents.map((content, idx) => (
@@ -354,7 +369,7 @@ const PricingTable = () => {
                                 className="flex-1 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-medium flex items-center justify-center gap-1 transition"
                               >
                                 <FaWhatsapp size={10} />
-                                WhatsApp Quote
+                                WhatsApp
                               </button>
                               <button
                                 onClick={() =>
@@ -367,7 +382,7 @@ const PricingTable = () => {
                                 className="flex-1 py-1.5 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium flex items-center justify-center gap-1 transition"
                               >
                                 <FaEnvelope size={10} />
-                                Email Quote
+                                Email
                               </button>
                             </div>
                           </motion.div>
@@ -376,22 +391,25 @@ const PricingTable = () => {
                     </div>
                   ))}
 
-                  {/* Custom hours calculator */}
                   <CustomHoursCalculator
                     course={course}
                     onWhatsAppQuote={handleWhatsAppQuote}
                     onEmailQuote={handleEmailQuote}
+                    isFrench={isFrench}
                   />
                 </div>
 
-                {/* Free consultation link */}
                 <div className="p-4 pt-0">
                   <a
                     href="/contact"
                     className="flex items-center justify-center gap-2 text-xs text-gray-500 hover:text-lime-400 transition-colors"
                   >
                     <FaRegClock size={10} />
-                    <span>Need help choosing? Free consultation</span>
+                    <span>
+                      {isFrench
+                        ? "Besoin d'aide pour choisir ? Consultation gratuite"
+                        : "Need help choosing? Free consultation"}
+                    </span>
                     <FaArrowRight size={10} />
                   </a>
                 </div>
@@ -400,16 +418,20 @@ const PricingTable = () => {
           ))}
         </div>
 
-        {/* Bulk discount grid */}
         <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-blue-500/10 to-lime-500/10 border border-gray-800">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-white mb-3">
-              📚 Bulk Hours Discount Structure
+              📚{" "}
+              {isFrench
+                ? "Structure de Remise sur Volume d'Heures"
+                : "Bulk Hours Discount Structure"}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl mx-auto">
               <div className="p-3 rounded-xl bg-gray-800/50">
                 <div className="text-xl font-bold text-lime-400">1-9h</div>
-                <div className="text-xs text-gray-400">Standard rate</div>
+                <div className="text-xs text-gray-400">
+                  {isFrench ? "Tarif standard" : "Standard rate"}
+                </div>
               </div>
               <div className="p-3 rounded-xl bg-gray-800/50 border border-lime-400/30">
                 <div className="text-xl font-bold text-lime-400">10-19h</div>
@@ -429,21 +451,23 @@ const PricingTable = () => {
               </div>
             </div>
             <p className="text-xs text-gray-500 mt-4">
-              *Custom quotes available for intensive programs or corporate
-              training
+              {isFrench
+                ? "*Devis personnalisés disponibles pour les programmes intensifs ou la formation corporate"
+                : "*Custom quotes available for intensive programs or corporate training"}
             </p>
           </div>
         </div>
 
-        {/* Legal mention */}
         <div className="mt-8 text-center">
           <p className="text-xs text-gray-500">
-            💡 VAT not applicable - International service provision. Indicative
-            prices for standard online courses. A personalized quote will be
-            issued after analyzing your specific needs.
+            💡{" "}
+            {isFrench
+              ? "TVA non applicable - Prestation de service internationale. Prix indicatifs pour les cours en ligne standard. Un devis personnalisé sera émis après analyse de vos besoins spécifiques."
+              : "VAT not applicable - International service provision. Indicative prices for standard online courses. A personalized quote will be issued after analyzing your specific needs."}
             <br />
-            *Discounts are automatically applied based on the number of hours
-            chosen.
+            {isFrench
+              ? "*Les remises sont automatiquement appliquées en fonction du nombre d'heures choisi."
+              : "*Discounts are automatically applied based on the number of hours chosen."}
           </p>
         </div>
       </div>

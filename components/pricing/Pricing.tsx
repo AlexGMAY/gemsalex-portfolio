@@ -11,7 +11,7 @@ import {
   FaCheckCircle,
   FaTimesCircle,
 } from "react-icons/fa";
-import { services, Feature, Service } from "@/data";
+import { getServices, Feature, Service } from "@/data";
 import { FaPoundSign } from "react-icons/fa";
 import { RiMoneyEuroCircleLine } from "react-icons/ri";
 import Link from "next/link";
@@ -21,8 +21,8 @@ import {
   ToastState,
 } from "@/types/pricing";
 import CSRFNotice, { useCSRFNotice } from "../ui/CSRFNotice";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Currency types - TND replaced with GBP
 type Currency = "USD" | "GBP" | "EUR";
 type PricingPageType = "home" | "pricing";
 
@@ -31,10 +31,12 @@ interface SuperPricingProps {
 }
 
 export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
-  // Enhanced state
+  const { isFrench } = useLanguage();
+  const services = getServices(isFrench);
+
   const [currency, setCurrency] = useState<Currency>("USD");
   const [exchangeRate] = useState({
-    GBP: 0.79, // 1 USD = 0.79 GBP
+    GBP: 0.79,
     EUR: 0.92,
     USD: 1,
   });
@@ -50,15 +52,13 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     type: "",
     message: "",
   });
-  const [csrfToken, setCsrfToken] = useState(""); 
+  const [csrfToken, setCsrfToken] = useState("");
   const [showNotice, setShowNotice] = useState(false);
   const { showCSRFNotice } = useCSRFNotice();
 
-  // Filter services based on page type
   const displayedServices =
     pageType === "home" ? services.slice(0, 3) : services;
 
-  // Fetch CSRF token
   useEffect(() => {
     fetchCsrfToken();
   }, []);
@@ -72,7 +72,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         showToast(
           "error",
           data.message ||
-            "Failed to fetch security token. Please refresh the page with Ctrl+F5.",
+            (isFrench
+              ? "Échec de récupération du jeton de sécurité. Veuillez actualiser la page avec Ctrl+F5."
+              : "Failed to fetch security token. Please refresh the page with Ctrl+F5."),
         );
         return;
       }
@@ -82,7 +84,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       console.error("Failed to fetch CSRF token:", error);
       showToast(
         "error",
-        "Connection error. Please refresh the page with Ctrl+F5 and try again.",
+        isFrench
+          ? "Erreur de connexion. Veuillez actualiser la page avec Ctrl+F5 et réessayer."
+          : "Connection error. Please refresh the page with Ctrl+F5 and try again.",
       );
     }
   };
@@ -92,7 +96,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     setTimeout(() => setToast({ show: false, type: "", message: "" }), 5000);
   };
 
-  // Get service price based on currency
   const getServicePrice = (
     service: Service,
     targetCurrency: Currency,
@@ -101,15 +104,18 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       case "USD":
         return service.basePrice;
       case "GBP":
-        return service.gbpPrice || Math.round(service.basePrice * exchangeRate.GBP);
+        return (
+          service.gbpPrice || Math.round(service.basePrice * exchangeRate.GBP)
+        );
       case "EUR":
-        return service.euroPrice || Math.round(service.basePrice * exchangeRate.EUR);
+        return (
+          service.euroPrice || Math.round(service.basePrice * exchangeRate.EUR)
+        );
       default:
         return service.basePrice;
     }
   };
 
-  // Convert feature prices (features only have USD prices)
   const convertFeaturePrice = (
     usdPrice: number,
     targetCurrency: Currency,
@@ -118,7 +124,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     return Math.round(usdPrice * exchangeRate[targetCurrency]);
   };
 
-  // Dynamic total calculation
   const calculateTotal = (): number => {
     if (!selectedService) return 0;
 
@@ -131,10 +136,8 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     return basePrice + featuresTotal;
   };
 
-  // Auto-detect location
   useEffect(() => {
     const detectLocation = async () => {
-      // Check cache first
       const cachedData = localStorage.getItem("userLocationData");
       const cachedTime = localStorage.getItem("userLocationTime");
 
@@ -144,8 +147,10 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           const location = JSON.parse(cachedData);
           setUserLocation(location);
 
-          // Auto-select currency based on cached data
-          if (location.country === "United Kingdom" || location.country === "UK") {
+          if (
+            location.country === "United Kingdom" ||
+            location.country === "UK"
+          ) {
             setCurrency("GBP");
           } else if (
             location.country === "France" ||
@@ -164,7 +169,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         }
       }
 
-      // Try ipapi.is first
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -188,7 +192,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
 
           setUserLocation(location);
 
-          // Set currency based on country
           if (data.location?.country === "United Kingdom") {
             setCurrency("GBP");
           } else if (data.location?.continent === "Europe") {
@@ -202,7 +205,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         console.debug("ipapi.is failed, trying backup...");
       }
 
-      // Try ipapi.co as backup
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -243,7 +245,6 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         console.debug("All location APIs failed, using timezone");
       }
 
-      // Final fallback: timezone detection
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const location = {
         country: timezone.split("/")[0] || "International",
@@ -267,10 +268,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     detectLocation();
   }, []);
 
-  const getApiCurrency = (targetCurrency: Currency): PricingFormData["currency"] =>
+  const getApiCurrency = (
+    targetCurrency: Currency,
+  ): PricingFormData["currency"] =>
     targetCurrency === "GBP" ? "USD" : targetCurrency;
 
-  // Handle form submission
   const handlePricingSubmit = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
@@ -281,7 +283,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     if (!csrfToken) {
       showToast(
         "error",
-        "Security token missing. Please refresh the page with Ctrl+F5 (Cmd+R on Mac) and try again.",
+        isFrench
+          ? "Jeton de sécurité manquant. Veuillez actualiser la page avec Ctrl+F5 (Cmd+R sur Mac) et réessayer."
+          : "Security token missing. Please refresh the page with Ctrl+F5 (Cmd+R on Mac) and try again.",
       );
       return;
     }
@@ -324,7 +328,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         setShowNotice(true);
         showCSRFNotice("pricing");
         sessionStorage.removeItem("pricing_form_success");
-        return;        
+        return;
       }
 
       const data: PricingApiResponse = await response.json();
@@ -337,14 +341,19 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
       } else {
         showToast(
           "error",
-          data.message || "Failed to submit project inquiry. Please try again.",
+          data.message ||
+            (isFrench
+              ? "Échec de l'envoi de la demande de projet. Veuillez réessayer."
+              : "Failed to submit project inquiry. Please try again."),
         );
       }
     } catch (error) {
       console.error("Submission error:", error);
       showToast(
         "error",
-        "Network error. Please check your connection and try again.",
+        isFrench
+          ? "Erreur réseau. Veuillez vérifier votre connexion et réessayer."
+          : "Network error. Please check your connection and try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -354,12 +363,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
   const getPriceHint = (service: Service) => {
     const base = getServicePrice(service, currency);
 
-    if (base > 5000) return "Enterprise-grade";
-    if (base > 3000) return "Best value";
-    return "Starter";
+    if (base > 5000) return isFrench ? "Niveau entreprise" : "Enterprise-grade";
+    if (base > 3000) return isFrench ? "Meilleure valeur" : "Best value";
+    return isFrench ? "Débutant" : "Starter";
   };
 
-  // Enhanced currency toggle with GBP
   const CurrencyToggle = () => (
     <motion.div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-0">
       <div className="flex items-center bg-gray-800 rounded-full p-1">
@@ -397,19 +405,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
           <FaPoundSign className="mr-2 text-purple-400" /> GBP
         </button>
       </div>
-
-      <motion.div
-        className="text-xs text-gray-400 mt-2 sm:mt-0 sm:ml-3"
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-      >
-        {currency === "EUR" && "€1 ≈ $1.09"}
-        {currency === "GBP" && "£1 ≈ $1.27"}
-      </motion.div>
     </motion.div>
   );
 
-  // Get currency symbol
   const getCurrencySymbol = () => {
     switch (currency) {
       case "EUR":
@@ -463,14 +461,17 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
         >
           <h2 className="heading mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-400 to-yellow-400">
-              Expert-Level
+              {isFrench ? "Niveau Expert" : "Expert-Level"}
             </span>{" "}
-            Development
+            {isFrench ? "Développement" : "Development"}
           </h2>
           <p className="text-gray-300 mb-6">
-            8+ years of solving complex problems •{" "}
+            {isFrench
+              ? "8+ ans à résoudre des problèmes complexes"
+              : "8+ years of solving complex problems"}{" "}
+            •{" "}
             {userLocation.country &&
-              `Detected: ${userLocation.city ? `${userLocation.city}, ` : ""}${
+              `${isFrench ? "Détecté" : "Detected"}: ${userLocation.city ? `${userLocation.city}, ` : ""}${
                 userLocation.country
               }`}
           </p>
@@ -521,7 +522,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   className="w-full mt-6 bg-gradient-to-r from-lime-500 to-yellow-500 text-gray-900 font-bold py-3 rounded-lg flex items-center justify-center gap-2"
                   onClick={() => setSelectedService(service)}
                 >
-                  <FaShoppingCart /> Customize
+                  <FaShoppingCart /> {isFrench ? "Personnaliser" : "Customize"}
                 </motion.button>
               </div>
             </motion.div>
@@ -541,14 +542,16 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-blue-200 to-blue-300 hover:from-lime-500 hover:to-blue-500 transition-all"
               >
-                View All Services and Pricing
+                {isFrench
+                  ? "Voir tous les services et tarifs"
+                  : "View All Services and Pricing"}
                 <FaArrowRight className="ml-2" />
               </motion.a>
             </Link>
           </motion.div>
         )}
 
-        {/* Customization modal */}
+        {/* Modal */}
         <AnimatePresence>
           {selectedService && (
             <motion.div
@@ -565,7 +568,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-white">
-                      Customize{" "}
+                      {isFrench ? "Personnaliser" : "Customize"}{" "}
                       <span className="text-lime-400">
                         {selectedService.title}
                       </span>
@@ -587,7 +590,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   </div>
 
                   <div className="space-y-4 mb-8">
-                    <h4 className="font-bold text-white">Premium Add-Ons</h4>
+                    <h4 className="font-bold text-white">
+                      {isFrench ? "Options Premium" : "Premium Add-Ons"}
+                    </h4>
                     {selectedService.features
                       .filter((f) => f.category === "addon")
                       .map((feature) => (
@@ -628,10 +633,14 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   </div>
 
                   <div className="p-4 bg-gray-700 rounded-lg mb-6">
-                    <h4 className="font-bold text-white mb-3">Order Summary</h4>
+                    <h4 className="font-bold text-white mb-3">
+                      {isFrench ? "Résumé de la commande" : "Order Summary"}
+                    </h4>
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Base Price:</span>
+                        <span className="text-gray-300">
+                          {isFrench ? "Prix de base" : "Base Price"}:
+                        </span>
                         <span className="font-medium">
                           {formatServicePrice(selectedService)}
                         </span>
@@ -650,7 +659,9 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       ))}
 
                       <div className="border-t border-gray-600 pt-2 mt-2 flex justify-between font-bold">
-                        <span className="text-white">Total:</span>
+                        <span className="text-white">
+                          {isFrench ? "Total" : "Total"}:
+                        </span>
                         <span className="text-lime-400">
                           {getCurrencySymbol()}
                           {calculateTotal().toLocaleString()}
@@ -662,11 +673,15 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-2 px-3 py-1 bg-gray-700 rounded-full">
                       <FaLock className="text-green-500" />
-                      <span className="text-xs">Secure Payment</span>
+                      <span className="text-xs">
+                        {isFrench ? "Paiement sécurisé" : "Secure Payment"}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1 bg-gray-700 rounded-full">
                       <FaRocket className="text-yellow-500" />
-                      <span className="text-xs">Fast Delivery</span>
+                      <span className="text-xs">
+                        {isFrench ? "Livraison rapide" : "Fast Delivery"}
+                      </span>
                     </div>
                   </div>
 
@@ -675,7 +690,7 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       <input
                         type="text"
                         name="name"
-                        placeholder="Full Name"
+                        placeholder={isFrench ? "Nom complet" : "Full Name"}
                         required
                         disabled={isSubmitting}
                         className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
@@ -691,7 +706,11 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                     </div>
                     <textarea
                       name="projectDetails"
-                      placeholder="Project details (requirements, timeline, etc.)"
+                      placeholder={
+                        isFrench
+                          ? "Détails du projet (exigences, délais, etc.)"
+                          : "Project details (requirements, timeline, etc.)"
+                      }
                       rows={3}
                       required
                       disabled={isSubmitting}
@@ -721,10 +740,10 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
                       {isSubmitting ? (
                         <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                          <span>Submitting...</span>
+                          <span>{isFrench ? "Envoi..." : "Submitting..."}</span>
                         </>
                       ) : (
-                        `Secure My Project (${currency})`
+                        `${isFrench ? "Sécuriser mon projet" : "Secure My Project"} (${currency})`
                       )}
                     </motion.button>
                   </form>
@@ -746,3 +765,4 @@ export default function SuperPricing({ pageType = "home" }: SuperPricingProps) {
     </section>
   );
 }
+
